@@ -1,0 +1,23 @@
+分布	R函数	分布参数
+贝塔分布	"dbeta,  pbeta,  qbeta,  rbeta"	"shape1,  shape2,  ncp = 0"
+二项分布	"dbinom,  pbinom,  qbinom,  rbinom"	"size,  prob"
+生日分布                     	"dibirthday,  pbirthday"	"classes,  coincident"
+柯西分布	"dcauchy,  pcauchy,  qcauchy,  rcauchy"	"location,  scale"
+卡方分布	"dchisq,  pchisq,  qchisq,  rchisq"	"df,  ncp = 0"
+指数分布	"dexp,  pexp,  qexp,  rexp"	rate
+$F$分布	"df,  pf,  qf,  rf"	"df1,  df2,  ncp"
+伽马分布	"dgamma,  pgamma,  qgamma,  rgamma"	"shape,  rate = 1,scale = 1/rate"
+几何分布	"dgeom,  pgeom,  qgeom,  rgeom"	prob
+超几何分布		"dhyper,  phyper,  qhyper,  rhyper"	"m,  n,  k (注意，普通变量'n'被命名为'nn'，因为'n'已经被占用)"
+指数正态分布		"dlnorm,  plnorm,  qlnorm,  rlnorm"	"meanlog,  sdlog"
+罗吉斯分布		"dlogis,  plogis,  qlogis,  rlogis"	"location,  scale"
+多项式分布		"dmultinom,  pmultinom"	"size,  prob"
+负二项分布		"dnbinom,  pnbinom,  qnbinom,  rnbinom"	"size,  prob,  mu"
+正态分布		"dnorm,  pnorm,  qnorm,  rnorm"	"mean,  sd"
+泊松分布	"dpois,  ppois,  qpois,  rpois"	lambda
+学生$t$分布	"dt,  pt,  qt,  rt"	"df,  ncp"
+学生化极差分布		"dtukey,  ptukey"	"nmeans,  df,  nranges"
+均匀分布	"dunif,  punif,  qunif,  runif"	"min,  max"
+韦伯分布	"dweibull,  pweibull,  qweibull,  rweibull"	"shape,  scale"
+Wilcoxon秩和分布	"dwilcox,  pwilcox,  qwilcox,  rwilcox"	"m,  n"
+Wilcoxon符号秩分布		"dsignrank,  psignrank,  qsignrank,  rsignrank"	n

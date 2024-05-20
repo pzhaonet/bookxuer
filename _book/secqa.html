@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="markdown.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="secqa" class="section level1">
+<h1><span class="header-section-number">B</span> 答疑</h1>
+<div id="secqa-mis" class="section level2 unnumbered">
+<h2>菜鸟常犯错误和常见问题</h2>
+<!---
+> 界面语言：在安装目录下的etc目录下用文本打开Rconsole文件,找到language=，添加 en
+-->
+<p><strong>读取数据文件（<code>read.table()</code>）时，显示无法打开连接（<code>Error in file(file, &quot;rt&quot;) : cannot open the connection</code>）</strong></p>
+<p>很有可能是路径的名称写错了。路径的名称应该是个字符串。相邻两级文件夹之间要用\\或/分开，不能有汉字或特殊字符。最好不要有空格。如果有空格，要用\进行转义。下面是一些路径示例。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(c:<span class="er">/</span>r4r/co2.csv) <span class="co"># 错误</span>
+<span class="co"># 文件完整路径必须是个字符串，放在一对儿单引号或双引号里。</span>
+<span class="co"># 不要用中文里的引号。</span>
+
+<span class="kw">read.csv</span>(<span class="st">&#39;c:</span><span class="ch">\r</span><span class="st">4r</span><span class="ch">\\</span><span class="st">co2.csv&#39;</span>) <span class="co"># 错误  </span>
+<span class="co"># c:后面跟两个反斜线或一个斜线。</span>
+<span class="co"># 相邻两级文件夹之间必须是两个反斜线\\或一个斜线/。</span>
+
+<span class="kw">read.csv</span>(<span class="st">&#39;c:/r4r/co2.scv&#39;</span>) <span class="co"># 错误</span>
+<span class="co"># 文件名不要写错，应为co2.csv。</span>
+
+<span class="kw">read.csv</span>(<span class="st">&#39;c:/r4r/co2.csv&#39;</span>) <span class="co"># 正确。</span>
+
+<span class="kw">read.csv</span>(<span class="st">&#39;c:</span><span class="ch">\\</span><span class="st">r4r</span><span class="ch">\\</span><span class="st">co2.csv&#39;</span>) <span class="co"># 正确。</span></code></pre></div>
+<p><strong>找不到对象（object not found）</strong></p>
+<p>这并不意味着R在抱怨他自己的单身问题，而是说明某个变量并不存在。Windows用户常见的错误是忘记了R对变量名的大小写是敏感的，x和X是两个不同的变量，例如：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pm25 &lt;-<span class="st"> </span><span class="dv">40</span>
+PM25 +<span class="st"> </span><span class="dv">1</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;PM25&#39; not found</code></pre>
+<p>被赋值的是<code>pm25</code>，而不是<code>PM25</code>，做加法的时候当然找不到后者的值了。</p>
+<p><strong>括号用错或不完整导致各种意想不到的错误</strong></p>
+<p>R中的圆括号、方括号、花括号各自有不同的含义（见小贴士<a href="secloop.html#thm:thm-bracket">5.1</a>）。如果用了不该用的括号，那么R运行时会出现难以预料的错误。例如:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">6</span>
+x{<span class="dv">1</span>}</code></pre></div>
+<pre><code>## Error: &lt;text&gt;:2:2: unexpected &#39;{&#39;
+## 1: x &lt;- 1:6
+## 2: x{
+##     ^</code></pre>
+<p>我们想调用x里的第一个元素，应该用方括号x[1]。错用花括号后，R的错误提示是“意外的花括号”。这个提示是明显的，告诉你括号用错了。但大多数情况下，是下面这种提示：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">x</span>(<span class="dv">1</span>)</code></pre></div>
+<pre><code>## Error in x(1): could not find function &quot;x&quot;</code></pre>
+<p>这里，我们错用了圆括号后，R的错误提示是“找不到方程x”。R误以为你把x当方程用，不会提示你错用了括号。</p>
+<p>另一个常见错误是括号不配对或配对不完整，也会导致无法预料的错误。</p>
+<p>要避免这种错误，方法很简单，RStudio默认是在输入括号时自动补成对儿的，所以输入时一般不会出现问题，只要记得删除时也成对儿删掉就行了。另外，如果配对儿出现问题，RStudio会用红色标记来提示该行的括号有问题。</p>
+<!---
+** 读取数据 **
+
+注意NA，stringascharacter，skip，列名称的变化。
+
+举几个例子
+--->
+<p><strong>求和、求平均用sum()和mean()得到的结果是 NA</strong></p>
+<p>实际数据里常有缺失值，R默认以<code>NA</code>来表示（Not Available的缩写）。这样的向量在很多函数里要特殊对待，例如：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">4</span>)
+<span class="kw">mean</span>(x)</code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>我们用F1小助理看一下<code>mean()</code>函数的帮助信息，会发现函数参数里有个<code>na.rm</code>，默认值为FALSE，即“不删除缺失数据”。改为’na.rm = TRUE’就行了，</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] 2.666667</code></pre>
+<p>注意，这种情况下求平均值，向量的长度是以删除缺失值后计算的。</p>
+<p>很多函数都有这个参数，用之前记得查看帮助。</p>
+<p><strong>别人发给我的 .r 或 .Rmd 文件，在 RStudio 里打开有乱码</strong></p>
+<p>问问是不是里面有英文之外的字符，例如中文的注释等。如果是的话，很有可能是别人在生成代码文件时用了不同的编码。</p>
+<p>在RStudio的界面点击File – Reopen with Encoding，换成别的编码试试看。</p>
+<p>为了减少这种问题，建议大家生成代码文件时都选择UTF-8编码，点击File – Save with Encoding 选中UTF-8即可。</p>
+<p><strong>箭头赋值号 &lt;- 与小于号 &lt;</strong></p>
+<p>如果不注意留空格，新手有时候会因为混淆箭头赋值号与小于号而得到意外错误，例如：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="dv">1</span>
+x &lt;<span class="st"> </span>-<span class="dv">1</span>
+x &lt;<span class="st"> </span>-<span class="st"> </span><span class="dv">1</span></code></pre></div>
+<p>上面这三个例子里，哪个是把x赋值为1，哪个是判断x是否小于-1？</p>
+<p>为了杜绝这种无聊错误，建议在RStudio使用alt+_来输入箭头符号，会自动在箭头前后加空格。或者干脆用等号。</p>
+<p><strong>用read.table读一个几万行的数据文件，结果只读进去一千多行，提示我还有多少行没读入</strong></p>
+<p> R处理大数据文件时，受电脑的虚拟内存和地址限制，解决的方法有很多<a href="#fn68" class="footnoteRef" id="fnref68"><sup>68</sup></a>，例如删除不再用的对象、尽量使用向量计算、用矩阵替代吃内存的数据框等。限于篇幅，本书对这个问题不展开了，请上网搜索“R语言 大数据集”。</p>
+<p><strong>运行<code>blogdown::install_hugo()</code>错误，显示“无法与服务器建立连接”</strong></p>
+<p>这个问题在国内出现过，出错信息一般是：</p>
+<pre><code>Error in download.file(url, ...):
+  cannot open URL &#39;https://github.com/spf13/hugo/release/....&#39;</code></pre>
+<p>一般情况下，是你的电脑所处的网络环境造成的。试着换个地方联网。</p>
+<p><strong>我在论坛发帖提问求助，为何没有人帮我解答？</strong></p>
+<p>有以下几种可能：</p>
+<ol style="list-style-type: decimal">
+<li><p>你的问题太难，没人知道怎么解答。这种情况下建议你耐心等待，或者换个论坛求助。</p></li>
+<li><p>你问的方式不够礼貌。看看有没有用“请”字。回忆一下，上次别人帮你解答问题后，你有没有提供反馈，比如对别人说“谢谢”。帮你的人如果得不到回应，下次就不会再帮你。</p></li>
+<li><p>你的标题没写清楚。比如发帖的标题是“菜鸟求助！紧急！”。这种帖子基本没人点开看内容。用尽量简短的语句在标题里陈述问题，节省别人的时间，例如标题写为“[求助]运行<code>blogdown::install_hugo()</code>错误，显示’无法与服务器建立连接’”。</p></li>
+<li><p>你的正文里没有把问题表述清楚，或者问得太笼统。别人无法快速看懂你的问题，自然没法解答。例如“我的数据文件没法读进R，怎么办？”这样得到的回答只能是“去看书”。尽量把问题的来龙去脉说清楚，例如附上那个没法读取的数据文件的下载链接。</p></li>
+<li><p>你没有给出示例代码。别人一般不会花时间从零开始为你写代码。如果没法快速重现你的故障，就不会回答你。尽量贴出你的代码，让别人只需拷贝粘贴过去，就能直接运行重现你的问题。</p></li>
+<li><p>你没有说清楚你的软件运行环境。有些问题是跟运行环境有关的。你的 R 是什么版本？操作系统是什么？加载了那些扩展包？如果你不确定是否跟运行环境有关，那么保险起见，把你的运行环境信息贴出来，让别人帮你判断。R 专门提供了两个函数来获取运行环境信息：</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()
+devtools::<span class="kw">session_info</span>()</code></pre></div>
+<p>与人方便，自己方便。在论坛上，没有任何人有义务帮你解决问题。所以，降低你的期望值，并且换位思考一下，站在别人角度来看你的求助帖，就知道应该如何提问了。只有先为别人节省时间，才能为自己节省时间，从而快速得到别人的帮助。</p>
+</div>
+<div id="secqaa" class="section level2 unnumbered">
+<h2>习题参考答案</h2>
+<p>这里给出了各章练习的参考答案以及详细注释。正如我们前文所说的，每道题的解答方式都不是唯一的，只要得到想要的答案就可以了。</p>
+<p>参考答案里，我们使用了timeDate <span class="citation">(Team et al. <a href="#ref-R-timeDate">2015</a>)</span>、fun <span class="citation">(Xie, Wei, and Qiu <a href="#ref-R-fun">2011</a>)</span>、animation 和openair <span class="citation">(Carslaw and Ropkins <a href="#ref-R-openair">2012</a>)</span>等扩展包。</p>
+<p><strong>练习<a href="secstart.html#exm:ex1-1">1.1</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 方案1</span>
+<span class="dv">365</span> %%<span class="st"> </span><span class="dv">7</span>
+<span class="dv">365</span> %/%<span class="st"> </span><span class="dv">7</span>
+
+<span class="co"># 方案2</span>
+<span class="kw">floor</span>(<span class="dv">365</span>/<span class="dv">7</span>) <span class="co"># 向下取整函数</span>
+<span class="dv">365</span> -<span class="st"> </span><span class="kw">floor</span>(<span class="dv">365</span>/<span class="dv">7</span>)
+<span class="co"># 与floor() 属于同一家族的还有：</span>
+<span class="co"># ceiling(), trunc(), round(), signif()</span></code></pre></div>
+<p><strong>练习<a href="secstart.html#exm:ex1-2">1.2</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">97</span>, <span class="dv">80</span>, <span class="dv">64</span>, <span class="dv">91</span>, <span class="dv">87</span>, <span class="dv">100</span>, <span class="dv">128</span>, <span class="dv">144</span>, <span class="dv">150</span>, <span class="dv">150</span>, <span class="dv">150</span>, <span class="dv">106</span>, 
+       <span class="dv">78</span>, <span class="dv">68</span>, <span class="dv">62</span>, <span class="dv">46</span>, <span class="dv">55</span>, <span class="dv">68</span>, <span class="dv">84</span>, <span class="dv">92</span>, <span class="dv">95</span>, <span class="dv">108</span>, <span class="dv">128</span>, <span class="dv">138</span>)
+<span class="kw">plot</span>(x)
+
+<span class="co"># 方案1</span>
+<span class="kw">max</span>(x)
+<span class="kw">min</span>(x)
+<span class="kw">mean</span>(x)
+
+<span class="co"># 方案2</span>
+<span class="kw">summary</span>(x)[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>)]</code></pre></div>
+<p><strong>练习<a href="secdata.html#exm:ex2-1">2.1</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata2 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(
+  co2, <span class="dv">12</span>, <span class="dt">dimnames =</span> <span class="kw">list</span>(month.abb, <span class="kw">unique</span>(<span class="kw">floor</span>(<span class="kw">time</span>(co2)))))))  
+mydata2$year &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">rownames</span>(mydata2))
+x1995 &lt;-<span class="st"> </span>mydata2[<span class="st">&#39;1995&#39;</span>, <span class="dv">2</span>:<span class="dv">13</span>]
+
+<span class="co"># 方案1</span>
+<span class="kw">max</span>(x1995)
+<span class="kw">min</span>(x1995)
+
+<span class="co"># 方案2</span>
+<span class="kw">range</span>(x1995) <span class="co"># range()返回取值范围。</span></code></pre></div>
+<p><strong>练习<a href="secplot.html#exm:ex3-1">3.1</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata2 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(
+  co2, <span class="dv">12</span>, <span class="dt">dimnames =</span> <span class="kw">list</span>(month.abb, <span class="kw">unique</span>(<span class="kw">floor</span>(<span class="kw">time</span>(co2)))))))  
+mydata2$year &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">rownames</span>(mydata2))
+mydata2$mean &lt;-<span class="st"> </span><span class="kw">rowMeans</span>(mydata2[, <span class="dv">2</span>:<span class="dv">13</span>])
+
+<span class="co"># 方案1：用字符指定数据点形状和颜色</span>
+<span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$mean, 
+     <span class="dt">type =</span> <span class="st">&#39;p&#39;</span>, <span class="dt">pch =</span> <span class="st">&#39;▲&#39;</span>, <span class="dt">col =</span> <span class="st">&#39;yellow&#39;</span>)
+
+<span class="co"># 方案2：用数字指定数据点形状和颜色</span>
+<span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$mean, 
+     <span class="dt">type =</span> <span class="st">&#39;p&#39;</span>, <span class="dt">pch =</span> <span class="dv">17</span>, <span class="dt">col =</span> <span class="kw">colors</span>()[<span class="dv">142</span>])</code></pre></div>
+<p><strong>练习<a href="secplot.html#exm:ex3-2">3.2</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>mydata2$year
+y &lt;-<span class="st"> </span>mydata2$Sep
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)
+<span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">min</span>(x):<span class="kw">max</span>(x), <span class="dt">h =</span> <span class="kw">min</span>(y):<span class="kw">max</span>(y), <span class="dt">col =</span> <span class="st">&#39;grey&#39;</span>)
+<span class="kw">text</span>(x, y, <span class="dt">labels =</span> y, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">pos =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>))  
+<span class="co"># pos 参数来指定文字位于给定坐标的哪一侧，</span>
+<span class="co"># pos 取值可以是1,2,3,4。</span></code></pre></div>
+<p><strong>练习<a href="secplot.html#exm:ex3-3">3.3</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>mydata2$year[<span class="dv">1</span>:<span class="dv">6</span>]
+y &lt;-<span class="st">  </span>mydata2$Sep[<span class="dv">1</span>:<span class="dv">6</span>]
+
+<span class="co"># 方案1：逐个画图</span>
+<span class="kw">pdf</span>(<span class="st">&#39;c:/r4r/9in1.pdf&#39;</span>)
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">cex =</span> <span class="fl">1.2</span>, <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="fl">0.5</span>, <span class="dv">1</span>))
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;p&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;p&#39;</span>, 
+       <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;l&#39;</span>, 
+       <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;b&#39;</span>, 
+       <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;c&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;c&#39;</span>, 
+       <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;o&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;o&#39;</span>, 
+       <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;h&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;h&#39;</span>, 
+       <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;s&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;s&#39;</span>, 
+       <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;S&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;S&#39;</span>, 
+       <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;n&#39;</span>, 
+       <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">dev.off</span>()
+
+<span class="co"># 方案2：用循环结构以简化操作</span>
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">cex =</span> <span class="fl">1.2</span>, <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="fl">0.5</span>, <span class="dv">1</span>))
+for (i in <span class="kw">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&#39;l&#39;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;s&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;n&quot;</span>)) {
+  <span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> i)
+  <span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> i, 
+         <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+}</code></pre></div>
+<p><strong>练习<a href="secfit.html#exm:ex4-1">4.1</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wp &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(WorldPhones)
+m0 &lt;-<span class="st"> </span><span class="kw">lm</span>(wp$Asia ~<span class="st"> </span>wp$Europe +<span class="st"> </span><span class="dv">0</span>)
+<span class="kw">summary</span>(m0)
+<span class="kw">plot</span>(<span class="dt">x =</span> wp$Europe, <span class="dt">y =</span> wp$Asia, <span class="dt">pch =</span> <span class="dv">19</span>)  
+<span class="kw">abline</span>(m0, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">19</span>, <span class="ot">NA</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">1</span>),
+       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Linear fit&quot;</span>), 
+       <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>)
+eqlm &lt;-<span class="st"> </span><span class="kw">expression</span>(<span class="kw">italic</span>(y) ==<span class="st"> </span><span class="fl">0.1854</span> *<span class="st"> </span><span class="kw">italic</span>(x))
+eqr2 &lt;-<span class="st"> </span><span class="kw">expression</span>(<span class="kw">italic</span>(R) ^<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="fl">0.9856</span>)
+eqn &lt;-<span class="st"> </span><span class="kw">expression</span>(<span class="kw">italic</span>(n) ==<span class="st"> </span><span class="dv">7</span>)
+<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">23000</span>, <span class="dt">y =</span> <span class="dv">7000</span>, <span class="dt">labels =</span> eqlm, <span class="dt">adj =</span> <span class="dv">0</span>)
+<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">23000</span>, <span class="dt">y =</span> <span class="dv">6000</span>, <span class="dt">labels =</span> eqr2, <span class="dt">adj =</span> <span class="dv">0</span>)
+<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">23000</span>, <span class="dt">y =</span> <span class="dv">5000</span>, <span class="dt">labels =</span> eqn, <span class="dt">adj =</span> <span class="dv">0</span>)</code></pre></div>
+<p><strong>练习<a href="secfit.html#exm:ex4-2">4.2</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 只需将plot()函数的ylab参数改为：</span>
+ylab =<span class="st"> </span><span class="kw">expression</span>(CO[<span class="dv">2</span>])</code></pre></div>
+<p><strong>练习<a href="secfit.html#exm:ex4-3">4.3</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">1</span>)
+y &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">15</span>) *<span class="st"> </span><span class="kw">exp</span>(-<span class="kw">runif</span>(<span class="dv">1</span>, <span class="fl">0.01</span>, <span class="fl">0.05</span>) *<span class="st"> </span>x) +
+<span class="st">  </span><span class="kw">rnorm</span>(<span class="dv">51</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)
+a_start &lt;-<span class="st"> </span><span class="dv">14</span>
+b_start &lt;-<span class="st"> </span>-<span class="st"> </span><span class="kw">log</span>(<span class="dv">6</span>/a_start) /<span class="st"> </span><span class="dv">50</span>
+m &lt;-<span class="st"> </span><span class="kw">nls</span>(y ~<span class="st"> </span>a *<span class="st"> </span><span class="kw">exp</span>(-b *<span class="st"> </span>x), 
+         <span class="dt">start =</span> <span class="kw">list</span>(<span class="dt">a =</span> a_start, <span class="dt">b =</span> b_start))
+<span class="kw">plot</span>(x, y)
+<span class="kw">lines</span>(x, <span class="kw">predict</span>(m), <span class="dt">col =</span> <span class="st">&#39;darkgreen&#39;</span>) 
+<span class="co"># predict()函数返回预测值</span>
+eqnls &lt;-<span class="st"> </span><span class="kw">expression</span>(<span class="kw">italic</span>(y) ==<span class="st"> </span><span class="fl">15.18</span> *<span class="st"> </span>
+<span class="st">                      </span><span class="kw">italic</span>(e) ^<span class="st"> </span>{-<span class="fl">0.04786</span> *<span class="st"> </span><span class="kw">italic</span>(x)})
+<span class="kw">text</span>(<span class="dv">10</span>, <span class="dv">4</span>, eqnls)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">1</span>), 
+       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Non-linear fit&quot;</span>), 
+       <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>), <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>)</code></pre></div>
+<p><strong>练习<a href="secloop.html#exm:ex5-1">5.1</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 方案1</span>
+for (i in <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">100</span>, <span class="dt">by =</span> <span class="dv">2</span>)) <span class="kw">print</span>(i)
+
+<span class="co"># 方案2</span>
+<span class="kw">print</span>(<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">100</span>, <span class="dt">by =</span> <span class="dv">2</span>)) 
+<span class="co"># seq()函数本来内藏的逻辑就是循环</span></code></pre></div>
+<p><strong>练习<a href="secloop.html#exm:ex5-2">5.2</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>)
+y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)
+m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nrow =</span> <span class="kw">length</span>(x), <span class="dt">ncol =</span> <span class="kw">length</span>(y))
+for (i in <span class="dv">1</span>:<span class="kw">length</span>(x)){
+  for (j in <span class="dv">1</span>:<span class="kw">length</span>(y)){
+    m[i,j] =<span class="st"> </span>x[i] *<span class="st"> </span>y[j]
+  }
+}
+m</code></pre></div>
+<p><strong>练习<a href="secloop.html#exm:ex5-3">5.3</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">2</span>:<span class="dv">13</span>) <span class="kw">print</span>(<span class="kw">colMeans</span>(mydata2[, i]))</code></pre></div>
+<p><strong>练习<a href="secloop.html#exm:ex5-4">5.4</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wp &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(WorldPhones)
+wp$year &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">rownames</span>(wp))
+mydata3 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">nphone =</span> <span class="kw">unlist</span>(wp[, <span class="dv">1</span>:<span class="dv">7</span>]), <span class="dt">year =</span> <span class="kw">rep</span>(wp$year, <span class="dv">7</span>),
+  <span class="dt">conti =</span> <span class="kw">rep</span>(<span class="kw">names</span>(wp)[<span class="dv">1</span>:<span class="dv">7</span>], <span class="dt">each =</span> <span class="kw">nrow</span>(wp)))
+<span class="kw">boxplot</span>(mydata3$nphone ~<span class="st"> </span>mydata3$year)
+<span class="kw">boxplot</span>(mydata3$nphone ~<span class="st"> </span>mydata3$conti)</code></pre></div>
+<p><strong>练习<a href="secloop.html#exm:ex5-5">5.5</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(mydata3$nphone, mydata3$year, max)
+<span class="kw">tapply</span>(mydata3$nphone, mydata3$year, min)
+<span class="kw">tapply</span>(mydata3$nphone, mydata3$year, median)</code></pre></div>
+<p><strong>练习<a href="secif.html#exm:ex6-1">6.1</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="dv">6</span>:<span class="dv">1</span>
+n &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>)
+for (mi in m) <span class="kw">print</span>(mi ==<span class="st"> </span>n)</code></pre></div>
+<p><strong>练习<a href="secif.html#exm:ex6-2">6.2</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 方案1</span>
+for (i in <span class="dv">1</span>:<span class="dv">100</span>){
+  if (i %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span> &amp;<span class="st"> </span>i %%<span class="st"> </span><span class="dv">3</span> ==<span class="st"> </span><span class="dv">0</span>) <span class="kw">print</span>(i) 
+}
+
+<span class="co"># 方案2</span>
+i &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">100</span>
+i[i %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">0</span> &amp;<span class="st"> </span>i %%<span class="st"> </span><span class="dv">3</span> ==<span class="st"> </span><span class="dv">0</span>]
+
+<span class="co"># 方案3</span>
+<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">6</span>, <span class="dt">to =</span> <span class="dv">100</span>, <span class="dt">by =</span> <span class="dv">6</span>)</code></pre></div>
+<p><strong>练习<a href="secif.html#exm:ex6-3">6.3</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="dv">2</span>
+for (i in <span class="dv">3</span>:<span class="dv">10000</span>) {
+  j &lt;-<span class="st"> </span><span class="dv">2</span>:(i<span class="dv">-1</span>)
+  if (<span class="kw">sum</span>(i %%<span class="st"> </span>j ==<span class="st"> </span><span class="dv">0</span>) ==<span class="st"> </span><span class="dv">0</span>) z &lt;-<span class="st"> </span><span class="kw">c</span>(z, i)
+}
+z
+<span class="co"># 这个方案完全按照素数的定义来逐个判断，虽管用，但效率低。</span>
+<span class="co"># 请试着用其他方案来提高运算效率。</span></code></pre></div>
+<p><strong>练习<a href="secif.html#exm:ex6-4">6.4</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">97</span>, <span class="dv">80</span>, <span class="dv">64</span>, <span class="dv">91</span>, <span class="dv">87</span>, <span class="dv">100</span>, <span class="dv">128</span>, <span class="dv">144</span>, <span class="dv">150</span>, <span class="dv">150</span>, <span class="dv">150</span>, <span class="dv">106</span>, 
+       <span class="dv">78</span>, <span class="dv">68</span>, <span class="dv">62</span>, <span class="dv">46</span>, <span class="dv">55</span>, <span class="dv">68</span>, <span class="dv">84</span>, <span class="dv">92</span>, <span class="dv">95</span>, <span class="dv">108</span>, <span class="dv">128</span>, <span class="dv">138</span>)
+hour &lt;-<span class="st"> </span><span class="dv">0</span>:<span class="dv">23</span>
+hour[x ==<span class="st"> </span><span class="kw">max</span>(x)]</code></pre></div>
+<p><strong>练习<a href="secif.html#exm:ex6-5">6.5</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hour[x &gt;<span class="st"> </span><span class="dv">75</span>]</code></pre></div>
+<p><strong>第<a href="secif.html#secifpost">6.3</a>节参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 方案1</span>
+year =<span class="st"> </span><span class="dv">2017</span>:<span class="st"> </span><span class="dv">2026</span>
+method =<span class="st"> &quot;Meeus&quot;</span>
+calendar =<span class="st"> &quot;Gregorian&quot;</span>
+
+Y &lt;-<span class="st"> </span>year
+if (method ==<span class="st"> &quot;Gauss&quot;</span>) <span class="co"># 以下为高斯算法，适用于 1583 -- 2299 年</span>
+{
+  if (calendar ==<span class="st"> &quot;Gregorian&quot;</span>) <span class="co"># 公历（天主教）</span>
+  {
+    k &lt;-<span class="st"> </span>(Y -<span class="st"> </span><span class="dv">1500</span>) %/%<span class="st"> </span><span class="dv">100</span> +<span class="st"> </span><span class="dv">1</span>
+    M &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">22</span>,<span class="dv">22</span>,<span class="dv">23</span>,<span class="dv">23</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">25</span>)[k]
+    N &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">0</span>)[k]
+    
+  } else if (calendar ==<span class="st"> &quot;Julian&quot;</span>) <span class="co"># 儒略历（东正教）</span>
+  {
+    M &lt;-<span class="st"> </span><span class="dv">15</span>; N &lt;-<span class="st"> </span><span class="dv">6</span>
+  } else
+  {
+    <span class="kw">print</span>(<span class="st">&quot;sorry, the calendar does not exist. </span>
+<span class="st">          use method = &#39;Gregorian&#39; or &#39;Julian&#39;&quot;</span>)
+  }
+  a &lt;-<span class="st"> </span>Y %%<span class="st"> </span><span class="dv">19</span>
+  b &lt;-<span class="st"> </span>Y %%<span class="st"> </span><span class="dv">4</span>
+  c &lt;-<span class="st"> </span>Y %%<span class="st"> </span><span class="dv">7</span>
+  d &lt;-<span class="st"> </span>(<span class="dv">19</span> *<span class="st"> </span>a +<span class="st"> </span>M) %%<span class="st"> </span><span class="dv">30</span>
+  e &lt;-<span class="st"> </span>(<span class="dv">2</span> *<span class="st"> </span>b +<span class="st"> </span><span class="dv">4</span> *<span class="st"> </span>c +<span class="st"> </span><span class="dv">6</span> *<span class="st"> </span>d +<span class="st"> </span>N) %%<span class="st"> </span><span class="dv">7</span>
+  computus.date &lt;-<span class="st"> </span><span class="kw">ifelse</span>(d +<span class="st"> </span>e &lt;<span class="st"> </span><span class="dv">10</span>,
+                          <span class="kw">paste</span>(<span class="st">&quot;3-&quot;</span>, d +<span class="st"> </span>e +<span class="st"> </span><span class="dv">22</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>),
+                          <span class="kw">paste</span>(<span class="st">&quot;4-&quot;</span>, d +<span class="st"> </span>e -<span class="st"> </span><span class="dv">9</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))
+  if (computus.date ==<span class="st"> &quot;4-26&quot;</span>) computus.date &lt;-<span class="st"> &quot;4-19&quot;</span>
+  if (computus.date ==<span class="st"> &quot;4-25&quot;</span> &amp;<span class="st"> </span>d ==<span class="st"> </span><span class="dv">28</span> &amp;<span class="st"> </span>e ==<span class="st"> </span><span class="dv">6</span> &amp;<span class="st"> </span>a &gt;<span class="st"> </span><span class="dv">10</span>) 
+    computus.date &lt;-<span class="st"> &quot;4-19&quot;</span> <span class="co"># 高斯，I 服了 U！</span>
+  computus &lt;-<span class="st"> </span><span class="kw">paste</span>(Y, computus.date, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)
+} else if (method ==<span class="st"> &quot;Meeus&quot;</span>) <span class="co"># 以下为Meeus 算法</span>
+{
+  if (calendar ==<span class="st"> &quot;Gregorian&quot;</span>) <span class="co"># 公历（天主教）</span>
+  {
+    a &lt;-<span class="st"> </span>Y %%<span class="st"> </span><span class="dv">19</span>
+    b &lt;-<span class="st"> </span>Y %/%<span class="st"> </span><span class="dv">100</span>
+    c &lt;-<span class="st"> </span>Y %%<span class="st"> </span><span class="dv">100</span>
+    d &lt;-<span class="st"> </span>b %/%<span class="dv">4</span>
+    e &lt;-<span class="st"> </span>b %%<span class="dv">4</span>
+    f &lt;-<span class="st"> </span>(b +<span class="st"> </span><span class="dv">8</span>) %/%<span class="st"> </span><span class="dv">25</span>
+    g &lt;-<span class="st"> </span>(b -<span class="st"> </span>f +<span class="st"> </span><span class="dv">1</span>) %/%<span class="dv">3</span>
+    h &lt;-<span class="st"> </span>(<span class="dv">19</span> *<span class="st"> </span>a +<span class="st"> </span>b -<span class="st"> </span>d -<span class="st"> </span>g +<span class="st"> </span><span class="dv">15</span>) %%<span class="st"> </span><span class="dv">30</span>
+    i &lt;-<span class="st"> </span>c %/%<span class="st"> </span><span class="dv">4</span>
+    k &lt;-<span class="st"> </span>c %%<span class="st"> </span><span class="dv">4</span>
+    L &lt;-<span class="st"> </span>(<span class="dv">32</span> +<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span>e +<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span>i -<span class="st"> </span>h -<span class="st"> </span>k) %%<span class="st"> </span><span class="dv">7</span>
+    m &lt;-<span class="st"> </span>(a +<span class="st"> </span><span class="dv">11</span> *<span class="st"> </span>h +<span class="st"> </span><span class="dv">22</span> *<span class="st"> </span>L) %/%<span class="st"> </span><span class="dv">451</span>
+    month &lt;-<span class="st"> </span>(h +<span class="st"> </span>L -<span class="st"> </span><span class="dv">7</span> *<span class="st"> </span>m +<span class="st"> </span><span class="dv">114</span>) %/%<span class="st"> </span><span class="dv">31</span>
+    day &lt;-<span class="st"> </span>((h +<span class="st"> </span>L -<span class="st"> </span><span class="dv">7</span> *<span class="st"> </span>m +<span class="st"> </span><span class="dv">114</span>) %%<span class="st"> </span><span class="dv">31</span>) +<span class="st"> </span><span class="dv">1</span>
+  } else if (calendar ==<span class="st"> &quot;Julian&quot;</span>) <span class="co"># 儒略历（东正教）</span>
+  {
+    a &lt;-<span class="st"> </span>Y %%<span class="st"> </span><span class="dv">4</span>
+    b &lt;-<span class="st"> </span>Y %%<span class="st"> </span><span class="dv">7</span>
+    c &lt;-<span class="st"> </span>Y %%<span class="st"> </span><span class="dv">19</span>
+    d &lt;-<span class="st"> </span>(<span class="dv">19</span> *<span class="st"> </span>c +<span class="st"> </span><span class="dv">15</span>) %%<span class="st"> </span><span class="dv">30</span>
+    e &lt;-<span class="st"> </span>(<span class="dv">2</span> *<span class="st"> </span>a +<span class="st"> </span><span class="dv">4</span> *<span class="st"> </span>b -<span class="st"> </span>d +<span class="st"> </span><span class="dv">34</span>) %%<span class="st"> </span><span class="dv">7</span>
+    month &lt;-<span class="st"> </span>(d +<span class="st"> </span>e +<span class="st"> </span><span class="dv">114</span>) %/%<span class="st"> </span><span class="dv">31</span>
+    day &lt;-<span class="st"> </span>((d +<span class="st"> </span>e +<span class="st"> </span><span class="dv">114</span>) %%<span class="st"> </span><span class="dv">31</span>) +<span class="st"> </span><span class="dv">1</span>
+  } else
+  {
+    <span class="kw">print</span>(<span class="st">&quot;sorry, the calendar does not exist. </span>
+<span class="st">          use method = &#39;Gregorian&#39; or &#39;Julian&#39;&quot;</span>)
+  }
+}
+computus &lt;-<span class="st"> </span><span class="kw">paste</span>(Y, month, day, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)
+computus
+
+<span class="co"># 方案2: 使用别人写好的函数（扩展包）。</span>
+if(!<span class="kw">require</span>(<span class="st">&quot;timeDate&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;timeDate&quot;</span>) 
+<span class="kw">require</span>(<span class="st">&quot;timeDate&quot;</span>)
+<span class="kw">Easter</span>(<span class="dt">year =</span> <span class="dv">2017</span>:<span class="dv">2026</span>)</code></pre></div>
+<p><strong>练习<a href="secmid.html#exm:ex8-1">8.1</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(WorldPhones, <span class="dt">file =</span> <span class="st">&#39;c:/r4r/wp.csv&#39;</span>)
+wp_path &lt;-<span class="st"> &quot;C:/r4r/wp.csv&quot;</span>
+<span class="kw">file.show</span>(wp_path)
+wp &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> wp_path)
+<span class="kw">summary</span>(wp)
+<span class="kw">plot</span>(wp)
+<span class="kw">names</span>(wp)[<span class="dv">1</span>] &lt;-<span class="st"> &#39;year&#39;</span>
+<span class="kw">rownames</span>(wp) &lt;-<span class="st"> </span>wp$year</code></pre></div>
+<p><strong>练习<a href="secmid.html#exm:ex8-2">8.2</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wp$decade &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;1950s&#39;</span>, <span class="st">&#39;1950s&#39;</span>, <span class="st">&#39;1950s&#39;</span>, <span class="st">&#39;1950s&#39;</span>, <span class="st">&#39;1950s&#39;</span>,
+               <span class="st">&#39;1960s&#39;</span>, <span class="st">&#39;1960s&#39;</span>)
+<span class="kw">str</span>(wp)</code></pre></div>
+<p><strong>练习<a href="secmid.html#exm:ex8-3">8.3</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="dv">1</span>:<span class="dv">30</span>, <span class="dt">nrow =</span> <span class="dv">5</span>)</code></pre></div>
+<p><strong>练习<a href="secmid.html#exm:ex8-4">8.4</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wp_mt &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(wp)
+<span class="kw">str</span>(wp_mt) 
+<span class="co"># 由于矩阵里的元素要求全部是同一类型，</span>
+<span class="co"># 所以数字全部强制转换成了字符。</span>
+wp[<span class="st">&#39;1956&#39;</span>, <span class="st">&#39;Europe&#39;</span>]
+wp_mt[<span class="st">&#39;1956&#39;</span>, <span class="st">&#39;Europe&#39;</span>]
+wp[, <span class="kw">c</span>(<span class="st">&#39;Asia&#39;</span>, <span class="st">&#39;Europe&#39;</span>)]
+wp_mt[, <span class="kw">c</span>(<span class="st">&#39;Asia&#39;</span>, <span class="st">&#39;Europe&#39;</span>)]
+wp[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>), ]
+wp[-<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>), ]</code></pre></div>
+<p><strong>练习<a href="secmid.html#exm:ex8-5">8.5</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">annualsum &lt;-<span class="st"> </span><span class="kw">rowSums</span>(wp[, <span class="dv">2</span>:<span class="dv">7</span>])
+annualdiff &lt;-<span class="st"> </span><span class="kw">diff</span>(annualsum)
+annualdiffeach &lt;-<span class="st"> </span><span class="kw">apply</span>(wp[, <span class="dv">2</span>:<span class="dv">7</span>], <span class="dt">MARGIN =</span> <span class="dv">2</span>, diff)
+annualrate &lt;-<span class="st"> </span>annualdiff/annualsum[<span class="dv">1</span>:<span class="dv">6</span>]
+annualrateeach &lt;-<span class="st"> </span><span class="kw">apply</span>(wp[, <span class="dv">2</span>:<span class="dv">7</span>], <span class="dt">MARGIN =</span> <span class="dv">2</span>, 
+                        function(x) <span class="kw">diff</span>(x)/x[<span class="dv">1</span>:<span class="dv">6</span>]) 
+<span class="co"># apply用于自定义函数。见第8章。</span></code></pre></div>
+<p><strong>练习<a href="secmid.html#exm:ex8-6">8.6</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>))
+<span class="kw">plot</span>(wp$year, wp$Asia, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1951</span>, <span class="dv">1961</span>),
+     <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">xlab =</span> <span class="st">&#39;&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Phone Asia&#39;</span>)
+<span class="kw">axis</span>(<span class="dv">2</span>)
+<span class="kw">box</span>()
+<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>))
+<span class="kw">plot</span>(wp$year[<span class="dv">1</span>:<span class="dv">6</span>], annualrateeach[, <span class="st">&#39;Asia&#39;</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>,
+     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1951</span>, <span class="dv">1961</span>), 
+     <span class="dt">xlab =</span> <span class="st">&#39;year&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Increase rate&#39;</span>)
+<span class="kw">dev.off</span>()</code></pre></div>
+<p><strong>练习<a href="secmid.html#exm:ex8-7">8.7</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myylim &lt;-<span class="st"> </span><span class="kw">range</span>(wp[, <span class="dv">2</span>:<span class="dv">8</span>])
+mycol &lt;-<span class="st"> </span><span class="kw">rainbow</span>(<span class="dv">7</span>)
+<span class="kw">plot</span>(wp$year, wp[, <span class="dv">2</span>], <span class="dt">col =</span> mycol[<span class="dv">1</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, 
+     <span class="dt">xlab =</span> <span class="st">&#39;year&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Phone number&#39;</span>, <span class="dt">ylim =</span> myylim)
+for (i in <span class="dv">3</span>:<span class="dv">8</span>) 
+  <span class="kw">lines</span>(wp$year, wp[, i], <span class="dt">col =</span> mycol[i<span class="dv">-1</span>])
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="kw">names</span>(wp)[<span class="dv">2</span>:<span class="dv">8</span>], 
+       <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">col =</span> mycol, <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>)</code></pre></div>
+<p><strong>练习<a href="secmid.html#exm:ex8-8">8.8</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))
+for (i in <span class="dv">2</span>:<span class="dv">8</span>) {
+  <span class="kw">plot</span>(wp$year, wp[, i], <span class="dt">col =</span> mycol[i<span class="dv">-1</span>], 
+       <span class="dt">xlab =</span> <span class="st">&#39;year&#39;</span>, <span class="dt">ylab =</span> <span class="kw">names</span>(wp)[i])
+  m &lt;-<span class="st"> </span><span class="kw">lm</span>(wp[, i] ~<span class="st"> </span>wp$year)
+  a1 &lt;-<span class="st"> </span>m$coefficients[<span class="dv">1</span>]
+  a2 &lt;-<span class="st"> </span>m$coefficients[<span class="dv">2</span>]
+  <span class="kw">abline</span>(m)
+  <span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>, 
+         <span class="kw">as.expression</span>(<span class="kw">substitute</span>(y ==<span class="st"> </span>a +<span class="st"> </span>b *<span class="st"> </span>x,
+                                  <span class="kw">list</span>(<span class="dt">a =</span> a1, <span class="dt">b =</span> a2))))
+}</code></pre></div>
+<p><strong>练习<a href="secmid.html#exm:ex8-10">8.10</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 方案：穷举</span>
+for (Aa in <span class="dv">1</span>:<span class="dv">9</span>){
+  for (Bb in <span class="kw">c</span>(<span class="dv">0</span>:<span class="dv">9</span>)[!<span class="dv">0</span>:<span class="dv">9</span> %in%<span class="st"> </span>Aa]){
+    for (Cc in <span class="kw">c</span>(<span class="dv">0</span>:<span class="dv">9</span>)[!<span class="dv">0</span>:<span class="dv">9</span> %in%<span class="st"> </span><span class="kw">c</span>(Aa, Bb)]){
+      for (Dd in <span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">9</span>)[!<span class="dv">1</span>:<span class="dv">9</span> %in%<span class="st"> </span><span class="kw">c</span>(Aa, Bb, Cc)]){
+        for (Ee in <span class="kw">c</span>(<span class="dv">0</span>:<span class="dv">9</span>)[!<span class="dv">0</span>:<span class="dv">9</span> %in%<span class="st"> </span><span class="kw">c</span>(Aa, Bb, Cc, Dd)]){
+          for (Ff in <span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">9</span>)[!<span class="dv">1</span>:<span class="dv">9</span> %in%<span class="st"> </span><span class="kw">c</span>(Aa, Bb, Cc, Dd)]){
+            if ((<span class="dv">100</span> *<span class="st"> </span>Aa +<span class="st"> </span><span class="dv">10</span> *<span class="st"> </span>Bb +<span class="st"> </span>Cc) *<span class="st"> </span>(Dd *<span class="st"> </span><span class="dv">10</span> +<span class="st"> </span>Cc) ==<span class="st"> </span>
+<span class="st">                </span>Ff *<span class="st"> </span><span class="dv">1000</span> +<span class="st"> </span>Dd *<span class="st"> </span><span class="dv">100</span> +<span class="st"> </span>Bb *<span class="st"> </span><span class="dv">10</span> +<span class="st"> </span>Cc &amp;
+<span class="st">                </span>(<span class="dv">100</span> *<span class="st"> </span>Aa +<span class="st"> </span><span class="dv">10</span> *<span class="st"> </span>Bb +<span class="st"> </span>Cc) *<span class="st"> </span>Cc ==<span class="st"> </span>
+<span class="st">                </span>Dd *<span class="st"> </span><span class="dv">1000</span> +<span class="st"> </span>Ee *<span class="st"> </span><span class="dv">100</span> +<span class="st"> </span>Aa *<span class="st"> </span><span class="dv">10</span> +<span class="st"> </span>Cc &amp;
+<span class="st">                </span>(<span class="dv">100</span> *<span class="st"> </span>Aa +<span class="st"> </span><span class="dv">10</span> *<span class="st"> </span>Bb +<span class="st"> </span>Cc) *<span class="st"> </span>Dd ==<span class="st"> </span>
+<span class="st">                </span><span class="dv">700</span> +<span class="st"> </span>Ee *<span class="st"> </span><span class="dv">10</span> +<span class="st"> </span>Dd &amp;
+<span class="st">                </span>Dd *<span class="st"> </span><span class="dv">1000</span> +<span class="st"> </span>Ee *<span class="st"> </span><span class="dv">100</span> +<span class="st"> </span>Aa *<span class="st"> </span><span class="dv">10</span> +<span class="st"> </span>Cc +<span class="st"> </span><span class="dv">7000</span> +<span class="st"> </span>
+<span class="st">                </span>Ee *<span class="st"> </span><span class="dv">100</span> +<span class="st"> </span>Dd *<span class="st"> </span><span class="dv">10</span> ==<span class="st"> </span>Ff *<span class="st"> </span><span class="dv">1000</span> +<span class="st"> </span>Dd *<span class="st"> </span><span class="dv">100</span> +<span class="st"> </span>
+<span class="st">                </span>Bb *<span class="st"> </span><span class="dv">10</span> +<span class="st"> </span>Cc) 
+              <span class="kw">print</span>(<span class="kw">c</span>(Aa, Bb, Cc, Dd, Ee, Ff))
+          }
+        }
+      }
+    }
+  }
+}
+<span class="co"># 这里给出的方法是穷举，把1001到9999之间的所有数都试了一遍。</span>
+<span class="co"># 这是计算机擅长的方式。</span>
+
+<span class="co"># 方案2</span>
+<span class="co"># 小学生的解题思路是这样的：</span>
+<span class="co"># ABC乘以C等于DEAC，C只能是5或6，</span>
+<span class="co"># 但根据ABC乘以D等于7ED，所以C不可能是5，C = 6。</span>
+<span class="co"># D + 7 = F，D只能是1或2，但C乘以D末尾是C，</span>
+<span class="co"># 所以D = 2，F = 9, E = 1。</span>
+<span class="co"># 由于C = 6，D = 2，那么 A 只能是3，B = 5。</span></code></pre></div>
+<p><strong>练习<a href="secmid.html#exm:ex8-11">8.11</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d &lt;-<span class="st"> </span><span class="dv">1</span>
+left &lt;-<span class="st"> </span><span class="dv">125</span>
+leftc &lt;-<span class="st"> </span>left
+drop &lt;-<span class="st"> </span><span class="dv">1</span>
+dropc &lt;-<span class="st"> </span>drop
+drop &lt;-<span class="st"> </span>drop +<span class="st"> </span><span class="dv">1</span>
+while (left !=<span class="st"> </span>drop) {
+  d &lt;-<span class="st"> </span>d +<span class="st"> </span><span class="dv">1</span>
+  left &lt;-<span class="st"> </span>left -<span class="st"> </span>drop
+  leftc &lt;-<span class="st"> </span><span class="kw">c</span>(leftc, left)
+  dropc &lt;-<span class="st"> </span><span class="kw">c</span>(dropc, drop)
+  if (left &lt;<span class="st"> </span>drop +<span class="st"> </span><span class="dv">1</span>) drop &lt;-<span class="st"> </span><span class="dv">1</span> else drop &lt;-<span class="st"> </span>drop +<span class="st"> </span><span class="dv">1</span>
+}
+<span class="kw">plot</span>(leftc, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">123</span>))
+<span class="kw">points</span>(dropc, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)
+<span class="co"># 仍然是穷举法。</span>
+<span class="co"># 小学生的解题思路应该是：125 = 120 + 3 + 1 + 1</span>
+<span class="co"># 三项对应着15天，2天，1天，1天，所以总共19天掉完。</span></code></pre></div>
+<p><strong>练习<a href="secfunction.html#exm:ex9-1">9.1</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kaipingfang &lt;-<span class="st"> </span>function(x) <span class="kw">return</span>(<span class="kw">sqrt</span>(x)) </code></pre></div>
+<p><strong>练习<a href="secfunction.html#exm:ex9-2">9.2</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cv &lt;-<span class="st"> </span>function(x) <span class="kw">sd</span>(x)/<span class="kw">mean</span>(x) <span class="co"># 省略了return()</span></code></pre></div>
+<p><strong>练习<a href="secfunction.html#exm:ex9-3">9.3</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 只需将第6.3节参考答案代码的前三行删掉，</span>
+<span class="co"># 其他代码放进下面的花括号里即可。</span>
+computus &lt;-<span class="st"> </span>function(year, method, calendar) {}</code></pre></div>
+<p><strong>练习<a href="secfunction.html#exm:ex9-7">9.6</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;animation&#39;</span>)
+<span class="kw">library</span>(animation)
+<span class="kw">demo</span>(<span class="st">&quot;fireworks&quot;</span>) <span class="co"># 会用网页浏览器打开一个动画。</span>
+<span class="kw">citation</span>(<span class="st">&quot;animation&quot;</span>) <span class="co"># 看看作者。</span></code></pre></div>
+<p><strong>练习<a href="secfunction.html#exm:ex9-8">9.7</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;openair&#39;</span>)
+<span class="kw">library</span>(openair)
+<span class="kw">example</span>(windRose)
+<span class="kw">citation</span>(<span class="st">&#39;openair&#39;</span>)</code></pre></div>
+<p><strong>第<a href="secfunction.html#secfunctionpost">9.5</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;fun&#39;</span>)
+<span class="kw">library</span>(fun)
+if (.Platform$OS.type ==<span class="st"> &quot;windows&quot;</span>) <span class="kw">x11</span>() else 
+  <span class="kw">x11</span>(<span class="dt">type =</span> <span class="st">&quot;Xlib&quot;</span>)
+<span class="kw">mine_sweeper</span>()
+<span class="kw">demo</span>(<span class="dt">package =</span> <span class="st">&#39;fun&#39;</span>)</code></pre></div>
+<p><strong>练习<a href="secchar.html#exm:ex11-1">10.1</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> &#39;Pack my box with five dozen liquor jugs&#39;</span>
+p1 &lt;-<span class="st"> </span><span class="kw">tolower</span>(p1)
+dup1 &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">strsplit</span>(<span class="kw">gsub</span>(<span class="st">&#39; &#39;</span>,<span class="st">&#39;&#39;</span>, p1), <span class="st">&#39;&#39;</span>))
+dup1[dup1&gt;<span class="dv">1</span>]</code></pre></div>
+<p><strong>练习<a href="secchar.html#exm:ex11-2">10.2</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 提示：</span>
+<span class="co"># 1. 跟千字文的处理方法类似</span>
+<span class="co"># 2. 中华字经的原文可以在网上搜</span>
+<span class="co"># 3. 常用汉字3500字可以在网上搜，由国务院颁布</span></code></pre></div>
+<p><strong>练习<a href="secmap.html#exm:ex12-2">11.2</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">us &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:/r4r/us.csv&quot;</span>)
+cols &lt;-<span class="st"> </span><span class="kw">rainbow</span>(<span class="kw">nlevels</span>(us$state)) <span class="co"># create 49 rainbow cols</span>
+<span class="kw">plot</span>(us$lon, us$lat, <span class="dt">col =</span> cols[us$state], <span class="dt">pch =</span> <span class="dv">20</span>)
+lon.median &lt;-<span class="st"> </span><span class="kw">tapply</span>(us$lon, us$state, median)
+lat.median &lt;-<span class="st"> </span><span class="kw">tapply</span>(us$lat, us$state, median)
+<span class="kw">text</span>(<span class="dt">labels=</span><span class="kw">levels</span>(us$state), 
+     <span class="dt">x=</span>lon.median, <span class="dt">y=</span>lat.median, <span class="dt">cex=</span><span class="fl">0.5</span>, <span class="dt">col =</span> <span class="st">&#39;White&#39;</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">25</span>, <span class="dt">to =</span> <span class="dv">50</span>, <span class="dt">by =</span> <span class="dv">5</span>), <span class="dt">col =</span> <span class="st">&#39;grey&#39;</span>)
+<span class="kw">unique</span>(us$state[us$lat &gt;<span class="st"> </span><span class="fl">34.9</span> &amp;<span class="st"> </span>us$lat &lt;<span class="st"> </span><span class="fl">35.1</span>])</code></pre></div>
+<p><strong>练习<a href="secmap.html#exm:ex12-3">11.3</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">timez &lt;-<span class="st"> </span><span class="kw">as.factor</span>(us$lon %/%<span class="st"> </span><span class="dv">15</span>)
+mycol &lt;-<span class="st"> </span><span class="kw">rainbow</span>(<span class="kw">nlevels</span>(timez))[timez]
+<span class="kw">plot</span>(us$lon, us$lat, <span class="dt">col =</span> mycol, <span class="dt">pch =</span> <span class="dv">20</span>)</code></pre></div>
+<p><strong>练习<a href="secmap.html#exm:ex12-4">11.4</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 只需把mycol一行改为：</span>
+mycol &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">rainbow</span>(<span class="kw">nlevels</span>(aqilevel)))[aqilevel]</code></pre></div>
+<p><strong>练习<a href="sectime.html#exm:ex13-1">12.1</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">format</span>(<span class="kw">Sys.time</span>(), <span class="st">&#39;%j&#39;</span>)</code></pre></div>
+<p><strong>练习<a href="sectime.html#exm:ex13-2">12.2</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bd &lt;-<span class="st"> &#39;1994-09-22 20:30:00&#39;</span>
+bdtime &lt;-<span class="st"> </span><span class="kw">strptime</span>(<span class="dt">x =</span> bd, <span class="dt">format =</span> <span class="st">&#39;%Y-%m-%d %H:%M:%S&#39;</span>, 
+                   <span class="dt">tz =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>)
+bdtime$yday</code></pre></div>
+<p><strong>练习<a href="sectime.html#exm:ex13-3">12.3</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">format</span>(bdtime, <span class="st">&#39;%c&#39;</span>)</code></pre></div>
+<p><strong>练习<a href="sectime.html#exm:ex13-4">12.4</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), bdtime, <span class="dt">units =</span> <span class="st">&#39;days&#39;</span>)
+<span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), bdtime, <span class="dt">units =</span> <span class="st">&#39;hours&#39;</span>)
+<span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), bdtime, <span class="dt">units =</span> <span class="st">&#39;secs&#39;</span>)</code></pre></div>
+<p><strong>练习<a href="sectime.html#exm:ex13-5">12.5</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdyears &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1994</span>, <span class="dt">by =</span> <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">101</span>)
+bd100 &lt;-<span class="st"> </span><span class="kw">paste</span>(bdyears, <span class="st">&#39;-09-22 20:30:00&#39;</span>, <span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)
+bd100 &lt;-<span class="st"> </span><span class="kw">strptime</span>(<span class="dt">x =</span> bd100, <span class="dt">format =</span> <span class="st">&#39;%Y-%m-%d %H:%M:%S&#39;</span>,
+                  <span class="dt">tz =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>)
+bdwd &lt;-<span class="st"> </span>bd100$wday
+<span class="kw">plot</span>(<span class="dt">x =</span> bdyears, <span class="dt">y =</span> bdwd)
+<span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1995</span>, <span class="dt">by =</span> <span class="dv">5</span>, <span class="dt">to =</span> <span class="dv">2100</span>), 
+       <span class="dt">col =</span> <span class="st">&#39;grey&#39;</span>)
+<span class="kw">sum</span>(bdwd ==<span class="st"> </span><span class="dv">0</span>)</code></pre></div>
+<p><strong>练习<a href="secfile.html#exm:ex14-2">13.2</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="dt">url =</span> <span class="st">&quot;http://dapengde.com/r4rookies/obs.zip&quot;</span>, 
+              <span class="dt">destfile =</span> <span class="st">&quot;C:/r4r/obs.zip&quot;</span>)
+<span class="kw">unzip</span>(<span class="dt">zipfile =</span> <span class="st">&quot;C:/r4r/obs.zip&quot;</span>, <span class="dt">exdir =</span> <span class="st">&quot;C:/r4r&quot;</span>)
+
+stn &lt;-<span class="st"> </span><span class="dv">50</span>
+obsdir &lt;-<span class="st"> &#39;C:/r4r/obs&#39;</span>
+obsfilefull &lt;-<span class="st"> </span><span class="kw">dir</span>(obsdir, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
+output &lt;-<span class="st"> </span><span class="ot">NULL</span>
+for (k in <span class="dv">1</span>:<span class="kw">length</span>(obsfilefull))
+{
+  input &lt;-<span class="st"> </span><span class="kw">read.table</span>(obsfilefull[k], <span class="dt">header =</span> <span class="ot">FALSE</span>, 
+                      <span class="dt">skip =</span> <span class="dv">2</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+  obstimestr &lt;-<span class="st"> </span><span class="kw">strsplit</span>(
+    <span class="kw">readLines</span>(obsfilefull[k])[<span class="dv">2</span>], <span class="st">&#39; &#39;</span>)[[<span class="dv">1</span>]]
+  obstime &lt;-<span class="st"> </span><span class="kw">paste</span>(
+    <span class="st">&#39;20&#39;</span>, obstimestr[<span class="dv">3</span>], <span class="st">&#39;-&#39;</span>, obstimestr[<span class="dv">5</span>], <span class="st">&#39;-&#39;</span>,
+    obstimestr[<span class="dv">7</span>], <span class="st">&#39; &#39;</span>, obstimestr[<span class="dv">9</span>], <span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)
+  output_new &lt;-<span class="st"> </span>input[<span class="kw">which</span>(
+    input[, <span class="dv">1</span>] &gt;=<span class="st"> </span>stn *<span class="st"> </span><span class="dv">1000</span> &amp;<span class="st"> </span>
+<span class="st">      </span>input[, <span class="dv">1</span>] &lt;<span class="st"> </span>(stn +<span class="st"> </span><span class="dv">10</span>) *<span class="st"> </span><span class="dv">1000</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)]
+  output_new$time &lt;-<span class="st"> </span>obstime
+  output &lt;-<span class="st"> </span><span class="kw">rbind</span>(output, output_new)
+}
+output</code></pre></div>
+<p><strong>练习<a href="secfile.html#exm:ex14-3">13.3</a>参考答案</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output$stn &lt;-<span class="st"> </span><span class="kw">as.factor</span>(output$V1)
+<span class="kw">boxplot</span>(output$V4 ~<span class="st"> </span>output$stn)</code></pre></div>
+
+
+<div id="refs" class="references">
+<div>
+<p>Adler, Daniel, Duncan Murdoch, and others. 2017. <em>Rgl: 3D Visualization Using Opengl</em>. <a href="https://CRAN.R-project.org/package=rgl" class="uri">https://CRAN.R-project.org/package=rgl</a>.</p>
+</div>
+<div>
+<p>Allaire, JJ, Joe Cheng, Yihui Xie, Jonathan McPherson, Winston Chang, Jeff Allen, Hadley Wickham, Aron Atkins, and Rob Hyndman. 2016. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+</div>
+<div>
+<p>Bivand, Roger, and Nicholas Lewin-Koh. 2017. <em>Maptools: Tools for Reading and Handling Spatial Objects</em>. <a href="https://CRAN.R-project.org/package=maptools" class="uri">https://CRAN.R-project.org/package=maptools</a>.</p>
+</div>
+<div>
+<p>Bivand, Roger, Tim Keitt, and Barry Rowlingson. 2016. <em>Rgdal: Bindings for the Geospatial Data Abstraction Library</em>. <a href="https://CRAN.R-project.org/package=rgdal" class="uri">https://CRAN.R-project.org/package=rgdal</a>.</p>
+</div>
+<div>
+<p>Carslaw, David C., and Karl Ropkins. 2012. “Openair — an R Package for Air Quality Data Analysis.” <em>Environmental Modelling &amp; Software</em> 27–28 (0): 52–61. doi:<a href="https://doi.org/10.1016/j.envsoft.2011.09.008">10.1016/j.envsoft.2011.09.008</a>.</p>
+</div>
+<div>
+<p>Dragulescu, Adrian A. 2014. <em>Xlsx: Read, Write, Format Excel 2007 and Excel 97/2000/Xp/2003 Files</em>. <a href="https://CRAN.R-project.org/package=xlsx" class="uri">https://CRAN.R-project.org/package=xlsx</a>.</p>
+</div>
+<div>
+<p>Gohel, David. 2017. <em>ReporteRs: Microsoft Word and Powerpoint Documents Generation</em>. <a href="https://CRAN.R-project.org/package=ReporteRs" class="uri">https://CRAN.R-project.org/package=ReporteRs</a>.</p>
+</div>
+<div>
+<p>Lang, Dawei. 2017. <em>LeafletCN: An R Gallery for China and Other Geojson Choropleth Map in Leaflet</em>. <a href="https://CRAN.R-project.org/package=leafletCN" class="uri">https://CRAN.R-project.org/package=leafletCN</a>.</p>
+</div>
+<div>
+<p>Lemon, J. 2006. “Plotrix: A Package in the Red Light District of R.” <em>R-News</em> 6 (4): 8–12.</p>
+</div>
+<div>
+<p>Petzoldt, Thomas, and Karsten Rinke. 2007. “Simecol: An Object-Oriented Framework for Ecological Modeling in R.” <em>Journal of Statistical Software</em> 22 (9): 1–31. <a href="http://www.jstatsoft.org/v22/i09" class="uri">http://www.jstatsoft.org/v22/i09</a>.</p>
+</div>
+<div>
+<p>R Core Team. 2016. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+<div>
+<p>Sarkar, Deepayan. 2008. <em>Lattice: Multivariate Data Visualization with R</em>. New York: Springer. <a href="http://lmdvr.r-forge.r-project.org" class="uri">http://lmdvr.r-forge.r-project.org</a>.</p>
+</div>
+<div>
+<p>Team, Rmetrics Core, Diethelm Wuertz, Tobias Setz, Yohan Chalabi, Martin Maechler, and Joe W. Byers. 2015. <em>TimeDate: Rmetrics - Chronological and Calendar Objects</em>. <a href="https://CRAN.R-project.org/package=timeDate" class="uri">https://CRAN.R-project.org/package=timeDate</a>.</p>
+</div>
+<div>
+<p>Wickham, Hadley. 2009. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="http://ggplot2.org" class="uri">http://ggplot2.org</a>.</p>
+</div>
+<div>
+<p>———. 2017. <em>Stringr: Simple, Consistent Wrappers for Common String Operations</em>. <a href="https://CRAN.R-project.org/package=stringr" class="uri">https://CRAN.R-project.org/package=stringr</a>.</p>
+</div>
+<div>
+<p>Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
+</div>
+<div>
+<p>———. 2017. <em>Blogdown: Create Blogs and Websites with R Markdown</em>. <a href="https://github.com/rstudio/blogdown" class="uri">https://github.com/rstudio/blogdown</a>.</p>
+</div>
+<div>
+<p>Xie, Yihui, Taiyun Wei, and Yixuan Qiu. 2011. <em>Fun: Use R for Fun</em>. <a href="https://CRAN.R-project.org/package=fun" class="uri">https://CRAN.R-project.org/package=fun</a>.</p>
+</div>
+<div>
+<p>Zeileis, Achim, the R community. Contributions (fortunes and/or code) by Torsten Hothorn, Peter Dalgaard, Uwe Ligges, Kevin Wright, Martin Maechler, Kjetil Brinchmann Halvorsen, et al. 2016. <em>Fortunes: R Fortunes</em>. <a href="https://CRAN.R-project.org/package=fortunes" class="uri">https://CRAN.R-project.org/package=fortunes</a>.</p>
+</div>
+<div>
+<p>Zhao, Peng. 2017a. <em>Beginr: Functions for R Beginners</em>. <a href="https://CRAN.R-project.org/package=beginr" class="uri">https://CRAN.R-project.org/package=beginr</a>.</p>
+</div>
+<div>
+<p>———. 2017b. <em>Bookdownplus: Generate Varied Types of Books and Documents with R ’Bookdown’ Package</em>. <a href="https://CRAN.R-project.org/package=bookdownplus" class="uri">https://CRAN.R-project.org/package=bookdownplus</a>.</p>
+</div>
+<div>
+<p>———. 2017c. <em>Mindr: Convert Files Between Markdown or Rmarkdown Files and Mindmaps</em>. <a href="https://CRAN.R-project.org/package=mindr" class="uri">https://CRAN.R-project.org/package=mindr</a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-timeDate">
+<p>Team, Rmetrics Core, Diethelm Wuertz, Tobias Setz, Yohan Chalabi, Martin Maechler, and Joe W. Byers. 2015. <em>TimeDate: Rmetrics - Chronological and Calendar Objects</em>. <a href="https://CRAN.R-project.org/package=timeDate" class="uri">https://CRAN.R-project.org/package=timeDate</a>.</p>
+</div>
+<div id="ref-R-fun">
+<p>Xie, Yihui, Taiyun Wei, and Yixuan Qiu. 2011. <em>Fun: Use R for Fun</em>. <a href="https://CRAN.R-project.org/package=fun" class="uri">https://CRAN.R-project.org/package=fun</a>.</p>
+</div>
+<div id="ref-R-openair">
+<p>Carslaw, David C., and Karl Ropkins. 2012. “Openair — an R Package for Air Quality Data Analysis.” <em>Environmental Modelling &amp; Software</em> 27–28 (0): 52–61. doi:<a href="https://doi.org/10.1016/j.envsoft.2011.09.008">10.1016/j.envsoft.2011.09.008</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="68">
+<li id="fn68"><p>R处理大数据：<a href="http://yanping.me/cn/blog/2012/01/01/working-with-large-datasets/" class="uri">http://yanping.me/cn/blog/2012/01/01/working-with-large-datasets/</a><a href="secqa.html#fnref68">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="markdown.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

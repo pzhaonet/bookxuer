@@ -1,0 +1,1500 @@
+# 用 R 进行基础统计（一）：概率分布检验 {#secdist}
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(tidy = TRUE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff = 61))
+
+```
+
+```
+　　罗宾：我想说，要是没有个像R这样的工具，你休想学好统计学。
+　　大卫：费舍尔他们没有R也搞定了。
+　　彼得：如果有R的话，想想他们该能走多远！
+```
+<!---
+  >
+  > (Robin Hankin: I'd say that without a tool like R you cannot learn statistics.
+>
+> David Whiting: I believe Fisher and a few others managed to get by without it.
+>
+> Peter Dalgaard: But think how far they could have got with R!)
+>
+--->
+
+> --- December 2004
+
+数据分析离不开统计检验。比如你可能需要回答这样的问题：
+
+- 不同生产线的次品率是否有显著差异？
+- 长时间序列的观测数据是否具有显著的趋势？
+- 实验组和对照组是否有显著差异？ 等等。
+
+我们经常需要对观测数据或者实验数据进行统计分析和比较。经过了统计检验，你就可以理直气壮地说，我的方案/设计有了显著效果，不是碰巧撞上的！
+
+统计学发展到现在，已经给我们提供了许多已知的分布。比如一个城市每天的死亡人数，服从泊松（Poisson）分布。比如对一个水体样本某种成分的重复测试得到的数据集属于正态分布，其中心值就是浓度的真值（不可知）。比如对于结局只有“全或无”的事件，服从于二项分布（扔硬币，某一面朝上的概率为0.5；产品合格与否；击球命中与否，等等），这种二项分布的参数往往是确定的。
+
+大多数直接由观测/实验得到的数据都是属于某一种分布，比如汇率的波动，大气污染的数据，产品的合格率等等。如果是确定的某种分布，我们就可以说得到的数据服从于某个参数分布；实际数据分析中，如果我们要进行不同样本的比较，往往需要先知道得到的数据属于什么分布。R提供了各种常用的分布检验函数。
+
+在本章和下一章里，我们学习基础统计检验。没有搞懂统计原理没关系！只要确定地知道应该用什么统计方法，就可以在R里找到相应的命令或者包。
+
+## 统计检验的基本思想{#secdist-1}
+
+在统计推断中，若给定或者假定了总体分布的具体形式（如正态分布），但是其参数（parameter）未知，要基于来自总体的样本对未知参数作出估计或者进行某种形式的假设检验，这类推断方法就称为参数方法（也有的书称为参数检验），检验的目标是某个参数落在特定的范围内的假设。
+
+另外一类检验，不是针对具体的参数，而是针对分布的类型进行检验，比如假设总体分布具有正态性，则需要基于样本来检验这个假设是否可以接受。
+
+因此，统计检验的真正意思其实是检验已知数据集是否服从于特定参数的某种已知分布，或者检验已知数据集服从于某种已知分布（不指定参数）。什么是参数呢？参数就是描述总体样本分布的特征的数据，比如中心值、方差等等，总体的分布由参数决定。参数是确定的，但是往往不可知，因为在一般情况下，我们无法得到全部样本，只能得到一部分（从总体中抽取部分样本）。对我们得到的这部分样本数据进行统计描述得到的数据，就相应地叫做统计量。那么参数估计就是根据统计量来推断总体样本（是否服从于某一已知分布？两个样本是否来自同一分布？等等）的过程：对参数提出一定的假设，然后根据已知的统计量对提出的假设进行假设检验。我们通过一个例子来简单说明一下假设检验的基本思想和概念。
+
+假设有一个工厂生产某种产品，有一定的次品率，用$w$表示。行业规定这个次品率必须要小于0.02（$w<0.02$)，否则这批产品要被退货。这里“$w<0.02$”就是我们需要做的假设，记为H0（null hypethesis，称为原假设或者零假设）。与H0对立的假设则记为H1，称为备择假设或者对立假设（alternative hypothesis）。
+
+现在我们假设从某天的产品中抽样250个，发现了5个次品。这个抽样结果就成为了判定原假设H0（次品率低于0.02）成立的依据。如果我们用$n$表示抽到的次品个数，显然$n$越大，对H0成立就越不利。那么$n$大于多少时就可以判断假设不成立，即，这批产品应该被退货呢？
+
+统计检验的过程是：先假定H0成立，然后计算在这种假设下，$n$大于5的概率有多大。因为我们知道抽样个数为250个，次品率服从于二项分布（这二项就是：合格or不合格，只有两种结果。不合格的概率为0.02。只有两种结局的事件服从二项分布，下面我们会详细说），0.02是我们已知的参数。那么从这样一个总体样本中抽出250个样品，“次品数量$n = 5$”这个事件发生的概率大约是0.62（这个计算过程将由R完成，接下来我们会说到），算是一个大概率事件。也就是说，当产品生产的次品率<0.02时，一次抽样250个，有5个次品的事件是个大概率事件，我们应该接受原假设，即次品率符合行业标准，这批产品合格。
+
+那如果抽样250个里面，有12个次品呢？再次计算出$n = 12$的概率是0.005，这是一个小概率事件。而在一次观察中小概率事件是不可能发生的，即假设H0成立，那么一次抽样中发现12/250的次品率是不可能的，因此要拒绝H0，接受H1，即产品不符合要求，次品率高于0.02。
+
+通过尝试我们可以知道，在这样的次品率要求下，一次抽样250个，次品率少于10个才是合格的。
+
+统计思想解释了，我们还需要回到统计表达来看一下。本次产品检验的结果，如果用“统计分布”的角度来表达，该怎么说呢？
+
+- 250个抽样样品，5个次品：这250个样品来自于概率为0.02的二项分布总体，对次品率合格与否的检验其实是对这样一个样本服从于一个已知分布的检验。
+
+- 250个抽样样品，12个次品：这250个样品不来自于概率为0.02的二项分布总体（它们来自于一个概率高于0.02的总体），是对这个样本是否服从于一个已知分布的检验。
+
+最后来总结一下。无论是什么假设检验，其思想是一致的，就是所谓概率性质的反证。其根据是实际推断原理：小概率事件在一次观察中是几乎不可能发生的。我们先给出原假设H0，然后在这个前提下去验证我们观察到的事件，如果这个事件发生的概率很小（$p$值小于0.05），说明小概率事件居然在一次观察中发生了，这于刚才我们说的“实际推断原理”相悖，这表明“假设H0成立”是错误的，我们应该拒绝原假设。反之，如果这个事件发生的概率很大，那么在一次观察中发生的可能性很大，我们就应该接受原假设。
+
+需要注意以下三点：
+
+1. “小概率事件在一次观察中发生”与实际推断原理相矛盾，这种矛盾并不是形式逻辑中的绝对矛盾，因为“小概率事件在一次观察中几乎不会发生”并不等同于“小概率时间在一次观察中绝对不会发生”。因此，根据概率性质的反证法得出的接受或拒绝H0的决定，并不等同于我们就证明了原假设H0正确或错误，而是我们根据样本所提供的信息，在一定的可靠程度上认为H0正确或错误。
+
+2. 原假设与备择假设不对称，不可以交换，在假设检验中的地位不同。原假设和备择假设的设定要根据具体问题来决定，通常我们把没有把握、不能轻易肯定的命题作为备择假设，而把没有充分理由不能轻易否定的命题作为原假设，只有理由充分时才能拒绝它，否则应该接受。
+3.  既然小概率事件在一次观察中“几乎不可能”发生，那么小概率事件也有可能发生，不是绝不可能发生。在这种情况下我们拒绝了H0，就犯错了，这个犯错的概率为$P_1$（拒绝H0|H0为真）。还有一种错误，就是H0不正确而我们却接受了H0，犯这个错误的概率为$P_2$（接受H0|H0为假）。通常样本量都是有限的，因此这两类错误都有可能发生。通常我们把解决这类问题简化为只针对第一种错误（正如前面所述，在选择H0和H1有所区别），限制犯错的概率大小，而对第二类错误不管（统计学家这么决定，应该有他们的道理吧）。
+
+这样，我们将犯第一类错误的最大概率称为假设检验的显著性水平。
+
+定义：在假设检验中，拒绝原假设H0的最小显著性水平称为检验的$p$值（$p$-value）。
+$p$值表示的是对原假设的怀疑程度，或者说，首次拒绝原假设的概率$p$值越小，原假设越不可靠。$p$值的计算依赖于原假设和所得样本。在接下来介绍的R执行的各种检验中，都会给出$p$值。
+
+## 离散型随机变量和连续型随机变量 {#secdist-2}
+
+我们前面介绍了参数分布的概念以及检验思想。接下来我们就要面对得到的数据，也就是变量了。我们需要根据变量的性质来选择R中提供的检验方法。R提供针对离散型随机变量和连续型随机变量的检验方法，先来了解一下相关概念：
+
+我们生活中遇到的事件可以分为定性事件和定量事件，因此，这两类事件发生的概率也就相应地是定性概率和定量概率。比如我们前面提到的产品检验，结果就只有“合格”和“不合格”两种，这是定性的（但是如果们具体到某一条生产线，数值化不合格的比例，就是定量了）。再比如交通事故，基本上分为“轻微事故”、“一般事故”、“重大事故”等，也是定性的。这些事件结局之间，只有类型不同，而不是测量数值上的区别。我们不能预测某条特定道路上的交通事故会属于哪一种，因此这类变量就是定性随机变量。这样的例子还有所属党派、社会经济地位、苹果叶脉的分布图案、女士偏爱的服装品牌等。与定性变量相关的可能事件结局是有限的，除了计算发生概率，貌似我们能做的事情也不多。
+
+我们更感兴趣的往往是与定量随机变量相关的事件。顾名思义，定量随机变量，就是量化的观测值，源于数值型观察值或测量值。对于定量随机变量，我们就可以求平均值，标准偏差，并且估计随机变量可能误差等等。定量随机变量又可分为两种，接下来我们要介绍的分布检验都是针对这两种定量随机变量的。
+
+- 离散型随机变量：当一个变量的观察值只能取可数个数值时，该变量称为离散型随机变量。 离散型随机变量可能的取值是孤立和分散的。比如：安装信号灯后的十字路口交通事故的变化；总统选举中的无效选票数等等，这些随机变量能够取到的值都有限，可以数出来。
+
+二项分布和泊松分布是最常见的离散型随机变量分布。
+
+- 连续型随机变量：当一个变量的观察值可以取到某一个区间上的任何一个数值时，该变量称为连续型随机变量。连续型随机变量能取到的数值是无限、不可数的。比如气温、降水量、股票价格、大气污染物浓度等等。
+
+正态分布、均匀分布、指数分布等都是常见的连续型随机变量分布。
+
+因此，我们在得到数据之后，首先要区分变量的类型，才能进一步地做概率和分布的分析。本节我们介绍常见的离散型随机变量分布检验和连续型随机变量分布检验。
+
+在介绍离散型随机变量分布检验之前，我们先来认识一下伯努利（\mbox{Bernoulli}）试验（独立重复试验），因为常用的几种离散型随机变量分布都与它相关。
+
+若实验E满足条件：
+
+1. 每次试验独立进行；
+
+2. 每次试验只有两种结果：事件A发生或者不发生。这两种结果是互逆的，完全不相容。
+
+设P(A) = $p$，$0 < p < 1$, (这个基本概率表示方式还记得吧)，将试验E重复$n$次，就是$n$重伯努利试验。
+例如击球命中与否；抛硬币的某一面朝上；产品检验抽到次品等等，都可以看作伯努利试验。离散型随机变量分布都和伯努利试验相关，包括二项分布、负二项分布、几何分布、超几何分布和多项分布。我们经常接触到的是二项分布和泊松分布。
+
+## 二项分布 {#secdist-3}
+
+二项分布描述的是$n$重伯努利试验中出现$x$次成功的概率分布。在R中产生随机样本的命令是：
+
+\index{分布和检验!binom}
+
+```{r, eval=FALSE}
+binom(x, size, prob)
+```
+
+`x`是试验成功次数，`size`是总实验次数，`prob`是成功的概率。
+
+最经典的就是扔硬币，硬币落地时某一面朝上的次数（概率）服从二项分布。如果想验证一下这个“0.5”的概率，那么只需要把硬币扔50次（或者更多），记录这一面朝上的次数，然后进行检验就可以。
+
+假设我们扔了60次，其中有27次朝上。那么检验函数是：
+
+\index{分布和检验!binom.test}
+
+```{r, eval=FALSE, tidy=FALSE}
+binom.test(x = 27, n = 60, p = 0.5, alternative = "less")
+# n是总实验次数，x是“试验成功"的次数，p是已知的二项分布概率。
+# 分布已知，参数已知，典型的参数方法（参数检验）
+
+##
+## Exact binomial test
+##
+## data:  27 and 60
+## number of successes = 27, number of trials = 60, 
+## p-value = 0.2595
+## alternative hypothesis: true probability of success is 
+## less than 0.5
+## 95 percent confidence interval:
+## 0.0000000 0.5639903
+## sample estimates:
+## probability of success 
+## 0.45 
+```
+
+可见，$p$大于0.05，无法拒绝原假设，即扔硬币结果是符合二项分布的。0.45是这一次实验的实际比率，即某一面朝上的次数与总实验次数的比例。
+
+需要注意的是，二项分布，并不意味着概率一定是0.5。比如我们一开始举的产品次品率，概率是0.02。
+再来看一个例子：假设有一种比赛，内容就是一个运动员击球，只比成功率高低。M是一个成功率较高的击球手，根据他前十年的赛事成绩，大家评价他的成功率为0.4，即40%。新的赛季以来，他一共击球558次，击中了203次，命中率为0.36。那么，如果保持这个水平，本赛事结束后，他的成功率低于0.40的概率是多少？
+
+\index{分布和检验!binom.test}
+
+```{r, eval=FALSE, tidy=FALSE}
+binom.test(x = 203, n = 558, p = 0.4, alternative = "less")
+
+##
+## Exact binomial test
+## 
+## data:  203 and 558
+## number of successes = 203, number of trials = 558, 
+## p-value = 0.04378
+## alternative hypothesis: true probability of success is 
+## less than 0.4
+## 95 percent confidence interval:
+## 0.0000000 0.3986764
+## sample estimates:
+## probability of success 
+## 0.3637993 
+```
+
+注意：这里的备择假设设置为“less”，那么得出的$p$-value就是成功率高于原成功率0.40的概率，小于0.05，因此我们应该拒绝原假设，接受备择假设，即这个击球手退步了，他本赛季的成功率会低于0.40. 如果我们把备择假设设为“greater"，那么：
+
+\index{分布和检验!binom.test}
+
+```{r, eval=FALSE, tidy=FALSE}
+binom.test(x = 203, n = 558, p = 0.4, alternative ="greater")
+
+##
+## Exact binomial test
+##
+## data:  203 and 558
+## number of successes = 203, number of trials = 558, 
+## p-value = 0.9637
+## alternative hypothesis: true probability of success is 
+## greater than 0.4
+## 95 percent confidence interval:
+## 0.3299983 1.0000000
+## sample estimates:
+## probability of success 
+## 0.3637993 
+```
+
+得出的$p$-value就是成功率低于原成功率0.40的概率，$p$值为0.96，因此我们应该接受原假设，即这个击球手退步了，他本赛季的成功率会低于0.40.
+总而言之这名击球手就是退步了。
+
+因此，R语句的完整表达为：
+
+\index{分布和检验!binom.test}
+
+```{r, eval=FALSE,tidy=FALSE}
+binom.test(x, n, p,
+           alternative = c("two sided","less","greater"))
+```
+
+默认设置为two sided。
+
+## 泊松分布 {#secdist-4}
+
+泊松分布是1837年由数学家泊松提出，作为二项分布的近似引入的。如果我们把伯努利试验中发生概率很小的事件称为“稀有事件”，那么根据泊松定理，$n$重伯努利试验中稀有事件发生的概率近似服从泊松分布。也可以大概理解为，泊松分布是二项分布的极限（总实验次数$n$很大，发生概率非常小）。
+
+比如：
+
+- 细胞培养板里的细菌个数。
+- 一个大城市每天因心血管疾病死亡的人数。
+- 热线电话每10分钟的呼入数。
+- 本书各章的错别字数。
+
+泊松分布产生的一般条件：
+
+在自然界和现实生活中，常遇到在随机时刻出现的某种事件。因此，我们把在随机时刻相继出现的事件形成的序列称为随机事件流。若随机事件流具有平稳性、无后效性、普通性，则称该事件为泊松事件流（泊松流）。
+
+- 平稳性——在任意时间区间内，事件发生$k$次（$k \ge 0$）的概率只依赖于区间长度而与区间端点无关。
+-    无后效性——在不相重叠的时间段内，事件的发生相互独立。
+- 普通性——如果时间区间充分小，事件出现两次或两次以上的概率可忽略不计。
+
+可见，泊松分布往往和时间有关联，其分布参数的概率意义 是单位时间出现的随机质点的平均个数.
+
+因此在下面的执行语句中可以看到时间参数。
+
+R中执行泊松分布检验的语句是：
+
+\index{分布和检验!poisson.test}
+
+```{r, eval=FALSE,tidy=FALSE}
+poisson.test(x, T = 1, r = 1, conf.level = 0.95, 
+             alternative = c("two.sided", "less", "greater"))
+```
+
+其中，
+
+- `x`：预期事件发生的次数。
+- `T`：time base for event count. 用于比较的数据(基线数据）。
+- `r`：假设或已知的发生概率
+- `alternative`：选择 "two.sided", "greater" or "less"
+- `conf.level`：置信区间
+
+还是先通过一个例子来感受一下。某公司为了宣传产品，开设了一条购物热线，投资方期望这条热线电话每10分钟能有15次呼入。开通后计数表明，10分钟内
+呼入次数为13次。那么这个呼入次数达到了投资方的预期值了吗？
+
+\index{分布和检验!poisson.test}
+
+```{r, eval=FALSE}
+poisson.test(13,15) 
+# 13是实际计数得到的值，15是预期值。这个格式是不是很简单？
+```
+
+```{r, echo=FALSE}
+poisson.test(13,15) 
+# 13是实际计数得到的值，15是预期值。这个格式是不是很简单？
+```
+
+$p$大于0.05，应该接受原假设，即呼入次数是符合预期的。
+用统计学术语来说，就是要对样本计数$x$＝13和总体均数$\mu$＝15的差别作统计学检验。$p$＝0.6991，意思是说从$\mu$＝15的总体中随机抽样获得的x大于等于13的可能性
+达到0.69，是一个大概率事件，因此不能拒绝原假设。
+
+我们来把这个问题扩展一下。某个热线电话10分钟内呼入的电话数为13，而另一热线电话10分钟内呼入的电话数为24。这两个热线电话的受欢迎程度一致否？
+这个检验的实质是比较两个数据集是否来自同一个泊松分布。
+
+\index{分布和检验!poisson.test}
+
+```{r}
+poisson.test(13,24,alternative="less")
+# 要与第二个热线电话打呼入数持平，
+# 临界值（呼入电话数）最多是多少？
+qpois(0.95,lambda =24)
+# 要与第二个热线电话呼入次数持平，
+# 临界值（呼入电话数）最少是多少？
+qpois(0.05,lambda =24)
+```
+
+$p$小于0.05，拒绝原假设，两个热线受欢迎程度不一样。如果要和第二条热线一样受欢迎，第一条热线的临界呼入次数最多32，最少16。
+
+
+扩展阅读： 利用 Pearson卡方检验来检验是否符合正态分布：（来自：薛毅 陈立萍 《统计建模与Ｒ软件》 清华大学出版社 2006）
+
+\index{分布和检验!chisq.test}
+
+```{r, tidy=FALSE}
+# 现有42个数据，分别表示某一时间段内电话总机呼入的次数，
+# 呼入的次数 0  1  2  3  4  5  6
+# 出现的频率 7 10 12  8  3  2  0
+# 问：某个时间段内呼入次数是否符合Possion分布？
+
+x <- 0:6
+y <- c(7, 10, 12, 8, 3, 2, 0)
+mean <- mean(rep(x, y))
+q <- ppois(x, mean)
+n <- length(y)
+p <- q
+p[1] <- q[1]
+p[n] <- 1 - q[n - 1]
+for(i in 2:(n - 1))
+  p[i] <- 1 - q[i - 1]
+chisq.test(y, p = rep(1/length(y), length(y)))
+```
+
+$p$小于0.05，拒绝原假设，电话呼入次数不符合泊松分布。
+
+## 卡方分布 {#secdist-42}
+
+ 简单地说，如果一个数据集（包含$n$个数据）服从于正态分布，那么这个数据集里每个数据的平方服从于自由度为$n$的卡方分布。
+ 因此卡方分布的形状取决于$n$。
+
+ 卡方拟合优度检验（Chi-squared goodness of fit tests)用来检验样本是否来自于特定类型卡方分布，在R中的执行语句是`chisq.test()`:
+
+\index{分布和检验!chisq.test}
+
+```{r, eval=FALSE, tidy=FALSE}
+chisq.test(x, y = NULL, correct = TRUE, 
+           p = rep(1/length(x), length(x)), 
+           rescale.p = FALSE,
+           simulate.p.value = FALSE, B = 2000)
+```
+
+- `x`	是数据集，可以是数值型向量、矩阵或者因子。
+- `y`	是数值型向量。如果`x`是数值型矩阵，则`y`可以忽略。如果`x`是因子，`y`必须是同样长度的因子。
+- `correct` 是逻辑型变量，指示是否需要做连续型校正。
+- `p`  是指定的概率分布。
+- `rescale.p` 是逻辑型变量，指示是否各项$p$的和为1。
+- `simulate.p.value` 是 逻辑型变量，指示$p$的计算过程是否要进行蒙特卡罗模拟。
+- `B` 是整数，蒙特卡罗检验里的重复次数。
+
+ 还是来看一个例子。
+
+ 如果连续掷骰子200次，得到如下点数分布。那么这个骰子是均匀的吗？
+
+|  1 |  2 |  3 |  4 |  5 | 6  |
+|:--:|:--:|:--:|:--:|:--:|:--:|
+| 30 | 21 | 24 | 35 | 42 | 48 |
+
+ 如果骰子是均匀的，那么每一面出现的期望概率应该相等，都是1/6。但是我们注意到点数5和6竟然出现分别出现了42和48次。这是纯属巧合，还是骰子不均匀？
+
+\index{分布和检验!chisq.test}
+
+```{r}
+myfreq<-c(30,21,24,35,42,48) # 得到的频数
+myprobs<-c(1,1,1,1,1,1)/6 # 指定的概率分布
+chisq.test(myfreq,p=myprobs)
+```
+
+$p$值远小于0.05，拒绝原假设，这个骰子不均匀。
+
+接下来我们来看看如何检验一个已知连续变量数据集是否服从于某种假定的分布。
+
+## 正态分布 {#secdist-5}
+
+
+正态分布是我们日常生活学习中最常见的连续型随机变量概率分布，很多随机变量的概率分布都可以近似地用正态分布来描述。例如，在生产条件不变的情况下，产品的强力、抗压强度、口径、长度等指标；相同生长环境下同种生物的身长、体重等指标；同一批种子的重量；同一实验测量结果；弹着点沿某一方向的偏差，等等。一般来说，如果一个量是由许多微小的独立随机因素影响的结果，那么就可以认为这个量具有正态分布。
+
+该检验原假设H0为：数据集符合正态分布。R计算出统计量$W$，其最大值是1。$W$越接近1，表示样本越接近正态分布。 如果$p$-value小于显著性水平$\alpha$ (0.05)，则拒绝原假设H0，该分布不属于正态分布。
+
+R中实现正态性检验的函数是`shapiro.test()`,执行Shapiro-Wilk检验（要求样本量在3到5000之间）：
+
+\index{分布和检验!shapiro.test}
+
+```{r, eval=FALSE}
+shapiro.test(x)
+```
+
+来看一个具体的例子：1949-1960年乘坐飞机的乘客人数是否服从正态分布（参数未知）？首先我们来看看直方图或者QQ图，直观地感受一下。
+
+\index{作图!par}
+\index{作图!hist}
+\index{作图!qqnorm}
+
+```{r figdist1, fig.cap='1949-1960年乘坐飞机的乘客人数分布的直方图和QQ图',  fig.height=3, fig.width=6}
+par(mfcol=c(1,2),ps=6.5)
+hist(AirPassengers,breaks=20)
+qqnorm(AirPassengers,pch=1)
+```
+
+从直方图来看，不太像钟型分布。QQ图也比较不太接近直线。感觉不像正态分布，那么我们来检验一下直觉是否正确。
+
+\index{分布和检验!shapiro.test}
+
+```{r}
+shapiro.test(AirPassengers)
+```
+
+$W$值不接近1，$p$值远小于0.01，可见直觉正确，我们应拒绝原假设，即1949-1960年的乘客人数不服从于正态分布。
+
+再看看采集的人群血样中促黄体素（Luteinizing Hormone）浓度数据。
+
+\index{作图!par}
+\index{作图!hist}
+\index{作图!qqnorm}
+
+```{r, fig.cap=' 人群血样中促黄体素（Luteinizing Hormone）浓度布的直方图和QQ图',  fig.height=3, fig.width=6}
+par(mfcol=c(1,2),ps=6.5)
+hist(lh,breaks=20)
+qqnorm(lh,pch=1)
+```
+
+看不出感觉来吧？还是不要猜了，检验一下吧。
+
+\index{分布和检验!shapiro.test}
+
+```{r}
+shapiro.test(lh) #人群血样中促黄体浓度属于正态分布吗？
+```
+
+$W$值接近1， $p$值大于0.05，接受原假设，即人群血样中的促黄体素浓度属于正态分布。
+
+那么如何检验已知数据集是否服从特定参数的正态分布呢？R中还有一个非常好用的检验分布的执行语句`ks.test()`，它执行的是 \mbox{Kolmogorov}-\mbox{Smirnov} 连续分布检验，可以用于包括正态分布的多种连续型概率分布的检验。
+这个检验的原理是，以样本数据的累计频数分布与特定理论分布比较，若两者间的差距很小，则推论该样本取自某特定分布族。 R的执行结果会给出一个统计量$D$，它的意义是假设的分布累计频数与受检验样本之间累计频数分布概率之间的差异（这句话看不懂不要紧）。
+记住：$D$值越小，越接近0，表示样本数据越接近你预先假设的分布。 如果$p$-value小于显著性水平$\alpha$ (0.05)，则拒绝原假设（你的样本和假设的分布不一致）。
+`ks.test()`可以通过对已知样本的分布分析，与已知的概率分布做差别检验，从而对样本的分布类型作出统计学判断。此外，`ks.test()`还可以对两个样本分布进行差别检验，以判断它们是否服从于同一分布，且分布类型并不受限。
+
+回到我们刚才的问题：如何检验已知数据集服从特定参数的正态分布？还是通过一个例子来说明。
+
+\index{分布和检验!rnorm}
+\index{分布和检验!ks.test}
+
+```{r}
+# 生成参数为5，3的正态分布随机数
+A<-rnorm(100,5,3) 
+# 检验数据集A是否服从mu＝5，sd＝3的正态分布
+ks.test(A,5,3) 
+# 检验数据集A是否服从mu＝15，sd＝1的正态分布
+ ks.test(A,15,1) 
+```
+
+从$p$值来看，显然，数据集A服从$\mu$＝5，$sd$＝3的正态分布，而不服从$\mu$＝15，$sd$＝1的正态分布。
+
+Kolmogorov-Smirnov常用的连续分布检验还有以下几种：
+
+## 指数分布 {#secdist-6}
+
+来举例说明一下：
+
+\index{分布和检验!ks.test}
+
+```{r}
+set.seed(1)
+mydata <- rexp(950)
+ks.test(mydata, "pexp")
+```
+
+结论: $D$值很小, $p$-value > 0.05，不能拒绝原假设，所以数据集mydata符合指数分布。
+
+## 伽马分布 {#secdist-7}
+
+伽马分布(Gamma)，也称为皮尔逊III型分布。它的曲线是左右不对称的一个峰。还是用Kolmogorov-Smirnov来检验
+
+\index{分布和检验!ks.test}
+
+```{r}
+set.seed(1)
+mydata <- rgamma(1500,1)
+ks.test(mydata, "pgamma", 1)
+```
+
+$D$值很小, $p$-value > 0.05，不能拒绝原假设，所以数据集`mydata`符合 shape = 1 的伽马分布，嗯，理解为1型伽马分布吧。跟在名字 “pgamma” 后面那个数字，就是表示对几型分布的假设“1”型或者“2”型，用参数 $\alpha$表示。根据参数 $\alpha$ 的不同，概率密度函数和累积分布函数的图形也不同。那么看看这个数据集是否符合2型伽马分布呢（废话，符合1型了怎么可能还符合2型……但是我们就是要试一试）
+
+\index{分布和检验!ks.test}
+
+```{r}
+ks.test(mydata, "pgamma", 2)
+```
+
+试一试，果然就死心了吧，$D$值大而$p$值小于0.05，拒绝原假设，不符合2型分布。是不是很简单容易上手？
+
+## 韦伯分布 {#secdist-8}
+
+韦伯（weibull）分布，又称韦氏分布或威布尔分布，是可靠性分析和寿命检验的理论基础。韦伯分布通常用在故障分析领域( field of failure analysis)中；甚至可以模拟故障率随时间的变化分布。故障率为以下三种情况（$\alpha$也是形状参数）：
+
+- 一直为常数， $\alpha = 1$， 提示故障可能在随机事件中发生
+- 一直减少，$\alpha < 1$， 提示“infant mortality”——先天不足的意思？
+- 一直增加，$\alpha > 1$， 提示“wear out” -- 随着时间的持续，故障的可能性增加
+
+检验方法依然是Kolmogorov-Smirnov：
+
+\index{分布和检验!ks.test}
+
+```{r}
+set.seed(1)
+mydata<-rweibull(8500,1)
+ks.test(mydata, "pweibull", 1)
+```
+
+可见$D$值很小，而$p$值大于0.05，因此不能拒绝原假设，该样本服从于韦伯分布1型。 那显然就不服从于2型了。
+
+\index{分布和检验!ks.test}
+
+```{r}
+ks.test(mydata, "pweibull",2)
+```
+
+Kolmogorov-Smirnov tests是一个很有用的检验工具，可以用于常用的很多连续型概率分布检验。而且，这些检验的R命令都是相似的，它们都是这个格式：
+
+\index{分布和检验!ks.test}
+
+```{r, eval=FALSE, tidy=FALSE}
+ks.test(x, y, ...,
+        alternative = c("two.sided", "less", "greater"),
+        exact = NULL)
+```
+
+- `x`就是你的数据集。
+- `y`就是你假设的连续型概率分布。用小贴士 \@ref(thm:thm-dist) 中“p”开头的命令放到y的位置，就可以轻松地做一个分布检验了。
+- `...`是你假设的分布中的参数描述，比如我们刚才用到的1型，2型，也可以没有。
+- `alternative` 是你的备择假设，注意在二项分布中的意义。 
+- `exact`指示是否需要计算出精确的$p$值。
+
+好啦，只要套用相应的名词，你就可以做相应的分布检验啦！比如`ks.test(mydata, "pweibull",2)`，意思就是检验数据集是否服从于韦氏2型分布。"pweibull"这个命令可以在小贴士 \@ref(thm:thm-dist) 中“韦伯分布”一行找到。
+
+***必须要注意！***
+Kolmogorov-Smirnov tests确实好用，但是一定要记住，它只能用于连续型概率分布检验。因此，二项分布、泊松分布等就不能用它。
+
+能够运用这个命令的连续型概率分布检验，除了上述的正态分布检验、指数分步检验等，还有$t$分布检验、$F$分布检验，均匀分布检验。请自己去尝试一下吧。
+
+## 检验两个向量是否来自同一分布 {#sectdist-10}
+
+Kolmogorov-Smirnov还可以用于检验两组数据是否来自同一分布。仍然以二氧化碳浓度数据为例，我们看看1959年和1965年浓度是否来自同一分布。
+
+需要注意的是，在做单样本K-S检验或者正态检验时，有时会有错误提示“Kolmogorov - Smirnov检验有结节”（或者类似意思的生硬中文表达，R的中文表达问题），这是因为K-S检验只对连续累积分布函数（CDF）有效，而连续累积分布函数中出现相同值的概率为0，因此R会报错。这也提醒我们，在做正态性检验之前，要了解自己的数据，对数据进行描述性分析/作图，有个大致的认识，才能选择正确的检验方法并正确解读。
+
+还是以夏威夷的二氧化碳浓度为例，我们看看1959年和1965年浓度是否来自同一分布。
+
+\index{分布和检验!ks.test}
+
+```{r}
+ks.test(co2[1:12],co2[97:108],alternative ="two.sided")
+```
+
+$p$值小于0.05，可见这两个年份的二氧化碳浓度差异很大，不来自于同一分布。
+
+```{example, label='exdist-1'}
+生成两个不同的$F$分布或者学生$t$分布，然后通过检验证实它们确实不同。
+```
+
+```{example, label='exdist-2'}
+检验数据集nottem属于哪种分布。这是一个叫做Nottingham的城市 1920-1939的月平均气温数据，在基础安装包里，可直接调用。
+```
+
+
+## 课外活动：概率函数汇总 {#secdist-9}
+
+R中几乎所有生成概率分布值的函数工作机制都是相同的（是相同，不是相似哦），且遵循同样的命名规则（“func”表示你的分布）：
+
+- 概率密度函数（PDF）以`d`开头，调用格式为`dfunc(x, p1 , p2…)`，得到密度函数。`x`为数值型量
+
+- （累积）分布函数以`p`开头。调用格式为`pfunc(q, p1 , p2…)`，得到分布函数。`q`为数值型量。
+
+- 分位数函数以`q`开头。调用格式为`qfunc(p, p1 , p2…)`，得到分位数函数。`p`为由概率构成的向量。
+
+-    随机数生成函数以`r`开头。调用格式为`rfunc(n, p1 , p2…)`，生成符合此分布的随机数，`n`为生成随机数的个数。
+
+其中`p1`，`p2`是分布的参数值。所有`pfunc`和`qfunc`的函数都具有逻辑参数，`lower.tail`和`log.p` ，所有的`dfunc`函数都有参数`log`。此外，对于正态分布，具有学生化样本区间的分布还有`ptukey`和`qtukey`这样的函数。
+
+来举例说明一下。
+
+显著性水平为5%的正态分布的双侧临界值：
+
+\newpage
+
+\index{a@小贴士!z@分布函数汇总}
+```{theorem, label='thm-dist'}
+分布函数汇总。
+```
+\small
+
+| 分布            | R函数                                      | 分布参数                                     |
+| ------------- | ---------------------------------------- | ---------------------------------------- |
+| 贝塔分布     | dbeta,  pbeta,  qbeta,   rbeta           | shape1,  shape2,   ncp = 0               |
+| 二项分布          | dbinom,  pbinom,         | size,  prob                              |
+|           | qbinom,   rbinom       |                               |
+| 生日分布          | dibirthday,  pbirthday                   | classes,  coincident                     |
+| 柯西分布          | dcauchy,  pcauchy,     | location,  scale                         |
+|     | qcauchy,   rcauchy   |                          |
+| 卡方分布          | dchisq,  pchisq,  qchisq,   rchisq       | df,  ncp = 0                             |
+| 指数分布          | dexp,  pexp,  qexp,   rexp               | rate                                     |
+| $F$分布           | df,  pf,  qf,   rf                       | df1,  df2,  ncp                          |
+| 伽马分布          | dgamma,  pgamma,  a       | shape,  rate = 1,         |
+|              | qgamma,   rgamma       | scale = 1/rate        |
+| 几何分布          | dgeom,  pgeom,  qgeom,   rgeom           | prob                                     |
+| 超几何分布         | dhyper,  phyper,  qhyper,   rhyper       | m,  n,  k(注意，普通变量 |
+|         |         | "n"被命名为"nn"， |
+|         |         | "因为"n"已经被占用) |
+| 指数正态分布        | dlnorm,  plnorm,  qlnorm,   rlnorm       | meanlog,  sdlog                          |
+| 罗吉斯分布         | dlogis,  plogis,  qlogis,   rlogis       | location,  scale                         |
+| 多项式分布         | dmultinom,  pmultinom                    | size,  prob                              |
+| 负二项分布         | dnbinom,  pnbinom,   | size,  prob,  mu                         |
+|       | qnbinom,   rnbinom   |                           |
+| 正态分布          | dnorm,  pnorm,  qnorm,   rnorm           | mean,  sd                                |
+| 泊松分布          | dpois,  ppois,  qpois,   rpois           | lambda                                   |
+| 学生$t$分布         | dt,  pt,  qt,   rt                       | df,  ncp                                 |
+| 学生化极差分布       | dtukey,  ptukey                          | nmeans,  df,  nranges                    |
+| 均匀分布          | dunif,  punif,  qunif,   runif           | min,  max                                |
+| 韦伯分布          | dweibull,   pweibull, | shape,  scale                            |
+|                  | qweibull,  rweibull |                             |
+| Wilcoxon秩和分布  | dwilcox,  pwilcox,                         | m,  n                                    |
+|                    | qwilcox,   rwilcox                        |                                        |
+| Wilcoxon符号秩分布 | dsignrank,   psignrank,                 | n                                        |
+|                    | signrank,  rsignrank |                                         |
+
+
+\normalsize
+
+
+```{r}
+qnorm(0.025)
+qnorm(0.975)
+```
+
+因此，根据小贴士 \@ref(thm:thm-dist) 的列表，可以检验某种连续型随机变量的概率分布（用p开头的命令，套用到`ks.test(x, y, ...,alternative = c("two.sided", "less", "greater"),exact = NULL)`里去），或者生成某种连续型随机变量分布的随机数（用r开头的命令），等等。
+
+```{r, tidy=FALSE, echo=FALSE, eval=FALSE}
+distfun <- read.delim('./tables/distfun.txt', encoding = 'UTF-8')
+knitr::kable(
+  # format = 'latex',
+  distfun, 
+  booktabs = TRUE
+)
+```
+
+\newpage \thispagestyle{empty}
+
+# 用 R 进行基础统计（二）：均值比较和方差分析 {#sectest}
+
+
+```
+　　开放、绿色、功能强大、具有源源不断巨大资源的R不仅有必要而且一定能够在中国推广和发展。
+```
+> ---吴喜之
+
+前面我们说了各种分布检验，那么，知道自己的数据属于什么分布后，再进行均值或者方差的比较就很容易了。
+
+$t$检验是适用于正态分布数据集的检验，又分为单正态总体的检验和多个正态总体的检验。
+
+## 单正态总体的检验 {#secttest-1}
+
+通俗地说，用一个已知的真值来检验一组数据是否服从于以这个真值为中心值的分布。举例：
+
+为了测试一种新的检验大气中二氧化碳含量方法的可靠性，则用此方法来检验一定浓度的标准二氧化碳气体（此情况则为已知真值）。
+
+我们依然以二氧化碳浓度数据举例。假设1959年的12个观测值为此方法检验了12次的结果，真值为316.45:
+
+```{r}
+myco2<-co2[1:12]
+myco2
+```
+
+现在来通过均值检验来看看观测方法方法是否可靠：
+
+\index{分布和检验!t.test}
+
+```{r}
+t.test(myco2,mu=316.45)
+```
+
+结果分析：均值315.8258看上去和给定的真值316.45有一定差异。因此我们需要利用$t$检验的结果来判断这个差异是否在可接受的误差范围内。
+
+第二行的$p$值（$p$-value)等于0.2079，大于显著性水平0.05，因此我们可以认为检测值315.8258在允许的误差范围内，这个方法可靠。
+
+从统计学术语来解释是这样的：首先，检验统计量$t$为 -1.3381，自由度为11，检验的$p$值为0.2079。$p$值的意义是实际样本的均值大于316.8525或者小于314.7992的概率是0.2079。
+
+第三行给出备择假设：此方法得到的检验真值不等于316.45。
+
+根据上述结果，我们不足以拒绝原假设“检验结果等于真值316.45”，即应该接受原假设，而拒绝备择假设“检验值不等于316.45”。
+
+接下来的数据是算出的检验值于95%显著性水平的置信区间：下限314.7992，上限316.8525，即检验值落在这个范围内都是可接受的。
+
+## 双正态总体的检验 {#sectest-2}
+
+在实际生活中我们很少能用一个已知真值去检验一组数据，更多的是比较两组数据平均值。
+
+依然以二氧化碳浓度为例子。1959年和1969年的浓度，是差不多还是有统计意义的显著差别？
+
+\index{分布和检验!t.test}
+
+```{r, tidy=FALSE}
+myco2.t1 <- co2[1:12] # 1959年的观测数据
+myco2.t2 <- co2[13:24] # 1960年的观测数据
+t.test(myco2.t1,myco2.t2)
+```
+
+结果分析：两年的均值分别为315.8258和316.7475，看上去有一定差异。因此我们需要利用$t$检验的结果来判断这个差异是真的有统计意义的差异，还是由各种误差导致的可接受范围。
+
+$p$值（ $p$-value)等于0.2338，大于显著性水平0.05，因此我们可以两年的浓度差值在允许的误差范围内，1959和1960两年的二氧化碳浓度没有显著的差别。
+
+来看看别的年份：
+
+\index{分布和检验!t.test}
+
+```{r,tidy=FALSE}
+myco2.t1 <- co2[1:12] # 1959年的观测数据
+myco2.t3 <- co2[97:108] # 1965年的观测数据
+t.test(myco2.t1,myco2.t3)
+```
+
+结果分析：两年的均值分别为315.8258和322.02，看上去差别挺大的。$p$值（ $p$-value)等于1.516e-08， 小于极显著性水平0.01，因此我们可以得出结论：两年的浓度差值已经超过允许的误差范围，1959和1965两年的二氧化碳浓度有极显著的差别。
+
+
+## 配对 *t* 检验 {#sectest-3}
+
+在比较两个数据集时，如果它们是彼此独立的，比如我们刚才用的两年的二氧化碳观测值，两个班的学生对相同样品的检测值，等等。这种情况下我们用普通$t$检验，R的默认设置是`paired＝FALSE`。但是有一些样本，它们彼此不独立（有共同的属性），有千丝万缕的联系，这时候我们就不用能独立样本$t$检验了，要在执行语句中设置一个配对参数`paired＝TRUE`。比如为了检验某种新的降血压药物的效果，服药一段时间后，医生检验病人在服药前后血压是否有显著差异以判断降压药的效果。因为服药前后的数据都是和病人自身体质密切相关的，因此这两组数据不完全独立，就不能使用前面说的独立样本$t$检验，而必须使用配对$t$检验。
+
+类似的例子还有减肥效果的判断——某种减肥方式是否真的有效？
+
+\index{分布和检验!t.test}
+
+```{r, tidy=FALSE}
+require(graphics) # 学生的睡眠数据
+with(sleep, t.test(extra[group == 1], extra[group == 2]))
+# 用于比较的两组睡眠数据，10个学生，受试编号1-10.
+# 先来看一眼数据。ID是受试学生编号，
+# 假定extra就是睡眠质量的一个指标，
+# group的编号1和2分别代表某种治疗前和治疗后。
+sleep 
+#先来看看，如果忽视样本之间的联系，用独立样本$t$检验会怎么样
+t.test(extra ~ group, data = sleep) 
+```
+
+看上去，虽然两组数据差别挺大的，但是因为$p$值大于0.05，因此这个差别还是认为统计不显著。原因就在于10个学生本身的个体差异很大，导致他们彼此的测量数据差别很大，因此每组数据的偏差也很大；这样即使两组数据均值看起来差别不小，但是仍然认为统计学意义上的差别不显著。
+
+接下来我们看看如果用配对$t$检验，会得到什么样的结果：
+
+\index{分布和检验!t.test}
+
+```{r}
+require(graphics)##学生的睡眠数据
+with(sleep, t.test(extra[group == 1], extra[group == 2]))
+#用于比较的两组睡眠数据，10个学生，受试编号1-10
+t.test(extra ~ group, data = sleep,paired=TRUE)
+#考虑到样本之间的联系，用配对$t$检验
+```
+
+殷勤的R一次把两种检验的结果都列出来了。对比之下可以发现，因为考虑了自身的属性，配对$t$检验的结果证明，睡眠治疗方法是有效的（$p$远小于0.05，治疗前后有显著差异）。
+
+只有采用正确的检验方法，才能得到合理的结果。
+
+统计学和R语言一样，都是工具，关键在使用它们的人。否则，拿一位统计学大牛的话来说，就是“garbage in， garbage out”。所以，请一定要把握好对数据的理解和认识哦。
+
+## 多组之间均值比较：多组样本的配对 *t* 检验 {#sectest-3}
+
+如果想知道更多关于组间差异的信息，可以对任意两组数据进行$t$检验。R中实现这一命令的语句是：
+
+\index{分布和检验!pairwise.t.test}
+
+```{r, eval=FALSE, tidy=FALSE}
+pairwise.t.test(x, g, p.adjust.method = p.adjust.methods,
+    pool.sd = !paired, paired = FALSE,
+    alternative = c("two.sided", "less", "greater"), ...)
+```
+
+`x`为数值型变量，`g`为一个指定分组的因子型变量，`pool.sd`指定是否计算所有组的统一标准差。
+
+来看一个例子，以某个城市空气中臭氧含量为例，比较各个月份之间是否有显著差异。
+
+```{r}
+attach(airquality)
+Month <- factor(Month, labels = month.abb[5:9])
+pairwise.t.test(Ozone, Month)
+pairwise.t.test(Ozone, Month, p.adj = "bonf")
+pairwise.t.test(Ozone, Month, pool.sd = FALSE)
+detach()
+```
+
+可见，有的月份之间有显著差别，比如7月和9月；而有的月份之间无显著差异，比如5月和6月。
+
+多重$t$检验的优点是使用方便，但是均值的多重检验中，如果因素的水平较多，检验又同时进行，多次重复使用会增大第一类错误的概率（前面我们说过的H0为真而被误伤，拒绝掉了），所以有时候结论不见得可靠。
+
+为了克服多重$t$检验的缺点，统计学家们提出了一些有效的方法来调整$p$值。这些方法涉及到太多统计学知识，这里只是解释一下R中的调整参数设置。在刚才这个例子里我们看到了`p.adj = "bonf" `，意思是调整方法是Bonderroni。$p$值调整函数是`p.adj = " "`，其使用方法如下：
+
+\index{分布和检验!p.adjust}
+
+```{r, eval=FALSE}
+p.adjust(p, method = p.adjust.methods, n = length(p))
+```
+
+`p.adjust.methods`： \texttt{c("holm",\ "hochberg",\ "hommel",\ \mbox{"bonferroni"},\ "BH",\ "BY",\ "fdr",\ "none")}，选择其中一种。 `"none"`表示不作任何调整，默认设置是`"Holm"`，即按Holm方法调整。
+
+
+\newpage
+
+## 方差分析 {#sectest-4}
+
+方差的意义就是总体样本的离散程度——即一个数据集里，所有数据的分散程度。这种分散程度，也就是观测值的波动。引起这种波动的原因主要有两类，一类是不可控的随机因素干扰或者观测误差；另一类是因为不同的处理方式或者实验设计引起的可控波动。方差分析的目的就是将数据的总波动分解为上述两类，并且做出数量分析，以比较这两类波动所占的比例，从而进一步分析数据或者改善实验设计。因此，方差分析的本质也是一种均值检验，通过对方差来源进行解析，推测某一个或多个因素下各水平的因变量均值是否有明显差异，从而判断那些因素有显著影响。
+
+前面我们说过$t$检验用于检验两个正态总体均值是否相等，比如对照组和实验组的差异。方差分析则可以检验多个总体（多个组）的均值是否存在差异。
+
+### 单因素方差分析 {#sectest-5}
+
+单因素方差分析就是只考虑一个因素对结果的影响。在R中执行这个分析的函数是`oneway.test()`,它的格式为
+
+\index{分布和检验!oneway.test}
+
+```{r, eval=FALSE}
+oneway.test(x~group, var.equal=T)
+```
+
+`x`为样本观察值，`group`为描述分类情况的因子（当然也可以用别的名字）。 以R自带的小鸡生长数据为例。
+
+\index{分布和检验!oneway.test}
+
+```{r}
+oneway.test(weight~feed,data=chickwts, var.equal=T)
+```
+
+$F$检验统计量为15.365，而$p$值小于0.05，因此拒绝原假设，不同的小鸡喂养方式有极显著差异。
+
+学生睡眠数据的例子：
+
+\index{分布和检验!oneway.test}
+
+```{r, tidy=FALSE}
+oneway.test(extra ~ group, data = sleep)
+# var.equal这个设置如果为TRUE，则进行单因素F检验。
+# 反之则用另一种计算方法Welch method，属于双因素Welch检验的
+# 一种近似算法
+oneway.test(extra ~ group, data = sleep, var.equal = TRUE)
+```
+
+$p$值大于0.05，两组没有显著差异（跟独立样本$t$检验一样的结论）。
+
+更多分析的详细信息可以通过函数`anova()`和`aov()`得到，注意，应用函数`anova()`需要在线性模拟函数`lm()`产生的结果基础上调用。仍然以小鸡喂养的例子：
+"feed"这一行给出了组间离差平方和。$F$值和$p$值，和`oneway.test()`给出的结果是一致的。此外，也可以使用`aov()`代替`anova(lm)`组合，但是，要得到输出结果需要加上`summary()`命令。
+
+\index{分布和检验!aov}
+\index{杂项!summary}
+
+```{r}
+summary(aov(weight~feed,data=chickwts))
+```
+
+
+得到的结果也是一样的。
+
+### 不考虑交互作用的双因素方差分析 {#sectest-6}
+
+双因素方差分析这一节的例子，都来自于包geepack [@R-geepack]。（注意，我们只是利用这个包的数据来学习R语句的使用，相应的方差分析结果是没有实际意义的。）
+
+顾名思义，不考虑交互作用，就是两个因素各自作用于因变量，看看各自的变异对结果有无影响。
+
+R中的执行语句是
+
+\index{分布和检验!aov}
+
+```{r, eval=FALSE, tidy=FALSE}
+aov(formula, data = NULL, projections = FALSE, qr = TRUE,
+    contrasts = NULL, ...)
+```
+
+我们以数据集dietox为例，看看两个因素`Cu`和`Evit`对猪体重的影响是否显著。
+
+\index{杂项!summary}
+
+```{r}
+library(geepack)
+data(dietox)
+weight<-aov(Weight~Cu+Evit,data=dietox)
+summary(weight)
+
+```
+
+两项$F$统计量的$p$值都大于0.05，可见这两项对体重并无显著影响。（再次注意这结果的意义并没有真实存在，意思就是那两项没影响。）
+
+### 考虑交互作用的双因素方差分析 {#sectest-7}
+
+考虑交互作用，就说两种影响因素彼此不完全独立，有交互作用。还是以刚才的数据为例，注意R的执行语句变了：
+
+\index{杂项!summary}
+\index{分布和检验!aov}
+
+```{r}
+data(dietox)
+weight<-aov(Weight~Cu+Evit+Cu*Evit,data=dietox)
+# 增加了一项，用*链接两因素，表示交互作用
+summary(weight)
+```
+
+从结果可见，不仅这两个因素都没有显著作用，而且它们的交互作用也不显著。这里需要想清楚，我们这个题目叫“需要考虑交互作用”，并不是说就一定有交互作用，而是可能有，因此需要你来检验是否真的有交互作用。
+再看一下有影响的因素。以geepack中的哮喘数据seizure为例。
+
+\index{杂项!summary}
+
+```{r, tidy=FALSE}
+data(seizure)
+seiz.l <- reshape(seizure, 
+    varying = list(c("base","y1", "y2", "y3", "y4")),
+    v.names="y", times = 0:4, direction = "long")
+seiz.l <- seiz.l[order(seiz.l$id, seiz.l$time),]
+seiz.l$t <- ifelse(seiz.l$time == 0, 8, 2)
+seiz.l$x <- ifelse(seiz.l$time == 0, 0, 1)
+result <- aov(y ~ x + trt + x * trt, data=seiz.l)
+summary(result)
+```
+
+结果表明`x`这一项是有影响的，但是`trt`这项没有影响，而且它与`x`也没有交互作用。
+
+再看看小鸡数据中别的几个因素是否有交互作用。
+
+\index{杂项!summary}
+\index{分布和检验!aov}
+
+```{r}
+data(dietox)
+weight<-aov(Weight~Cu+Time+Cu*Time,data=dietox)
+#增加了一项，用*链接两因素，表示交互作用
+summary(weight)
+```
+
+从这个结果看，两因素`Time`和`Cu`都有显著影响，但它们并无交互作用。
+
+## 非参数假设检验 {#sectest-8}
+
+在前一节我们已经介绍了如何检验一个数据集是否服从某种分布。知道某一数据集服从正态分布，就可以进行相应的均值检验了（$t$检验，方差分析等）。但是，很多情况下，随机变量的分布类型是未知的。比如降雨的pH值属于某种参数分布，而降水中的硫酸根离子浓度，因为是经过了雨水体积的加权平均计算得到，所以我们就不知道它属于什么分布了。硫酸根离子的浓度往往能反映降水污染的程度。如果酸雨研究者需要比较两个城市的降水污染严重程度是否一致，或者需要比较某种调控措施后降水污染程度是否有显著改善。该如何来检验呢？
+
+与前面我们说的参数假设检验相对应，我们把对分布一无所知的数据检验称为非参数假设检验。我们需要应用一种不必依赖某一专门的总体分布的统计分布，称之为“不需要分布(distribution free)统计法”。
+总体分布不确定，即与参数无关，这样的检验通常将数据转换为秩（rank）来进行分析。所谓秩，就是数据按照升幂排列后，每个观测值的位置。利用数据的秩来分析，就避免了不知道数据分布的困扰，这就是大多数非参数检验的优点。本节我们介绍R如何利用秩检验来比较：两个样本的数据是否来自同一总体？是否服从同样分布？是否有同样的中位数（类似于参数检验中的，两个样本均值是否相同）？
+
+常用Wilcoxon检验，也就是不依赖分布的$t$检验。
+
+在进行检验之前我们往往通过图示先得到一个初步的了解。常用的绘图有：（前面都有介绍，所以就不举例了。只说作用）
+
+- 直方图（histogram）：频数用矩形块标绘，通过直方图推测分布的密度函数对比，得到直观印象。
+- 茎叶图（Stem-and-leaf Diagrams）：将数据集中的数据按位数进行比较，把数的大小基本不变或者变化不大的位作为主干（茎），把变化大的位的数作为分枝（叶），列在主干的后面，这样每个主干后面几个数，一目了然。
+- Q-Q图：仅用于检验正态性。
+
+### 单样本检验 {#sectest-9}
+
+Wilcoxon检验中的单样本检验叫Wilcoxon signed rank test， 有的翻译为“Wilcoxon符号秩检验”。这个检验利用样本的观察值和假设的中心位置之差来进行比较检验，不同的符号代表在中心位置的哪一边，差的绝对值的秩大小代表和假设中心的距离远近。R中的执行语句为：
+
+\index{分布和检验!wilcox.test}
+
+```{r, eval=FALSE, tidy=FALSE}
+wilcox.test(x, y = NULL, 
+    alternative = c("two.sided", "less", "greater"), mu = 0,
+    paired = FALSE, exact = NULL, correct = TRUE, 
+    conf.int = FALSE, conf.level = 0.95, ...)
+```
+
+来看一个例子。还是以臭氧浓度数据为例，看看5月到8月的臭氧浓度数据是否来自于中心位置为36的总体，因此给定的mu值是36。
+
+\index{分布和检验!wilcox.test}
+
+```{r, tidy=FALSE}
+wilcox.test(airquality$Ozone, mu = 36, 
+    subset = Month %in% c(5, 8), exact = NULL, 
+    correct = TRUE,conf.int = FALSE, conf.level = 0.95)
+```
+
+$p$值大于0.05，因此接受原假设，即这些数据来自中心位置为36的总体。
+
+### 两独立样本秩检验 {#sectest-10}
+
+两独立样本的秩检验，就是要检验两个样本的中位数是否相等。
+
+\index{分布和检验!wilcox.test}
+
+```{r, tidy=FALSE}
+require(graphics)
+# 读者不用挨个输入这些数据。
+# 这些数据和代码都来自在线帮助 wilcox.test
+x <- c(1.83,  0.5,  1.62,  2.48, 1.68, 1.88, 1.55, 3.06, 1.3)
+y <- c(0.878, 0.647,0.598, 2.05, 1.06, 1.29, 1.06, 3.14,1.29)
+wilcox.test(x, y, paired = TRUE, alternative = "greater")
+# “alternative”设置的意义和前面的参数检验是一样的
+wilcox.test(y - x, alternative = "less")
+# 和上一句命令的意义一样
+wilcox.test(y - x, alternative = "less",
+            exact = FALSE, correct = FALSE)
+# exact的设置表示是否需要计算出精确的p值，
+# correct的设置意义是，样本量很大时是否需要做连续型修正
+```
+
+$p$小于0.05，我们可以拒绝原假设，即两个样本的中位数不相等。
+
+### Mann-Whitney U检验 {#sectest-11}
+
+各文献中对Wilcoxon秩检验和Mann-Whitney U检验的定义仍然不是完全统一。本节就从R在这方面的应用出发，根据`wilcox.test()`函数对这两种检验加以说明。
+
+与Wilcoxon 秩和统计量等价的有Mann-Whitney U统计量。简单地说，Wilcoxon比较的是样本的大小排列秩序，而Mann-Whitney U比较的是样本1的观察值大于样本2的观察值的个数。这两个统计量之间可以通过一个数学公式换算（有兴趣的话可以去找统计学书来看看）
+
+设$X_1$，$X_2$,...,$X_m$来自于连续型总体$X$（容量为$m$），$Y_1$，$Y_2$,...,$Y_n$来自于连续型总体$Y$（容量为$n$），且$X$和$Y$相互独立。
+
+- $M_X$：总体$X$的中位数
+- $M_Y$：总体$Y$的中位数
+- $W_{XY}$：把总体$X$和$Y$的观察值做比较之后，$Y$的观察值大于$X$的个数。
+
+$W_{XY}$就是Mann-Whitney U统计量，它和wilcoxon秩和统计量的关系如下：
+
+$$W_Y = W_{XY} + \frac{n(n+1)}{2}, W_X = W_{YX} + \frac{m(m+1)}{2}.$$
+
+\index{分布和检验!wilcox.test}
+
+在R中执行u检验的命令依然是 `wilcox.test()`，但是在参数设置上有所区分：
+```{r, eval=FALSE, tidy=FALSE}
+wilcox.test(x, y = NULL, 
+    alternative = c("two.sided", "less", "greater"),
+    mu = 0, paired = FALSE, exact = NULL, correct = TRUE,
+    conf.int = FALSE, conf.level = 0.95, ...)
+```
+
+`paired = TRUE`表示Wilcox秩和检验。`paired = FALSE`表示 Mann-Whitney U检验。
+
+\index{分布和检验!wilcox.test}
+
+```{r}
+## randu是R自带的数据集
+x<-randu$x
+y<-randu$y
+wilcox.test(x,y,paired=FALSE) # Wilcox秩和检验
+wilcox.test(x,y,paired =TRUE) # Mann-Whitney U检验
+```
+
+可见因为Wilcoxon秩和统计量和Mann-Whitney U统计量有固定的数学关系，因此，即使他们计算出来的统计值有所不同（`w`和`v`），但是检验的结果是一致的，原假设也是一致的。$p$值大于0.05，无法拒绝原假设，即`x`和`y`来自同一中心位置的总体。
+
+### 多个独立样本的秩和检验 {#sectest-12}
+
+多个独立样本的非参数检验方法是Kruskal-Wallis 秩和检验，这个检验的目的是看多个总体的位置参数是否一样。
+
+这些样本之间都是彼此独立的，也就是说，他们的分布函数有可能形状相同，只是位置参数不同。
+
+这个检验的原假设是，这些样本的位置参数全部相等，因此相应的备择假设就是，不全都相等（至少有一个不一样）。
+
+这个检验对应的参数检验就是Anova检验，在非参数检验中，则用秩代替具体数值，再用Anova方法做统计分析。
+
+来看一个例子。
+
+\index{分布和检验!kruskal.test}
+\index{作图!boxplot}
+
+```{r, fig.cap='不同组别的植物的重量箱体图', out.width='60%'}
+boxplot(weight~group, data=PlantGrowth)
+#做比较前先来个直观了解
+kruskal.test(weight~group, data=PlantGrowth)
+```
+
+$p$值小于0.05，拒绝原假设，即至少有一组的位置参数不同。
+
+### 多个相关样本的秩和检验 {#sectest-13}
+
+多个总体分布、多个配对样本的差异检验方法是`friedman.test()`。这个和配对$t$检验的感觉相似，参与比较的样本之间不完全独立，往往是匹配的实验设计。`friedman.test()`要求的数据是向量或矩阵，否则会报错。
+
+来看一个例子。这是`friedman.test`在线帮助中使用的数据，比较三种方法击球的差异。
+
+\index{分布和检验!friedman.test}
+
+```{r, tidy=FALSE}
+RoundingTimes <-  matrix(c(5.40, 5.50, 5.55,
+                           5.85, 5.70, 5.75,
+                           5.20, 5.60, 5.50,
+                           5.55, 5.50, 5.40,
+                           5.90, 5.85, 5.70,
+                           5.45, 5.55, 5.60,
+                           5.40, 5.40, 5.35,
+                           5.45, 5.50, 5.35,
+                           5.25, 5.15, 5.00,
+                           5.85, 5.80, 5.70,
+                           5.25, 5.20, 5.10,
+                           5.65, 5.55, 5.45,
+                           5.60, 5.35, 5.45,
+                           5.05, 5.00, 4.95,
+                           5.50, 5.50, 5.40,
+                           5.45, 5.55, 5.50,
+                           5.55, 5.55, 5.35,
+                           5.45, 5.50, 5.55,
+                           5.50, 5.45, 5.25,
+                           5.65, 5.60, 5.40,
+                           5.70, 5.65, 5.55,
+                           6.30, 6.30, 6.25),
+    nrow = 22,byrow = TRUE,
+    dimnames = list(1:22,
+        c("Round Out", "Narrow Angle", "Wide Angle")))
+friedman.test(RoundingTimes)
+```
+
+$p$值小于0.05，拒绝原假设，可见三种方法有显著差异。
+
+```{example, label='extest-1'}
+比较数据集randu里的`x`，`y`，`z`三组数据均值是否有明显差异，做$t$检验和多组样本的$t$检验以及配对$t$检验。
+```
+
+\newpage \thispagestyle{empty}
+
+# 相关性分析和协方差 {#seccor}
+
+## 相关性检验及可视化 {#seccor1}
+
+做数据分析时，往往需要知道两个变量是否相关。相关系数可以用来衡量两个随机变量之间的线性相关程度，其取值范围是 -1 到 1。
+通常用来衡量相关关系的统计量是Pearson相关系数，也正是Excel软件中用CORREL函数计算出来的结果。因为Pearson相关系数是基于正态分布
+计算的，因此对于服从正态分布的变量来说度量效果更好。
+
+另外一个统计量是Spearman相关系数。正如我们前面所说，有很多数据是不服从正态分布的，甚至都不知道它是否服从于某一种已知
+的分布。因此，Spearman相关系数是一个非参数统计量，它不对数据的分布情况做出假设。
+
+此外，还有一个统计量叫做Kendall T，它比较的是两个随机变量的秩，而不是比较随机变量的数值。显然，这种统计量对变量的分布情况更没有要求。
+我们以R自带的数据集iris（鸢尾花数据集）为例来说明各种用途的相关检验。
+方法以及如何将相关性检验的结果漂亮地可视化。
+
+
+```{r}
+data(iris)#鸢尾花数据集
+head(iris)#查看下数据集
+iris.data<-iris[,-5]#去掉最后一列，非数字变量
+```    
+
+首先，R内置的`cor()`函数就可以计算两个数据集直接的相关系数。
+
+```{r}
+cor(iris.data)
+```    
+
+但是，这个分析只给出了相关系数，我们还需要知道显著性水平（$p$值）才能确定这种相关关系的意义。
+
+用R自带的`cor.test()`函数可以得到我们想要的信息：
+
+\index{分布和检验!cor.test}
+
+```{r, eval=FALSE, tidy=FALSE}
+cor.test(x, y, 
+    alternative = c("two.sided", "less", "greater"),
+    method = c("pearson", "kendall", "spearman"),
+    exact = NULL, conf.level = 0.95, continuity = FALSE, ...)
+```    
+
+- `x`, `y`：需要检测的数据集。
+- `alternative`：备择假设， "two.sided", "greater" 和 "less"选一个。
+- `method`：上面所说的三种统计量，根据数据实际情况选一种。
+- `exact`：是否需要精确计算出$p$值。
+- `conf.level`：置信区间，只对Pearson相关系数有效（要求`x`，`y`各包含至少四个数据）
+- `continuity`：是一个逻辑变量。如果选择`TRUE`，则对Kendall's 检验的tau值和Spearman's 检验的rho 值进行连续性矫正。
+
+以R自带的数据airquality为例，我们来看一下检验的过程。
+
+\index{分布和检验!cor.test}
+
+```{r}
+data(airquality)
+head(airquality)
+cor.test(airquality$Wind,airquality$Temp)
+``` 
+
+默认的是Pearson相关，$p$值远小于0.01，可见风速与气温显著相关，相关系数为 -0.457，为负相关。
+
+如果我们选择kendall统计量：
+
+\index{分布和检验!cor.test}
+
+```{r}
+cor.test(airquality$Wind,airquality$Temp,method = "kendall")
+``` 
+
+结果相似，因此选择哪一种统计量，需要结合数据本身的特性。
+
+这样两个两个地比较变量，显然是很笨拙的方法，尤其是面对一个变量很多的数据集的时候。因此，R的 psych 包 [@R-psych] 提供了一次给出相关系数矩阵的命令：
+
+\index{分布和检验!corr.test}
+
+```{r}
+if(!require(psych)) install.packages("psych")
+library(psych)
+corr.test(iris.data)
+``` 
+
+相关系数和$p$值一并给出来了。
+
+可以只提取相关系数:
+
+\index{分布和检验!corr.test}
+
+```{r}
+corr.test(iris.data)$r
+```   
+
+或者只提取$p$值：
+
+\index{分布和检验!corr.test}
+
+```{r}
+corr.test(iris.data)$p
+```   
+
+注意，此函数默认输出结果只保留小数点后两位，并且不可以采用常用的 `option(digitals = 3)`或者 `round(x, 3)` 来指定小数位数。只能通过使用`print()`函数来对输出结果中的小数位数加以指定：
+
+\index{杂项!print}
+\index{分布和检验!corr.test}
+
+```{r}
+print(corr.test(iris.data)$r,digits=3)
+```   
+
+有时候我们得到的相关系数矩阵很庞大，看上去眼花缭乱，难以快速地获取有效信息。这时候就需要将相关系数矩阵优雅漂亮地做出图来。R中提供了好几个包可以达到这个目的，我们依然以鸢尾花数据为例来展示这些包的使用。
+首先看看数据两两之间的散点图（图 \@ref(fig:liyi1)）：
+
+\index{作图!pairs}
+
+```{r liyi1,fig.cap='鸢尾花数据集里的两两散点图'}
+if(!require(graphics)) install.packages(graphics)
+require(graphics)
+pairs(iris)
+```   
+
+先安装和载入需要的corrplot包 [@R-corrplot]：
+
+```{r}
+if(!require(corrplot)) install.packages("corrplot")
+library(psych)
+library(corrplot)
+```   
+
+`corrplot()`命令的默认结果如下（图 \@ref(fig:liyi2)）：
+
+\index{分布和检验!corr.test}
+\index{作图!corrplot}
+\index{作图!par}
+
+```{r liyi2, fig.cap='corrplot()默认设置作图示例', echo=-1, fig.width=4, fig.height=4, out.width='60%', fig.align='center'}
+par(cex = 0.5)
+corrplot(corr.test(iris.data)$r)
+```   
+
+事实上，`corrplot()`这个命令有多种选择可以让结果图更明确或者有个性(看看函数使用格式就知道）：
+
+
+\index{作图!corrplot}
+
+```{r, eval=FALSE, tidy=FALSE}
+corrplot(corr, method = c("circle", "square", "ellipse", 
+  "number", "shade", "color", "pie"), type = c("full", 
+  "lower", "upper"), add = FALSE, col = NULL, bg = "white", 
+  title = "", is.corr = TRUE, diag = TRUE, outline = FALSE, 
+  mar = c(0,0,0,0), addgrid.col = NULL, addCoef.col = NULL, 
+  addCoefasPercent = FALSE, order = c("original", "AOE", 
+  "FPC", "hclust", "alphabet"), hclust.method = c("complete",
+  "ward", "ward.D", "ward.D2", "single", "average", 
+  "mcquitty", "median", "centroid"), addrect = NULL, 
+  rect.col = "black", rect.lwd = 2, tl.pos = NULL, tl.cex =1,
+  tl.col = "red", tl.offset = 0.4, tl.srt = 90, cl.pos =NULL,
+  cl.lim = NULL, cl.length = NULL, cl.cex = 0.8,
+  cl.ratio = 0.15, cl.align.text = "c", cl.offset = 0.5, 
+  number.cex = 1, number.font = 2, number.digits = NULL, 
+  addshade = c("negative", "positive", "all"), shade.lwd = 1, 
+  shade.col = "white", p.mat = NULL, sig.level = 0.05, 
+  insig = c("pch", "p-value", "blank", "n"), pch = 4,
+  pch.col = "black", pch.cex = 3, 
+  plotCI = c("n", "square", "circle", "rect"), 
+  lowCI.mat = NULL, uppCI.mat = NULL, na.label = "?",
+  na.label.col = "black", ...)
+```
+
+以及各种不厌其烦的参数设置：
+
+- `corr`：相关系数矩阵。
+- `method`：这是一个类型变量选择，可以选择为 "circle" (default), \mbox{"square"}, "ellipse", "number", "pie", "shade" and "color". 下面我们会举例来说明。方块或者圆圈的面积直接代表相关系数的数值。
+- `type`：也是类型变量，可选的有 "full" (默认), "upper" or "lower", 展示为全图，或者矩阵的上半部分或下半部分。
+add：逻辑型变量，如果选择TRUE，则在已有图形上加上新图形，否则另开一个作图窗口。
+- `col`：表示颜色的变量，如果不设置，默认为，颜色均一分布，为 \mbox{colorRampPalette(col2)(200)}。
+- `bg`：背景颜色。
+- `title`：图标题。
+- `is.corr`：逻辑型变量，设置输入的矩阵是否是相关系数矩阵。如果不是相关系数矩阵，可以通过设置 `is.corr = FALSE`来进行作图。
+- `diag`：逻辑型变量，是否要在主对角线写出相关系数。
+- `outline`：逻辑型变量，如果设置为 `TRUE`，则默认选择为黑色。
+- `mar`：和绘图中par的意义一样。
+- `addgrid.col`：格子颜色。
+- `addCoef.col`：图上系数的颜色
+- `addCoefasPercent`：逻辑型变量，是否要将系数转换为空间百分比。
+- `order`：类型变量，如何在图中安排变量顺序。
+    - `"original"`——默认按输入文件的变量顺序。
+    - `"AOE"` —— 按照特征向量的夹角顺序排列.
+    - `"FPC"` ——按主成分排序。
+    - `"hclust"`——聚类顺序。
+    - `"alphabet"` ——变量字母顺序。
+
+这些是主要的参数设置，其他一些更细节的设置，大家可以通过 \mbox{\texttt{??corrplot}} 来获得在线帮助。\index{b@帮助!??}
+
+下面我们通过不同的参数设置来感受一下作图的效果。以R自带的汽车数据为例。
+
+\index{作图!corrplot}
+
+```{r, tidy=FALSE}
+data(mtcars)
+M <- cor(mtcars)
+# different color series
+col1 <- colorRampPalette(c("#7F0000","red","#FF7F00",
+    "yellow","white", "cyan", "#007FFF", "blue","#00007F"))
+col2 <- colorRampPalette(c("#67001F", "#B2182B", "#D6604D", 
+    "#F4A582", "#FDDBC7", "#FFFFFF", "#D1E5F0", "#92C5DE", 
+    "#4393C3", "#2166AC", "#053061"))
+col3 <- colorRampPalette(c("red", "white", "blue"))
+col4 <- colorRampPalette(c("#7F0000","red","#FF7F00",
+    "yellow","#7FFF7F", "cyan", "#007FFF", "blue","#00007F"))
+wb <- c("white","black")
+```   
+
+\index{作图!corrplot}
+
+```{r,fig.cap='不同设置的图例', fig.width=6, fig.height=12, fig.align='center'}
+# 不同设置的图例
+library(corrplot)
+par(mfrow = c(2,1))
+corrplot(M, method = "number")
+corrplot(M)
+```   
+
+\index{作图!corrplot}
+
+```{r, tidy=FALSE, fig.cap='不同颜色设置的效果', fig.width=6, fig.height=6, fig.align='center'}
+# 不同颜色设置的效果
+corrplot(M, order = "AOE", col = col1(20), cl.length = 21, 
+         addCoef.col = "grey")
+```   
+
+\index{作图!corrplot}
+
+```{r, tidy=FALSE, fig.cap='不同色块和形状设置的效果', fig.width=4, fig.height=12, fig.align='center'}
+# 不同色块和形状设置的效果
+par(mfrow = c(3,1))
+corrplot(M, method = "ellipse", col = col1(200),order ="AOE")
+corrplot(M, method = "shade", col = col3(20),order = "AOE")
+corrplot(M, method = "pie", order = "AOE")
+
+```   
+
+\index{作图!corrplot}
+
+```{r,fig.cap='设置为中国围棋感觉的效果', fig.width=6, fig.height=12, fig.align='center', tidy=FALSE}
+# 中国围棋的感觉
+par(mfrow = c(2,1))
+corrplot(M, col = wb, order="AOE", outline=TRUE, cl.pos="n")
+corrplot(M, col = wb, bg="gold2",  order="AOE", cl.pos="n")
+
+```   
+
+\index{作图!corrplot}
+
+```{r,fig.cap='不同形状组合', fig.width=6, fig.height=12, fig.align='center', tidy=FALSE}
+# mixed methods: It's more efficient if using
+# function "corrplot.mixed"
+# circle + ellipse
+corrplot(M,order = "AOE", type = "upper", tl.pos = "d")
+corrplot(M,add = TRUE, type = "lower", method = "ell", 
+    order = "AOE", diag=FALSE, tl.pos= "n", cl.pos = "n")
+```   
+
+\index{作图!corrplot}
+
+```{r,fig.cap=' 设定范围的矩阵可视化', fig.width=6, fig.height=12, fig.align='center'}
+par(mfrow = c(2,1))
+## visualize a  matrix in [-100, 100]
+ran <- round(matrix(runif(225, -100,100), 15))
+corrplot(ran, is.corr=FALSE)
+corrplot(ran, is.corr=FALSE, cl.lim=c(-100, 100))
+```   
+
+\index{作图!corrplot}
+
+```{r,fig.cap=' 不同页面、不同图例的设置', fig.width=4, fig.height=12, fig.align='center'}
+par(mfrow = c(3,1))
+## text-labels and plot type
+ 
+corrplot(M, order="AOE", tl.srt=60)
+corrplot(M, order="AOE", diag=FALSE, tl.pos="d")
+corrplot(M, order="AOE", type="lower", cl.pos="b")
+```   
+
+\index{作图!corrplot}
+\index{杂项!for}
+
+
+```{r,fig.cap=' 标示出显著性水平的设置', fig.width=4, fig.height=12, fig.align='center', tidy=FALSE, eval=FALSE}
+cor.mtest <- function(mat, conf.level = 0.95){
+  mat <- as.matrix(mat)
+  n <- ncol(mat)
+  p.mat <- lowCI.mat <- uppCI.mat <- matrix(NA, n, n)
+  diag(p.mat) <- 0
+  diag(lowCI.mat) <- diag(uppCI.mat) <- 1
+  for(i in 1:(n-1)){
+    for(j in (i+1):n){
+      tmp <- cor.test(mat[,i], mat[,j], 
+                      conf.level = conf.level)
+      p.mat[i,j] <- p.mat[j,i] <- tmp$p.value
+      lowCI.mat[i,j] <- lowCI.mat[j,i] <- tmp$conf.int[1]
+      uppCI.mat[i,j] <- uppCI.mat[j,i] <- tmp$conf.int[2]
+    }
+  }
+  return(list(p.mat, lowCI.mat, uppCI.mat))
+}
+
+res1 <- cor.mtest(mtcars,0.95)
+res2 <- cor.mtest(mtcars,0.99)
+
+par(mfrow = c(3,1))
+# 特征标示出显著性水平
+corrplot(M, p.mat = res1[[1]], sig.level = 0.2)
+corrplot(M, p.mat = res1[[1]], insig = "p-value",
+         sig.level= -1) # add all p-values
+corrplot(M, p.mat = res1[[1]], order = "hclust", 
+         insig = "pch", addrect = 3)
+
+```   
+
+corrplot包的参数设置还有其他可选择的细节，读者可以通过在线帮助或者使用文档进一步了解。
+
+现在我们介绍另外一个包：ellipse [@R-ellipse]，以鸢尾花数据为例。可以看到相关系数可视化之后，得到的信息非常明确而且直接。
+
+\index{作图!plotcorr}
+\index{分布和检验!corr.test}
+
+```{r,fig.cap=' 鸢尾花数据展示的ellipse包作图', tidy=FALSE}
+if(!require(ellipse)) install.packages('ellipse')
+library(ellipse)
+library(psych)
+mycol = colors()[as.vector(apply(corr.test(
+  iris.data)$r, 2, rank))]
+plotcorr(corr.test(iris.data)$r, 
+         col = mycol, mar = rep(0, 4))
+```  
+
+
+## 协方差 {#seccor2}
+
+协方差是与相关系数紧密联系的一个统计量，它的定义正好是Pearson相关系数公式中的分子项。
+
+用通俗易懂的话来说，协方差就是两个数据集的方差，体现两个数据集的变化趋势关系，如果协方差为正值，则表明两个数据集变化趋势一致，负值则表示变化趋势相反，0则表示两个数据集变化趋势不相关。 
+
+这个意义是不是和相关系数相似？事实上，协方差和相关系数的关系是这样的：
+
+相关系数＝数据集x，y的协方差/（x的标准差 * y的标准差）
+
+因此，这两个统计量本身就是关联的，通过下面的例子读者可以得到更直观的印象。
+    
+
+在R中计算协方差的函数是`cov()`，它的用法以及参数和`cor()`函数相同：
+
+```{r, eval=FALSE, tidy=FALSE}
+cov(x, y = NULL, use = "everything",
+    method = c("pearson", "kendall", "spearman"))
+```
+
+我们来看一个例子：
+
+
+\index{分布和检验!cor.test}
+\index{作图!plot}
+\index{作图!par}
+\index{作图!lines}
+
+```{r,fig.cap=' 协方差作图示例'}
+x <- c(44.4, 45.9, 41.9, 53.3, 44.7, 44.1, 50.7, 45.2, 60.1)
+y <- c( 2.6,  3.1,  2.5,  5.0,  3.6,  4.0,  5.2,  2.8,  3.8)
+par(mfrow = c(2, 1), mar = c(2, 4, 0.1, 0.1))
+plot(x)
+lines(x)
+plot(y)
+lines(y)
+cor.test(x, y, method = "spearm", alternative = "g")
+cov(x,y)
+```
+
+从`x`，`y`的点线图可以很直观地看出，两个数据集的变化趋势一致。计算结果也表明它们协方差为正，显著相关。 
+    
+```{r}
+cor.test(x, y, method = "spearm", alternative = "g")
+```
+
+如果已经计算得到了一个协方差矩阵，就可以用R中的`cov2cor()`函数来计算相关系数矩阵，或者用`cov.wt()`命令来计算加权协方差矩阵：
+
+\index{分布和检验!cor.test}
+
+```{r, eval=FALSE}
+x<-as.data.frame(x) # 这个命令要求x是数据框或者矩阵
+cov.wt(x, wt = rep(1/nrow(x), nrow(x)), cor = FALSE,
+       center = TRUE, method = c("unbiased", "ML"))
+```
+- `x`：矩阵或者数据框。通常来说，行代表观测值，列代表变量。
+- `wt`：每一个观测值权重组合的向量（必须为正），其长度必须和`x`的行数相同。
+- `cor`：逻辑变量，设置是否返回相关系数矩阵。
+- `center`：逻辑或者数值型变量，确定用于变量计算的中心。如果设置为`TRUE`，将使用每一个变量的均值。如果设置为`FALSE`，则使用0。如果中心为数值，它的长度必须和`x`的列数相等。
+- `method`：确定结果的规格，详见“Details”。可以简化。
+- `Value`：是关于下列变量的清单：
+- `cov`：（加权）的协方差矩阵
+- `n.obs`：观测值x的行数。
+- `wt`：估值的权重。
+- `cor`：估算的相关系数矩阵。
+
+看一个例子：
+
+```{r}
+xy <- cbind(x = 1:10, y = c(1:3, 8:5, 8:10))
+w1 <- c(0,0,0,1,1,1,1,1,0,0)
+cov.wt(xy, wt = w1) # i.e. method = "unbiased"
+cov.wt(xy, wt = w1, method = "ML", cor = TRUE)
+```
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(tidy = FALSE)
+```

@@ -1,0 +1,12 @@
+book_filename: "r4r"
+clean: [packages.bib, bookdown.bbl]
+language:
+  label:
+    fig: "图 "
+    tab: "表 "
+    exm: "练习 "
+    thm: "小贴士 "
+    lem: "思考 "
+  ui:
+    edit: "Edit"
+    chapter_name: ["第", "章"]

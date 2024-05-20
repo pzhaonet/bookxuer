@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="secloop.html">
+<link rel="next" href="secoffice.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="secif" class="section level1">
+<h1><span class="header-section-number">第6章</span> 分支</h1>
+<pre><code>    日出日落，月圆月缺，年尾年头，这是“循环”；
+    上学还是就业，单身还是结婚，丁克还是生娃，这是“分支”；
+    不管是循环还是分支，都嵌入在生老病死的时间轴上，这是“顺序”。
+    所谓尽人事听天命，想来就是心平气和地接受顺序结构，小心翼翼地制订循环结构，在关键时刻控制好分支结构，就这样度过一生罢。
+    </code></pre>
+<blockquote>
+<p>—大鹏志<a href="#fn22" class="footnoteRef" id="fnref22"><sup>22</sup></a></p>
+</blockquote>
+<p>顺序、循环和分支是编程的三大结构。顺序最简单，就是运行完第一行接着运行第二行；上一章我们学习了循环；这一章说说分支。</p>
+<p>什么是分支？分支就是你到了一个路口，向左向右向前看，要选择到底往哪个方向走。每时每刻我们都要做出选择：渴了，是喝咖啡还是茶？见了人，是上去打招呼还是悄悄躲开？这本书读到这里，是扔掉还是继续读下去？这都是分支。</p>
+<p>简单来说，分支就是先判断再选择。而所谓判断，就是逻辑运算。</p>
+<div id="secif-1" class="section level2">
+<h2><span class="header-section-number">6.1</span> 判断：逻辑运算</h2>
+<p>关于逻辑运算，让我们先来做一套健脑操热热身：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> &gt;<span class="st"> </span><span class="dv">2</span>  <span class="co"># 3比2大？是真（true）的。</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> &gt;<span class="st"> </span><span class="dv">2</span>  <span class="co"># 1比2大？是假（false）的。</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">!(<span class="dv">1</span> &gt;<span class="st"> </span><span class="dv">2</span>)  <span class="co"># 1不比2大？呃......</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> &gt;<span class="st"> </span><span class="dv">2</span> &amp;<span class="st"> </span><span class="dv">1</span> &gt;<span class="st"> </span><span class="dv">2</span>  <span class="co"># 3比2大，并且1比2大？假的。</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> &gt;<span class="st"> </span><span class="dv">2</span> |<span class="st"> </span><span class="dv">1</span> &gt;<span class="st"> </span><span class="dv">2</span>  <span class="co"># 3比2大，或者1比2大吗？真的。</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> &gt;<span class="st"> </span><span class="dv">2</span> &amp;<span class="st"> </span>!(<span class="dv">1</span> &gt;<span class="st"> </span><span class="dv">2</span>)  <span class="co"># 3比2大，并且1不比2大？好像是真的吧......</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>好了，热身完毕。包括上面出现的，常用的逻辑运算符有：大于<code>&gt;</code>， 小于<code>&lt;</code>，等于<code>==</code>，不等于<code>!=</code>，小于或等于 <code>&lt;=</code>，大于或等于<code>&gt;=</code>， 与<code>&amp;</code>，非<code>!</code>， 或<code>|</code>。</p>
+<p>逻辑运算符用在向量上，得到的结果也是向量：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">3</span>
+x ==<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x ==<span class="st"> </span><span class="dv">2</span> |<span class="st"> </span>x ==<span class="st"> </span><span class="dv">3</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">2</span>)
+x &gt;<span class="st"> </span>y</code></pre></div>
+<pre><code>## [1] FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &gt;<span class="st"> </span>y &amp;<span class="st"> </span>y &gt;<span class="st"> </span><span class="dv">1</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE</code></pre>
+<p>逻辑运算的结果，也就是<code>TRUE</code>和<code>FALSE</code>，相当于数字的1和0，可以做数学运算：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="ot">TRUE</span> *<span class="st"> </span><span class="ot">FALSE</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="ot">TRUE</span> +<span class="st"> </span><span class="ot">TRUE</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>这意味着，既然上面最后一个例子<code>x &gt; y</code>的返回值是逻辑值FALSE, TRUE, TRUE，那么我们可以对这个逻辑值用<code>sum()</code>函数求总和，得到的就是“x里总共有多少个元素大于y”：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(x &gt;<span class="st"> </span>y)</code></pre></div>
+<pre><code>## [1] 2</code></pre>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-167" class="lemma"><strong>思考 6.1  </strong></span>除了加减法，逻辑值TRUE和FALSE还能参与哪些运算？逻辑值能否参与“比大小”和“与非或”的逻辑运算？
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ex6-1" class="example"><strong>Example 6.1  </strong></span>设 m &lt;- 6:1，n &lt;- c(3, 5, 6)，判断 m 中的每个元素是否在n中出现。
+</div>
+<p></p>
+
+<div class="example">
+<p><span id="exm:ex6-2" class="example"><strong>Example 6.2  </strong></span> 从 1:100 中挑出既能被 2 整除，又能被 3 整除的数。</p>
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ex6-3" class="example"><strong>Example 6.3  </strong></span>从1到10000中，挑出所有的素数。
+</div>
+<p></p>
+<p>上面这些练习，可以用循环来完成。不过，由于R很照顾追求高效的人士，对于像练习<a href="secif.html#exm:ex6-1">6.1</a>这样的任务，R提供了更方便的方法：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x %in%<span class="st"> </span>y</code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE</code></pre>
+<p>得到的结果依次是x向量里的三个元素是否在y中出现。</p>
+<p>如果逻辑值出现在下标里边，那么R就会把TRUE对应的下标挑出来。结合逻辑判断和下标系统，就可以挑出 x 中哪些元素出现在 y 中，以及出现的位置：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[x %in%<span class="st"> </span>y]</code></pre></div>
+<pre><code>## [1] 1 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">which</span>(x %in%<span class="st"> </span>y)</code></pre></div>
+<pre><code>## [1] 1 2</code></pre>
+<p>上一课提到了马尔萨斯增长模型，我们用鼠标取点的方式，找出了哪一年世界人口超过100亿。现在有了逻辑判断，完成这个任务就更容易更准确了：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Y[N &gt;<span class="st"> </span><span class="dv">100</span>][<span class="dv">1</span>]</code></pre></div>
+
+<div class="example">
+<span id="exm:ex6-4" class="example"><strong>Example 6.4  </strong></span>在练习<a href="secstart.html#exm:ex1-2">1.2</a>中，我们曾经提出个问题：PM<sub>2.5</sub> 一天中的最大值出现在几点钟？请用逻辑判断运算来回答。
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ex6-5" class="example"><strong>Example 6.5  </strong></span>世界卫生组织制订的 PM<sub>2.5</sub> 指导标准中最宽松的标准是24小时均值75微克每立方米。请在上题数据中挑出北京一天内超出此标准的时段。
+</div>
+<p></p>
+<p>上面讲的是分支两部曲的第一步：判断。下面说说第二步：选择。</p>
+</div>
+<div id="secif-2" class="section level2">
+<h2><span class="header-section-number">6.2</span> 选择：如果，那么，否则</h2>
+<p>分支语句的最简单结构，用人类语言表达就是：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">如果饿了，那么就吃。</code></pre></div>
+<p>将人类语言翻译成R语言就是：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (饿了) {吃}</code></pre></div>
+<p>跟循环语句类似，如果只有“吃”这一个动作，那么花括号{}可以不写。当发生一系列动作时，就需要全部放进花括号里，并且为了看上去清楚，一般会添加一些换行符。下面是几个实例。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">60</span>
+<span class="co"># 如果x小于75，那么在显示区打印出来一句话：</span>
+if (x &lt;<span class="st"> </span><span class="dv">75</span>) <span class="kw">print</span>(<span class="st">&quot;x is less than 75&quot;</span>)  </code></pre></div>
+<pre><code>## [1] &quot;x is less than 75&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (x &lt;<span class="st"> </span><span class="dv">75</span>) {
+    <span class="kw">print</span>(<span class="st">&quot;x is less than 75&quot;</span>)
+    y &lt;-<span class="st"> </span>x +<span class="st"> </span><span class="dv">10</span>
+    <span class="kw">print</span>(y)
+    }</code></pre></div>
+<pre><code>## [1] &quot;x is less than 75&quot;
+## [1] 70</code></pre>
+<p>复杂一点的判断，就是后面加上了“否则”：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">如果饿了，那么就吃；否则，就干活儿。</code></pre></div>
+<p>翻译成R语言，就是：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (饿了) {吃} else {干活儿}</code></pre></div>
+<p>具体用起来是这样的：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="st"> </span><span class="dv">60</span>
+if (x &lt;<span class="st"> </span><span class="dv">75</span>) {
+    <span class="kw">print</span>(<span class="st">&quot;x is less than 75&quot;</span>)
+} else {
+    <span class="kw">print</span>(<span class="st">&quot;x is larger than 75&quot;</span>)
+}  <span class="co"># 如果()，那么{}，否则{}。</span></code></pre></div>
+<pre><code>## [1] &quot;x is less than 75&quot;</code></pre>
+<p>无论是循环语句还是条件语句，都可以像俄罗斯套娃那样，一层套一层，大壳套小壳，比如说：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">如果饿了，那么就吃和喝；否则，如果困了，那么就睡；否则，就干活儿。</code></pre></div>
+<p>翻译成R语言就是：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (饿了) {吃} <span class="kw">elseif</span> (困了) {睡} else {干活儿}</code></pre></div>
+<p>继续上面的例子：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">60</span>
+if (x &lt;<span class="st"> </span><span class="dv">75</span>) {
+    <span class="kw">print</span>(<span class="st">&quot;small&quot;</span>)
+} else if (x &gt;<span class="st"> </span><span class="dv">90</span>){
+    <span class="kw">print</span>(<span class="st">&quot;large&quot;</span>)
+} else {
+    <span class="kw">print</span>(<span class="st">&quot;good&quot;</span>)
+}</code></pre></div>
+<pre><code>## [1] &quot;small&quot;</code></pre>
+<p>这样写起来显得啰嗦，于是有了瘦身版<code>ifelse()</code>函数。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ifelse</span>(x &lt;<span class="st"> </span><span class="dv">75</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;large&quot;</span>)  </code></pre></div>
+<p>效果等同于上一个例子。不同的是，这里 x 的向量长度可以大于1。比如，试试 <code>x &lt;- 60:100</code>。</p>
+<p><code>ifelse()</code>函数也可以嵌套，像这样：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ifelse</span>(x &lt;<span class="st"> </span><span class="dv">75</span>, <span class="st">&quot;small&quot;</span>, <span class="kw">ifelse</span>(x &gt;<span class="st"> </span><span class="dv">90</span>, <span class="st">&quot;large&quot;</span>, <span class="st">&quot;good&quot;</span>))</code></pre></div>
+<pre><code>## [1] &quot;small&quot;</code></pre>
+<p>如果嵌套太多，<code>ifelse()</code>函数也会显得啰嗦，那么可以适当考虑进一步的瘦身版——<code>switch()</code>函数，详见F1小助理。</p>
+
+<div class="lemma">
+<p><span id="lem:unnamed-chunk-182" class="lemma"><strong>思考 6.2  </strong></span><code>if () {} else {}</code>、<code>ifelse()</code>、<code>switch()</code>，这三个函数之间，何时能相互替换，何时不能？</p>
+</div>
+<p></p>
+<p>有了分支语句，就可以在很多地方派上用场了。比如，继续以马尔萨斯人口增长模型的数据作图，把超过100亿的数据点用红色区分出来：</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">100</span>)
+N[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="fl">66.8</span>
+for (t in <span class="dv">1</span>:<span class="dv">99</span>) N[t +<span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span>N[t] +<span class="st"> </span>r *<span class="st"> </span>N[t]
+Y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">2008</span>, <span class="dt">length.out =</span> <span class="dv">100</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> Y +<span class="st"> </span><span class="dv">2007</span>, <span class="dt">y =</span> N, <span class="dt">xlab =</span> <span class="st">&quot;Year&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Population&quot;</span>, 
+     <span class="dt">cex =</span> <span class="kw">ifelse</span>(N &gt;=<span class="st"> </span><span class="dv">100</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>, 
+     <span class="dt">col =</span> <span class="kw">ifelse</span>(N &gt;=<span class="st"> </span><span class="dv">100</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>))</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-183"></span>
+<img src="r4r_files/figure-html/unnamed-chunk-183-1.png" alt="用分支函数给数据点涂上不同颜色." width="75%" />
+<p class="caption">
+图 6.1: 用分支函数给数据点涂上不同颜色.
+</p>
+</div>
+</div>
+<div id="secifpost" class="section level2">
+<h2><span class="header-section-number">6.3</span> 课外活动：复活节</h2>
+<p>我们都知道，“计算机”一词在英文称为 computer，而compute 和 computation 分别是动词和名词的“计算”，他们均来自拉丁语的Computus，而这个词的本意是“计算复活节的方法”。作为欧美国家最重要的节日之一，复活节，竟然难以计算是日历上的哪一天；复活节的计算，自古就是在考验人类的计算水平。今天，就让我们用R来试试计算每年的复活节是在日历的哪一天。</p>
+<p>复活节用来纪念耶稣基督被钉死后复活。根据定义，复活节是每年春分月圆之后第一个星期日。为什么这样规定呢？据说，春分后北半球开始日长夜短，所以春分意味着光明的到来；月圆时夜晚也洒满光辉，同样意味着光明的到来。耶稣在光明到来的这一天复活，那么耶稣便是光明的使者。而星期日，是因为上帝星期天休息，我们也不上班，在家过节。</p>
+<p>由于基督教有三大主要派别，其中天主教和基督新教（华语圈常简称基督教）属于西方罗马教会，使用公历；东正教属于东方教会，使用儒略历。每种历法中，又存在不同的计算方法<a href="#fn23" class="footnoteRef" id="fnref23"><sup>23</sup></a>。</p>
+<p>第一种是数学王子高斯提出的高氏算法：</p>
+<p>用Y表示年份，mod表示整除的余数（例如13 mod 5 = 3）。那么：</p>
+<ul>
+<li>a = Y mod 19</li>
+<li>b = Y mod 4</li>
+<li>c = Y mod 7</li>
+<li>d = (19a + M) mod 30</li>
+<li>e = (2b + 4c + 6d + N) mod 7</li>
+</ul>
+<p>其中，M和N的取值，在东正教会的儒略历M=15,N=6，而西方教会所用的公历的取法参见下表：</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">年份</th>
+<th align="center">M</th>
+<th align="center">N</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1583-1699</td>
+<td align="center">22</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">1700-1799</td>
+<td align="center">23</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">1800-1899</td>
+<td align="center">23</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center">1900-2099</td>
+<td align="center">24</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">2100-2199</td>
+<td align="center">24</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="center">2200-2299</td>
+<td align="center">25</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>若d+e &lt; 10则复活节在3月(d+e+22)日，反则在4月(d+e-9)日，除了两个特殊情况：</li>
+<li>若公式算出的日期是4月26日，复活节在4月19日；</li>
+<li>若公式算出的日期是4月25日，同时d=28、e=6和a&gt;10，复活节应在4月18日。</li>
+</ul>
+<p>第二种是米氏（Meeus）算法。在公历中，</p>
+<ul>
+<li>a = Y mod 19</li>
+<li>b = Y / 100</li>
+<li>c = Y mod 100</li>
+<li>d = b / 4</li>
+<li>e = b mod 4</li>
+<li>f = (b + 8) / 25</li>
+<li>g = (b - f + 1) / 3</li>
+<li>h = (19a + b - d - g + 15) mod 30</li>
+<li>i = c / 4</li>
+<li>k = c mod 4</li>
+<li>l = (32 + 2 * e + 2 * i - h - k) mod 7</li>
+<li>m = (a + 11 * h + 22 * l) / 451</li>
+<li>month = (h + l - 7 * m + 114) / 31</li>
+<li>day = ((h + l - 7 * m + 114) mod 31) + 1</li>
+</ul>
+<p>在儒略历中，</p>
+<ul>
+<li>a = Y mod 4</li>
+<li>b = Y mod 7</li>
+<li>c = Y mod 19</li>
+<li>d = (19c + 15) mod 30</li>
+<li>e = (2a + 4b - d + 34) mod 7</li>
+<li>月 = (d+e+114) / 31</li>
+<li>日 = ((d+e+114) mod 31) + 1</li>
+</ul>
+<p>请把上面的算法用R代码写出来，并计算最近十年的复活节在几月几日。高氏算法和米氏算法的结果有差别吗？</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="22">
+<li id="fn22"><p>大鹏志：<a href="http://dapengde.com" class="uri">http://dapengde.com</a><a href="secif.html#fnref22">↩</a></p></li>
+<li id="fn23"><p>算法来自维基百科。<a href="secif.html#fnref23">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="secloop.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="secoffice.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

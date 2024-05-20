@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="secstory.html">
+<link rel="next" href="secdata.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="secstart" class="section level1">
+<h1><span class="header-section-number">第1章</span> 初见</h1>
+<pre><code>    有些人从没听说过R，也照样过得无比快乐，而实际上我的工作之一就是把R交给他们。快乐不等于能力和效率。有些情况下，效率对一个人的好处，比短暂的快乐要强得多。</code></pre>
+<!---
+> Actually, I see it as part of my job to inflict R on people who are perfectly happy to have never heard of it. Happiness doesn't equal proficient and efficient. In some cases the proficiency of a person serves a greater good than their momentary happiness.
+> 
+
+--->
+<blockquote>
+<p>— Patrick Burns, April 2005</p>
+</blockquote>
+<pre><code>    世间所有的相遇，都是久别重逢。</code></pre>
+<blockquote>
+<p>— 电影《一代宗师》</p>
+</blockquote>
+<div id="secstart-2" class="section level2">
+<h2><span class="header-section-number">1.1</span> 结缘：下载安装</h2>
+<p>R 是跨平台的开源免费自由软件，Windows、Linux、macOS都有对应的安装文件可以下载。本书均以 Windows 系统为例作介绍。截至本书成稿时，R的最新版是3.4.1，安装程序文件只有75 M。我们去R的服务器CRAN<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a>，点击Download R for Windows，在打开的新网页最上方点击<code>base</code>，就找到下载链接了。下载完毕后，一路“下一步”的傻瓜式安装即可。安装完毕之后，从开始菜单中找到R，运行就可以了。</p>
+<p>R的默认界面是控制台窗口（图<a href="secstart.html#fig:img-r">1.1</a>），展示的是代码和运行结果。在这个窗口逐条输入下面的代码，每换一次行就会执行一条。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">co2
+<span class="kw">summary</span>(co2)</code></pre></div>
+<p>我们输入的R代码很简单。第一行展示了一个名叫co2的变量，内容是夏威夷Mauna Loa观测站的大气二氧化碳浓度数据，是R自带安装的。这个数据举世闻名，我们现在常说的全球变暖、节能减排，经常会拿这个数据来说事儿。第二行计算的是co2数据的统计量,依次是最小值、第一分位数、中值、平均值、第三分位数、最大值。敲几个字母就算出这么多结果，是不是很方便？这只是R牛刀小试而已。</p>
+<p>需要注意的是，退出R之后，这个窗口的代码不会保存。想保存的话，可以点击菜单栏的File – New script，就会出现一个新的编辑窗口，这里可以输入代码。需要执行的话，光标移到代码所在行，按ctrl+r （表示同时按住ctrl键和r键。下同）即可。编辑窗口的代码可以保存成文本文件，方便以后重复使用。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-r"></span>
+<img src="images/img-r.png" alt="裸奔的R默认界面." width="100%" />
+<p class="caption">
+图 1.1: 裸奔的R默认界面.
+</p>
+</div>
+<p>不出意料的话，新手对R的第一印象一定是：怎么这么简陋！</p>
+<p>是的，此刻的R在裸奔，虽然能用，但不好看，而且不方便。我们可以给R穿上一件衣服遮遮羞，这只需再安装一个软件就行。</p>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-2" class="lemma"><strong>思考 1.1  </strong></span>你还见过哪些软件，界面简陋却功能强大？哪些软件界面花哨却功能差强人意？
+</div>
+<p></p>
+<p>R能穿的免费衣服很多，人们各有所爱。我们用过Notepad++、Tinn-R、 RKward，也用过Vim配合R插件，最后选定了 RStudio，因为有诸多好处，最明显的就是把 R 常用的界面整合到了一起（图<a href="secstart.html#fig:img-rstudio">1.2</a>）。看吧，华丽丽堪比貂皮大衣。默认有四个面板：左上面板输入代码，左下面板查看代码的运行结果，右上面板展示工作环境，右下面板显示作图结果和帮助信息。我第一次用RStudio的时候一时惊为天人，就像《天龙八部》里的段誉看见了神仙姐姐的雕像，《神雕侠侣》里的郭襄看见了摘去面具的杨过，从此不可自拔。RStudio 还有很多好处，我们以后慢慢讲。将来会发现，RStudio岂止是件貂皮大衣，简直是一栋豪华别墅。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-rstudio"></span>
+<img src="images/img-rstudio.jpg" alt="RStudio:R的豪宅." width="100%" />
+<p class="caption">
+图 1.2: RStudio:R的豪宅.
+</p>
+</div>
+<p>RStudio的安装很简单。上RStudio官网<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a>，下载安装文件 运行即可。安装完毕后运行，然后选择菜单 File – New – R script ，或按快捷键 ctrl+shift+n，会新建一个.r文件。</p>
+<p>以后我们只需运行RStudio就行了，它会自动调用R。那个裸奔的R界面，就让它像泰坦尼克号一样永远埋葬在电脑的深处。忘了它吧。</p>
+<p>现在，我们正式开始 R 的奇幻之旅。</p>
+</div>
+<div id="secstart-3" class="section level2">
+<h2><span class="header-section-number">1.2</span> 第一次畅谈：计算</h2>
+<p>R最简单的功能，是用作计算器。先在左上面板窗口输入以下代码，然后按窗口上方的运行（Run）按钮，或按快捷键 ctrl+回车（这个快捷键会经常用），就会运行光标所在行的整行代码：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> *<span class="st"> </span>(<span class="dv">2</span> +<span class="st"> </span><span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<p>上面第一行是输入的代码示例。第二行用两个<code>#</code> 号开头，表示是运行结果，默认显示在RStudio的左下面板。如不另作说明，本书都用这种格式来区分代码和运行结果。我们暂时不管<code>#</code>号后面的<code>[1]</code> 是什么，先来试试R的数学基本运算符：加<code>+</code>， 减<code>-</code>，乘<code>*</code>，除<code>/</code>，乘方 <code>^</code>，整除的商 <code>%/%</code>，整除的余数<code>%%</code>。</p>
+
+<div class="example">
+<span id="exm:ex1-1" class="example"><strong>Example 1.1  </strong></span> 计算365除以7得到的整除商和余数。
+</div>
+<p></p>
+<p>下面，我们开个平方。输入并运行</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">9</span> ^<span class="st"> </span><span class="fl">0.5</span> <span class="co"># 开平方</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>或者</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">9</span>)  <span class="co"># 也是开平方</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>上面两条语句的作用等同，只是形式不同。这里，<code>sqrt()</code>是开平方的函数，被开方的数必须放在圆括号里，这是 R 语法的基本规则之一。<code>#</code> 号后面一直到这一行的末尾是注释，注释部分不会被运行，这样是为了方便将来理解这句代码的用途。当然，我们可以用注释随便写点什么，比如说 “<code># 哇塞我的第1行代码太帅了</code>”或者“<code># 今天心情不大好就写到这儿吧</code>”等等。如果你乐意，那么完全可以在注释里偷偷写一部小说，就像《倚天屠龙记》里有人在《楞伽经》夹缝处写下《九阳真经》一样。</p>
+<p>有人读到这里，可能会退缩了：sqrt，开玩笑，我怎么记得住啊！注意 R 入门第一秘诀： 不要被 R 吓住！现在，我们请出我们的第一位人气小助理：tab键。试试只输入 s，然后按 tab 键，就会看到RStudio给出的贴心提示，所有以 s 打头的函数和变量都列在里边了，用鼠标或箭头键选取就行了。在 s 后面接着输入q之后再按tab键试试。这个“tab小助理”我们以后天天时时分分秒秒都会用。</p>
+<p>其实，常用的函数就那么几个，用几次就不需要贴心提示了。而且函数名称都很好记，sqrt 就是 square root 的缩写，顺便练了英文。实在记不住，那就用基本运算符来求乘方好了， <code>9 ^ 0.5</code> 即可。将来学了自定义函数之后，你甚至可以把sqrt改名叫做kaipingfang。我们在后面的学习中，会经常针对同一个问题给出多个解决方案，条条道路通罗马，R很灵活的，随便挑一个你喜欢的方案拿去用就行了。</p>
+
+<div class="theorem">
+<p><span id="thm:thm-3tips" class="theorem"><strong>小贴士 1.1  </strong></span>R 菜鸟入门三大秘诀</p>
+<p>第一秘诀：不要害怕！学R非难事，谁都可以R（Anyone can R）。</p>
+<p>第二秘诀：能用就行！只要能完成工作，R代码写得漂亮与否并不重要。如果你有两个解决办法，那就选用你熟悉的那个。将来时间有富余的话再试另一个。</p>
+第三秘诀：与人分享！如果你的R 代码是一把刀，那么分享就是磨刀，越磨越快。
+</div>
+<p></p>
+<p>常用函数都可以顾名思义：四舍五入<code>round()</code>， 截取整数<code>trunc()</code>， 开平方<code>sqrt()</code>，求绝对值<code>abs()</code>，指数函数<code>exp()</code>，自然对数函数 <code>log()</code>，以10为底的对数函数<code>log10()</code>，三角函数 <code>sin()</code>，<code>cos()</code>，<code>tan()</code>，<code>asin()</code>，<code>acos()</code>，<code>atan()</code>等等。</p>
+<p>有些常数在R中已经定义好了，例如圆周率<span class="math inline">\(\pi\)</span>，只要输入<code>pi</code>并运行</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pi</code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<p>怎么只有这几位有效数字？我上幼儿园时就背下来了，精确度不够高啊。要提高精确度，需要用选项函数<code>option()</code>：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">22</span>)  <span class="co"># 最大支持 22 位</span>
+pi</code></pre></div>
+<pre><code>## [1] 3.1415926535897931</code></pre>
+<p><code>option()</code>函数运行一次后，以后的数字都会是指定的位数，直到重新运行一次，或者退出R。下面我们把位数改为默认值，7位：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">7</span>) 
+pi</code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<p>位数就变回来了。</p>
+<p>有的常数，虽然没有定义好，但很容易算出来，例如自然对数的底<span class="math inline">\(e\)</span>：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="dv">1</span>)  <span class="co"># 计算 e</span></code></pre></div>
+<pre><code>## [1] 2.718282</code></pre>
+<p>可以像pi一样，我们自己定义一个名叫<span class="math inline">\(e\)</span>的变量，把<code>exp(1)</code>的值保存在<span class="math inline">\(e\)</span>里，方便以后调用：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">e =<span class="st"> </span><span class="kw">exp</span>(<span class="dv">1</span>) </code></pre></div>
+<p>或者</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">e &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="dv">1</span>)  </code></pre></div>
+<p>两种办法的赋值效果完全等同。<code>&lt;-</code> 是个箭头，表示把右边的值赋给左边。如果你去看别人写的代码，会发现有人爱用箭头，有人爱用等号，这完全取决于个人喜好。箭头的灵活之处在于，可以把左边的值赋给右边：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="dv">1</span>) -&gt;<span class="st"> </span>e</code></pre></div>
+<p>本书的赋值符号统一用箭头。RStudio 中输入箭头有个快捷键：按alt + _ 就行了。</p>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-13" class="lemma"><strong>思考 1.2  </strong></span>箭头和等号的作用完全等同吗？什么情况下只能用等号，不能用箭头？上网搜搜答案。
+</div>
+<p></p>
+<p>好了，以后可以用<span class="math inline">\(e\)</span>来代表自然对数的底了。查看<span class="math inline">\(e\)</span>的值，可以看RStudio的右上面板，也可以在左上面板代码窗口输入变量名<span class="math inline">\(e\)</span>，然后 ctrl + 回车，</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">e</code></pre></div>
+<pre><code>## [1] 2.718282</code></pre>
+<p>就会在左下面板的结果窗口出现<span class="math inline">\(e\)</span>的值。<span class="math inline">\(e\)</span>可以用来做后续计算，比如：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">round</span>(e)^<span class="dv">2</span>
+x</code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<p>注意， R中大小写字母是有区别的，<span class="math inline">\(E\)</span>和<span class="math inline">\(e\)</span>是不同的两个变量名。这叫做“大小写敏感”。</p>
+
+<div class="theorem">
+<p><span id="thm:thm-vname" class="theorem"><strong>小贴士 1.2  </strong></span>变量名的约定（三可三不可）</p>
+<p>:) 可以是一个或多个字母，如 ‘e’, ‘x’, ‘mydata’；</p>
+<p>:) 可以包括数字，如 ‘a1’, ‘a2’;</p>
+<p>:) 可以包括句点和下划线，如 ‘temperature_air’, ‘humidity.max’。</p>
+<p>:-( 不可以包含空格，如 ‘my data’；</p>
+<p>:-( 不可以用数字或小数开头，如 ‘2x’，‘.3y’；</p>
+<p>:-( 不可以用中文。</p>
+</div>
+<p></p>
+<p>此外，你的变量名不能跟R的内置变量重名。这个倒是不必担心，遇见的时候R会自动发警告。一般来说，我们只要注意变量名不要加空格，不要用中文，就不会犯大错。</p>
+<pre><code>    不要给你的矩阵变量取名为“矩阵”。你会给你的狗狗起名字叫“狗狗”吗？</code></pre>
+<!---
+>
+> Don't call your matrix 'matrix'. Would you call your dog 'dog'? 
+>
+--->
+<blockquote>
+<p>— Barry Rowlingson, October 2004</p>
+</blockquote>
+<p>一个变量名可以存储很多数据。比如说，本市的月降水量从一月到十二月依次是：61, 45, 55, 46, 56, 79, 86, 57, 56, 56, 57, 71 mm。可以把这十二个数据赋值给一个变量 x，这种变量叫做向量：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">61</span>, <span class="dv">45</span>, <span class="dv">55</span>, <span class="dv">46</span>, <span class="dv">56</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">57</span>, <span class="dv">56</span>, <span class="dv">56</span>, <span class="dv">57</span>, <span class="dv">71</span>)
+x</code></pre></div>
+<pre><code>##  [1] 61 45 55 46 56 79 86 57 56 56 57 71</code></pre>
+<p>如果需要查看四月的降水量，就用方括号来指定“下标”。下面方括号中的4就是下标，表示调用 x 中的第四个数值。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">4</span>]</code></pre></div>
+<pre><code>## [1] 46</code></pre>
+<p>再比如前面提到的二氧化碳数据，变量名就是co2，这一个变量里存的是多年二氧化碳的浓度。我们可以将它转存到另一个变量里：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span>co2 <span class="co"># 转存</span>
+y[<span class="dv">10</span>] <span class="co"># 看看第十个数据</span></code></pre></div>
+<pre><code>## [1] 313.18</code></pre>
+<p>R 支持向量运算。试试输入：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x +<span class="st"> </span><span class="dv">100</span></code></pre></div>
+<pre><code>##  [1] 161 145 155 146 156 179 186 157 156 156 157 171</code></pre>
+<p>x 里的每一个数都加上了 100 。这就是向量运算的好处：简单的代码，避免逐个计算。</p>
+<p>现在我们可以回答RStudio左下方窗口里显示的结果开头那个[1]了，它表示的是这一行开头显示的是x的第一个值。如果显示的向量长，需要折行，那么下一行开头的方括号里显示的就是该行第一个元素在x中的位置，省得我们从头数。</p>
+</div>
+<div id="secstart-4" class="section level2">
+<h2><span class="header-section-number">1.3</span> 第一张留影：作图</h2>
+<p>下面，让我们作出第一个图形来：Mauna Loa观测站的二氧化碳浓度时间序列。这是张全球闻名的明星图。承接前面的数据，我们只需敲7个键就行了（图<a href="secstart.html#fig:fig-co2">1.3</a>）： </p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(y)  <span class="co"># 作图</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-co2"></span>
+<img src="r4r_files/figure-html/fig-co2-1.png" alt="Mauna Loa 二氧化碳浓度." width="60%" />
+<p class="caption">
+图 1.3: Mauna Loa 二氧化碳浓度.
+</p>
+</div>
+<p>是不是很简单？有没有很激动？简单的东西人见人爱。</p>
+<p>本市的月降水量，也可以这样画出来：因为已经保存在变量x里了，所以<code>plot(x)</code>就可以了。</p>
+<p>再进一步，我们来做统计运算，看看本市月降水量的平均值是多少。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(x[<span class="dv">1</span>] +<span class="st"> </span>x[<span class="dv">2</span>] +<span class="st"> </span>x[<span class="dv">3</span>] +<span class="st"> </span>x[<span class="dv">4</span>] +<span class="st"> </span>x[<span class="dv">5</span>] +<span class="st"> </span>x[<span class="dv">6</span>] +<span class="st"> </span>x[<span class="dv">7</span>] +<span class="st"> </span>x[<span class="dv">8</span>] +<span class="st"> </span>
+<span class="st">   </span>x[<span class="dv">9</span>] +<span class="st"> </span>x[<span class="dv">10</span>] +<span class="st"> </span>x[<span class="dv">11</span>] +<span class="st"> </span>x[<span class="dv">12</span>]) /<span class="st"> </span><span class="dv">12</span>  <span class="co"># 计算平均值</span></code></pre></div>
+<pre><code>## [1] 60.41667</code></pre>
+<p>这个式子很长，我们把这条指令强行写成了两行，R读完第一行发现指令不完整，就会自动读下一行。由于受版式的约束，本书的代码都会采用这种换行方式。实际写代码时不必这样换行。</p>
+<p>x的12个元素逐个敲起来太麻烦了，可以用求和函数<code>sum()</code>以及求向量长度的函数<code>length()</code>，来简化代码：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(x)/<span class="kw">length</span>(x)</code></pre></div>
+<pre><code>## [1] 60.41667</code></pre>
+<p>或者直接用平均值函数<code>mean()</code>：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(x)</code></pre></div>
+<pre><code>## [1] 60.41667</code></pre>
+<p>更厉害的是<code>summary()</code>函数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(x)</code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   45.00   55.75   56.50   60.42   63.50   86.00</code></pre>
+<p>得到的六个数是最小值、25%分位数、中位数、均值、75%分位数和最大值。记住<code>summary()</code>这个明星函数吧，将来我们会反复享受使用这个函数的快乐。</p>
+<p>上文我们用四种方法计算平均值，算出来的结果都一样，条条大路通罗马，想起哪个用哪个。</p>
+<p>常用统计函数有：求和<code>sum()</code>，平均值<code>mean()</code>，最大值<code>max()</code>，最小值 <code>min()</code>，范围<code>range()</code>，中位数<code>median()</code>，分位数<code>quantile()</code>，标准差 <code>sd()</code>，方差<code>var()</code>，总结报告<code>summary()</code>。你可以把这些函数用在x上，看看结果都是什么。</p>
+
+<div class="example">
+<span id="exm:ex1-2" class="example"><strong>Example 1.2  </strong></span>2003 年 8 月北京城区测得的 PM<sub>2.5</sub> 的质量浓度日变化<a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a>, 从 0 时到 23 时 依次是97, 80, 64, 91, 87, 100, 128, 144, 150, 150, 150, 106, 78, 68, 62, 46, 55, 68, 84, 92, 95, 108, 128, 138 微克每立方米 。做出北京PM<sub>2.5</sub>的日变化图。计算PM<sub>2.5</sub>出现的最大值、最小值、平均值。最大值出现在几点钟？
+</div>
+<p></p>
+<p>最后，请在RStudio菜单栏点击 <em>File-Save</em>，或按快捷键ctrl+s，把刚才输入的代码保存到一个扩展名为.r的文件里，下一节接着用。这个.r文件 其实就是文本文件，用windows记事本打开就能看，只不过里面放的是r代码罢了。如果装了RStudio，双击 .r 文件就会用RStudio打开。</p>
+<p>好啦，以上就是 R 的基本操作和运算、作图、统计分析，你全都掌握了！ R 就差不多学完了！喝一杯庆祝一下吧。</p>
+
+<div class="theorem">
+<span id="thm:thm-newbee" class="theorem"><strong>小贴士 1.3  </strong></span>新手学R第一步
+</div>
+<p></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">项目</th>
+<th align="left">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">安装</td>
+<td align="left">CRAN, RStudio</td>
+</tr>
+<tr class="even">
+<td align="left">数学基本运算符</td>
+<td align="left"><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code>, <code>%%</code>, <code>%/%</code></td>
+</tr>
+<tr class="odd">
+<td align="left">常用数学函数</td>
+<td align="left"><code>round(),  trunc(), sqrt(), abs(), exp(),</code></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><code>log(), log10(), sin(), asin()</code></td>
+</tr>
+<tr class="odd">
+<td align="left">常用统计函数</td>
+<td align="left"><code>sum(), mean(), max(), min(), range(),</code></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><code>median(), sd(), var(), summary()</code></td>
+</tr>
+<tr class="odd">
+<td align="left">作图</td>
+<td align="left"><code>plot()</code></td>
+</tr>
+</tbody>
+</table>
+<!---
+
+免安装体验       Ideone.RWeb                                                            
+---------------  -----------------------------------------------------------------------
+安装             CRAN，Rstudio                                                          
+数学基本运算符   +，-，*，/，^，%%，%/%                                                 
+常用 数学函数    round()， trunc()，sqrt()，abs()，exp()，log()，log10()，sin()，asin() 
+常用统计函数     sum()，mean()，max()，min()，range()，median()，sd()，var()            
+作图             plot()                                                                 
+--->
+</div>
+<div id="secstartpost" class="section level2">
+<h2><span class="header-section-number">1.4</span> 课外活动：表白</h2>
+<p>经过了初步的相处，你对R的印象如何？有没有相见恨晚或者一见倾心的感觉？</p>
+<p>R 给我的印象，说得文雅一点，那就是：</p>
+<pre><code>    关关雎鸠，在河之洲。窈窕淑女，君子好逑。
+    参差荇菜，左右流之。窈窕淑女，寤寐求之。
+    求之不得，寤寐思服。悠哉悠哉，辗转反侧。</code></pre>
+<blockquote>
+<p>— 《诗经·国风·周南·关雎》</p>
+</blockquote>
+<p>说得通俗一点：我想和R在一起。</p>
+<p>跟很多理科生一样，我本科论文中使用的是Excel，硕士论文使用的是OriginLab，但博士期间换用了 R之后，从此死心塌地跟R永结同心。</p>
+<p>那么， R 窈窕在哪里？</p>
+<p>仁者见仁，智者见智，一千个人心中有一千个哈姆雷。R是一个取之不尽用之不竭的宝藏，我们各取所需便是。比如我，贪图便宜，看上R是看上了它的 免费 和 随心所欲 。当然，盗版的Excel，OriginLab，Matlab 也免费，但盗版毕竟是见不得光的事儿，还是少干吧。</p>
+<p>不光免费和灵活，还有R功能的强大，R社区的友好等等。从我的角度来说，如果没有学习R和使用R带来的乐趣，那么我的博士研究生活必定会枯燥很多。几年过去了，我依然记得当年为论文做出一张图（图<a href="secstart.html#fig:img-thesis">1.4</a>）时的兴奋。有前人定义好的函数，花了不到一分钟，只用了一个语句，就画出了7 个变量的直方图（对角线）、两两之间的散点图和loess拟合曲线（对角线左下半部分），并标出了两两之间的相关系数（对角线右上半部分，正负用数字的颜色区别，相关程度用字体的大小表示）。那种激动和快乐，至今历历在目。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-thesis"></span>
+<img src="images/img-thesis.jpg" alt="我的论文插图之一" width="100%" />
+<p class="caption">
+图 1.4: 我的论文插图之一
+</p>
+</div>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-25" class="lemma"><strong>思考 1.3  </strong></span>如果使用你熟悉的作图软件，那么图<a href="secstart.html#fig:img-thesis">1.4</a>这种图该怎么做？
+</div>
+<p></p>
+<p>我们将在第<a href="secfunction.html#secfunction">9</a>章学习这种图的作法。</p>
+<p>不光是论文作图，R 还能很容易做出 3D 动画来演示。不光是枯燥的科技作图和演示，R 还可以娱乐。比如可以画一颗立体中国心（图<a href="secstart.html#fig:img-heart">1.5</a>）。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-heart"></span>
+<img src="images/img-heart.jpg" alt="R绘出的中国心" width="40%" />
+<p class="caption">
+图 1.5: R绘出的中国心
+</p>
+</div>
+<p>当然可以很容易地把国旗换成别的。写本文时正值情人节，那就换成她或他的照片好啦。这种图的作法同样是在第<a href="secfunction.html#secfunction">9</a>章。</p>
+<p>总地来说，我学R的理由，说得文雅一点，那就是：</p>
+<pre><code>    桃之夭夭，灼灼其华。之子于归，宜其室家。
+    桃之夭夭，有蕡其实。之子于归，宜其家室。
+    桃之夭夭，其叶蓁蓁。之子于归，宜其家人。</code></pre>
+<blockquote>
+<p>— 《诗经·国风·周南·桃夭》</p>
+</blockquote>
+<p>说得通俗一点：和R在一起真好。</p>
+<p>下面轮到你了。请勇敢表白一下：你是为什么要学R呢？</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p>CRAN：<a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a><a href="secstart.html#fnref8">↩</a></p></li>
+<li id="fn9"><p>RStudio：<a href="https://www.rstudio.com/" class="uri">https://www.rstudio.com/</a><a href="secstart.html#fnref9">↩</a></p></li>
+<li id="fn10"><p>数据来源：Chan et al., 2005. Atmospheric Environment 39 (28) : 5113-5124<a href="secstart.html#fnref10">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="secstory.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="secdata.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

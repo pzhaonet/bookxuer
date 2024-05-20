@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="secfile.html">
+<link rel="next" href="blogdown.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="bookdown" class="section level1">
+<h1><span class="header-section-number">第14章</span> 论文书稿写作</h1>
+<pre><code>    用嘴说出的话随风而散，用笔写出的话永不磨灭。</code></pre>
+<blockquote>
+<p>— 莫言</p>
+</blockquote>
+<pre><code>    自古皆死，不朽者文。
+    </code></pre>
+<blockquote>
+<p>— 宋之问</p>
+</blockquote>
+<p>如果你是个科研工作者，那么多半每天都要跟期刊论文、学位论文打交道；如果你不是科研工作者，有时也需要处理一些文字，例如写日记、写信、做个日历、画个思维导图等；喜欢文艺的朋友可能会写个诗集、小说、散文集，记录个乐谱等等。R 语言提供的 bookdown 和 bookdownplus 等扩展包，为文字工作者和爱好者提供了一个友好的平台，可以将这些各类文字轻松地转化成文档，格式丰富，样式美观。</p>
+<div id="quick-start" class="section level2">
+<h2><span class="header-section-number">14.1</span> 魅力不可挡</h2>
+<p>bookdown <span class="citation">(Xie <a href="#ref-R-bookdown">2016</a>)</span>是 R 语言的一个扩展包，一个用来写书、写文章的平台。bookdown 初版发布于2016年，原本为撰写R语言类书籍而生，非常适合撰写学位论文、学术期刊论文，也可以用来写文学类作品。 使用 bookdown，可以方便地在文章里插入目录、图表、交叉引用、脚注、索引，以及公式、参考文献、R代码，是撰写可重复性报告的不二之选。它可以同时生成漂亮的pdf、Word和网页文件，并免费发布到官方网站上，得到的文档比Word更美观，比传统的<span class="math inline">\(\LaTeX\)</span>更易用。bookdown 发音为“不可挡”，包如其名，bookdown 的魅力的确不可阻挡。有了它，我再也不愿意用 Word 和<span class="math inline">\(\LaTeX\)</span> 了。</p>
+<p>bookdown 并非完美无瑕。对于 R 初学者来说，如果身边没有人指导，bookdown 上手并不是很容易。酒香巷深，虽然官方手册<a href="#fn38" class="footnoteRef" id="fnref38"><sup>38</sup></a>提供了完整而详细的资料可以参考，但使用者可能仍然需要花精力应付 <span class="math inline">\(\LaTeX\)</span>，YAML，Pandoc，而很多初学者可能从来没听说过这些，站在 bookdown 的门口往里张望了一下，说不定就被吓跑了，从而错过了门里的精彩世界。所以，我们推荐 bookdownplus 扩展包 <span class="citation">(Zhao <a href="#ref-R-bookdownplus">2017</a><a href="#ref-R-bookdownplus">b</a>)</span>，可以让新手对 bookdown 快速上手。bookdownplus 已在 CRAN 正式发布。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-bookdownplus"></span>
+<img src="images/img-bookdownplus.pdf" alt="bookdownplus 生成的英文、中文学术论文、学位论文、信件、日历、诗集文档." width="100%" />
+<p class="caption">
+图 14.1: bookdownplus 生成的英文、中文学术论文、学位论文、信件、日历、诗集文档.
+</p>
+</div>
+<p>bookdownplus 是对 bookdown 的增强和简化, 是进入 bookdown 世界的捷径。它提供了很多有用的模板，可以很方便地在 bookdown 平台写期刊论文、学位论文、学术海报、化学分子式、信件、日记、日历、诗集、吉他谱等各种常用文档和书籍（图<a href="bookdown.html#fig:img-bookdownplus">14.1</a>）。这是功能上的增强。bookdownplus 使用时只需指定一个模板，给定作者和书名，就可以一键生成模板文件，用户在模板文件里照猫画虎写自己的文字就可以了，不必再花力气上网找模板、设置 YAML 和 <span class="math inline">\(\LaTeX\)</span>。这是操作上的简化。正是这“一加一减”，大大降低了 bookdown 的使用门槛，让每个初学者都可以方便的试用。</p>
+<p>bookdownplus 各个模板的使用方法详见官方文档 R bookdownplus Textbook<a href="#fn39" class="footnoteRef" id="fnref39"><sup>39</sup></a> 一书。这本电子书本身就是用 bookdownplus 生成的，尤其是它的 pdf 版本很美观。此书的源码开放，可以作为使用 bookdown 写书的示例（图<a href="bookdown.html#fig:img-textbook">14.2</a>）。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-textbook"></span>
+<img src="images/img-textbook.pdf" alt="R bookdownplus Textbook 示例书页."  />
+<p class="caption">
+图 14.2: R bookdownplus Textbook 示例书页.
+</p>
+</div>
+<p>有了bookdownplus，从此，bookdown 这坛好酒就不必去深巷苦寻，它就放在你手边。</p>
+</div>
+<div id="preparation" class="section level2">
+<h2><span class="header-section-number">14.2</span> 准备工作</h2>
+<p>bookdown 环境的准备工作略显繁琐，这是因为它调用了目前最优秀的几个现成软件。首先，需要下载和安装免费软件 <a href="http://www.ctex.org/CTeXDownload"><span class="math inline">\(\LaTeX\)</span></a>和<a href="http://pandoc.org/installing.html">Pandoc</a>。有的安装文件比较庞大，下载和安装时需要一点耐心，但是绝对值得，磨刀不误砍柴工嘛。</p>
+<p>其次，bookdown 的背景平台是 R 语言，用户界面首选RStudio，R 和 RStudio的下载安装方法见第<a href="secstart.html#secstart-2">1.1</a>节。</p>
+<p>运行 RStudio，在左上面板的代码窗口输入并运行以下代码，来安装和调用 bookdownplus 扩展包(bookdown 扩展包会随带自动安装)：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;bookdownplus&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(bookdownplus)</code></pre></div>
+<p>好了，需要的工具已经安装完毕。现在，检查你的 R 语言工作目录 (<code>getwd()</code>)， 确保这个文件夹是空的。 <code>bookdownplus</code> 将在目录里产生很多临时文件，所以我们建议使用空文件夹作为工作目录。如果懒得更改工作目录，也可以在 RStudio 里创建一个新项目 (File – New Project - New Directory – Empty Project)，以后每次总是在这个项目里工作就可以了。</p>
+</div>
+<div id="magic" class="section level2">
+<h2><span class="header-section-number">14.3</span> 见证奇迹的时刻</h2>
+<p>准备工作只需做一次，一劳永逸。一切准备就绪后，接下来就是见证奇迹的时刻。</p>
+<p>从版本 V1.2.0 开始， bookdownplus 提供了两种魔法。第一种是用一个循环条指令来自动生成若干格式不同、风格迥异的文档，让初学者迅速体验 bookdown 的工作方式和成果。运行下面的代码，然后去喝个茶：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="kw">template</span>()[<span class="dv">1</span>:<span class="dv">19</span>])
+  <span class="kw">bookdownplus</span>(<span class="dt">template =</span> i, 
+               <span class="dt">more_output =</span> <span class="kw">more_output</span>()[<span class="dv">1</span>:<span class="dv">3</span>])</code></pre></div>
+<p>回来以后，你会在工作目录里看到很多文件和文件夹。打开那个叫做 <code>_book/</code>的文件夹，Duang！19个示例文档，每个都以 pdf、Word、网页和电子书格式乖乖地等在那里，等你打开了。其中，电子书 epub 格式可以在手机上阅读，也可以在电脑里用免费的Calibre软件打开阅读。这些示例文档，从学术论文到诗歌乐谱，从中文到英文，展示了 bookdown 能胜任的工作。是不是动心了？</p>
+<p>第二个魔法，是使用嵌套循环，来生成其中一个模板 ‘mail’ 不同样式的示例文档。运行下面的代码，然后看两眼窗外的风景，bookdownplus 就把事情做完了：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (mf in <span class="kw">mail_font</span>()) {
+  for (ms in <span class="kw">mail_style</span>()) {
+    for (mt in <span class="kw">mail_theme</span>()) {
+      outputname &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;mail&#39;</span>, ms, mf, mt, <span class="dt">sep =</span> <span class="st">&#39;_&#39;</span>)
+      <span class="kw">bookdownplus</span>(<span class="dt">template =</span> <span class="st">&#39;mail&#39;</span>, 
+                   <span class="dt">mail_style =</span> ms, 
+                   <span class="dt">mail_font =</span> mf, 
+                   <span class="dt">mail_theme =</span> mt, 
+                   <span class="dt">output_name =</span> outputname)
+    }
+  }
+}</code></pre></div>
+<p>仍然打开那个叫做 <code>_book/</code>的文件夹，Duang！ 不同字体、不同主题、不同布局的信件示例文档就全部在那里了。我们在申请国外的学习和工作岗位时经常要求提供 cover letter，这就是’mail’模板的用武之地。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-mail"></span>
+<img src="images/img-mail.pdf" alt=" bookdownplus 的 mail 模板文档示例."  />
+<p class="caption">
+图 14.3:  bookdownplus 的 mail 模板文档示例.
+</p>
+</div>
+<p>下面我们用几个例子，来解释一下 bookdownplus 的基本用法，同时理解一下上面两个魔法是如何实现的。</p>
+</div>
+<div id="article" class="section level2">
+<h2><span class="header-section-number">14.4</span> 撰写学术论文</h2>
+<p><strong>示范文档</strong></p>
+<p>写学术期刊论文是 ‘bookdown’ 的强项，也是 ‘bookdownlus’ 扩展包开发的初衷。事实上，学术论文是 bookdown 里最为动人的精华所在。只有在写学术论文的过程里，遇到输入上下标、脚注、图表、方程、交叉引用、参考文献等任务时，bookdown 的魅力才会充分展示出来。本节介绍的学术论文生成、修改、导出、发布方法同样适用于后续章节介绍的其他模板，不再赘述。</p>
+<p>图<a href="bookdown.html#fig:img-bookdownplus">14.1</a> 里已经展示了两份期刊论文的示例文档。下面的代码，可以生成一个双栏的英文期刊论文文档（图<a href="bookdown.html#fig:img-article">14.4</a>左）：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bookdownplus</span>(<span class="dt">template =</span> <span class="st">&#39;article&#39;</span>)</code></pre></div>
+<p>打开 <code>_book/</code>的文件夹，示范文档article.pdf已经在那里了。随带附送的article.tex 可以直接投稿给学术期刊，一般的国际期刊都接收这个格式的文稿。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-article"></span>
+<img src="images/img-article.pdf" alt="bookdownplus 生成的双栏论文(article，左)和讨论论文（discussion，右）示范文件."  />
+<p class="caption">
+图 14.4: bookdownplus 生成的双栏论文(article，左)和讨论论文（discussion，右）示范文件.
+</p>
+</div>
+<p>下面，我们进一步解释一下上面这条代码的含义和用法。</p>
+<p><strong>选择模板</strong></p>
+<p>参数<code>template</code>用来指定模板名称。可用的模板名称可以用F1魔法调出<code>bookdownplus()</code>函数的帮助文件来查看。如果你懒得用键盘输入模板名称’article’，那么可以换用下面的代码：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bookdownplus</span>(<span class="dt">template =</span> <span class="kw">template</span>()[<span class="dv">1</span>])</code></pre></div>
+<p><code>template()[1]</code> 就是 <code>template()</code>里的第一个元素，而这里出现的函数 <code>template()</code>是用来列出所有的可用模板名称的，以便选择：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">template</span>()</code></pre></div>
+<pre><code>##  [1] &quot;article&quot;         &quot;article_mdpi&quot;    &quot;article_zh&quot;     
+##  [4] &quot;calendar&quot;        &quot;chemistry&quot;       &quot;chemistry_zh&quot;   
+##  [7] &quot;discussion&quot;      &quot;guitar&quot;          &quot;journal&quot;        
+## [10] &quot;mail&quot;            &quot;nte_zh&quot;          &quot;poem&quot;           
+## [13] &quot;thesis_classic&quot;  &quot;thesis_mypku_zh&quot; &quot;thesis_ubt&quot;     
+## [16] &quot;thesis_zju_zh&quot;   &quot;yihui_demo&quot;      &quot;yihui_mini&quot;     
+## [19] &quot;yihui_zh&quot;        &quot;poster&quot;</code></pre>
+<p>如果换成’discussion’模板，就得到图<a href="bookdown.html#fig:img-article">14.4</a>右图的格式。</p>
+<p><strong>标题和作者</strong></p>
+<p>文章的标题和作者，有两种方式来设定。第一种是利用 <code>bookdownplus()</code>的<code>author</code> 和<code>title</code>参数来指定：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bookdownplus</span>(<span class="dt">template =</span> <span class="st">&#39;article&#39;</span>,
+             <span class="dt">author =</span> <span class="st">&#39;John Smith&#39;</span>,
+             <span class="dt">title =</span> <span class="st">&#39;My article&#39;</span>)</code></pre></div>
+<p>第二种是打开’index.Rmd’文件， 将开头的<code>title</code>和<code>author</code>字段改成你文章的信息即可。</p>
+<p><strong>正文内容</strong></p>
+<p>文章的正文内容在 ‘body.Rmd’ 里修改即可。将 ‘body.Rmd’ 与 pdf 示范文档对照一下，就可以快速掌握 markdown 格式标记的用法。本书的附录给出了格式标记的速查表。如果这些还不够，那么就去读 bookdown 的官方手册<a href="#fn40" class="footnoteRef" id="fnref40"><sup>40</sup></a>吧，里面介绍得最为齐全详尽。</p>
+<p>修改成你自己的文字后，就可以生成自己的文档了。只需双击 ‘bookdownplus.Rproj’用 RStudio 打开这个项目，按快捷键 ’ctrl+shift+b’，Duang！你的书就在 ’_book/’ 里出现了。</p>
+<p>你自己的’body.Rmd’文件可以备份到其他文件夹里。每次运行 <code>bookdownplus()</code> 创建新示范文件后，用你的’body.Rmd’文件将模板的同名文件覆盖就可以直接生成新书稿了。</p>
+<p><strong>导出与发布</strong></p>
+<p>bookdownplus 可以很方便地将你写好的文字导出为多种格式。除了默认的 .pdf 和 .tex 格式外，支持导出的格式有：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">more_output</span>()</code></pre></div>
+<pre><code>## [1] &quot;word_document2&quot; &quot;html_document2&quot; &quot;epub_book&quot;     
+## [4] &quot;gitbook&quot;</code></pre>
+<p>我们在生成示例文档时，可以用 <code>more_output</code> 参数指定导出的格式：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bookdownplus</span>(<span class="dt">template =</span> <span class="st">&#39;article&#39;</span>,
+             <span class="dt">more_output =</span> <span class="kw">more_output</span>())</code></pre></div>
+<p>这样，在你完成’body.Rmd’ 的编写后，按 ’ctrl+shift+b’就会生成这些格式的书稿。 Word 是我国广大人民群众喜闻乐见的文档格式。epub格式意味着你可以在手机上阅读论文了。gitbook 文档可以用网页浏览器打开。这些文档都可以免费发布到网上，只需在 bookdown.org 注册并登录后，在RStudio运行命令：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bookdown::<span class="kw">publish_book</span>()</code></pre></div>
+<p>就可以把当前项目的作品发布在bookdown的官网上了。浏览器会自动打开你的专属网页。快把地址分享给亲朋好友来围观吧。</p>
+<p><strong>更多模板</strong></p>
+<p>这里示范的 ‘article’ 和 ‘discussion’ 模板，来自 Copernicus Publications 出版社的 <span class="math inline">\(\LaTeX\)</span> 模板<a href="#fn41" class="footnoteRef" id="fnref41"><sup>41</sup></a>，经修改后收进了 ‘bookdownplus’ 的模板库里。事实上，很多国际期刊都提供了各自的 <span class="math inline">\(\LaTeX\)</span> 模板，按照 R bookdownplus Textbook 里给出的步骤，稍微修改一下就可以纳入这个模板库。比如图<a href="bookdown.html#fig:img-bookdownplus">14.1</a>中展示的论文模板就是来自 MDPI<a href="#fn42" class="footnoteRef" id="fnref42"><sup>42</sup></a>。如果你创建了新的 bookdownplus 模板，或者发现了喜欢的 <span class="math inline">\(\LaTeX\)</span>期刊论文模板，可以提交到 bookdownplus 的项目主页<a href="#fn43" class="footnoteRef" id="fnref43"><sup>43</sup></a>，以便纳入模板库里，让 bookdownplus 越来越强大。下面介绍的几个模板，就是这样得到的。</p>
+</div>
+<div id="thesis" class="section level2">
+<h2><span class="header-section-number">14.5</span> 撰写学位论文</h2>
+<p>bookdownplus 的模板库里有几个专门用来写学位论文的模板。从这些模板出发，可以非常方便地撰写学位论文。由于数据计算过程的R代码可以嵌入到文档中，一旦发现错误，只需在文档中修改即可。我在写科研论文时曾遇到一件事：论文有个计算公式，其中一个数值不小心敲错了。后续计算都是建立在这个计算的基础上，所以后续计算全错。虽然不影响结论，但严格来讲，论文里所有的数据都得改。这种灾难往往让人郁闷和沮丧，幸亏我用了 bookdown：由于正文里的数据和图表大多数是调用 R 代码计算得到的，走的是“可重复性研究”的思路，只要把 R 代码里那个敲错的数据改过来，重新编译论文文档，后续计算就全部自动更新，导出的 pdf 或 Word 文档也相应自动更新，节省了大量时间，还极大减少了敲数字或拷贝粘贴出错的可能。</p>
+<p>运行下面的代码，可以生成一个英文的博士论文示例文档：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bookdownplus</span>(<span class="dt">template =</span> <span class="st">&#39;thesis_ubt&#39;</span>)</code></pre></div>
+<p>这个模板来自德国拜罗伊特大学博士论文。模板名称里的ubt是拜罗伊特大学（University of Bayreuth）的缩写。‘thesis_ubt’ 模板适合使用英语或德语撰写的学位论文。此外，bookdownplus 为中文用户提供了支持中文的学位论文模板。运行下面的代码：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bookdownplus</span>(<span class="dt">template =</span> <span class="st">&#39;thesis_mypku&#39;</span>)</code></pre></div>
+<p>将得到一个简单的支持中文环境的示范论文文档。</p>
+<p>另一个支持中文的学位论文模板是 ‘thesis_zju’，来自浙江大学（Zhejiang University）的 <span class="math inline">\(\LaTeX\)</span> 模板。网上也有其他大学的 <span class="math inline">\(\LaTeX\)</span> 论文模板，例如北京大学<a href="#fn44" class="footnoteRef" id="fnref44"><sup>44</sup></a> 和清华大学<a href="#fn45" class="footnoteRef" id="fnref45"><sup>45</sup></a> ，如果你能把任何一个改成 bookdownplus 模板，那么可以提交到 bookdownplus 的模板库里。</p>
+</div>
+<div id="mindmap" class="section level2">
+<h2><span class="header-section-number">14.6</span> 生成思维导图</h2>
+<p>由于 bookdown 生成的文档基于 markdown 语法，采取的是标记语言，那么就很容易从文档中提取指定标记的字段，来进行进一步加工。比如说，将 bookdown 或 markdown 文稿自动生成思维导图。</p>
+<p>思维导图又称为脑图、头脑风暴图、心智导图，是时下流行的一种记忆知识、交流想法的工具。一般情况下，我们在 bookdown 文档里用<code>#</code>标识来标记章节标题，<code>#</code> 的数量表示标题的级别。因此，只需把文稿里 <code>#</code> 后面的内容提取出来，就可以自动生成文稿的大纲；格式稍作转换，就可以自动生成思维导图了。</p>
+<div class="figure" style="text-align: center"><span id="fig:imgmindmap"></span>
+<img src="images/img-mindr.jpg" alt="《学R》一书的思维导图, 由mindr 扩展包制作." width="80%" />
+<p class="caption">
+图 14.5: 《学R》一书的思维导图, 由mindr 扩展包制作.
+</p>
+</div>
+<p>图<a href="bookdown.html#fig:imgmindmap">14.5</a> 是由本书的原始书稿自动生成的思维导图，用的是 mindr <span class="citation">(Zhao <a href="#ref-R-mindr">2017</a><a href="#ref-R-mindr">c</a>)</span> 扩展包 。这里简要介绍一下用法。</p>
+<p>mindr 包已在 CRAN 正式发布，安装和载入方法跟别的扩展包一样：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;mindr&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;mindr&#39;</span>)</code></pre></div>
+<p>在 R 的工作目录（<code>getwd()</code>）创建名叫 <code>mm/</code> 的文件夹，丢进去一个或多个 markdown 文件 (.md, .Rmd)，比如可以把 bookdownplus 生成的 body.Rmd 示例文件拷贝进去，然后运行：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">md2mm</span>()</code></pre></div>
+<p>就会在工作目录下得到一个名为 <code>mm.mm</code> 的思维导图文件。这个文件可以用大多数主流的思维导图软件打开。这里我们推荐 FreeMind<a href="#fn46" class="footnoteRef" id="fnref46"><sup>46</sup></a>，因为.mm格式是 FreeMind 可以直接打开的默认格式。FreeMind 的界面比较简陋，所以我们另外推荐 <a href="Xmind：http://www.xmind.net/download/win/">Xmind</a>，安装运行后在菜单栏选择<code>导入 freemind 导图</code>即可。漂亮的思维导图就自动出现了。</p>
+<p>mindr包还有另外的两个函数：如果你并不想从 bookdown 或 markdown 文件里生成思维导图，而只想获取文档的大纲，那么可以用<code>outline()</code>函数；如果你是思维导图的老用户，想从你现有的思维导图作为出发点，进一步展开写文档，那么可以用 <code>mm2md()</code> 函数，会将 .mm 格式的思维导图转换成 markdown，然后就可以用 bookdown 进一步生成各种需要的文档了。</p>
+
+<div class="example">
+<span id="exm:ex15-1" class="example"><strong>Example 14.1  </strong></span>利用 bookdownplus的’article’模板，写一篇学术论文，并利用mindr生成该论文的思维导图。
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ex15-2" class="example"><strong>Example 14.2  </strong></span>利用 bookdownplus的’mail’模板，写一封发给某国外大学的留学申请信（cover letter）。
+</div>
+<p></p>
+</div>
+<div id="diary" class="section level2">
+<h2><span class="header-section-number">14.7</span> 撰写散文和日记</h2>
+<p>用 bookdown 来写散文、日记、小说和诗集等文学作品，是一种特别的享受。文学作品跟学术论文的结构在逻辑上是不同的，常常不需要标题分级编号，常常不需要强制每章第一页出现在奇数页，有时候需要特殊字体来点缀。bookdownplus 里的几个模板，把这些问题都考虑进去了，用户不再需要为此烦心。</p>
+<p>中文的散文和小说，可以用 ‘nte_zh’ 模板：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bookdownplus</span>(<span class="dt">template =</span> <span class="st">`</span><span class="dt">nte_zh</span><span class="st">`</span>)</code></pre></div>
+<p>这个模板特别为中文订制，自动生成双栏的目录，并选择了适合中文的字体。如果你喜欢记录一些生活里的小故事，小想法，不妨用这个模板发布到 bookdown.org上。我就是这样把博客里的育儿帖子整理成了一本书（图<a href="bookdown.html#fig:img-nte">14.6</a>），发布在网上跟亲朋好友分享<a href="#fn47" class="footnoteRef" id="fnref47"><sup>47</sup></a>。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-nte"></span>
+<img src="images/img-nte3.pdf" alt=" bookdownplus 的散文小说模板"  />
+<p class="caption">
+图 14.6:  bookdownplus 的散文小说模板
+</p>
+</div>
+<p>‘nte_zh’ 模板当然也可以用来写日记。不过，bookdownplus 另外提供了 ‘journal’ 模板：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bookdownplus</span>(<span class="dt">template =</span> <span class="st">&#39;journal&#39;</span>)</code></pre></div>
+<p>‘journal’ 模板适合外语日记。该模板最初是设计用来做实验室日志记录的。由于 bookdown 允许很方便地在文档里插入 R 代码来生成可重复性的数据图表，因此 ‘journal’ 模板先天具有写科研日记的优势。而且，该模板为生成的 pdf 文档留有较宽的左右页边距，方便将来打印装订后添加一些注释或说明。</p>
+<p>不要小看这个页边距。四百年前，法国数学家费马在阅读丢番图《算术》一书时，突然有了小灵感，但一时找不到本子做记录，于是就在书的页边写道:</p>
+<blockquote>
+<p>将一个立方数分成两个立方数之和，或一个四次幂分成两个四次幂之和，或者一般地将一个高于二次的幂分成两个同次幂之和，这是不可能的。关于此，我确信我发现了一种美妙的证法，可惜这里的空白处太小，写不下。</p>
+</blockquote>
+<p>此后，全人类花了三个世纪的努力，才把费马猜想证明为费马定理。要是丢番图的书用了 bookdownplus 的 ‘journal’ 模板，为费马留出足够的页边距空白，那么会省下人类多少宝贵的时间啊！</p>
+</div>
+<div id="write-chords" class="section level2">
+<h2><span class="header-section-number">14.8</span> 记录吉他谱</h2>
+<p>bookdown 不仅可以用于学习、工作和生活记录，还可以用来记录音乐，例如吉他谱。</p>
+<p>我国的民谣吉他伴奏谱常见的一般是六线和弦全谱，然而录入太麻烦，经常需要专业软件。为了省事儿，经常只保留和弦名称和歌词，简化为文字谱：</p>
+<pre><code>   C     Em      F      G      C     Em
+让我掉下眼泪的不只昨夜的酒，让我依依不舍的不……</code></pre>
+<p>文字谱的好处是用不着任何专业软件，录入方便。但是，这比较坑吉他初学者。想不起来<code>Em</code>和弦的指法该怎么办？<code>Em</code>还好办，看见个<code>G#7sus4</code>，我崩溃了，自认水平不行，乖乖翻和弦字典去。</p>
+<p>能不能像录入文字谱那样简单地录入和弦谱呢？</p>
+<p>这不是异想天开。在 RStudio 里输入以下代码，就会生成一本吉他和弦示例书：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bookdownplus</span>(<span class="dt">template =</span> <span class="st">&#39;guitar&#39;</span>)</code></pre></div>
+<p>这是怎么实现的呢？</p>
+<p>打开 ‘body.Rmd’ 文件，输入：</p>
+<pre><code>让\CM 我掉下\Em 眼泪的　不\F 只昨夜的\GM 酒　让\CM 我依依\Em 不……</code></pre>
+<p>得到的pdf文档里呈现的就是图<a href="bookdown.html#fig:img-chengdu2">14.7</a>。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-chengdu2"></span>
+<img src="images/chengdu2.png" alt="bookdownplus 的 'guitar' 模板生成的和弦谱" width="70%" />
+<p class="caption">
+图 14.7: bookdownplus 的 ‘guitar’ 模板生成的和弦谱
+</p>
+</div>
+<!---
+
+让\CM 我掉下\Em 眼泪的　不\F 只昨夜的\GM 酒　让\CM 我依依\Em 不舍的　不……
+--->
+<p>这里，‘CM’ 和 ‘GM’ 两个符号分别表示 C 和弦和 G 和弦，跟习惯稍有不同。这两个符号当然是可以更改的，只需在<code>tex/template_guitar.tex</code>定义即可。例如 C 和弦，定义方式是：</p>
+<div class="sourceCode"><pre class="sourceCode latex"><code class="sourceCode latex">\newcommand{\CM}{\upchord{\chord{t}{n,p3,p2,n,p1,n}{C}}}</code></pre></div>
+<p>这样，在正文里，bookdown看到<code>\CM</code>，就会转换成C和弦指法图。限于篇幅，关于上面这条指令的具体含义我们就不详细解释了，请参阅 <span class="math inline">\(\LaTeX\)</span> 的 gchords扩展包<a href="#fn48" class="footnoteRef" id="fnref48"><sup>48</sup></a>。</p>
+<p>吉他和弦谱有很多，我们没必要自己费力气逐个创建对应的指令，只需去互联网找现成的就行了，有来自开源社区贡献的常见指法设置代码，我们只需拷贝粘贴到这里即可。</p>
+<p>利用 bookdownplus 的 ‘guitar’ 模板，我把喜欢的歌制作成了一本电子书放在网上作为示例<a href="#fn49" class="footnoteRef" id="fnref49"><sup>49</sup></a>，并且把用到的和弦指法表汇总在了书里。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-guitar"></span>
+<img src="images/img-guitar2.pdf" alt="Guitar bookdown 一书汇总的吉他和弦指法图"  />
+<p class="caption">
+图 14.8: Guitar bookdown 一书汇总的吉他和弦指法图
+</p>
+</div>
+<p>开一下脑洞，我们可以利用 bookdown 把吉他和弦谱插入到文学作品中。我们甚至可以在某本书里同时呈现 R 代码、R 图表、诗词散文和吉他谱，开创出一种全新的文体。</p>
+</div>
+<div id="secbookdownpost" class="section level2">
+<h2><span class="header-section-number">14.9</span> 课外活动：创建新模板</h2>
+<p>在本章中，我们鼓励大家创建自己喜欢的 <code>bookdownplus</code> 模板，那么，一个 bookdownplus 模板是如何创建的呢？</p>
+<p>截至本书成稿时，bookdown 1.2.0 的模板库包含大约 20 个用于生成 pdf 文档的 模板。创建 bookdownplus 模板库并不需要太多的 <span class="math inline">\(\LaTeX\)</span> 知识，只需了解 <span class="math inline">\(\LaTeX\)</span> 工作的逻辑和基本流程即可。仔细研究一下现有的模板，认真研读 bookdown 官方文档<a href="#fn50" class="footnoteRef" id="fnref50"><sup>50</sup></a>的第四章，那么你就知道如何创建自己的模板了。下面是基本流程和我的一些体会。</p>
+<ol style="list-style-type: decimal">
+<li><p>首先，找到一个新模板。有很多网站提供免费的 <span class="math inline">\(\LaTeX\)</span> 模板。下载一个你最喜欢的，尤其推荐那些有详细的说明文档和示例文档的。</p></li>
+<li><p>在本地电脑上对模板的示例文档用 <span class="math inline">\(\LaTeX\)</span> 进行编译，确保顺利生成一个你想要的pdf文档。关于编译工具，我们推荐免费好用的 TeXStudio<a href="#fn51" class="footnoteRef" id="fnref51"><sup>51</sup></a>。如果编译成功，并且你懒得进行下一步操作的话，你可以把相关的文档通过邮件打包提交到 bookdownplus 的项目主页<a href="#fn52" class="footnoteRef" id="fnref52"><sup>52</sup></a>，并说明这个模板有何优点和特色。然而，靠人不如靠自己，我们建议你勇敢地进行下一步。</p></li>
+<li><p>将你的<span class="math inline">\(\LaTeX\)</span>模板拆成两个文件：‘template_yours.tex’ 和 ‘index.Rmd’。拆分原则如下：</p></li>
+</ol>
+<ul>
+<li><p>将 <span class="math inline">\(\LaTeX\)</span> 模板的文章主题部分，也就是位于 <code>\begin{document}</code> 和 <code>\end{document}</code>之间的部分，用符号 <code>$body$</code>替代，保存为’template_yours.tex’ 。<code>$body$</code>所在的部分将会用 ‘body.Rmd’ 里的内容来填充。</p></li>
+<li><p>创建一个新的’index.Rmd’。可以使用’bookdownplus’ 生成的任何一个 ‘index.Rmd’，将其中的模板字段换成 ‘template_yours.tex’。</p></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><p>如果你的<span class="math inline">\(\LaTeX\)</span> 模板足够简单，那么现在就可以试着用 bookdown 来编译了。运气好的话你会得到想要的 pdf 文档。祝贺！</p></li>
+<li><p>但是，多数情况下并不能编译成功。一个漂亮的 <span class="math inline">\(\LaTeX\)</span> 模板经常比较复杂，尤其是中文模板。你可能需要修改导言区，挑出一部分来另存为其他文件，然后在 ‘index.Rmd’ 里标明。详见’bookdown’官方手册<a href="#fn53" class="footnoteRef" id="fnref53"><sup>53</sup></a>。</p></li>
+<li><p>努力不懈，坚持到底，相信你最终必然会得到你想要的pdf文档。</p></li>
+</ol>
+<p>你的新模板，包括 ‘index.Rmd’, ‘body.Rmd’, ‘template_yours.tex’ 和其他相关文件和说明，可以提交到 bookdownplus 项目的模板库。</p>
+<p>让我们联合起来，一起建立全人类第一个 bookdown 模板库吧！</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
+</div>
+<div id="ref-R-bookdownplus">
+<p>Zhao, Peng. 2017b. <em>Bookdownplus: Generate Varied Types of Books and Documents with R ’Bookdown’ Package</em>. <a href="https://CRAN.R-project.org/package=bookdownplus" class="uri">https://CRAN.R-project.org/package=bookdownplus</a>.</p>
+</div>
+<div id="ref-R-mindr">
+<p>Zhao, Peng. 2017c. <em>Mindr: Convert Files Between Markdown or Rmarkdown Files and Mindmaps</em>. <a href="https://CRAN.R-project.org/package=mindr" class="uri">https://CRAN.R-project.org/package=mindr</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="38">
+<li id="fn38"><p>bookdown官方手册：<a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a><a href="bookdown.html#fnref38">↩</a></p></li>
+<li id="fn39"><p>bookdownplus官方手册：<a href="https://bookdown.org/baydap/bookdownplus" class="uri">https://bookdown.org/baydap/bookdownplus</a><a href="bookdown.html#fnref39">↩</a></p></li>
+<li id="fn40"><p>bookdown 官方手册：<a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a><a href="bookdown.html#fnref40">↩</a></p></li>
+<li id="fn41"><p>Copernicus Publications 的论文模板：<a href="http://publications.copernicus.org/for_authors/latex_instructions.html" class="uri">http://publications.copernicus.org/for_authors/latex_instructions.html</a><a href="bookdown.html#fnref41">↩</a></p></li>
+<li id="fn42"><p>MDPI: <a href="http://www.mdpi.com/" class="uri">http://www.mdpi.com/</a><a href="bookdown.html#fnref42">↩</a></p></li>
+<li id="fn43"><p>bookdownplus项目主页：<a href="https://github.com/pzhaonet/bookdownplus" class="uri">https://github.com/pzhaonet/bookdownplus</a><a href="bookdown.html#fnref43">↩</a></p></li>
+<li id="fn44"><p>北京大学论文模板：<a href="https://github.com/CasperVector/pkuthss" class="uri">https://github.com/CasperVector/pkuthss</a><a href="bookdown.html#fnref44">↩</a></p></li>
+<li id="fn45"><p>清华大学论文模板：<a href="https://github.com/xueruini/thuthesis" class="uri">https://github.com/xueruini/thuthesis</a><a href="bookdown.html#fnref45">↩</a></p></li>
+<li id="fn46"><p>FreeMind：<a href="http://freemind.sourceforge.net/wiki/index.php/Download" class="uri">http://freemind.sourceforge.net/wiki/index.php/Download</a><a href="bookdown.html#fnref46">↩</a></p></li>
+<li id="fn47"><p>爸爸三定律：<a href="https://bookdown.org/baydap/papasdiary/" class="uri">https://bookdown.org/baydap/papasdiary/</a><a href="bookdown.html#fnref47">↩</a></p></li>
+<li id="fn48"><p>gchords包：<a href="http://kasper.phi-sci.com/gchords/" class="uri">http://kasper.phi-sci.com/gchords/</a><a href="bookdown.html#fnref48">↩</a></p></li>
+<li id="fn49"><p>GuITaR bookdown：<a href="https://bookdown.org/baydap/bdguitar/bdguitar.pdf" class="uri">https://bookdown.org/baydap/bdguitar/bdguitar.pdf</a><a href="bookdown.html#fnref49">↩</a></p></li>
+<li id="fn50"><p>bookdown官方文档：<a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a><a href="bookdown.html#fnref50">↩</a></p></li>
+<li id="fn51"><p>TeXStudio：<a href="http://www.texstudio.org/" class="uri">http://www.texstudio.org/</a><a href="bookdown.html#fnref51">↩</a></p></li>
+<li id="fn52"><p>bookdownplus项目主页：<a href="https://github.com/pzhao/bookdownplus" class="uri">https://github.com/pzhao/bookdownplus</a><a href="bookdown.html#fnref52">↩</a></p></li>
+<li id="fn53"><p>bookdown 官方手册：<a href="https://bookdown.org/yihui/bookdown/yaml-options.html" class="uri">https://bookdown.org/yihui/bookdown/yaml-options.html</a><a href="bookdown.html#fnref53">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="secfile.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="blogdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

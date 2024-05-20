@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="secfunction.html">
+<link rel="next" href="secmap.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="secchar" class="section level1">
+<h1><span class="header-section-number">第10章</span> 字符</h1>
+<pre><code>    你会发现一个奇特的现象：很多人使用R多年，已经能够用R做很多事情，但是他们却从不自诩懂得了这门语言。</code></pre>
+<blockquote>
+<p>— Luis Argerich</p>
+</blockquote>
+<p>前边很多章节都用到了字符串类型的变量，例如作图的图例、表达式、坐标轴的标签，读写文件时文件的路径，数据框的行列名称等。显而易见，字符串的运算不是加减乘除，而是连接、分割、截取、查找、替换。</p>
+<p>为什么要学习字符串的处理呢？对因子操作时，保存文件时，或是作图要添加文字时，如果懂得如何处理字符串，这些任务就会很方便完成。放眼望去，字符串充满了我们的世界，有了R这个利器，我们就可以做很多想做的事。比如前几年方舟子对韩寒的作品进行的文本分析，等我们学完本章之后，我们也可以做。</p>
+<div id="secchar-1" class="section level2">
+<h2><span class="header-section-number">10.1</span> 狐狸从懒狗身上跳过</h2>
+<p>让我们从这样一句话开始：</p>
+<pre><code>    The quick brown fox jumps over the lazy dog.</code></pre>
+<p>不知你有没有注意到，这句话经常在电脑软件看到。敏捷的褐色狐狸从懒狗身上跳过？这是什么意思？</p>
+<p>据说，在很久以前的打字机时代，打字机需要测试每个键都能打出字来。为了省纸省墨，打字员就去打这样一句话，英文里所有的26个字母都包含在这个简短的句子里，所有字母的字体效果一目了然。这个文字游戏叫做“全字母句”（pangram）。字母重复出现的次数越少越好（我表示不懂：把键盘上的键挨个儿敲一遍是不是更省脑子……）。</p>
+<p>真有这么神奇？上面这句话里，真的包含了全部的26个字母吗？有哪些字母重复出现过，出现过几次？</p>
+<p>我们用R来试试，边玩边学字符处理函数。</p>
+<p>这个游戏里，我们不区分字母的大小写，T和t算是同一个字母。所以，我们第一步先用<code>tolower()</code>函数或者<code>toupper()</code>函数，把全部字母转换成小写或大写。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> &#39;The quick brown fox jumps over the lazy dog&#39;</span>
+xlower &lt;-<span class="st"> </span><span class="kw">tolower</span>(x)
+<span class="kw">class</span>(xlower)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p><code>class()</code>函数返回的结果显示，这确实是个字符变量。下面看看字符的长度：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(x)</code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nchar</span>(x)</code></pre></div>
+<pre><code>## [1] 43</code></pre>
+<p><code>nchar()</code>用来查看字符串的长度。注意它跟<code>length()</code>的区别。后者是查看向量中元素的个数。x向量里只有1个元素，这个元素包含的字符数是43。</p>
+<p>R 用成对儿的单引号或双引号来表示字符和字符串。其实前面我们已经接触过了，比如读入或存储文件时需要用到文件名，就是个字符串：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myfile2 &lt;-<span class="st"> &quot;c:/r4r/co2.csv&quot;</span></code></pre></div>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-241" class="lemma"><strong>思考 10.1  </strong></span>单引号和双引号的用法完全相同吗？什么情况下不相同？
+</div>
+<p></p>
+<p>第二步，我们用字符串分割函数<code>strsplit()</code>，将x这个字符串拆分成单个字符。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xsingle &lt;-<span class="st"> </span><span class="kw">strsplit</span>(xlower, <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]]
+<span class="kw">nchar</span>(xsingle)</code></pre></div>
+<pre><code>##  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [29] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(xsingle)</code></pre></div>
+<pre><code>## [1] 43</code></pre>
+<p>请在这里再次体会一下<code>nchar()</code>函数与<code>length()</code>函数的区别。</p>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-243" class="lemma"><strong>思考 10.2  </strong></span>为什么strsplit()后面跟了个[[1]]？去掉[[1]]行吗？
+</div>
+<p></p>
+<p>第三步，我们看看第一个字符是否在别的地方出现。可以用<code>grep()</code>函数（global regular expression print的缩写）：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">grep</span>(xsingle[<span class="dv">1</span>], xsingle)</code></pre></div>
+<pre><code>## [1]  1 32</code></pre>
+<p>返回的结果显示了第一个字符t在整个句子中出现的位置。</p>
+<p>后面的就是重复操作了，逐个检查每一个字符就行。这提醒我们，应该用循环语句：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="kw">length</span>(xsingle)) <span class="kw">print</span>(<span class="kw">grep</span>(xsingle[i], xsingle))</code></pre></div>
+<pre><code>## [1]  1 32
+## [1]  2 33
+## [1]  3 29 34
+## [1]  4 10 16 20 26 31 35 40
+## [1] 5
+## [1]  6 22
+## ......</code></pre>
+<p><code>print()</code>函数的作用是将结果打印在操作台。这样就得到了每个字符在句子中重复出现的位置。在多个位置出现的，自然就是重复的字母了。</p>
+<p>这个输出结果不够明显，要是能同时显示是哪个字符就好了。这个好办，我们用字符串连接函数<code>paste()</code>，将字符名称跟出现位置连起来后再打印就行了：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="kw">length</span>(xsingle)) 
+  <span class="kw">print</span>(<span class="kw">paste</span>(xsingle[i], <span class="kw">grep</span>(xsingle[i], xsingle)))</code></pre></div>
+<pre><code>## [1] &quot;t 1&quot;  &quot;t 32&quot;
+## [1] &quot;h 2&quot;  &quot;h 33&quot;
+## [1] &quot;e 3&quot;  &quot;e 29&quot; &quot;e 34&quot;
+## [1] &quot;  4&quot;  &quot;  10&quot; &quot;  16&quot; &quot;  20&quot; &quot;  26&quot; &quot;  31&quot; &quot;  35&quot; &quot;  40&quot;
+## [1] &quot;q 5&quot;
+## [1] &quot;u 6&quot;  &quot;u 22&quot;
+## ......</code></pre>
+<p>除了<code>paste()</code>函数，另外还有猫函数<code>cat()</code>可以用——当然，cat在这里不是猫，而是concatenate的缩写。</p>
+<p>由于学过了第<a href="secloop.html#secloop-5">5.5</a>节，一看是循环，我们就考虑一下能不能超越循环，改为向量操作：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(xsingle, function(x) <span class="kw">grep</span>(x, xsingle))</code></pre></div>
+<pre><code>## $t
+## [1]  1 32
+## 
+## $h
+## [1]  2 33
+## 
+## $e
+## [1]  3 29 34
+## ......</code></pre>
+<p>得到的结果跟上一条指令是一致的。</p>
+<p>我们已经得到了期望的结果，虽然输出的格式难看点。好看一点的输入结果，可以用<code>table()</code>, <code>duplicated()</code>和<code>unique()</code>三姐妹。</p>
+<p>表格函数<code>table()</code>计算的是每个元素出现的个数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(xsingle)</code></pre></div>
+<pre><code>## xsingle
+##   a b c d e f g h i j k l m n o p q r s t u v w x y z 
+## 8 1 1 1 1 3 1 1 2 1 1 1 1 1 1 4 1 1 2 1 2 2 1 1 1 1 1</code></pre>
+<p>“重复函数”<code>duplicated()</code>可以查找是否有重复元素。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">duplicated</span>(xsingle)</code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [10]  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE
+## [19] FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE
+## [28] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+## [37] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE</code></pre>
+<p>哪些字符第二次出现，哪些就返回<code>TRUE</code>。</p>
+<p>结合逻辑运算符和元素的下标系统，就可以显示哪些字母没有重复：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xsingle[!<span class="kw">duplicated</span>(xsingle)]</code></pre></div>
+<pre><code>##  [1] &quot;t&quot; &quot;h&quot; &quot;e&quot; &quot; &quot; &quot;q&quot; &quot;u&quot; &quot;i&quot; &quot;c&quot; &quot;k&quot; &quot;b&quot; &quot;r&quot; &quot;o&quot; &quot;w&quot; &quot;n&quot;
+## [15] &quot;f&quot; &quot;x&quot; &quot;j&quot; &quot;m&quot; &quot;p&quot; &quot;s&quot; &quot;v&quot; &quot;l&quot; &quot;a&quot; &quot;z&quot; &quot;y&quot; &quot;d&quot; &quot;g&quot;</code></pre>
+<p>这跟“不重复函数”<code>unique()</code>返回的结果是一样的：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(xsingle)</code></pre></div>
+<pre><code>##  [1] &quot;t&quot; &quot;h&quot; &quot;e&quot; &quot; &quot; &quot;q&quot; &quot;u&quot; &quot;i&quot; &quot;c&quot; &quot;k&quot; &quot;b&quot; &quot;r&quot; &quot;o&quot; &quot;w&quot; &quot;n&quot;
+## [15] &quot;f&quot; &quot;x&quot; &quot;j&quot; &quot;m&quot; &quot;p&quot; &quot;s&quot; &quot;v&quot; &quot;l&quot; &quot;a&quot; &quot;z&quot; &quot;y&quot; &quot;d&quot; &quot;g&quot;</code></pre>
+<p>总共有多少个不同的字符呢？</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="kw">unique</span>(xsingle))</code></pre></div>
+<pre><code>## [1] 27</code></pre>
+<p>结果里包含了空格字符。由此我们可以确定，26个字母的确全在这个狐狸句子里了。</p>
+
+<div class="example">
+<span id="exm:ex11-1" class="example"><strong>Example 10.1  </strong></span>全字母句有很多，比如下面是另外一个：Pack my box with five dozen liquor jugs.请用R代码找出其中重复的字母以及重复的次数。
+</div>
+<p></p>
+</div>
+<div id="secchar-2" class="section level2">
+<h2><span class="header-section-number">10.2</span> 千字文的重复字</h2>
+<p>英文的全字母句很短，找重复的字母，就算不编程，瞪大眼睛数也能数得出来。但是，如果字数太多，眼睛就不好用了，比如我国的传统启蒙经典《千字文》。</p>
+<p>十五个世纪前，南朝梁武帝令大臣周兴嗣把王羲之写过的1000个汉字连成一篇文章，增加临帖练字的便利和趣味性。周兴嗣冥思苦想，一夜未眠，东方既白，大作已成，镜子一照，黑发尽如雪。</p>
+<p>这篇奇文大概是最接近“全字母句”要求的汉语文章。《千字文》最大的亮点是“字不重复”，但是，却有人提出质疑，认为有的字出现了重复，重复的字数众说纷纭，有的说1个，有的说6个，还有人说有7个。</p>
+<p>现在，我们来用R语言来找找千字文里到底有几个重复字。</p>
+<p>首先从网上找到千字文的全文。我们选择的是“古诗文网”<a href="#fn32" class="footnoteRef" id="fnref32"><sup>32</sup></a>提供的版本，事先已经保存成了一个文本文件。下面的这条命令，将从我们的服务器上把这个文本文件下载到你的本地硬盘。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="dt">url =</span>
+                <span class="st">&quot;http://dapengde.com/r4rookies/qianziwen.txt&quot;</span>, 
+              <span class="dt">destfile =</span> <span class="st">&quot;c:/r4r/qianziwen.txt&quot;</span>)</code></pre></div>
+<p>这个文件是个纯文本文件，可以用记事本打开，不像我们以前常用的表格数据。这样的文本，我们用<code>readLines()</code>函数读取，得到的是个字符串向量。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">qzw &lt;-<span class="st"> </span><span class="kw">readLines</span>(<span class="st">&#39;c:/r4r/qianziwen.txt&#39;</span>, <span class="dt">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)
+<span class="kw">class</span>(qzw)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(qzw) <span class="co">#向量长度</span></code></pre></div>
+<pre><code>## [1] 249</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nchar</span>(qzw) <span class="co">#向量里每个元素包含的字符数</span></code></pre></div>
+<pre><code>##   [1] 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0
+##  [29] 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0
+##  [57] 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0
+##  [85] 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0
+## [113] 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0
+## [141] 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0
+## [169] 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0
+## [197] 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0
+## [225] 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9</code></pre>
+<p>如果想借用前面处理英文句子方法，那么我们先得把这个向量打散后合并成一个元素：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">qzwmerged &lt;-<span class="st"> </span><span class="kw">paste</span>(qzw, <span class="dt">collapse =</span> <span class="st">&#39;&#39;</span>)</code></pre></div>
+<p>上次我们宽容地把空格留下了，这回我们把它踢出去，免得干扰计数。这可以用替换字符函数<code>gsub()</code>来完成：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">qzwmerged &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&#39; &#39;</span>, <span class="st">&#39;&#39;</span>, qzwmerged)
+<span class="kw">nchar</span>(qzwmerged)</code></pre></div>
+<pre><code>## [1] 1000</code></pre>
+<p>得到的是整整1000个字了。字符替换函数另外还有<code>sub()</code>函数和<code>chartr()</code>函数。有什么区别？问你的小助理。</p>
+<p>现在我们得到的千字文，跟狐狸懒狗一样，成了一句话，就可以用完全相同的方法来检验了：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">qzwsingle &lt;-<span class="st"> </span><span class="kw">strsplit</span>(qzwmerged, <span class="st">&#39;&#39;</span>)[[<span class="dv">1</span>]]
+chardup &lt;-<span class="st"> </span>qzwsingle[<span class="kw">duplicated</span>(qzwsingle)]
+for (i in chardup) <span class="kw">print</span>(<span class="kw">paste</span>(i, <span class="kw">grep</span>(i, qzw, <span class="dt">value =</span> <span class="ot">TRUE</span>)))</code></pre></div>
+<pre><code>## [1] &quot;发 吊民伐罪 周发殷汤&quot; &quot;发 盖此身发 四大五常&quot;
+## [1] &quot;义 节义廉退 颠沛匪亏&quot; &quot;义 俊义密勿 多士实宁&quot;
+## [1] &quot;实 策功茂实 勒碑刻铭&quot; &quot;实 俊义密勿 多士实宁&quot;
+## [1] &quot;云 云腾致雨 露结为霜&quot; &quot;云 岳宗泰岱 禅主云亭&quot;
+## [1] &quot;昆 金生丽水 玉出昆冈&quot; &quot;昆 昆池碣石 钜野洞庭&quot;
+## [1] &quot;戚 欣奏累遣 戚谢欢招&quot; &quot;戚 亲戚故旧 老少异粮&quot;
+## [1] &quot;洁 女慕贞洁 男效才良&quot; &quot;洁 纨扇圆洁 银烛炜煌&quot;
+## [1] &quot;并 九州禹迹 百郡秦并&quot; &quot;并 释纷利俗 并皆佳妙&quot;</code></pre>
+<p>果然，有8个字重复了！那么，千字文号称没有一字重复是学术造假么？</p>
+<p>这就牵扯出简体字和繁体字的恩怨了。例如，表面上“发”字重复出现在“周发殷汤”句和“盖此身发”句，但原文其实为“周發殷汤”“盖此身髮”。“發”读第一声，是武王姬发的名字；“髮”读第四声，是头发。这大概是最常见的混淆了。有些理发店把店名写作“理發店”，卡拉OK把“发如雪”写成“發如雪”，都弄错了。周潤發以前给百年潤髮的洗发水做广告，更加深了这种误会。</p>
+<p>再如“云”出现在“云腾致雨”句和“禅主云亭”句，原文为“雲腾致雨”“禪主云亭”，“雲”是云彩，“云”是泰山脚下的一座山名为“云山”，封禅之地。繁体字“雲”和“云”完全是两个不同的字。</p>
+<p>此外，古诗文网提供的这个版本有错别字，比如错把“俊乂密勿”写成了“俊义密勿”而导致跟“节义廉退”的“义”字重复。</p>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-258" class="lemma"><strong>思考 10.3  </strong></span>除去这三个字，另外重复的5个字是这么回事？
+</div>
+<p></p>
+</div>
+<div id="section-10.3" class="section level2">
+<h2><span class="header-section-number">10.3</span> 整理读书笔记</h2>
+<p>不管是全字母句还是千字文，找重复的字只是个趣味游戏，没什么实际用处。下面，我们用字符串的处理方法来做一件有用的事：整理文本。</p>
+<p>我有很多朋友爱读书，或早或晚入手了 Kindle电子书阅读器，从此陷入了读书的大坑里不能自拔。而我在使用了一年之后，把Kindle 上的常规操作都熟悉了，但只有一个问题没有好好解决：整理笔记和高亮文本。</p>
+<p>Kindle 的笔记和高亮文本都保存在Kindle的根目录下documents文件夹里名为“My Clippings.txt”的文本文件里，在电脑中可以用记事本中直接打开，看上去是图<a href="secchar.html#fig:img-kindle">10.1</a>的效果。文本是按做笔记的时间顺序逐条列下去的，非常凌乱。如果能整理成表格，按照自己需要的顺序来排列就好了。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-kindle"></span>
+<img src="images/img-kindle.png" alt="电子阅读器的读书笔记" width="80%" />
+<p class="caption">
+图 10.1: 电子阅读器的读书笔记
+</p>
+</div>
+<p>对此，网上倒是有现成的方法对笔记进行整理，比如下载Word的宏，或有人写了专门的软件，或在线转换，但要么是有安全隐患，要么是要收费，要么是不支持中文。最不爽的，是不能随心所欲。</p>
+<p>R用久了，就会习惯了一双自由的翅膀，和一颗任性的心。现在，我们用R把笔记整理到表格里，并把来自同一本书的内容排在一起。</p>
+<p>这里，我们提供一个示例文件，仍然是来我们服务器上下载，并读入R：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="dt">url =</span> 
+                <span class="st">&quot;http://dapengde.com/r4rookies/kdclip.txt&quot;</span>, 
+              <span class="dt">destfile =</span> <span class="st">&quot;c:/r4r/kdclip.txt&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aa &lt;-<span class="st"> </span><span class="kw">readLines</span>(<span class="st">&quot;c:/r4r/kdclip.txt&quot;</span>, <span class="dt">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)</code></pre></div>
+<p>我们先用记事本或别的软件打开这个文本，观察一下它的结构。每条笔记占4行，依次是书名，书中的位置和做笔记的时间，空行，笔记内容，两条笔记之间的间隔符。我们要做的事情是，生成一个表格，第一列是书名，第二列是笔记内容。</p>
+<p>我们先把所有笔记的标题找出来，保存在一个叫title的向量里：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">length.aa &lt;-<span class="st"> </span><span class="kw">length</span>(aa)
+title &lt;-<span class="st"> </span>aa[<span class="kw">c</span>(<span class="kw">seq</span>(<span class="dv">1</span>, length.aa, <span class="dt">by =</span> <span class="dv">5</span>))]</code></pre></div>
+<p>然后，用排序函数<code>order()</code>，对所有的标题按字母排序：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">title.o &lt;-<span class="st"> </span><span class="kw">order</span>(title)
+title &lt;-<span class="st"> </span>title[title.o]</code></pre></div>
+<p>接着，摘取笔记的高亮内容，存在叫highlight的向量里：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">highlight &lt;-<span class="st"> </span>aa[<span class="kw">c</span>(<span class="kw">seq</span>(<span class="dv">4</span>, length.aa, <span class="dt">by =</span> <span class="dv">5</span>))][title.o]</code></pre></div>
+<p>最后，把这两个向量保存在一个数据框里，大功告成，数据框保存到硬盘里。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kn &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Title =</span> title, <span class="dt">Highlight =</span> highlight)
+<span class="kw">write.table</span>(kn, <span class="st">&quot;c:/r4r/kn.txt&quot;</span>, 
+            <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>保存文件时我们用得分隔符<code>sep</code>参数为<code>\t</code>，表示用制表符tab分隔。用Excel打开我们整理的表格看看吧！</p>
+<p>也许你还不够满意：嗯，要是，笔记位置和做笔记的时间信息也放进表格里备案就好了。这好办，我们先把包含信息的行都提取出来。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">location &lt;-<span class="st"> </span>aa[<span class="kw">c</span>(<span class="kw">seq</span>(<span class="dv">2</span>, length.aa, <span class="dt">by =</span> <span class="dv">5</span>))][title.o]
+location[<span class="dv">1</span>]</code></pre></div>
+<p>我们发现，笔记位置的信息的格式是统一这样的：每行从第13个字符开始，到<code>Added on</code>倒着数到第5个字符之间，就是笔记位置的信息；而<code>Added on</code>里的第一个字符往后数第10个字符起，到这一行的末尾就是做笔记的时间。那么，我们用字符查找函数<code>regexpre()</code>来找到<code>Added on</code>出现的位置，然后用字符截取函数<code>substr()</code>截取信息就可以了</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">time.aa &lt;-<span class="st"> </span><span class="kw">substr</span>(location, 
+                  (<span class="kw">regexpr</span>(<span class="st">&quot; Added on &quot;</span>, location) +<span class="st"> </span><span class="dv">10</span>) , 
+                  <span class="kw">nchar</span>(location))[title.o]
+loc &lt;-<span class="st"> </span><span class="kw">substr</span>(
+  location, <span class="dv">13</span>, 
+  <span class="kw">regexpr</span>(<span class="st">&quot; Added on &quot;</span>, location) -<span class="st"> </span><span class="dv">5</span>)[<span class="kw">order</span>(title.o)]
+kn &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Title =</span> title, <span class="dt">Highlight =</span> highlight,  
+                 <span class="dt">Loc =</span> loc, <span class="dt">Time =</span> time.aa)
+<span class="kw">write.table</span>(kn, <span class="st">&quot;c:/r4r/kn2.txt&quot;</span>, 
+            <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>看看新表格，是不是信息齐全了？</p>
+<p>用这样的方法，不仅可以把笔记整理成表格，还可以对笔记进行再加工，例如计算笔记中某个关键词出现的频数，每本书做笔记的条数；还可以根据时间信息，来看看自己哪段时间读书多，看看自己的读书兴趣如何随时间在转移。随心所欲， 想怎么玩就怎么玩。如果这里介绍的函数仍然不能满足你的需求，还可以使用stringr扩展包<span class="citation">(Wickham <a href="#ref-R-stringr">2017</a>)</span>，里面提供了更加强大的工具。</p>
+
+<div class="example">
+<p><span id="exm:ex11-2" class="example"><strong>Example 10.2  </strong></span>中文是博大精深的，除了1000字不重复的千字文以外，我们还有一部《中华字经》。</p>
+<p>字经的官方网站<a href="#fn33" class="footnoteRef" id="fnref33"><sup>33</sup></a>介绍说：</p>
+<pre><code>    世界上最奇妙的汉字学习课本。……全文4000汉字没有一个字是重复使用的。
+    字经包括了常用汉字3500个。</code></pre>
+<p>该网站是国际网站，有繁体字版，还有英文介绍：</p>
+<blockquote>
+<p>The book does not repeat any characters…… “Chinese Character Canon” is a poem composed of 4,000 characters…</p>
+</blockquote>
+<p>人民日报对此报导说：</p>
+<pre><code>    中华字经共收录无重复汉字4000个。</code></pre>
+<p>请用R语言看看中华字经是不是真的没有一字重复。如果有，是哪些字，各重复出现了几次，是什么原因造成了重复？</p>
+此外，中华字经是否真正包括了常用汉字3500个？
+</div>
+<p></p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-267" class="theorem"><strong>小贴士 10.1  </strong></span>字符处理函数
+</div>
+<p></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">函数</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>readLines()</code>, <code>writeLines()</code></td>
+<td align="left">按字符读取和保存文本文件</td>
+</tr>
+<tr class="even">
+<td align="left"><code>tolower()</code>, <code>toupper()</code></td>
+<td align="left">大小写转换</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>nchar()</code></td>
+<td align="left">字符个数</td>
+</tr>
+<tr class="even">
+<td align="left"><code>strsplit()</code>, <code>substr()</code>, <code>substring()</code></td>
+<td align="left">字符串分割和截取</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>paste()</code>, <code>cat()</code></td>
+<td align="left">字符连接</td>
+</tr>
+<tr class="even">
+<td align="left"><code>grep()</code>, <code>gsub()</code>, <code>sub()</code>, <code>chartr()</code></td>
+<td align="left">查找和替换</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>table()</code>, <code>unique()</code>, <code>duplicated()</code></td>
+<td align="left">计数，查重（不限于字符变量）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="seccharpost" class="section level2">
+<h2><span class="header-section-number">10.4</span> 课外活动：张无忌的困惑</h2>
+<p>金庸的小说《倚天屠龙记》后记中写到：</p>
+<pre><code>    张无忌却始终拖泥带水，对于周芷若、赵敏、殷离、小昭这四个姑娘，似乎他对赵敏爱得最深，最后对周芷若也这般说了，但在他内心深处，到底爱哪一个姑娘更加多些？恐怕他自己也不知道。</code></pre>
+<p>张无忌到底爱谁？对于这个问题，已经有人用R语言的字符处理方法进行研究了，研究的大体思路是，看看哪个姑娘的名字在书中出现的次数最多，尤其是跟张无忌的名字同时出现的次数最多。最后，R代码得出了结论，张无忌最爱的其实是……请上网搜吧。</p>
+<p>发挥你的想象力，看看利用类似的方法，能否对你喜欢的作品进行分析，得到一些有趣的观点。例如，</p>
+<ul>
+<li><p>贾宝玉最常跟哪个女孩在一起；</p></li>
+<li><p>诸葛亮和周瑜在三国演义里的对手戏出现过几次；</p></li>
+<li><p>西天取经路上前后有多少妖精要吃唐僧肉；</p></li>
+<li><p>晁盖是什么时候起开始被宋江架空的……</p></li>
+</ul>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-stringr">
+<p>Wickham, Hadley. 2017. <em>Stringr: Simple, Consistent Wrappers for Common String Operations</em>. <a href="https://CRAN.R-project.org/package=stringr" class="uri">https://CRAN.R-project.org/package=stringr</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="32">
+<li id="fn32"><p>古诗文网：<a href="http://so.gushiwen.org/guwen/bookv_2745.aspx" class="uri">http://so.gushiwen.org/guwen/bookv_2745.aspx</a><a href="secchar.html#fnref32">↩</a></p></li>
+<li id="fn33"><p>中华字经：<a href="http://www.miktamchinese.com/" class="uri">http://www.miktamchinese.com/</a><a href="secchar.html#fnref33">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="secfunction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="secmap.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="secplot.html">
+<link rel="next" href="secloop.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="secfit" class="section level1">
+<h1><span class="header-section-number">第4章</span> 拟合</h1>
+<pre><code>    你大可以边用边学啊！需要用到的先学，其它的就放一边，只要能善用一些常用到的功能，又何必要那么深入呢？而且您在使用当中经常会发现一些新功能，这又会马上让您给赚到了。</code></pre>
+<blockquote>
+<p>—《大家来学VIM》</p>
+</blockquote>
+<p>我们在Excel里经常需要对散点图做线性或非线性拟合，添加个趋势线，在图上显示个拟合公式。这个操作用R可以很轻松地完成，而且能输出更多有用有趣的结果。</p>
+<div id="secfit-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> 线性拟合：散点图的趋势线</h2>
+<p>我们进行线性拟合示例所用的数据，是R自带的世界电话数据WorldPhones。我们先准备一下数据，把WorldPhones保存为一个数据框，并增加一列年代数据。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wp &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(WorldPhones)
+wp$year &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">rownames</span>(wp))</code></pre></div>
+<p>下面，我们看看亚洲跟欧洲的电话数量有没有线性关系。R内置的线性拟合函数是<code>lm()</code>，用起来很简单：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">lm</span>(wp$Asia ~<span class="st"> </span>wp$Europe) </code></pre></div>
+<p><code>lm()</code>函数里参数的格式是<code>因变量 ~ 自变量</code>，也就是<code>y ~ x</code>。有时候，我们需要强制直线通过原点，只需在拟合时指定自变量加上0即可：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m0 &lt;-<span class="st"> </span><span class="kw">lm</span>(wp$Asia ~<span class="st"> </span>wp$Europe +<span class="st"> </span><span class="dv">0</span>) </code></pre></div>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-101" class="lemma"><strong>思考 4.1  </strong></span>何时需要强制拟合直线过原点？
+</div>
+<p></p>
+<p>线性拟合的主要结果，也就是拟合直线的斜率和截距，都保存在了m这个变量里。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m  <span class="co"># 查看模型，显示斜率和截距。</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = wp$Asia ~ wp$Europe)
+## 
+## Coefficients:
+## (Intercept)    wp$Europe  
+##  -3782.5348       0.2915</code></pre>
+<p>信息量太少了，至少得给个<span class="math inline">\(R^2\)</span>和<span class="math inline">\(p\)</span>值吧。好办，还记得前面见过的<code>summary()</code>函数吗？可以直接用到模型结果上：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msum &lt;-<span class="st"> </span><span class="kw">summary</span>(m)
+msum  <span class="co"># 模型的详细总结报告。</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = wp$Asia ~ wp$Europe)
+## 
+## Residuals:
+##      1      2      3      4      5      6      7 
+##  369.3 -252.2 -464.8  177.8 -322.1  242.3  249.7 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -3.783e+03  7.278e+02  -5.197  0.00348 ** 
+## wp$Europe    2.915e-01  2.081e-02  14.012 3.33e-05 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 366.7 on 5 degrees of freedom
+## Multiple R-squared:  0.9752, Adjusted R-squared:  0.9702 
+## F-statistic: 196.3 on 1 and 5 DF,  p-value: 3.33e-05</code></pre>
+<p>这个信息就丰富多了，给出了残差的分布情况，斜率和截距的拟合值，标准差，<span class="math inline">\(t\)</span>检验的<span class="math inline">\(t\)</span>值、<span class="math inline">\(Pr\)</span>值和显著性，残差的标准差，<span class="math inline">\(R^2\)</span>，<span class="math inline">\(F\)</span>检验的<span class="math inline">\(F\)</span>统计量和<span class="math inline">\(p\)</span>值等。关于<span class="math inline">\(t\)</span>检验和<span class="math inline">\(F\)</span>检验，详见第十七到第十九章。</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-104" class="theorem"><strong>小贴士 4.1  </strong></span> 获取拟合结果中各种统计量的函数
+</div>
+<p></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">函数 返回</th>
+<th align="left">值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>summary()</code></td>
+<td align="left">主要统计量</td>
+</tr>
+<tr class="even">
+<td align="left"><code>anova()</code></td>
+<td align="left">方差分析表</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>coef()</code>, <code>coefficients()</code></td>
+<td align="left">回归系数</td>
+</tr>
+<tr class="even">
+<td align="left"><code>confint()</code></td>
+<td align="left">回归系数的置信区间</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>deviance()</code></td>
+<td align="left">残差平方和</td>
+</tr>
+<tr class="even">
+<td align="left"><code>effects()</code></td>
+<td align="left">正交效应向量（Vector of orthogonal effects ）</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>fitted()</code></td>
+<td align="left">拟合的Y值向量Vector of fitted y values</td>
+</tr>
+<tr class="even">
+<td align="left"><code>residuals()</code>, <code>resid()</code></td>
+<td align="left">模型残差Model residuals</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>vcov()</code></td>
+<td align="left">主参数的协防差矩阵</td>
+</tr>
+</tbody>
+</table>
+<p>要想从模型报告中提取需要的统计量，例如拟合系数和<span class="math inline">\(R^2\)</span>，那么运行：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msum$r.squared</code></pre></div>
+<pre><code>## [1] 0.975165</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msum$coefficients</code></pre></div>
+<pre><code>##                  Estimate   Std. Error   t value
+## (Intercept) -3782.5348374 727.84976513 -5.196862
+## wp$Europe       0.2915207   0.02080546 14.011737
+##                 Pr(&gt;|t|)
+## (Intercept) 3.476111e-03
+## wp$Europe   3.329895e-05</code></pre>
+<p>记得在$后用tab小助理看看都能提取出哪些统计量。</p>
+<p>前文我们讲过作图函数<code>plot()</code>的三种化身。现在，我们介绍第四种化身。先请<code>example()</code>小助理调出<code>lm()</code>函数的示例来看看：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">example</span>(lm)</code></pre></div>
+<p><code>example()</code>函数实际运行的是F1帮助信息里是示例代码，这些代码在RStudio的左下面板逐个显示。仔细观察这些代码，可以发现，拟合结果图是用<code>plot()</code>函数直接画出来的。是的，这就是<code>plot()</code>的第四种化身：当作图对象是个拟合模型时，<code>plot()</code> 函数作出了四张模型诊断图。</p>
+<p>下面我们把我们自己的拟合结果画出来。由于共有4张图，我们用上一章学到的作图布局方法，把四张图拼在一起：</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="fl">4.2</span>, <span class="dv">2</span>, <span class="dv">1</span>)) 
+<span class="kw">plot</span>(m)</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-107"></span>
+<img src="r4r_files/figure-html/unnamed-chunk-107-1.png" alt="plot()函数展示线性拟合模型的结果." width="672" />
+<p class="caption">
+图 4.1: plot()函数展示线性拟合模型的结果.
+</p>
+</div>
+<p><code>plot()</code>再次展示了强大的威力。这四张图里，第一张是以拟合值为横坐标、残差为纵坐标的对比图，用来展示残差是否均匀分布在直线<span class="math inline">\(y=0\)</span>两侧；第二张是残差Q-Q图，用来展示残差是否符合正态分布：第三张是以拟合值为横坐标、标准残差平方根为纵坐标的对比图，仍然是用来展示残差分布状况的；第四张是以杠杆值为横坐标、标准残差为纵坐标的对比图，展示影响回归结果的异常点。</p>
+<p>做统计，R确实比Excel不知高到哪儿去了。只是，信息量有点大，术语有点多。不懂或者忘了的话，不要忘了你的三大法宝。</p>
+
+<div class="example">
+<span id="exm:ex4-1" class="example"><strong>Example 4.1  </strong></span>请在本节示例的散点图中添加强制过原点的拟合直线。
+</div>
+<p></p>
+</div>
+<div id="secfit-2" class="section level2">
+<h2><span class="header-section-number">4.2</span> 在绘图区添加数学表达式</h2>
+<p>在展示线性拟合结果时，我们往往只需做个xy散点图，添加趋势线和回归方程就够了。对于散点图和趋势线，我们可以按照前文所学的绘图指令来完成。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> wp$Europe, <span class="dt">y =</span> wp$Asia, <span class="dt">pch =</span> <span class="dv">19</span>)  
+<span class="kw">abline</span>(m, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
+<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">19</span>, <span class="ot">NA</span>), <span class="dt">lty =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">1</span>), 
+       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Linear fit&quot;</span>), 
+       <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>)</code></pre></div>
+<p></p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-109"></span>
+<img src="r4r_files/figure-html/unnamed-chunk-109-1.png" alt="给散点图添加趋势线和拟合方程." width="75%" />
+<p class="caption">
+图 4.2: 给散点图添加趋势线和拟合方程.
+</p>
+</div>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-110" class="lemma"><strong>思考 4.2  </strong></span>在这里，我们并未给<code>abline()</code>函数设定参数a和b，那么拟合直线是怎么作出来的？
+</div>
+<p></p>
+<p>对于添加回归方程，我们先了解一下如何在绘图区内添加文字。</p>
+<p>绘图区添加文字，一般用<code>text()</code>函数。它跟<code>legend()</code>函数的用法很像。比如，我们在图的左上角(23000, 8500)这个坐标位置添加文本“(a)”，颜色为红色。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">23000</span>, <span class="dt">y =</span> <span class="dv">8500</span>, <span class="dt">labels =</span> <span class="st">&#39;(a)&#39;</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
+<p>除了使用指定的坐标位置外，跟<code>legend()</code>一样，放置文字的位置也可以<code>locate()</code>函数以鼠标点击的方式来确定。请自己试一下吧。</p>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-112" class="lemma"><strong>思考 4.3  </strong></span>看起来<code>legend()</code>跟<code>text()</code>有很多相似之处，那么，什么情况下他们两个的用处完全相同？
+</div>
+<p></p>
+<p>下一步，我们将回归方程以添加文本的方式添加到图上。从拟合结果里，可以找到拟合直线的斜率是0.2915，截距是3783。那么，方程可以写成一个字符串，然后用<code>text()</code>函数把这个字符串添进去：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eqlm1 &lt;-<span class="st"> &#39;y = 0.2915x + 3783&#39;</span>
+<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">23000</span>, <span class="dt">y =</span> <span class="dv">7000</span>, <span class="dt">labels =</span> eqlm1, <span class="dt">adj =</span> <span class="dv">0</span>)</code></pre></div>
+<p>要求不高的话，这就算是把公式添进图里了。</p>
+<p>当然，严格来讲，这个表达式里的x和y应该用斜体来表示。这个需求是字符串满足不了的，我们需要用表达式函数<code>expression()</code>生成一个表达式：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eqlm2 &lt;-<span class="st"> </span><span class="kw">expression</span>(y ==<span class="st"> </span><span class="fl">0.2915</span> *<span class="st"> </span>x +<span class="st"> </span><span class="dv">3783</span>)
+<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">23000</span>, <span class="dt">y =</span> <span class="dv">6000</span>, <span class="dt">labels =</span> eqlm2, <span class="dt">adj =</span> <span class="dv">0</span>)</code></pre></div>
+<p>注意，在表达式里，乘号不能省略，而等号要用双等号表示。</p>
+<p>eqlm2跟eqlm1在图上貌似没差别呀？别急，还没完。在<code>expression()</code>函数里，可以增添需要的格式，例如斜体，用<code>italic()</code>函数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eqlm3 &lt;-<span class="st"> </span><span class="kw">expression</span>(<span class="kw">italic</span>(y) ==<span class="st"> </span><span class="fl">0.2915</span> *<span class="st"> </span><span class="kw">italic</span>(x) +<span class="st"> </span><span class="dv">3783</span>)
+<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">23000</span>, <span class="dt">y =</span> <span class="dv">5000</span>, <span class="dt">labels =</span> eqlm3, <span class="dt">adj =</span> <span class="dv">0</span>)</code></pre></div>
+<p>这回有区别了吧？</p>
+<p>如果你觉得区别不明显，下面我们来添加<span class="math inline">\(R^2\)</span>值到图里：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eqr2 &lt;-<span class="st"> </span><span class="kw">expression</span>(<span class="kw">italic</span>(R) ^<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="fl">0.9752</span>)
+<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">23000</span>, <span class="dt">y =</span> <span class="dv">4000</span>, <span class="dt">labels =</span> eqr2, <span class="dt">adj =</span> <span class="dv">0</span>)</code></pre></div>
+<p><code>^</code>符号是个格式标记，<code>expression()</code>函数看到这个标记之后，就知道后面紧跟的是上标了。如果没有expression()函数，仅凭字符串是很难得到上标符号的。</p>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-117" class="lemma"><strong>思考 4.4  </strong></span>如果我偏要用字符串，坚持不用expression()函数，那该怎么输入上标？
+</div>
+<p></p>
+<p><code>expression()</code>函数生成的表达式变量，不仅可以用在<code>text()</code>里作为文字插入绘图区，还可以用在<code>legend()</code>函数里插进图例，用在<code>mtext()</code>函数放在坐标轴外，用在<code>plot()</code>的<code>xlab</code>或<code>ylab</code>参数上作为坐标轴标签（见第<a href="secplot.html#secplotpost">3.5</a>节）。</p>
+<p><code>expression()</code>函数提供了一个强大的数学环境，允许插入任何复杂的数学符号。例如，我们添加一个开平方表达式：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">txt1 &lt;-<span class="st"> </span><span class="kw">expression</span>(<span class="kw">sqrt</span>(x))</code></pre></div>
+<p>然后， 我们用<code>legend()</code>函数，将txt1添加到图例里（当然，图中并没有这条开平方曲线，这里仅仅作为练习）。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">legend</span>(<span class="st">&#39;topright&#39;</span>, <span class="dt">legend =</span> txt1)</code></pre></div>
+<p>可见，<code>expression()</code>函数把<code>sqrt</code>符号自动转换成了开方符号。我们为上面这个图例增加线型，去除边框：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">legend</span>(<span class="st">&#39;right&#39;</span>, <span class="dt">legend =</span> txt1, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, 
+       <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>)</code></pre></div>
+
+<div class="theorem">
+<span id="thm:thm-plotmaths" class="theorem"><strong>小贴士 4.2  </strong></span>常用公式符号
+</div>
+<p></p>
+<p><img src="images/img04.png" width="1122" style="display: block; margin: auto;" /></p>
+<p>下面, 我们再插入一个积分符号，用<code>integral()</code>函数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">txt2 &lt;-<span class="st"> </span><span class="kw">expression</span>(<span class="kw">integral</span>(<span class="kw">f</span>(x) *<span class="st"> </span>dx, a, b))
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> txt2, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>)</code></pre></div>
+<p>常见的数学符号，见小贴士<a href="secfit.html#thm:thm-plotmaths">4.2</a>。</p>
+
+<div class="example">
+<span id="exm:ex4-2" class="example"><strong>Example 4.2  </strong></span>图<a href="secplot.html#fig:fig-co2sep3">3.3</a>的纵坐标标签“CO2”，这样写不规范，请将其中的“2”改成下标。
+</div>
+<p></p>
+<!---
+
+```
+## $mar
+## [1] 0 0 0 0
+## 
+## $pty
+## [1] "m"
+```
+
+<img src="r4r_files/figure-html/unnamed-chunk-123-1.png" width="100%" />
+-->
+</div>
+<div id="secfit-3" class="section level2">
+<h2><span class="header-section-number">4.3</span> 非线性拟合：一个指数递减模型</h2>
+<p>实验观测到一组<span class="math inline">\(x\)</span>值和<span class="math inline">\(y\)</span>值，假定<span class="math inline">\(y\)</span>与<span class="math inline">\(x\)</span>的响应关系用一个非线性方程来表达，那么一般可以使用<code>nls()</code>函数来得到方程的系数。nls就是Non-Linear Simulation（非线性模拟）的缩写。</p>
+<p>下面举个例子。为了描述方便，我们随机生成一组数据：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">1</span>)
+y &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">15</span>) *<span class="st"> </span><span class="kw">exp</span>(-<span class="kw">runif</span>(<span class="dv">1</span>, <span class="fl">0.01</span>, <span class="fl">0.05</span>) *<span class="st"> </span>x) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">rnorm</span>(<span class="dv">51</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)</code></pre></div>
+<p>假定上面这组数据是我们实验观测得到的，并且假定我们已知二者之间的关系可以用下面这个方程来描述：</p>
+<p><span class="math display">\[ y = a e^ {–b x}\]</span></p>
+<p>我们作图看看他们的关系：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(x,y)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-125"></span>
+<img src="r4r_files/figure-html/unnamed-chunk-125-1.png" alt="用作非线性拟合的散点图示例." width="75%" />
+<p class="caption">
+图 4.3: 用作非线性拟合的散点图示例.
+</p>
+</div>
+<p>从两者响应的方程和图来估计，<span class="math inline">\(a\)</span>是当<span class="math inline">\(x=0\)</span>时的y值，约为8；当<span class="math inline">\(x\)</span> 约为50时，<span class="math inline">\(y\)</span>约为1，那么根据对a的估计，我们可以来估计<span class="math inline">\(b \approx - \log(\frac{1}{a}) / 50\)</span>，并以此估计值作为<span class="math inline">\(a\)</span>和<span class="math inline">\(b\)</span>的初始值，来拟合得到精确值。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a_start &lt;-<span class="st"> </span><span class="dv">8</span>
+b_start &lt;-<span class="st"> </span>-<span class="st"> </span><span class="kw">log</span>(<span class="dv">1</span>/a_start) /<span class="st"> </span><span class="dv">50</span>
+m &lt;-<span class="st"> </span><span class="kw">nls</span>(y ~<span class="st"> </span>a *<span class="st"> </span><span class="kw">exp</span>(-b *<span class="st"> </span>x), 
+         <span class="dt">start =</span> <span class="kw">list</span>(<span class="dt">a =</span> a_start, <span class="dt">b =</span> b_start))
+m</code></pre></div>
+<pre><code>## Nonlinear regression model
+##   model: y ~ a * exp(-b * x)
+##    data: parent.frame()
+##       a       b 
+## 8.04087 0.04253 
+##  residual sum-of-squares: 10.3
+## 
+## Number of iterations to convergence: 3 
+## Achieved convergence tolerance: 1.437e-06</code></pre>
+<p>可见，<span class="math inline">\(a\)</span>的拟合值为8.04，<span class="math inline">\(b\)</span>的拟合值为0.0425。拟合曲线的预测值跟实测值的相关系数为</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(y,<span class="kw">predict</span>(m))</code></pre></div>
+<pre><code>## [1] 0.9758937</code></pre>
+<p>要想查看总的拟合报告，我们再度使用人见人爱的<code>summary()</code>函数:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m)</code></pre></div>
+<pre><code>## 
+## Formula: y ~ a * exp(-b * x)
+## 
+## Parameters:
+##   Estimate Std. Error t value Pr(&gt;|t|)    
+## a 8.040872   0.190289   42.26   &lt;2e-16 ***
+## b 0.042525   0.001612   26.37   &lt;2e-16 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.4584 on 49 degrees of freedom
+## 
+## Number of iterations to convergence: 3 
+## Achieved convergence tolerance: 1.437e-06</code></pre>
+<p>显示结果的格式跟前面的线性拟合是类似的。</p>
+
+<div class="example">
+<span id="exm:ex4-3" class="example"><strong>Example 4.3  </strong></span>请上面的指数递减模型的散点图上添加拟合曲线，并在绘图区添加图例和拟合方程。
+</div>
+<p></p>
+</div>
+<div id="secfitpost" class="section level2">
+<h2><span class="header-section-number">4.4</span> 课外活动：助理团与自助餐</h2>
+<p>求人之前先求己，人助之前先自助。我们在第<a href="secplot.html#secplot">3</a>章介绍了R的人气助理团，并且频繁提醒你使用他们。相信你现在对F1、<code>example()</code>和<code>demo()</code>已经从陌生到熟悉了吧？只要再进一步，深入了解一下他们的工作方式，我们就能学到更多有价值的东西。</p>
+<p>例如，我们先敲个函数名<code>lm()</code>，再将光标移到<code>lm</code>函数名的任意位置按F1，RStudio右下面板就弹出了<code>lm()</code>的完整帮助信息。注意看其中的最后一部分Examples。</p>
+<p>同时，我们请<code>example()</code>小助理调出线性拟合函数<code>lm()</code>的示例:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">example</span>(lm)</code></pre></div>
+<p>RStudio左下面板会提示你按回车键，每按一次就多显示一些示例。左右面板对比一下，你就会惊喜地发现，左下面板的黑色代码和右下面板帮助信息的Examples部分，是一模一样的！左下面板只是多显示了运行结果而已。所以只要把帮助信息里的代码拷贝粘贴到代码窗口运行，跟<code>example()</code>函数运行的结果是一样的。</p>
+<p><code>example()</code>小助理顿时哭了：主人，这秘密都被你发现了……以后你是不是只要F1不要我了……</p>
+<p>其实<code>example()</code>比按F1再拷贝粘贴还是方便很多了。当然，这个因人而异，你喜欢哪个就用哪个好了。</p>
+<p>下面一个要哭的是<code>demo()</code>：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">demo</span>(plotmath)</code></pre></div>
+<p>这里，<code>demo()</code>将表达式函数里的数学符号在RSudio右下面板的作图区展示出来。那么这些图是怎么作出来的？只要详细研究一下<code>demo()</code>运行后在左下面板出现的代码就知道了。</p>
+<p>事实上，小贴士<a href="secfit.html#thm:thm-plotmaths">4.2</a>就是从中摘录绘制而成的。</p>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-131" class="lemma"><strong>思考 4.5  </strong></span>借用<code>demo(plotmath)</code>演示的代码，从中挑出你常用的数学符号，可以自制自己专属的小贴士备忘录。想想该如何制作。
+</div>
+<p></p>
+<p>好了，现在你可以用<code>example()</code>和<code>demo()</code>试试别的函数，从中偷学一些绝技了。</p>
+<p>关于F1、<code>example()</code>、<code>demo()</code>和<code>vignette()</code>这些助理更多的背景和秘密，我们将在第<a href="secfunction.html#secfunction-4">9.4</a>节进一步深挖。</p>
+<p>学习R语言，不愁没资料，不愁身边没人帮忙。F1，F2，example，demo，vignette，stackoverflow，google，这是一桌丰盛的自助餐。根本不用讨饭吃，好吃的都摆在你眼前，就看你愿不愿动筷子夹到自己碗里。</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="secplot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="secloop.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

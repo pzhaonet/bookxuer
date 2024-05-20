@@ -1,0 +1,7 @@
+bookdown::gitbook:
+  css: css/style.css
+  config:
+    toc:
+      collapse: none
+      before: |
+        <li><a href="./">学 R（赵鹏 李怡 著）</a></li>

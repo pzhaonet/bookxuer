@@ -1,0 +1,1107 @@
+\newpage \thispagestyle{empty}
+
+\cleardoublepage 
+
+\addcontentsline{toc}{chapter}{参考文献}
+\bibliography{d:/Dropbox/Literature/zhaor}
+
+\appendix
+
+% \addcontentsline{toc}{chapter}{\appendixname}
+
+
+# Markdown 和 bookdown 语法速查 {#markdown}
+
+
+bookdown 的语法规则详见其官方文档[*bookdown: Authoring Books and Technical Documents with R Markdown*](https://bookdown.org/yihui/bookdown/)，这里作一简要总结，以便查询。第一次使用时，建议对照着 'bookdownplus' 扩展包的模板文档来理解用法。
+
+
+**Markdown 基本语法**
+
+标记示例                            输出
+------------------------------- -----
+`*italic*`                         斜体 *italic*
+`**粗体**`                       **粗体**
+`CO~2~`                          下标（CO~2~）
+`R^2^`                           上标（R^2^）
+`$E = mc^2$`                     行内公式 $E = mc^2$
+                                （双美元符号为行间公式）
+`[网站](http://xuer.pzhao.net)`  超级链接
+`<xuer@pzhao.net>`               邮件链接
+`![](http图片链接)`              插入图片
+`> 引用文字`                     引用
+`` `plot()` ``                   行间代码
+四个空格                         整行代码
+三个反引号                       区块代码
+`# 第一章`                       章节标题
+`1. 列表...`                     带编号的列表
+`- 列表...`                      不带编号的列表
+`^[脚注]`                        脚注
+
+
+**章节划分、编号和交叉引用**
+
+
+标记                            输出
+------------------------------- -----
+`# (PART) Part I {-} `          部分
+`# chapter {#ID}`               带编号的章节
+`# chapter {#ID .unnumbered}`     不带编号的章节
+`# References {-}`                参考文献
+`# (APPENDIX) Appendix {-}`       附录
+`\@ref(ID)`                       交叉引用
+
+**插图**
+
+第一种插图法(不推荐)：用 markdown 基础语法。下面这条语句，将在输出的文档中以 caption 为标题插入 images 文件夹下名为 img1.png 的图片：
+
+```
+![caption](images/img1.png)
+```
+
+
+第二种插图法：用嵌入的 R 代码作图（推荐）：
+
+    `r ''````{r fig1, fig.cap='caption', 
+    out.width='80%', fig.align='center', echo=FALSE}
+    plot(1:10)
+    ```
+
+交叉引用方法是`\@ref(fig:fig1)`。
+
+第三种插图法：将现成的图片文件插进来（推荐）：
+
+    `r ''````{r img1, fig.cap='caption'}
+    knitr::include_graphics("images/img1.png")
+    ```
+交叉引用方法是`\@ref(fig:img1)`。
+
+**表格**
+
+第一种表格：直接用 markdown 语法画表格。输入：
+
+```
+第一列标题  第二列标题
+----------- ----------
+第一行1     第一行2
+第二行1     第二行2
+```
+
+输出：
+
+第一列标题  第二列标题
+----------- ----------
+第一行1     第一行2
+第二行1     第二行2
+
+
+第二种表格：用 R 函数展示表格（推荐）：
+
+    `r ''````{r tab1, tidy=FALSE, echo=FALSE}
+    knitr::kable(
+      head(iris, 20), caption = 'Here is a nice table!',
+      booktabs = TRUE
+    )
+    ```
+
+交叉引用方法：`\@ref(tab:tab1)`。
+
+**参考文献**
+
+主流学术期刊和数据库都提供 .bib 格式参考文献的下载。先将你下载的参考文献信息合并在一个或几个 .bib 文件里，然后在模板文档的 \mbox{index.Rmd} 开头部分 bibliography 条目里声明你自己的 .bib 文件名称。 .bib 文件里每条参考文献都有个条目名称。假定某篇文献的条目名称是 foo，那么文中引用的方法就是 `[@foo]`。
+
+**定义、定理、示例等环境**
+
+环境全称    引用简称
+---------- --------------  
+theorems    thm
+lemma	      lem  
+definition	def        
+corollary	  cor     
+proposition prp
+example	    exm
+exercise    exr
+
+
+    `r ''````{环境全称, label='', name=""}
+    内容
+    ```
+
+定义、定理、示例等环境的交叉引用方法：`\@ref(引用简称:label)`，如描述某定律的格式是：
+
+    `r ''````{theorem, label='mythm1'}
+    物体內能的增加等于物体吸收的热量和对物体所作的功的总和。
+    ```
+
+交叉引用方法：`\@ref(thm:mythm1)`。
+
+**输出word文档**
+
+在 _output.yml 里添加一行：
+
+```
+bookdown::word_document2: default 
+```
+
+**公式编号和引用**
+
+pdf 文档里的公式编号和交叉引用，建议使用公式环境。例如，输入：
+
+```
+\begin{equation} 
+E = mc^2
+  (\#eq:mc2)
+\end{equation} 
+```
+
+交叉引用方法：`\@ref(eq:mc2)`。
+
+
+word 文档里的公式的编号和交叉引用，可以使用行内公式，公式前用圆括号里加公式标签。例如，输入：
+
+```
+(@eq-mc) $E = mc^2$
+
+```
+
+交叉引用方法：`@eq-mc`。
+
+\newpage \thispagestyle{empty}
+
+
+# 答疑 {#secqa}
+
+## 菜鸟常犯错误和常见问题 {#secqa-mis .unnumbered}
+
+<!---
+> 界面语言：在安装目录下的etc目录下用文本打开Rconsole文件,找到language=，添加 en
+-->
+
+**读取数据文件（`read.table()`）时，显示无法打开连接（`Error in file(file, "rt") : cannot open the connection`）**
+
+很有可能是路径的名称写错了。路径的名称应该是个字符串。相邻两级文件夹之间要用 \\\\ 或 / 分开，不能有汉字或特殊字符。最好不要有空格。如果有空格，要用 \\ 进行转义。下面是一些路径示例。
+
+\index{数据读写!read.csv}
+```{r, eval=FALSE}
+read.csv(c:/r4r/co2.csv) # 错误
+# 文件完整路径必须是个字符串，放在一对儿单引号或双引号里。
+# 不要用中文里的引号。
+
+read.csv('c:\r4r\\co2.csv') # 错误  
+# c:后面跟两个反斜线或一个斜线。
+# 相邻两级文件夹之间必须是两个反斜线\\或一个斜线/。
+
+read.csv('c:/r4r/co2.scv') # 错误
+# 文件名不要写错，应为co2.csv。
+
+read.csv('c:/r4r/co2.csv') # 正确。
+
+read.csv('c:\\r4r\\co2.csv') # 正确。
+```
+
+**找不到对象（object not found）**
+
+这并不意味着 R 在抱怨他自己的单身问题，而是说明某个变量并不存在。Windows 用户常见的错误是忘记了 R 对变量名的大小写是敏感的，*x* 和 *X* 是两个不同的变量，例如：
+
+```{r, error=TRUE}
+pm25 <- 40
+PM25 + 1
+```
+
+被赋值的是`pm25`，而不是`PM25`，做加法的时候当然找不到后者的值了。
+
+**括号用错或不完整导致各种意想不到的错误**
+
+R 中的圆括号、方括号、花括号各自有不同的含义（见小贴士 \@ref(thm:thm-bracket)）。如果用了不该用的括号，那么 R 运行时会出现难以预料的错误。例如:
+
+```{r, error=TRUE}
+x <- 1:6
+x{1}
+```
+
+我们想调用 *x* 里的第一个元素，应该用方括号 `x[1]`。错用花括号后，R 的错误提示是“意外的花括号”。这个提示是明显的，告诉你括号用错了。但大多数情况下，是下面这种提示：
+
+```{r, error=TRUE}
+x(1)
+```
+
+这里，我们错用了圆括号后，R 的错误提示是“没有x这个函数”。R 误以为你把 `x` 当方程用，不会提示你错用了括号。
+
+另一个常见错误是括号不配对或配对不完整，也会导致无法预料的错误。
+
+要避免这种错误，方法很简单，RStudio 默认是在输入括号时自动补成对儿的，所以输入时一般不会出现问题，只要记得删除时也成对儿删掉就行了。另外，如果配对儿出现问题，RStudio 会用红色标记来提示该行的括号有问题。
+
+<!---
+** 读取数据 **
+
+注意NA，stringascharacter，skip，列名称的变化。
+
+举几个例子
+--->
+
+**求和、求平均用sum()和mean()得到的结果是 NA**
+
+实际数据里常有缺失值，R 默认以`NA`来表示（Not Available 的缩写）。这样的向量在很多函数里要特殊对待，例如：
+
+```{r}
+x <- c(1, 3, NA, 4)
+mean(x)
+```
+
+我们用 F1 小助理看一下 `mean()` 函数的帮助信息，会发现函数参数里有个`na.rm`，默认值为 `FALSE` ，即“不删除缺失数据”。改为`na.rm = TRUE`就行了，
+
+```{r}
+mean(x, na.rm = TRUE)
+
+```
+注意，这种情况下求平均值，向量的长度是以删除缺失值后计算的。
+
+很多函数都有这个参数，用之前记得查看帮助。
+
+**别人发给我的 .r 或 .Rmd 文件，在 RStudio 里打开有乱码**
+
+问问是不是里面有英文之外的字符，例如中文的注释等。如果是的话，很有可能是别人在生成代码文件时用了不同的编码。
+
+在RStudio的界面点击 File -- Reopen with Encoding，换成别的编码试试看。
+
+为了减少这种问题，建议大家生成代码文件时都选择 UTF-8 编码，点击 File -- Save with Encoding 选中 UTF-8 即可。
+
+**箭头赋值号 <- 与小于号 <**
+
+如果不注意留空格，新手有时候会因为混淆箭头赋值号与小于号而得到意外错误，例如：
+
+```{r, eval=FALSE}
+x <-1
+x < -1
+x < - 1
+```
+
+上面这三个例子里，哪个是把 *x* 赋值为1，哪个是判断 *x* 是否小于 -1？试一下就知道了。
+
+为了杜绝这种无聊错误，建议在 RStudio 使用 alt+_ 来输入箭头符号，会自动在箭头前后加空格。或者干脆用等号。
+
+**用 read.table() 读一个几万行的数据文件，结果只读进去一千多行，提示我还有多少行没读入**
+
+\index{数据读写!read.table}
+
+ R 处理大数据文件时，受电脑的虚拟内存和地址限制，解决的方法有很多^[R 处理大数据：http://yanping.me/cn/blog/2012/01/01/working-with-large-datasets/]，例如删除不再用的对象、尽量使用向量计算、用矩阵替代吃内存的数据框等。限于篇幅，本书对这个问题不展开了，请上网搜索“R 语言 大数据集”。
+
+**运行 `blogdown::install_hugo()` 错误，显示“无法与服务器建立连接”**
+
+此类出错信息一般是：
+
+```
+Error in download.file(url, ...):
+  cannot open URL 'https://github.com/spf13/hugo/release/....'
+```
+一般情况下，是你的电脑所处的网络环境造成的。试着换个地方联网。
+
+**我在论坛发帖提问求助，为何没有人帮我解答？**
+
+有以下几种可能：
+
+1. 你的问题太难，没人知道怎么解答。这种情况下建议你耐心等待，或者换个论坛求助。
+
+2. 你问的方式不够礼貌。看看有没有用“请”字。回忆一下，上次别人帮你解答问题后，你有没有提供反馈，比如对别人说“谢谢”。帮你的人如果得不到回应，下次就不会再帮你。
+
+3. 你的标题没写清楚。比如发帖的标题是“菜鸟求助！紧急！”。这种帖子基本没人点开看内容。用尽量简短的语句在标题里陈述问题，节省别人的时间，例如标题写为“[求助]运行`blogdown::install_hugo()`错误，显示‘无法与服务器建立连接’”。
+
+4. 你的正文里没有把问题表述清楚，或者问得太笼统。别人无法快速看懂你的问题，自然没法解答。例如“我的数据文件没法读进R，怎么办？”这样得到的回答只能是“去看书”。尽量把问题的来龙去脉说清楚，例如附上那个没法读取的数据文件的下载链接。
+
+5. 你没有给出示例代码。别人一般不会花时间从零开始为你写代码。如果没法快速重现你的故障，就不会回答你。尽量贴出你的代码，让别人只需拷贝粘贴过去，就能直接运行重现你的问题。
+
+6. 你没有说清楚你的软件运行环境。有些问题是跟运行环境有关的。你的 R 是什么版本？操作系统是什么？加载了那些扩展包？如果你不确定是否跟运行环境有关，那么保险起见，把你的运行环境信息贴出来，让别人帮你判断。R 专门提供了两个函数来获取运行环境信息：
+
+```{r, eval=FALSE}
+sessionInfo()
+devtools::session_info()
+```
+
+与人方便，自己方便。在论坛上，没有任何人有义务帮你解决问题。所以，降低你的期望值，并且换位思考一下，站在别人角度来看你的求助帖，就知道应该如何提问了。只有先为别人节省时间，才能为自己节省时间，从而快速得到别人的帮助。
+
+## 习题参考答案 {#secqaa .unnumbered}
+
+这里给出了各章练习的参考答案以及详细注释。正如我们前文所说的，每道题的解答方式都不是唯一的，只要得到想要的答案就可以了。
+
+参考答案里，我们使用了 timeDate [@R-timeDate]、fun 
+\mbox{\citep{R-fun}}、animation \citep{R-animation1, R-animation2} 和 openair [@R-openair] 等扩展包。
+
+**练习 \@ref(exm:ex1-1) 参考答案**
+
+```{r, eval=FALSE}
+# 方案1
+365 %% 7
+365 %/% 7
+
+# 方案2
+floor(365/7) # 向下取整函数
+365 - floor(365/7)
+# 与floor() 属于同一家族的还有：
+# ceiling(), trunc(), round(), signif()
+```
+
+
+**练习 \@ref(exm:ex1-2) 参考答案**
+
+```{r, eval=FALSE}
+x <- c(97, 80, 64, 91, 87, 100, 128, 144, 150, 150, 150, 106, 
+       78, 68, 62, 46, 55, 68, 84, 92, 95, 108, 128, 138)
+plot(x)
+
+# 方案1
+max(x)
+min(x)
+mean(x)
+
+# 方案2
+summary(x)[c(1, 4, 6)]
+
+```
+
+**练习 \@ref(exm:ex2-1) 参考答案**
+
+```{r, eval=FALSE}
+mydata2 <- as.data.frame(t(matrix(
+  co2, 12, 
+  dimnames = list(month.abb, unique(floor(time(co2)))))))  
+mydata2$year <- as.numeric(rownames(mydata2))
+x1995 <- mydata2['1995', 2:13]
+
+# 方案1
+max(x1995)
+min(x1995)
+
+# 方案2
+range(x1995) # range()返回取值范围。
+```
+
+**练习 \@ref(exm:ex3-1) 参考答案**
+
+```{r, eval=FALSE}
+mydata2 <- as.data.frame(t(matrix(
+  co2, 12, 
+  dimnames = list(month.abb, unique(floor(time(co2)))))))  
+mydata2$year <- as.numeric(rownames(mydata2))
+mydata2$mean <- rowMeans(mydata2[, 2:13])
+
+plot(x = mydata2$year, y = mydata2$mean, 
+     type = 'p', pch = 17, col = colors()[652])
+
+```
+
+**练习 \@ref(exm:ex3-2) 参考答案**
+
+```{r, eval=FALSE}
+x <- mydata2$year
+y <- mydata2$Sep
+plot(x = x, y = y)
+abline(v = seq(min(x), max(x), 1), 
+       h = seq(min(y), max(y), 10), col = 'grey')
+text(x, y, labels = y, col = 'red', pos = c(2, 4))  
+# pos 参数来指定文字位于给定坐标的哪一侧，
+# pos 取值可以是1,2,3,4。
+```
+
+**练习 \@ref(exm:ex3-3) 参考答案**
+
+```{r, eval=FALSE}
+x <- mydata2$year[1:6]
+y <- mydata2$Sep[1:6]
+
+# 方案1：逐个画图
+pdf('c:/r4r/9in1.pdf')
+par(mfrow = c(3,3), cex = 1.2, mar = c(3, 2, 0.5, 1))
+plot(x = x, y = y, type = 'p')
+legend('topleft', legend = 'p', 
+       cex = 0.8, bty = "n", text.col = 'blue')
+plot(x = x, y = y, type = 'l')
+legend('topleft', legend = 'l', 
+       cex = 0.8, bty = "n", text.col = 'blue')
+plot(x = x, y = y, type = 'b')
+legend('topleft', legend = 'b', 
+       cex = 0.8, bty = "n", text.col = 'blue')
+plot(x = x, y = y, type = 'c')
+legend('topleft', legend = 'c', 
+       cex = 0.8, bty = "n", text.col = 'blue')
+plot(x = x, y = y, type = 'o')
+legend('topleft', legend = 'o', 
+       cex = 0.8, bty = "n", text.col = 'blue')
+plot(x = x, y = y, type = 'h')
+legend('topleft', legend = 'h', 
+       cex = 0.8, bty = "n", text.col = 'blue')
+plot(x = x, y = y, type = 's')
+legend('topleft', legend = 's', 
+       cex = 0.8, bty = "n", text.col = 'blue')
+plot(x = x, y = y, type = 'S')
+legend('topleft', legend = 'S', 
+       cex = 0.8, bty = "n", text.col = 'blue')
+plot(x = x, y = y, type = 'n')
+legend('topleft', legend = 'n', 
+       cex = 0.8, bty = "n", text.col = 'blue')
+dev.off()
+
+# 方案2：用循环结构以简化操作
+par(mfrow = c(3,3), cex = 1.2, mar = c(3, 2, 0.5, 1))
+for (i in c("p", 'l', "b", "c", "o", "h", "s", "S", "n")) {
+  plot(x = x, y = y, type = i)
+  legend('topleft', legend = i, 
+         cex = 0.8, bty = "n", text.col = 'blue')
+}
+
+```
+
+**练习 \@ref(exm:ex4-1) 参考答案**
+
+```{r, eval=FALSE}
+wp <- as.data.frame(WorldPhones)
+m0 <- lm(wp$Asia ~ wp$Europe + 0)
+summary(m0)
+plot(x = wp$Europe, y = wp$Asia, pch = 19)  
+abline(m0, col = "red")
+legend("bottomright", pch = c(19, NA), lty = c(NA, 1),
+       legend = c("Data", "Linear fit"), 
+       col = c("black", "red"), bty = 'n')
+eqlm <- expression(italic(y) == 0.1854 * italic(x))
+eqr2 <- expression(italic(R) ^ 2 == 0.9856)
+eqn <- expression(italic(n) == 7)
+text(x = 23000, y = 7000, labels = eqlm, adj = 0)
+text(x = 23000, y = 6000, labels = eqr2, adj = 0)
+text(x = 23000, y = 5000, labels = eqn, adj = 0)
+```
+
+**练习 \@ref(exm:ex4-2) 参考答案**
+
+```{r, eval=FALSE}
+# 只需将plot()函数的ylab参数改为：
+ylab = expression(CO[2])
+```
+
+**练习 \@ref(exm:ex4-3) 参考答案**
+```{r, eval=FALSE}
+x <- seq(0, 50, 1)
+y <- runif(1, 5, 15) * exp(-runif(1, 0.01, 0.05) * x) +
+  rnorm(51, 0, 0.5)
+a_start <- 14
+b_start <- - log(6/a_start) / 50
+m <- nls(y ~ a * exp(-b * x), 
+         start = list(a = a_start, b = b_start))
+plot(x, y)
+lines(x, predict(m), col = 'darkgreen') 
+# predict()函数返回预测值
+eqnls <- expression(italic(y) == 15.18 * 
+                      italic(e) ^ {-0.04786 * italic(x)})
+text(10, 4, eqnls)
+legend("topright", pch = c(1, NA), lty = c(NA, 1), 
+       legend = c("Data", "Non-linear fit"), 
+       col = c("black", "darkgreen"), bty = 'n')
+```
+
+**练习 \@ref(exm:ex5-1) 参考答案**
+
+```{r, eval=FALSE}
+# 方案1
+for (i in seq(from = 1, to = 100, by = 2)) print(i)
+
+# 方案2
+print(seq(from = 1, to = 100, by = 2)) 
+# seq()函数本来内藏的逻辑就是循环
+```
+
+**练习 \@ref(exm:ex5-2) 参考答案**
+
+```{r, eval=FALSE}
+x <- c(2, 3, 5)
+y <- c(1, 2, 3, 4)
+m <- matrix(nrow = length(x), ncol = length(y))
+for (i in 1:length(x)){
+  for (j in 1:length(y)){
+    m[i,j] = x[i] * y[j]
+  }
+}
+m
+```
+
+**练习 \@ref(exm:ex5-3) 参考答案**
+
+```{r, eval=FALSE}
+for (i in 2:13) print(colMeans(mydata2[, i]))
+```
+
+**练习 \@ref(exm:ex5-4) 参考答案**
+
+```{r, eval=FALSE}
+wp <- as.data.frame(WorldPhones)
+wp$year <- as.numeric(rownames(wp))
+mydata3 <- data.frame(
+  nphone = unlist(wp[, 1:7]), year = rep(wp$year, 7),
+  conti = rep(names(wp)[1:7], each = nrow(wp)))
+boxplot(mydata3$nphone ~ mydata3$year)
+boxplot(mydata3$nphone ~ mydata3$conti)
+```
+
+**练习 \@ref(exm:ex5-5) 参考答案**
+
+```{r, eval=FALSE}
+tapply(mydata3$nphone, mydata3$year, max)
+tapply(mydata3$nphone, mydata3$year, min)
+tapply(mydata3$nphone, mydata3$year, median)
+```
+
+**练习 \@ref(exm:ex6-1) 参考答案**
+```{r, eval=FALSE}
+m <- 6:1
+n <- c(3, 5, 6)
+for (mi in m) print(mi == n)
+```
+
+**练习 \@ref(exm:ex6-2) 参考答案**
+
+```{r, eval=FALSE}
+# 方案1
+for (i in 1:100){
+  if (i %% 2 == 0 & i %% 3 == 0) print(i) 
+}
+
+# 方案2
+i <- 1:100
+i[i %% 2 == 0 & i %% 3 == 0]
+
+# 方案3
+seq(from = 6, to = 100, by = 6)
+```
+
+**练习 \@ref(exm:ex6-3) 参考答案**
+
+```{r, eval=FALSE}
+z <- 2
+for (i in 3:10000) {
+  j <- 2:(i-1)
+  if (sum(i %% j == 0) == 0) z <- c(z, i)
+}
+z
+# 这个方案完全按照素数的定义来逐个判断，虽管用，但效率低。
+# 请试着用其他方案来提高运算效率。
+```
+
+**练习 \@ref(exm:ex6-4) 参考答案**
+
+```{r, eval=FALSE}
+x <- c(97, 80, 64, 91, 87, 100, 128, 144, 150, 150, 150, 106, 
+       78, 68, 62, 46, 55, 68, 84, 92, 95, 108, 128, 138)
+hour <- 0:23
+hour[x == max(x)]
+```
+
+
+**第\@ref(secifpost)节参考答案**
+
+```{r, eval=FALSE}
+# 方案1
+year = 2017: 2026
+method = "Meeus"
+calendar = "Gregorian"
+
+Y <- year
+if (method == "Gauss") # 以下为高斯算法，适用于 1583 -- 2299 年
+{
+  if (calendar == "Gregorian") # 公历（天主教）
+  {
+    k <- (Y - 1500) %/% 100 + 1
+    M <- c(22,22,23,23,24,24,24,25)[k]
+    N <- c(2,2,3,4,5,5,6,0)[k]
+    
+  } else if (calendar == "Julian") # 儒略历（东正教）
+  {
+    M <- 15; N <- 6
+  } else
+  {
+    print("sorry, the calendar does not exist. 
+          use method = 'Gregorian' or 'Julian'")
+  }
+  a <- Y %% 19
+  b <- Y %% 4
+  c <- Y %% 7
+  d <- (19 * a + M) %% 30
+  e <- (2 * b + 4 * c + 6 * d + N) %% 7
+  computus.date <- ifelse(d + e < 10,
+                          paste("3-", d + e + 22, sep = ""),
+                          paste("4-", d + e - 9, sep = ""))
+  if (computus.date == "4-26") computus.date <- "4-19"
+  if (computus.date == "4-25" & d == 28 & e == 6 & a > 10) 
+    computus.date <- "4-19" # 高斯，I 服了 U！
+  computus <- paste(Y, computus.date, sep = "-")
+} else if (method == "Meeus") # 以下为Meeus 算法
+{
+  if (calendar == "Gregorian") # 公历（天主教）
+  {
+    a <- Y %% 19
+    b <- Y %/% 100
+    c <- Y %% 100
+    d <- b %/%4
+    e <- b %%4
+    f <- (b + 8) %/% 25
+    g <- (b - f + 1) %/%3
+    h <- (19 * a + b - d - g + 15) %% 30
+    i <- c %/% 4
+    k <- c %% 4
+    L <- (32 + 2 * e + 2 * i - h - k) %% 7
+    m <- (a + 11 * h + 22 * L) %/% 451
+    month <- (h + L - 7 * m + 114) %/% 31
+    day <- ((h + L - 7 * m + 114) %% 31) + 1
+  } else if (calendar == "Julian") # 儒略历（东正教）
+  {
+    a <- Y %% 4
+    b <- Y %% 7
+    c <- Y %% 19
+    d <- (19 * c + 15) %% 30
+    e <- (2 * a + 4 * b - d + 34) %% 7
+    month <- (d + e + 114) %/% 31
+    day <- ((d + e + 114) %% 31) + 1
+  } else
+  {
+    print("sorry, the calendar does not exist. 
+          use method = 'Gregorian' or 'Julian'")
+  }
+}
+computus <- paste(Y, month, day, sep = "-")
+computus
+
+# 方案2: 使用别人写好的函数（扩展包）。
+if(!require("timeDate")) install.packages("timeDate") 
+require("timeDate")
+Easter(year = 2017:2026)
+```
+
+**练习 \@ref(exm:ex8-1) 参考答案**
+
+```{r, eval=FALSE}
+write.csv(WorldPhones, file = 'c:/r4r/wp.csv')
+wp_path <- "C:/r4r/wp.csv"
+file.show(wp_path)
+wp <- read.csv(file = wp_path)
+summary(wp)
+plot(wp)
+names(wp)[1] <- 'year'
+rownames(wp) <- wp$year
+```
+
+**练习 \@ref(exm:ex8-2) 参考答案**
+
+```{r, eval=FALSE}
+wp$decade <- c('1950s', '1950s', '1950s', '1950s', '1950s',
+               '1960s', '1960s')
+str(wp)
+```
+
+**练习 \@ref(exm:ex8-3) 参考答案**
+
+```{r, eval=FALSE}
+m <- matrix(data = 1:30, nrow = 5)
+```
+
+**练习 \@ref(exm:ex8-4) 参考答案**
+
+```{r, eval=FALSE}
+wp_mt <- as.matrix(wp)
+str(wp_mt) 
+# 由于矩阵里的元素要求全部是同一类型，
+# 所以数字全部强制转换成了字符。
+wp['1956', 'Europe']
+wp_mt['1956', 'Europe']
+wp[, c('Asia', 'Europe')]
+wp_mt[, c('Asia', 'Europe')]
+wp[c(2, 4, 5), ]
+wp[-c(2, 4, 5), ]
+```
+
+**练习 \@ref(exm:ex8-5) 参考答案**
+```{r, eval=FALSE}
+annualsum <- rowSums(wp[, 2:7])
+annualdiff <- diff(annualsum)
+annualdiffeach <- apply(wp[, 2:7], MARGIN = 2, diff)
+annualrate <- annualdiff/annualsum[1:6]
+annualrateeach <- apply(wp[, 2:7], MARGIN = 2, 
+                        function(x) diff(x)/x[1:6]) 
+# apply用于自定义函数。
+```
+
+**练习 \@ref(exm:ex8-6) 参考答案**
+```{r, eval=FALSE}
+par(mfrow = c(2, 1), mar = c(0, 3, 3, 1))
+plot(wp$year, wp$Asia, type = 'l', xlim = c(1951, 1961),
+     axes = FALSE, xlab = '', ylab = 'Phone Asia')
+axis(2)
+box()
+par(mar = c(3, 3, 0, 1))
+plot(wp$year[1:6], annualrateeach[, 'Asia'], type = 'l',
+     xlim = c(1951, 1961), 
+     xlab = 'year', ylab = 'Increase rate')
+dev.off()
+```
+
+**练习 \@ref(exm:ex8-7) 参考答案**
+
+```{r, eval=FALSE}
+myylim <- range(wp[, 2:8])
+mycol <- rainbow(7)
+plot(wp$year, wp[, 2], col = mycol[1], type = 'l', 
+     xlab = 'year', ylab = 'Phone number', ylim = myylim)
+for (i in 3:8) 
+  lines(wp$year, wp[, i], col = mycol[i-1])
+legend('topleft', legend = names(wp)[2:8], 
+       lty = 1, col = mycol, bty = 'n')
+```
+
+**练习 \@ref(exm:ex8-8) 参考答案**
+
+```{r, eval=FALSE}
+par(mfrow = c(3, 3), mar = c(4, 4, 0.1, 0.1))
+for (i in 2:8) {
+  plot(wp$year, wp[, i], col = mycol[i-1], 
+       xlab = 'year', ylab = names(wp)[i])
+  m <- lm(wp[, i] ~ wp$year)
+  a1 <- m$coefficients[1]
+  a2 <- m$coefficients[2]
+  abline(m)
+  legend('topleft', bty = 'n', 
+         as.expression(substitute(y == a + b * x,
+                                  list(a = a1, b = a2))))
+}
+```
+
+**练习 \@ref(exm:ex8-10) 参考答案**
+
+```{r, eval=FALSE}
+# 方案：穷举
+for (Aa in 1:9){
+  for (Bb in c(0:9)[!0:9 %in% Aa]){
+    for (Cc in c(0:9)[!0:9 %in% c(Aa, Bb)]){
+      for (Dd in c(1:9)[!1:9 %in% c(Aa, Bb, Cc)]){
+        for (Ee in c(0:9)[!0:9 %in% c(Aa, Bb, Cc, Dd)]){
+          for (Ff in c(1:9)[!1:9 %in% c(Aa, Bb, Cc, Dd)]){
+            if ((100 * Aa + 10 * Bb + Cc) * (Dd * 10 + Cc) == 
+                Ff * 1000 + Dd * 100 + Bb * 10 + Cc &
+                (100 * Aa + 10 * Bb + Cc) * Cc == 
+                Dd * 1000 + Ee * 100 + Aa * 10 + Cc &
+                (100 * Aa + 10 * Bb + Cc) * Dd == 
+                700 + Ee * 10 + Dd &
+                Dd * 1000 + Ee * 100 + Aa * 10 + Cc + 7000 + 
+                Ee * 100 + Dd * 10 == Ff * 1000 + Dd * 100 + 
+                Bb * 10 + Cc) 
+              print(c(Aa, Bb, Cc, Dd, Ee, Ff))
+          }
+        }
+      }
+    }
+  }
+}
+# 这里给出的方法是穷举，把1001到9999之间的所有数都试了一遍。
+# 这是计算机擅长的方式。
+
+# 方案2
+# 小学生的解题思路是这样的：
+# ABC乘以C等于DEAC，C只能是5或6，
+# 但根据ABC乘以D等于7ED，所以C不可能是5，C = 6。
+# D + 7 = F，D只能是1或2，但C乘以D末尾是C，
+# 所以D = 2，F = 9, E = 1。
+# 由于C = 6，D = 2，那么 A 只能是3，B = 5。
+```
+
+**练习 \@ref(exm:ex8-11) 参考答案**
+
+```{r, eval=FALSE}
+d <- 1
+left <- 125
+leftc <- left
+drop <- 1
+dropc <- drop
+drop <- drop + 1
+while (left != drop) {
+  d <- d + 1
+  left <- left - drop
+  leftc <- c(leftc, left)
+  dropc <- c(dropc, drop)
+  if (left < drop + 1) drop <- 1 else drop <- drop + 1
+}
+plot(leftc, ylim = c(0, 123))
+points(dropc, col = 'red')
+# 仍然是穷举法。
+# 小学生的解题思路应该是：125 = 120 + 3 + 1 + 1
+# 三项对应着15天，2天，1天，1天，所以总共19天掉完。
+```
+
+**练习 \@ref(exm:ex9-1) 参考答案**
+
+```{r, eval=FALSE}
+kaipingfang <- function(x) return(sqrt(x)) 
+```
+
+**练习 \@ref(exm:ex9-2) 参考答案**
+
+```{r, eval=FALSE}
+cv <- function(x) sd(x)/mean(x) # 省略了return()
+```
+
+**练习 \@ref(exm:ex9-3) 参考答案**
+
+```{r, eval=FALSE}
+# 只需将第6.3节参考答案代码的前三行删掉，
+# 其他代码放进下面的花括号里即可。
+computus <- function(year, method, calendar) {}
+```
+
+**练习 \@ref(exm:ex9-7) 参考答案**
+
+```{r, eval=FALSE}
+install.packages('animation')
+library(animation)
+demo("fireworks") # 会用网页浏览器打开一个动画。
+citation("animation") # 看看作者。
+```
+
+**练习 \@ref(exm:ex9-8) 参考答案**
+
+```{r, eval=FALSE}
+install.packages('openair')
+library(openair)
+example(windRose)
+citation('openair')
+```
+
+**第\@ref(secfunctionpost) 参考答案**
+
+```{r, eval=FALSE}
+install.packages('fun')
+library(fun)
+if (.Platform$OS.type == "windows") x11() else 
+  x11(type = "Xlib")
+mine_sweeper()
+demo(package = 'fun')
+```
+
+**练习 \@ref(exm:ex11-1) 参考答案**
+
+```{r, eval=FALSE}
+p1 <- 'Pack my box with five dozen liquor jugs'
+p1 <- tolower(p1)
+dup1 <- table(strsplit(gsub(' ','', p1), ''))
+dup1[dup1>1]
+```
+
+**练习 \@ref(exm:ex11-2) 参考答案**
+
+```{r, eval=FALSE}
+# 提示：
+# 1. 跟千字文的处理方法类似
+# 2. 中华字经的原文可以在网上搜
+# 3. 常用汉字3500字可以在网上搜，由国务院颁布
+```
+
+**练习 \@ref(exm:ex12-2) 参考答案**
+
+```{r, eval=FALSE}
+us <- read.csv("C:/r4r/us.csv")
+cols <- rainbow(nlevels(us$state)) # create 49 rainbow cols
+plot(us$lon, us$lat, col = cols[us$state], pch = 20)
+lon.median <- tapply(us$lon, us$state, median)
+lat.median <- tapply(us$lat, us$state, median)
+text(labels=levels(us$state), 
+     x=lon.median, y=lat.median, cex=0.5, col = 'White')
+abline(h = seq(from = 25, to = 50, by = 5), col = 'grey')
+unique(us$state[us$lat > 34.9 & us$lat < 35.1])
+```
+
+**练习 \@ref(exm:ex12-3) 参考答案**
+
+```{r, eval=FALSE}
+timez <- as.factor(us$lon %/% 15)
+mycol <- rainbow(nlevels(timez))[timez]
+plot(us$lon, us$lat, col = mycol, pch = 20)
+```
+
+**练习 \@ref(exm:ex12-4) 参考答案**
+
+```{r, eval=FALSE}
+# 只需把mycol一行改为：
+mycol <- rev(rainbow(nlevels(aqilevel)))[aqilevel]
+```
+
+**练习 \@ref(exm:ex13-1) 参考答案**
+
+```{r, eval=FALSE}
+format(Sys.time(), '%j')
+```
+
+**练习 \@ref(exm:ex13-2) 参考答案**
+
+```{r, eval=FALSE}
+bd <- '1994-09-22 20:30:00'
+bdtime <- strptime(x = bd, format = '%Y-%m-%d %H:%M:%S', 
+                   tz = "Asia/Shanghai")
+bdtime$yday
+```
+
+**练习 \@ref(exm:ex13-3) 参考答案**
+
+```{r, eval=FALSE}
+format(bdtime, '%c')
+```
+
+**练习 \@ref(exm:ex13-4) 参考答案**
+
+```{r, eval=FALSE}
+difftime(Sys.time(), bdtime, units = 'days')
+difftime(Sys.time(), bdtime, units = 'hours')
+difftime(Sys.time(), bdtime, units = 'secs')
+```
+
+**练习 \@ref(exm:ex13-5) 参考答案**
+
+```{r, eval=FALSE}
+bdyears <- seq(from = 1994, by = 1, length.out = 101)
+bd100 <- paste(bdyears, '-09-22 20:30:00', sep = '')
+bd100 <- strptime(x = bd100, format = '%Y-%m-%d %H:%M:%S',
+                  tz = "Asia/Shanghai")
+bdwd <- bd100$wday
+plot(x = bdyears, y = bdwd)
+abline(v = seq(from = 1995, by = 5, to = 2100), 
+       col = 'grey')
+sum(bdwd == 0)
+```
+
+**练习 \@ref(exm:ex14-2) 参考答案**
+
+```{r, eval=FALSE}
+download.file(url = "http://dapengde.com/r4rookies/obs.zip", 
+              destfile = "C:/r4r/obs.zip")
+unzip(zipfile = "C:/r4r/obs.zip", exdir = "C:/r4r")
+
+stn <- 50
+obsdir <- 'C:/r4r/obs'
+obsfilefull <- dir(obsdir, full.names = TRUE)
+output <- NULL
+for (k in 1:length(obsfilefull))
+{
+  input <- read.table(obsfilefull[k], header = FALSE, 
+                      skip = 2, sep = "")
+  obstimestr <- strsplit(
+    readLines(obsfilefull[k])[2], ' ')[[1]]
+  obstime <- paste(
+    '20', obstimestr[3], '-', obstimestr[5], '-',
+    obstimestr[7], ' ', obstimestr[9], sep = '')
+  output_new <- input[which(
+    input[, 1] >= stn * 1000 & 
+      input[, 1] < (stn + 10) * 1000), c(1, 4)]
+  output_new$time <- obstime
+  output <- rbind(output, output_new)
+}
+output
+```
+
+**练习 \@ref(exm:ex14-3) 参考答案**
+
+```{r, eval=FALSE}
+output$stn <- as.factor(output$V1)
+boxplot(output$V4 ~ output$stn)
+```
+
+**练习 \@ref(exm:exdist-1) 参考答案**
+
+```{r, eval=FALSE}
+set.seed(1)
+mydata<-rf(1000,2,2,4)
+ks.test(mydata, "pf", 2,2,4)#按这个自由度生成的数集，检验一下
+ks.test(mydata, "pf", 1,1,2) 
+# 用另一组自由度来检验生成的数集（另一个分布）
+# 结果，mydata显然服从于生成它的参数分布，
+# 不服从于不生成它的参数分布。
+```
+
+**练习 \@ref(exm:exdist-2) 参考答案**
+
+```{r,eval=FALSE}
+summary(nottem)
+par(mfcol=c(1,2),ps=6.5)
+hist(nottem,breaks=20)
+qqnorm(nottem,pch=1)
+shapiro.test(nottem)
+#p远小于0.05，数据集nottem不属于正态分布。
+```
+
+**练习 \@ref(exm:extest-1) 参考答案**
+
+```{r, eval=FALSE}
+x<- rnorm(30,3,0.8)
+y<- rnorm(30,5,1.2)
+z<- rnorm(30,4,2.1)
+t.test(x,y,paired=T)
+t.test(x,y)
+pairwise.t.test(x,y,z)
+```
+
+\addcontentsline{toc}{chapter}{索引}
+\printindex
+
+\newpage \thispagestyle{empty}
+
+# 后记：学 R 时习之 {#secback .unnumbered}
+\markboth{后记：学 R 时习之}{}
+
+```
+　　学 R 时习之，不亦说乎？
+　　有朋自远方来，不亦乐乎？
+　　人不知 R 不愠，不亦君子乎？
+```
+> ---《论语·学 R》
+
+我们学 R 之旅到此告一段落。从此以后，你的身份不再是零基础的R菜鸟了。祝贺你！回忆一下在第一章我们曾表白过学习 R 的理由。学到这里，你是否还记得自己的初衷？如果本书让你对 R 产生了浓厚的兴趣，本书写作的目的就达到了。有了本书介绍的 R 助理团无处不在的帮助，以及上网搜索和提问的自学习惯，你将无往不胜。
+
+那么，入门之后该做些什么？
+
+“半部论语治天下”。既然入了门，我们只需按照圣人指示的道路，做三件事就可以了。
+
+第一件事：常练（“学 R 时习之”）。
+
+经常温习和使用 R，让 R 融入你的工作和生活，享受其中的乐趣。书籍资料可以帮助你温故知新，例如 Zuur 等著 *A Beginners' Guide to R*，是我见过的 R 书里最为浅显易懂的，书中举例的数据和代码可以在官方网站免费下载。再如刘思喆编写的《153 分钟学会 R (R常见问题解答)》和陈钢翻译的《 R 入门 25 招》等，适合常备案头。此外，还有代码学校^[代码学校：http://tryr.codeschool.com/]等很实用的在线课程。一旦读完这些书和资料，你的 R 水平必然会有质的飞跃，并且自己会明白下一步该做什么。
+
+然而，空读多少本关于 R 的书，也不如拿几个例子和代码来实际操作一下更有效。R 丰富的扩展包能胜任很多有趣的工作，怎么样玩得转，就看你的想象力。在 R 的世界里，只有想不到，没有做不到。让 R 成为一种生活方式，这个过程也许会很慢，不过，享受乐趣的过程恰恰是越慢越好，不是吗？更何况 R 是如此美好，一旦拥有，别无所求。
+
+携 R 之手，与 R 偕老，终究你会爱上她的。
+
+第二件事：交友（“有朋自远方来”）。
+
+R 是个开源的自由软件，这从根本上带来一个结果，那就是大多数 R 用户有着开放的胸怀，乐意分享和帮忙。在这个世界里，你将结识一群志同道合的朋友，他们可能来自不同国家，有着不同的肤色，却跟你说着同样的语言—— R 语言。
+
+在哪里交到这些朋友呢？
+
+- 可以去统计之都^[统计之都：https://cosx.org/]的论坛，看看大家在聊什么，R有什么最新的有趣玩法;
+
+- 可以参加一年一度的中国 R 语言会议^[中国 R 语言会议：http://china-r.org/]，看看三教九流的英雄豪杰们怎样通过 R 语言而从五湖四海走到了同一个聚义厅;
+
+- 可以加入 R 社区的邮件列表^[R 社区邮件列表：https://www.r-project.org/mail.html]，跟世界各地的R使用者和爱好者交流，顺便练习英文。
+
+第三件事：分享（“人不知 R 不愠”）。
+
+很多新手会在论坛提一些菜鸟问题，你可以耐心地回答他们；很多人仍然不知道 R 的好处，你可以骄傲地展示给他们。这个过程中，说不定你能看见旧日自己的影子。向别人分享你学习 R 的心得，分享你有用的代码。赠人玫瑰，手有余香。分享的形式可以多种多样，比如：
+
+- 可以把你的代码分享到 GitHub^[GitHub：https://github.com/]，与别人协作完成一个项目;
+
+- 可以把你自己制作的扩展包发布到 CRAN^[CRAN：https://cran.r-project.org/]，让别人共享你的成果;
+
+- 可以把你的代码写成网页形式的 ShinyApps^[ShinyApps：https://www.shinyapps.io/]，让不懂 R 的人也可以使用。
+
+- 可以把你的日志、随笔、散文等文字发布到 bookdown 官网^[bookdown 官网：https://bookdown.org/]，与亲朋好友分享你生活的点点滴滴。
+
+选个你喜欢的方式便好。
+
+当年，拜罗伊特大学的同事将他们的 R 代码分享给我的时候，我未曾料到将来会以一本书的形式跟你分享。希望未来的某一天，在网上的某个角落，我会看到你的分享。说不定，在书店里，我会买到你写的书。
+
+若干年后，在地球上某个角落，说不定我们会不期而遇，喝杯咖啡，共叙 R 与你我的故事，宛如故友久别重逢。就像丘处机致江南七怪的书信中所写：
+
+    　　江南花盛之日，当与诸公置酒高会醉仙楼头也。人生如露，大梦一十八年，天下豪杰岂不笑我辈痴绝耶？
+
+> --- 《射雕英雄传》
+
+
+`r if (knitr:::is_html_output()) '# 参考文献 {#references .unnumbered}'`
+

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="bookdown.html">
+<link rel="next" href="secfinal.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="blogdown" class="section level1">
+<h1><span class="header-section-number">第15章</span> 搭建小型网站</h1>
+<pre><code>你见，或者不见我
+我就在那里
+不悲 不喜
+你念，或者不念我
+情就在那里
+不来 不去</code></pre>
+<blockquote>
+<p>—扎西拉姆·多多</p>
+</blockquote>
+<p>互联网时代有个自己的网站，就好像真实世界里有了自己的房子（服务器）和住址（域名）。如果把自己的简历放在网站上，不仅方便在求学求职的过程中展示个人风采，同时也是结交朋友的好方式。不管我本人身在何处，你见还是不见，我的网站就在那里，不悲不喜。</p>
+<p>以前，建立一个网站并不容易，涉及诸多领域的知识和技能，门槛比较高。好在，我们有万能的R语言，做个网站就像印个名片一样稀松平常，搭建网站只需几分钟，而并不需要多少网络知识。你甚至不用懂 R 语言是什么，照本章去做就行了。</p>
+<p>我们已经知道，R可以用来生成html的网页文件（见第<a href="secoffice.html#secoffice">7</a>章和第<a href="bookdown.html#bookdown">14</a>）章。那么，只要有服务器空间，把 R 制作的单个静态网页上传到空间即可。服务器空间有免费的也有收费的，后者很便宜，每年只需百十块钱。这是最简单的方案。如果你的网页不止一个文件，那么本章介绍的就是更强大的网站搭建方案。</p>
+<p>本章提供两个示范，演示如何使用 R 语言的 blogdown 扩展包<span class="citation">(Xie <a href="#ref-R-blogdown">2017</a>)</span>，用来搭建一个个人博客<a href="#fn54" class="footnoteRef" id="fnref54"><sup>54</sup></a> 和一个科研小组网站<a href="#fn55" class="footnoteRef" id="fnref55"><sup>55</sup></a>。截至本文成稿之日，blogdown 含苞待放，尚未正式发布，但是已经能够正常安装使用了。我们来提前一睹她的芳容。</p>
+<div id="blogdown-intro" class="section level2">
+<h2><span class="header-section-number">15.1</span> 准备工作</h2>
+<p>R blogdown 是 R 语言的一个扩展包，是个用来制作网站的工具，可以用非常简洁的方式快速搭建静态网页构成的网站。虽然包名里有“博客”（blog）字样，但并不仅限于博客。由于 blogdown 基于 markdown 扩展语法，可以在网页中方便地插入图表、脚注、数学公式、R 代码、公式、参考文献等等元素，所以，非常适合搭建一个科研小组的展示窗口。blogdown 搭建的网站页面元素跟 第<a href="bookdown.html#bookdown">14</a>章介绍的 bookdown 是共通的，因此，可以非常方便地把 bookdown 书写的论文、书籍、信件、散文等转化成网页展示，易于维护、迁移和备份。</p>
+<p>本书的官方网站<a href="#fn56" class="footnoteRef" id="fnref56"><sup>56</sup></a> 就是用 blogdown 搭建的。网站里给大家提供的 R 示例代码、试读章节、勘误表等，都是直接从书稿中拷贝粘贴到文本文件里，然后运行一下 blogdown 的指令，网站就自动更新了。</p>
+<p><strong>安装 blogdown</strong></p>
+<p>blogdown 的背景平台是 R 语言，用户界面首选 RStudio ，产生的网站框架是 Hugo ，掰手指头数一数，要安装4样东西，略显繁琐，但并不难，一劳永逸。相信你已经安装好了 R 和RStudio。运行RStudio，在左上面板的代码窗口输入并运行以下代码：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if(!<span class="kw">require</span>(devtools)) <span class="kw">install.packages</span>(<span class="st">&#39;devtools&#39;</span>)
+devtools::<span class="kw">install_github</span>(<span class="st">&#39;rstudio/blogdown&#39;</span>)</code></pre></div>
+<p>由于 blogdown 目前只发布到了 GitHub 服务器上，尚未发布到CRAN，所以上面第一条代码先安装开发工具 <code>devtools</code> 包，第二行用这个包的<code>install_github()</code> 函数从 GitHub 安装。</p>
+<p>安装好blogdown之后，就可以安装 Hugo 框架了。在 RStudio 左上面板的代码窗口输入并运行以下代码：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">blogdown::<span class="kw">install_hugo</span>()</code></pre></div>
+<p>安装完毕。</p>
+</div>
+<div id="blogdown-blog" class="section level2">
+<h2><span class="header-section-number">15.2</span> 搭建个人博客</h2>
+<p><strong>创建示例网站</strong></p>
+<p>上文介绍的 blogdown 个人博客的示例<a href="#fn57" class="footnoteRef" id="fnref57"><sup>57</sup></a>，我们看看这个博客是如何创建的。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-blogdown1"></span>
+<img src="images/img-blogdown1.jpg" alt="blogdown 搭建的 Hugo 个人网站示例" width="70%" />
+<p class="caption">
+图 15.1: blogdown 搭建的 Hugo 个人网站示例
+</p>
+</div>
+<p>首先，在你的电脑里新建一个文件夹，准备存放网站文件，假定是<code>c:/blogdown_default</code>，那么创建网站只需在RStudio里运行两行代码：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&#39;c:/blogdown_default&#39;</span>)
+blogdown::<span class="kw">new_site</span>()</code></pre></div>
+<p>示例网站搭建完毕。对，就这么简单！</p>
+<p>去<code>c:/blogdown_default</code>看看吧，出现了好多新文件夹。别的不用管也不用动，只注意<code>content/</code> 和<code>public/</code> 这两个就行了。打开 <code>public/index.html</code>，这就是网站的主页。</p>
+<p>要想在本地电脑上浏览你的新网站，可以运行:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">blogdown::<span class="kw">serve_site</span>()</code></pre></div>
+<p>这样，就可以在 RStudio 的右下面板实时看效果了。</p>
+<p><strong>发布到网上</strong></p>
+<p>上面搭建的网站，目前只存在于本地电脑里，下面我们发布到网上。</p>
+<p>如果你像我一样，已经有了自己租用的服务器，上面有了WordPress博客，那最简单，在服务器的<code>public_html/</code>文件夹下面创建一个新文件夹，例如叫做<code>test</code>，那么只需将刚刚在本地新建的博客或科研网站的 <code>public</code>文件夹里所有文件上传到服务器的<code>test</code> 文件夹即可。访问<code>你的域名/test</code>，就可以看到新网站了！</p>
+<p>如果你没有自己的服务器，那么最简单的是在 netlify<a href="#fn58" class="footnoteRef" id="fnref58"><sup>58</sup></a> 免费注册个账号，然后按提示将你本地的 <code>public/</code> 文件夹拖进去，会自动布署，等几分钟，就可以访问了。你可以免费申请一个 netlify 子域名，也可以买个自己的域名绑定上去。我的个人科研网站<a href="#fn59" class="footnoteRef" id="fnref59"><sup>59</sup></a>就是这样做的。</p>
+<p>那么，如何将自动生成的网站更新成自己的，并添加新内容呢？</p>
+<p><strong>网站更新</strong></p>
+<p>前文提醒你注意，新建的网站文件夹里有个<code>content/</code>文件夹。这里就是更新网站内容的地方。你只需用记事本或RStudio，打开其中的<code>.md</code>或 <code>.Rmd</code> 文件，修改成自己的内容后保存，然后在 R 里运行建站函数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">blogdown::<span class="kw">build_site</span>()</code></pre></div>
+<p>这样，<code>public/</code> 就自动更新了，再发布到网上即可。</p>
+<p><code>.md</code>或 <code>.Rmd</code> 文件使用扩展的 markdown 语法，见本书附录。</p>
+<p>如果要发表新帖子，那么有两种方式最简单：</p>
+<ul>
+<li>方法一：将原有的<code>.md</code>或 <code>.Rmd</code>拷贝粘贴，改一下文件名和文件内容即可；</li>
+<li>方法二：在RSudio代码窗口点击 Addins – New Post， 按提示填写即可。</li>
+</ul>
+<p>写完保存，运行建站函数，上传。完毕。</p>
+<p><strong>自动同步</strong></p>
+<p>也许你嫌每次更新上传太麻烦。我们当然可以选择自动同步。</p>
+<p>如果网站搭建在Netlify，那么只需做三件事：</p>
+<ol style="list-style-type: decimal">
+<li>下载并安装 GitHub 客户端，申请个免费账号，并创建一个项目，例如叫做myweb，将前面我们举例的<code>c:/blogdown_default</code> 文件夹设为项目的文件夹，并同步到云端。</li>
+<li>在你的Netlify设置里，设为自动跟你的GitHub里的myweb项目同步，同步的 Branch 设为 ‘master’，Build command 设为’hugo_0.19’, Publish directory 设为 ‘public’。</li>
+<li>以后每次更新并运行完建站函数后，在GitHub客户端同步一下即可。</li>
+</ol>
+</div>
+<div id="blogdown-academic" class="section level2">
+<h2><span class="header-section-number">15.3</span> 搭建科研网站</h2>
+<p>上文说到，我申请了一个Netlify免费账号，并且创建了自己的科研网站。这个科研网站的构架比个人博客复杂，有简介、新闻、发表论文、科研项目等基本模块，还可以根据需要新增，并且可以设置多种语言，非常适合作为科研小组的展示窗口。</p>
+<p>这个网站的搭建也很简单，跟个人博客类似。在你的电脑里新建文件夹，比如 <code>c:/blogdown_academic</code>，在RStudio里运行两行代码：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&#39;c:/blogdown_default&#39;</span>)
+blogdown::<span class="kw">new_site</span>(<span class="dt">theme=</span><span class="st">&#39;gcushen/hugo-academic&#39;</span>)</code></pre></div>
+<p>去<code>c:/blogdown_academic</code> 看看吧，科研网站搭建完毕！</p>
+<div class="figure" style="text-align: center"><span id="fig:img-blogdown2"></span>
+<img src="images/img-blogdown2.jpg" alt="blogdown 搭建的 Hugo 科研网站示例" width="70%" />
+<p class="caption">
+图 15.2: blogdown 搭建的 Hugo 科研网站示例
+</p>
+</div>
+<p>其他的发布、更新、同步，跟前文讲述的一致，这里不再赘述。需要特别指出的是，<strong>科研网站</strong>示例的首页，个人信息需要在前面提到的<code>config.toml</code>里的<code>[params]</code> 修改。</p>
+<p>这里的科研网站示例，使用的是Hugo-academic主题。Hugo还有很多其他主题可以使用。我们相信，只要深入研究一下，一定可以搭建让人更合心意的网站。同时，blogdown 也在进一步完善中，让我们期待她的盛装绽放吧！</p>
+</div>
+<div id="secblogdownpost" class="section level2">
+<h2><span class="header-section-number">15.4</span> 课外活动：搭建自己的网站</h2>
+<p>互联网技术日益成熟完善，现在搭建一个个人网站，有很多简单易行的方案，并不需要多少网络知识。本章介绍的 blogdown 是搭建静态个人网站最优秀的方案之一，快捷易用成本低。此外，还可以用 WordPress，搭建动态网站。我以前用的是后者，后来用前者创建了新网站。动态网站和静态网站各有所长，初学者不必在选择上过于纠结，从任何一种开始都可以。用得久了，才会实际体会到哪种更好，到时候再更改也不迟，因为有很多工具都可以在两者之间迁移转换。</p>
+<p>快快动手，选一个你喜欢的方式，为你自己或者你的工作小组、单位搭建一个网站吧！</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-blogdown">
+<p>Xie, Yihui. 2017. <em>Blogdown: Create Blogs and Websites with R Markdown</em>. <a href="https://github.com/rstudio/blogdown" class="uri">https://github.com/rstudio/blogdown</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="54">
+<li id="fn54"><p>blogdown 个人博客示例：<a href="http://dapengde.com/blogdown_demo_default" class="uri">http://dapengde.com/blogdown_demo_default</a><a href="blogdown.html#fnref54">↩</a></p></li>
+<li id="fn55"><p>blogdown 科研网站示例：<a href="http://dapengde.com/blogdown_demo_academic" class="uri">http://dapengde.com/blogdown_demo_academic</a><a href="blogdown.html#fnref55">↩</a></p></li>
+<li id="fn56"><p>本书官网：<a href="http://xuer.pzhao.org" class="uri">http://xuer.pzhao.org</a><a href="blogdown.html#fnref56">↩</a></p></li>
+<li id="fn57"><p>个人博客示例：<a href="http://dapengde.com/blogdown_demo_default" class="uri">http://dapengde.com/blogdown_demo_default</a><a href="blogdown.html#fnref57">↩</a></p></li>
+<li id="fn58"><p>Netlify：<a href="https://www.netlify.com" class="uri">https://www.netlify.com</a><a href="blogdown.html#fnref58">↩</a></p></li>
+<li id="fn59"><p>个人科研网站：<a href="http://pzhao.net" class="uri">http://pzhao.net</a><a href="blogdown.html#fnref59">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="bookdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="secfinal.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

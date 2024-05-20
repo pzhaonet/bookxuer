@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="secmap.html">
+<link rel="next" href="secfile.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sectime" class="section level1">
+<h1><span class="header-section-number">第12章</span> 时间</h1>
+<pre><code>    我看到了我的爱恋 我飞到她的身边
+    我捧出给她的礼物 那是一小块凝固的时间
+    时间上有美丽的条纹 摸出来像浅海的泥一样柔软
+    她把时间涂满全身 然后拉起我飞向存在的边缘</code></pre>
+<blockquote>
+<p>—刘慈欣《三体3：死神永生》</p>
+</blockquote>
+<p>科幻小说《三体》三部曲，描绘了时间这个物理量的奥妙。在第<a href="secif.html#secif">6</a>章对复活节的计算里，我们已经领教了时间数据的厉害。时间数据非常特殊又十分有趣，主要是因为时间单位不是十进制的：满60秒才进1分钟，满24小时进1日，满7日进1周，而考虑到闰年和闰秒等因素，日、周、月、年之间的进位就更加复杂，再加上时区和夏时制，处理起时间数据来花费的精力，真是一寸光阴一寸金。</p>
+<p>举个例子就能切身体会到时间的复杂：你一定知道自己的生日几月几日，但大概并不知道自己出生那天是星期几吧？从出生那一刻到今天为止，已经过去了多少天？这辈子能遇见几次在星期天过生日吗？</p>
+<p>回答这些问题，我们的R语言可以轻松办到。R 对时间数据的复杂性有充分的准备，让这件工作变得不是那么困难。</p>
+<p>为了不引起歧义，本书中，我们将时间点（比如“现在几点几分了”）称为“时刻”，而时间长度（比如“还差几分钟下班”）称为“时间”。</p>
+<div id="sectime-1" class="section level2">
+<h2><span class="header-section-number">12.1</span> 时刻数据的获取</h2>
+<p>假定你出生的时刻是1994年9月22日20时30分0秒。我们先把你的生日告诉R，让R听得懂。</p>
+<p>一般来说，我们从数据文件中读取数据表时，其中的时刻数据列往往是 “1994-09-22 20:30:00”这样的格式，读入之后，这一列自动按照字符格式存储。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bd &lt;-<span class="st"> &#39;1994-09-22 20:30:00&#39;</span></code></pre></div>
+<p>我们知道，字符串是不可以做数学的加减法的，比如我们想把这一列时刻都加20分钟，字符串是无法做到的，这就需要先把字符串转换成R能识别的时刻格式。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdtime &lt;-<span class="st"> </span><span class="kw">strptime</span>(<span class="dt">x =</span> bd, <span class="dt">format =</span> <span class="st">&#39;%Y-%m-%d %H:%M:%S&#39;</span>, 
+                   <span class="dt">tz =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>)
+bdtime</code></pre></div>
+<pre><code>## [1] &quot;1994-09-22 20:30:00 CST&quot;</code></pre>
+<p>为什么<code>strptime()</code>函数里需要个<code>format</code>和<code>tz</code>参数呢？因为如果不说一声的话，R就不知道这个字符串里哪个是年哪个是月，也不知道是哪个时区。</p>
+<p>我们发现，bdtime的值依然带有引号，除了多了个时区代码外，看上去跟bd一模一样。这难道不是跟bd一样的字符串吗？不是的。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(bd)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(bdtime)</code></pre></div>
+<pre><code>## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;</code></pre>
+<p>他们属于不同的类。bd属于字符串（character），而bdtime属于一种称为POSIXct的类。</p>
+<p>除了从外界数据文件读取时刻数据外，R还可以获取计算机时钟的时刻。下面三个函数，都可以获得R运行环境中的当前时刻或日期。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t1 &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()<span class="co">#返回当前时刻</span>
+t2 &lt;-<span class="st"> </span><span class="kw">date</span>()<span class="co">#返回当前时刻</span>
+t3 &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()<span class="co">#返回当前日期</span>
+t1</code></pre></div>
+<pre><code>## [1] &quot;2017-09-15 12:06:42 CEST&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t2</code></pre></div>
+<pre><code>## [1] &quot;Fri Sep 15 12:06:42 2017&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t3</code></pre></div>
+<pre><code>## [1] &quot;2017-09-15&quot;</code></pre>
+<p>如果查看一下这三个变量的类，会发现各有不同：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(t1)</code></pre></div>
+<pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(t2)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(t3)</code></pre></div>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<p>这些类有什么区别和联系？请自行放狗去搜。</p>
+<p>一切准备工作就绪，R现在知道了你的生日，就可以进行后续计算了。</p>
+</div>
+<div id="sectime-2" class="section level2">
+<h2><span class="header-section-number">12.2</span> 时刻数据的格式</h2>
+<pre><code>    女孩和男孩陷入爱河。后来战争即将爆发，兵荒马乱之中，男孩把写有日期的纸条塞进女孩手心，约定在战争结束那一年的那一天老地方见。如果谁没有赴约，就说明已遭遇不幸。
+    战争结束后，女孩拿着纸条如约到达，苦苦等了一个月，却不见恋人踪影，悲愤之下自尽身亡。不久男孩赶到，看到的却是昔日恋人的坟墓，悲痛之下，也殉情而死。
+    纸条上的日期是“12.10”。女孩是德国人，以为是10月12日；男孩来自美国，以为是12月10日。
+    这个爱情悲剧告诉我们：处理时间数据，格式很重要。</code></pre>
+<blockquote>
+<p>— 我听来的故事</p>
+</blockquote>
+<p>先看看你出生那天是星期几。很简单，只需这样操作：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdtime$wday</code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>是个星期四，对吗？</p>
+<p><code>$wday</code> 表示从时刻数据中提取星期几。类似的，<code>$hour</code>, <code>$min</code>, <code>$sec</code> 分别用来提取时分秒，<code>$year</code>, <code>$mon</code>, <code>$mday</code>提取年月日，<code>$yday</code>提取一年内的第几天。</p>
+
+<div class="example">
+<span id="exm:ex13-1" class="example"><strong>Example 12.1  </strong></span>今天是今年的第几天？
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ex13-2" class="example"><strong>Example 12.2  </strong></span>算算你出生那天是当年的第几天。
+</div>
+<p></p>
+<p>时刻数据的全部组成信息，可以用<code>unclass()</code>函数来查询：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unlist</span>(<span class="kw">unclass</span>(bdtime))</code></pre></div>
+<pre><code>##    sec    min   hour   mday    mon   year   wday   yday 
+##    &quot;0&quot;   &quot;30&quot;   &quot;20&quot;   &quot;22&quot;    &quot;8&quot;   &quot;94&quot;    &quot;4&quot;  &quot;264&quot; 
+##  isdst   zone gmtoff 
+##    &quot;0&quot;  &quot;CST&quot;     NA</code></pre>
+<p>为了方便显示，我们调用了<code>unlist()</code>函数。</p>
+<p>由于世界各地风俗习惯不同，采取的时刻格式也各种各样。比如在表述日期时，放在最前面的，我们中国习惯先说年，美国习惯先说月，而德国习惯先说日。年月日的分隔符也有不同。R提供了 <code>format()</code>函数，来对这些格式进行随意转换。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">format</span>(bdtime, <span class="dt">format =</span> <span class="st">&#39;%d.%m.%Y&#39;</span>)</code></pre></div>
+<pre><code>## [1] &quot;22.09.1994&quot;</code></pre>
+
+<div class="theorem">
+<span id="thm:thm-time" class="theorem"><strong>小贴士 12.1  </strong></span>常用时刻格式的详细说明。
+</div>
+<p></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">X</th>
+<th align="left">中文示例</th>
+<th align="left">英文示例</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">%a</td>
+<td align="left">周日</td>
+<td align="left">Sun</td>
+<td align="left">星期几的缩写</td>
+</tr>
+<tr class="even">
+<td align="left">%A</td>
+<td align="left">星期日</td>
+<td align="left">Sunday</td>
+<td align="left">星期几的全拼</td>
+</tr>
+<tr class="odd">
+<td align="left">%b</td>
+<td align="left">十月</td>
+<td align="left">Oct</td>
+<td align="left">月份缩写</td>
+</tr>
+<tr class="even">
+<td align="left">%B</td>
+<td align="left">十月</td>
+<td align="left">October</td>
+<td align="left">月份全称</td>
+</tr>
+<tr class="odd">
+<td align="left">%c</td>
+<td align="left">周日 十月 1</td>
+<td align="left">Sun Oct 1</td>
+<td align="left">日期时刻全称</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">10:30:59 2017</td>
+<td align="left">10:30:59 2017</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">%C</td>
+<td align="left">20</td>
+<td align="left">20</td>
+<td align="left">世纪</td>
+</tr>
+<tr class="even">
+<td align="left">%d</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">日（0补位）</td>
+</tr>
+<tr class="odd">
+<td align="left">%D</td>
+<td align="left">10/1/2017</td>
+<td align="left">10/1/2017</td>
+<td align="left">日/月/年</td>
+</tr>
+<tr class="even">
+<td align="left">%F</td>
+<td align="left">10/1/2017</td>
+<td align="left">10/1/2017</td>
+<td align="left">年-月-日</td>
+</tr>
+<tr class="odd">
+<td align="left">%H</td>
+<td align="left">10</td>
+<td align="left">10</td>
+<td align="left">时（00-23）</td>
+</tr>
+<tr class="even">
+<td align="left">%I</td>
+<td align="left">10</td>
+<td align="left">10</td>
+<td align="left">时（00-12）</td>
+</tr>
+<tr class="odd">
+<td align="left">%j</td>
+<td align="left">274</td>
+<td align="left">274</td>
+<td align="left">一年的第几天</td>
+</tr>
+<tr class="even">
+<td align="left">%m</td>
+<td align="left">10</td>
+<td align="left">10</td>
+<td align="left">月</td>
+</tr>
+<tr class="odd">
+<td align="left">%M</td>
+<td align="left">30</td>
+<td align="left">30</td>
+<td align="left">分</td>
+</tr>
+<tr class="even">
+<td align="left">%p</td>
+<td align="left">上午</td>
+<td align="left">AM</td>
+<td align="left">上下午</td>
+</tr>
+<tr class="odd">
+<td align="left">%r</td>
+<td align="left">10:30:59 上午</td>
+<td align="left">10:30:59 AM</td>
+<td align="left">12小时制时刻</td>
+</tr>
+<tr class="even">
+<td align="left">%R</td>
+<td align="left">10:30</td>
+<td align="left">10:30</td>
+<td align="left">24小时制时刻</td>
+</tr>
+<tr class="odd">
+<td align="left">%S</td>
+<td align="left">59</td>
+<td align="left">59</td>
+<td align="left">秒</td>
+</tr>
+<tr class="even">
+<td align="left">%T</td>
+<td align="left">10:30:59</td>
+<td align="left">10:30:59</td>
+<td align="left">时刻</td>
+</tr>
+<tr class="odd">
+<td align="left">%u</td>
+<td align="left">7</td>
+<td align="left">7</td>
+<td align="left">星期几（周日为7）</td>
+</tr>
+<tr class="even">
+<td align="left">%U</td>
+<td align="left">40</td>
+<td align="left">40</td>
+<td align="left">年中第几周</td>
+</tr>
+<tr class="odd">
+<td align="left">%V</td>
+<td align="left">39</td>
+<td align="left">39</td>
+<td align="left">年中第几周（ISO8601）</td>
+</tr>
+<tr class="even">
+<td align="left">%w</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">星期几（周日为0）</td>
+</tr>
+<tr class="odd">
+<td align="left">%W</td>
+<td align="left">39</td>
+<td align="left">39</td>
+<td align="left">年内第几周（英制）</td>
+</tr>
+<tr class="even">
+<td align="left">%x</td>
+<td align="left">10/1/2017</td>
+<td align="left">10/1/2017</td>
+<td align="left">日期，格式取决于系统设置</td>
+</tr>
+<tr class="odd">
+<td align="left">%X</td>
+<td align="left">10:30:59</td>
+<td align="left">10:30:59 AM</td>
+<td align="left">时刻，格式取决于系统设置</td>
+</tr>
+<tr class="even">
+<td align="left">%y</td>
+<td align="left">17</td>
+<td align="left">17</td>
+<td align="left">年份后两位</td>
+</tr>
+<tr class="odd">
+<td align="left">%Y</td>
+<td align="left">2017</td>
+<td align="left">2017</td>
+<td align="left">年份四位</td>
+</tr>
+<tr class="even">
+<td align="left">%Z</td>
+<td align="left">GMT</td>
+<td align="left">GMT</td>
+<td align="left">时区</td>
+</tr>
+</tbody>
+</table>
+<p>百分号用来提示后面的格式是什么：<code>%d</code>表示日，<code>%m</code>表示月，<code>%Y</code>表示四位年份。他们用圆点<code>.</code>分隔。小贴士<a href="sectime.html#thm:thm-time">12.1</a>列出了更多格式代表的含义。有了他们，就可以对时刻数据进行任意转换了。</p>
+<!---
+
+以format(ti, format = ‘X‘) 为例，当X替换成表中时转换得到的结果。ti <- strptime('2017-10-01 10:30:59', format = '%Y-%m-%d %H:%M:%S', tz = 'GMT')
+--->
+
+<div class="example">
+<span id="exm:ex13-3" class="example"><strong>Example 12.3  </strong></span>请把你的生日格式转换成包含日期时刻星期几的全称。
+</div>
+<p></p>
+</div>
+<div id="sectime-3" class="section level2">
+<h2><span class="header-section-number">12.3</span> 时刻数据的计算</h2>
+<p>时刻数据是可以参加加减法计算和逻辑运算的。看看你的生日加上1是什么：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdtime +<span class="st"> </span><span class="dv">1</span></code></pre></div>
+<pre><code>## [1] &quot;1994-09-22 20:30:01 CST&quot;</code></pre>
+<p>bdtime + 1得到的是bdtime之后1秒的时刻。可以预料， + 60 就是1分钟后， + 3600 就是1小时后，而 + 86400 就是1天后。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdtime +<span class="st"> </span><span class="dv">60</span></code></pre></div>
+<pre><code>## [1] &quot;1994-09-22 20:31:00 CST&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdtime +<span class="st"> </span><span class="dv">3600</span></code></pre></div>
+<pre><code>## [1] &quot;1994-09-22 21:30:00 CST&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t3 &lt;-<span class="st"> </span>bdtime +<span class="st"> </span><span class="dv">86400</span>
+t3</code></pre></div>
+<pre><code>## [1] &quot;1994-09-23 20:30:00 CST&quot;</code></pre>
+<p>果然如此。R把我们加上的秒数按照复杂的时间进位方式自动处理了。当然，时刻也可以减去一个数，让时光倒流。</p>
+<p>两个时刻之间可以相减，得到两个时刻之间的时间长度。假如我的生日是1995年9月1日7时30分，那么你我生日之间相差的时间就是</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdtime2 &lt;-<span class="st"> </span><span class="kw">strptime</span>(
+  <span class="st">&#39;1995-09-01 7:30&#39;</span>, <span class="dt">format =</span> <span class="st">&#39;%Y-%m-%d %H:%M&#39;</span>, 
+  <span class="dt">tz =</span> <span class="st">&#39;Asia/Shanghai&#39;</span>)
+bdtime2 -<span class="st"> </span>bdtime</code></pre></div>
+<pre><code>## Time difference of 343.4583 days</code></pre>
+<p>还记得我们有个<code>diff()</code>函数来计算两者之差么？类似地，时刻数据处理中有个<code>difftime()</code>函数，效果跟上面的减法大体相同，不同之处是可以指定输出数值的单位：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">difftime</span>(<span class="dt">time1 =</span> bdtime2, <span class="dt">time2 =</span> bdtime, <span class="dt">units =</span> <span class="st">&#39;secs&#39;</span>)</code></pre></div>
+<pre><code>## Time difference of 29674800 secs</code></pre>
+<p>我们还可以计算距离你我生日相等长度的那一天：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">c</span>(bdtime, bdtime2))</code></pre></div>
+<pre><code>## [1] &quot;1995-03-13 07:00:00 CET&quot;</code></pre>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-303" class="lemma"><strong>思考 12.1  </strong></span>既然两个时刻可以相减，那么两个时刻能否相加？为什么？
+</div>
+<p></p>
+<p>除了本文介绍的函数外，我们还可以根据需要选用扩展包，例如timeDate <span class="citation">(Team et al. <a href="#ref-R-timeDate">2015</a>)</span>，可以让我们对时间数据的处理能力如虎添翼。</p>
+
+<div class="example">
+<span id="exm:ex13-4" class="example"><strong>Example 12.4  </strong></span>算算到今天为止，你已经来到这个世界多少天？多少小时？多少秒？
+</div>
+ 
+<div class="example">
+<span id="exm:ex13-5" class="example"><strong>Example 12.5  </strong></span>算算你从0岁到100岁，每年的生日都是星期几。作图展示，横轴是年份或你的年龄，纵轴是星期几。数数有几个生日是在星期天。
+</div>
+<p></p>
+<!--- 
+## 时刻的作图 {#sectime-4}
+-->
+</div>
+<div id="sectimepost" class="section level2">
+<h2><span class="header-section-number">12.4</span> 课外活动：夏令时</h2>
+<p>如果你只处理中国的时刻数据，那么是比较幸运的。如果遇到欧美国家的时刻数据，就不得不考虑一个特殊的问题：夏令时。</p>
+<p>夏令时，或称夏时制，正规的名称是“日光节约时制”。欧洲和美国很多地区，夏季天亮得太早，于是就硬生生把时钟调快一小时，大家早起早睡，据说可以充分利用白天的光照而省电。但是，夏令时的实际收效至今仍有争议，很多人认为靠照明省下那点电微不足道，而粗暴地调时钟把大家的作息时间弄得很乱，尤其对老人和孩子影响很大，列车、航班等统统要做调整。我国其实在1986年到1991年实行了六年夏时制，实在得不偿失，就取消了。</p>
+<p>图<a href="sectime.html#fig:img-summertime">12.1</a>用 R 做出的德国拜罗伊特市日出日落时刻图，虚线和实线分别显示的是不使用和使用夏时制的日出日落时刻。很容易看出夏时制的好处：夏天把一小时的时间往后挪了之后，不至于天亮之后过很久才需要上班，并且下班后距离天黑还有很长时间可以让人去泡吧，泡网，泡……不挪到下午的话，这一个小时在早上只够泡个澡。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-summertime"></span>
+<img src="images/img-summertime.png" alt="德国拜罗伊特日出日落时刻." width="80%" />
+<p class="caption">
+图 12.1: 德国拜罗伊特日出日落时刻.
+</p>
+</div>
+<p>R 在处理时刻数据的时候充分考虑了夏时制。时刻数据变量名，后面接上<code>$isdst</code> 就表示“操作中是否是光节约时制”（逻辑值，1 表示<code>TRUE</code>，0 表示<code>FALSE</code>）</p>
+<p>我学习R语言时正生活在德国，遇到了一件趣事，至今记忆犹新。德国的夏令时是这样调整时钟的：每年3月的最后一个星期天，凌晨2点钟把时钟拨到3点。夏令时结束时，在10月的最后一个星期天凌晨再拨回来。那么，在R里是怎么处理这种复杂的情况呢？</p>
+<p>我们以2018年为例，3月最后一个星期天是25日，由于凌晨2点后会直接跳至3点，我们看看R的世界里这段时间发生了什么：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">strptime</span>(<span class="st">&quot;2018-03-25 03:00:00&quot;</span>, 
+              <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;CET&quot;</span>) 
+a</code></pre></div>
+<pre><code>## [1] &quot;2018-03-25 03:00:00 CEST&quot;</code></pre>
+<p>注意，我们明明设定的时区是CET中欧时间（Central European Time），但R自动转换成了CEST中欧夏季时间。</p>
+<p>照理说，3点钟的前一秒应该是2:59:59，我们来试试：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a -<span class="st"> </span><span class="dv">1</span></code></pre></div>
+<pre><code>## [1] &quot;2018-03-25 01:59:59 CET&quot;</code></pre>
+<p>竟然是1:59:59！2点钟就这么凭空消失了么？</p>
+<p>我不甘心，于是试了试另外一个函数，同样可以给时刻变量赋值：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="st">&quot;2018-03-25 03:00:00&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;CET&quot;</span>)
+a</code></pre></div>
+<pre><code>## [1] &quot;2018-03-25 03:00:00 CEST&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a -<span class="st"> </span><span class="dv">1</span></code></pre></div>
+<pre><code>## [1] &quot;2018-03-25 01:59:59 CET&quot;</code></pre>
+<p>时区符号仍然自动改变了。</p>
+<p>如果我硬来，非要找回 2 点钟呢？</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="st">&quot;2018-03-25 02:00:00&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;CET&quot;</span>)
+a</code></pre></div>
+<pre><code>## [1] &quot;2018-03-25 CET&quot;</code></pre>
+<p>R索性把时刻给丢了，仅保留了日期。这就是对我任性的回答么？</p>
+<p>换回<code>strptime()</code>函数试试?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">strptime</span>(<span class="st">&quot;2018-03-25 02:00:00&quot;</span>, 
+              <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;CET&quot;</span>) <span class="co">#</span>
+a</code></pre></div>
+<pre><code>## [1] &quot;2018-03-25 02:00:00&quot;</code></pre>
+<p>欧叶！但是……</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a -<span class="st"> </span><span class="dv">1</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>啊哦……</p>
+<p>接受这个现实吧：在中欧，2018年3月25日2:00:00 到2:59:59这段时间是不存在的！若要在数据处理中避免这种情况发生，还是强行把时区都设置成 GMT 保险。为了保险起见，我每次从别人那里拿到数据都会问:你这数据里的时间，用没用夏令时？</p>
+<p>然而，这也暗示男孩女孩们可以用一种新方法对别人的表白说no：那我们就在中欧时间2018年3月25日凌晨2:30见吧……</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-timeDate">
+<p>Team, Rmetrics Core, Diethelm Wuertz, Tobias Setz, Yohan Chalabi, Martin Maechler, and Joe W. Byers. 2015. <em>TimeDate: Rmetrics - Chronological and Calendar Objects</em>. <a href="https://CRAN.R-project.org/package=timeDate" class="uri">https://CRAN.R-project.org/package=timeDate</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="secmap.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="secfile.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

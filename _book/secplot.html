@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="secdata.html">
+<link rel="next" href="secfit.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="secplot" class="section level1">
+<h1><span class="header-section-number">第3章</span> 作图</h1>
+<pre><code>    从优雅的角度来讲，R是精准的、有品位的、美丽的。等我长大了，我要娶R。</code></pre>
+<!---
+> As for elegance, R is refined, tasteful, and beautiful. When I grow up, I want to marry R.
+>
+--->
+<blockquote>
+<p>— Andy Bunn, May 2005</p>
+</blockquote>
+<pre><code>    一图胜千言。</code></pre>
+<blockquote>
+<p>— 俗语</p>
+</blockquote>
+<!---
+        一旦你在作图上迈出不寻常的一步，就会更加让人目瞪口呆。
+>
+> All this becomes even more glaring if you take the unusal step of plotting the data.
+>
+
+> --- Bill Venables, July 2007
+--->
+<p>在上两章中，我们都用到了<code>plot()</code>函数来作图。如果说Excel的作图方法是《秘密花园》那种书，让你在已经画好的图案里涂涂改改，很受约束的话，那么R作图的流程更加自由：就像铺开一张白纸，自己打好格，画数据点，画坐标轴，加图例，最后把纸收起来。作图的每一步，都清清楚楚掌控在你手里。</p>
+<p>这里，我们用第<a href="secdata.html#secdata">2</a>章读取的二氧化碳数据 mydata2，画一些更漂亮的图片。为了保持本章的独立性和跟上一章节的连续性，我们预先把数据读入到mydata2中(当然，也可以用 <code>read.csv()</code>函数把co2数据读取进来)：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata2 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(
+  co2, <span class="dv">12</span>, 
+  <span class="dt">dimnames =</span> <span class="kw">list</span>(month.abb, <span class="kw">unique</span>(<span class="kw">floor</span>(<span class="kw">time</span>(co2)))))))  
+mydata2$year &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">rownames</span>(mydata2))</code></pre></div>
+<div id="secplot-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> 控制图像：线型，点状，颜色</h2>
+<p>我们先做一张最简单的图，只画各年9月份二氧化碳的浓度（图<a href="secplot.html#fig:fig-co2sep1">3.1</a>）。</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mydata2$Sep)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-co2sep1"></span>
+<img src="r4r_files/figure-html/fig-co2sep1-1.png" alt="plot()函数第一种用法示例：一维数据散点图." width="75%" />
+<p class="caption">
+图 3.1: plot()函数第一种用法示例：一维数据散点图.
+</p>
+</div>
+<p> 这是<code>plot()</code>函数的第一种用法，也是最简单用法：绘制一维数据散点图。如果<code>plot()</code>的作图对象只是一个数值型的向量，那么画出的图纵向是这个向量，横向是数据的序号。</p>
+<p><code>plot()</code>函数还有别的什么用法呢？可以请F1小助理打开帮助文件。不过，今天我们请出我们的新助理：<code>example()</code>函数:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">example</span>(plot)</code></pre></div>
+<p>运行这条代码，并在RStudio的左下面板里按照提示按回车键，就会看到很多示例。以后，想不起来某个函数的作用的时候，除了F1之外，小助理<code>example()</code>函数也是个很好的选择。</p>
+<p>下面我们指定以年份为横坐标x，9月份的二氧化碳浓度为纵坐标y，做xy散点图（图<a href="secplot.html#fig:fig-co2sep2">3.2</a>）：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$Sep)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-co2sep2"></span>
+<img src="r4r_files/figure-html/fig-co2sep2-1.png" alt="plot()函数第二种用法示例：二维数据散点图." width="75%" />
+<p class="caption">
+图 3.2: plot()函数第二种用法示例：二维数据散点图.
+</p>
+</div>
+<p>这是<code>plot()</code>函数的第二种用法：绘制二维数据散点图。比较一下，跟第一种用法有什么区别？</p>
+<p><code>plot()</code>函数的第三种用法，其实在前面已经出现过了，我们重复一次：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mydata2)</code></pre></div>
+<p>在这种用法里，<code>plot()</code>的作图对象是个多行多列的数据框（mydata2），画出的是任意两列分别作为x和y的散点图。这时，<code>plot()</code>函数等同于<code>pairs()</code>函数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(mydata2)</code></pre></div>
+<p>喜欢刨根问底的初学者可能对<code>plot()</code>函数的多种用法感到困惑。我们打个比方就容易理解了，这就好比佛教里的观音菩萨有32种化身，应众生的需要而以不同面孔示人。需要救人参果树的时候，菩萨就持杨柳枝；需要收鲤鱼精的时候，菩萨就编个鱼篮；适当的时候，菩萨还会伸出千手，或者送上个娃。<code>plot()</code>函数也是如此，根据你的需要来发挥不同的作用。除了这三种化身外，还有第四第五以及更多化身，我们在以后的课程中遇到再说。</p>
+<p>当然，菩萨不止观音一位，R的作图函数除了<code>plot()</code>外还有很多，见小贴士<a href="secplot.html#thm:thm-plot">3.1</a>。他们的用法大同小异，可以咨询<code>example()</code>小助理。不过，我们这次有请<code>example()</code>助理的小姐妹——示范函数<code>demo()</code>来帮忙：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">demo</span>(graphics)</code></pre></div>
+<p>就像<code>example()</code>小助理一样，按照提示按回车键，就会看到各种作图函数的示范了。</p>
+
+<div class="theorem">
+<span id="thm:thm-plot" class="theorem"><strong>小贴士 3.1  </strong></span>常用作图函数（请使用example()函数来查看，如example(plot)，或运行demo(graphics)）
+</div>
+<p></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">函数</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>plot()</code></td>
+<td align="left">主要用作散点图</td>
+</tr>
+<tr class="even">
+<td align="left"><code>pairs()</code></td>
+<td align="left">散点图矩阵</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>symbols()</code></td>
+<td align="left">气泡图</td>
+</tr>
+<tr class="even">
+<td align="left"><code>hist()</code></td>
+<td align="left">直方图</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>curve()</code></td>
+<td align="left">函数曲线图</td>
+</tr>
+<tr class="even">
+<td align="left"><code>barplot()</code></td>
+<td align="left">柱状图</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>boxplot()</code></td>
+<td align="left">箱式图</td>
+</tr>
+<tr class="even">
+<td align="left"><code>coplot()</code></td>
+<td align="left">条件散点图</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>dotchart()</code></td>
+<td align="left">点图（克利夫兰点图）</td>
+</tr>
+<tr class="even">
+<td align="left"><code>stripchart()</code></td>
+<td align="left">一维散点图</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>image()</code></td>
+<td align="left">矩阵方格图</td>
+</tr>
+<tr class="even">
+<td align="left"><code>contour()</code></td>
+<td align="left">等高线图</td>
+</tr>
+</tbody>
+</table>
+<p>在前面这些绘图操作里，我们没有对R额外要求什么，于是R就按默认值自行标注了坐标轴的名称、取值范围、数据点的类型。下面我们重新画一张图，来指定横坐标名称为“Year”，纵坐标名称为“CO2 in Sep”，图形类型为线形，纵坐标的展示范围为300到400 ppm（图<a href="secplot.html#fig:fig-co2sep3">3.3</a>）。</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$Sep, 
+     <span class="dt">xlab =</span> <span class="st">&quot;Year&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;CO2 in Sep&quot;</span>, 
+     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">300</span>, <span class="dv">400</span>), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-co2sep3"></span>
+<img src="r4r_files/figure-html/fig-co2sep3-1.png" alt="plot()函数col参数的用法示例." width="75%" />
+<p class="caption">
+图 3.3: plot()函数col参数的用法示例.
+</p>
+</div>
+<p>我们看到，<code>plot()</code>函数里除了用<code>x=</code>和<code>y=</code>两个参数来指定数据点横纵坐标外，还用<code>xlab</code>（x label的缩写）、<code>ylab</code>等参数来指定作图的细节。</p>
+<p>R所有的函数都是这样使用的，比如我们前面见过的读取数据函数<code>read.table()</code>，就是用<code>header</code>参数来指定要不要把第一行当作列名称，用<code>sep</code>（separation的缩写）参数来指定列与列之间用什么符号分隔：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata2 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> myfile2, 
+                      <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)  </code></pre></div>
+<p>那么，一个函数里允许指定哪些参数呢？我们怎么才能记住这么多不同函数的不同参数呢？</p>
+<p>没人记得住，也没必要记住。我们都是用tab小助理来调出参数列表后选择一个，或者F1小助理来查看帮助文件。下面，我们介绍<code>plot()</code>几个常用的参数。</p>
+<p><code>type</code>参数用来指定把数据点画成点还是画成线。最常用的是<code>l</code>表示线（line），<code>p</code>表示点（point）。此外还可以是<code>b, c, o, h, s, S, n</code>。见小贴士<a href="secplot.html#thm:thm-type">3.2</a>。</p>
+
+<div class="theorem">
+<span id="thm:thm-type" class="theorem"><strong>小贴士 3.2  </strong></span><code>plot()</code>函数的type参数
+</div>
+<p> <img src="r4r_files/figure-html/fig09-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>我们可以试着把上一句作图命令改为：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$Sep, <span class="dt">type =</span> <span class="st">&quot;p&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-pch1"></span>
+<img src="r4r_files/figure-html/fig-pch1-1.png" alt="plot()函数：pch 默认值." width="75%" />
+<p class="caption">
+图 3.4: plot()函数：pch 默认值.
+</p>
+</div>
+<p>当数据点类型设置为p时，默认画出来的数据点是个小圆圈（图<a href="secplot.html#fig:fig-pch1">3.4</a>）。不喜欢的话，可以用参数<code>pch</code>（point character的缩写）来指定数据点的形状（图<a href="secplot.html#fig:fig-pch2">3.5</a>）。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$Sep, <span class="dt">type =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-pch2"></span>
+<img src="r4r_files/figure-html/fig-pch2-1.png" alt="plot()函数示例：pch = 20." width="75%" />
+<p class="caption">
+图 3.5: plot()函数示例：pch = 20.
+</p>
+</div>
+<p><code>pch = 20</code>表示采用20号字符。20号字符是什么？见小贴士<a href="secplot.html#thm:thm-colors">3.3</a>。</p>
+<p>当然，pch也可以随意是用你喜欢的任何字符，比如我们用字母’z’（图<a href="secplot.html#fig:fig-pch3">3.6</a>）：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$Sep, 
+     <span class="dt">type =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">pch =</span> <span class="st">&#39;z&#39;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-pch3"></span>
+<img src="r4r_files/figure-html/fig-pch3-1.png" alt="plot()函数示例：pch = &quot;z&quot;." width="75%" />
+<p class="caption">
+图 3.6: plot()函数示例：pch = “z”.
+</p>
+</div>
+<p>类似的，当数据点类型是<code>l</code>（line，线）时，默认是实线。不喜欢的话，可以用<code>lty</code>参数（line type的缩写）指定是虚线还是实线，比如（图<a href="secplot.html#fig:fig-lty">3.7</a>）：</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$Sep, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-lty"></span>
+<img src="r4r_files/figure-html/fig-lty-1.png" alt="plot()函数示例：lty参数." width="75%" />
+<p class="caption">
+图 3.7: plot()函数示例：lty参数.
+</p>
+</div>
+<p>颜色参数<code>col</code>（color的缩写）可以设为颜色的名称，比如蓝色（图<a href="secplot.html#fig:fig-colors1">3.8</a>）。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$Sep, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>, 
+     <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-colors1"></span>
+<img src="r4r_files/figure-html/fig-colors1-1.png" alt="plot()函数示例：蓝色数据点." width="75%" />
+<p class="caption">
+图 3.8: plot()函数示例：蓝色数据点.
+</p>
+</div>
+<p>R认识哪些颜色呢？输入并运行：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colors</span>()</code></pre></div>
+<pre><code>##   [1] &quot;white&quot;                &quot;aliceblue&quot;           
+##   [3] &quot;antiquewhite&quot;         &quot;antiquewhite1&quot;       
+##   [5] &quot;antiquewhite2&quot;        &quot;antiquewhite3&quot;       
+##   [7] &quot;antiquewhite4&quot;        &quot;aquamarine&quot;          
+##   [9] &quot;aquamarine1&quot;          &quot;aquamarine2&quot;         
+##  [11] &quot;aquamarine3&quot;          &quot;aquamarine4&quot; 
+## ......
+## [653] &quot;yellow1&quot;              &quot;yellow2&quot;             
+## [655] &quot;yellow3&quot;              &quot;yellow4&quot;             
+## [657] &quot;yellowgreen&quot;</code></pre>
+<p>有657种颜色名称可以使用。趁此机会学一下外语吧，有些颜色名称听都没听说过。</p>
+
+<div class="theorem">
+<span id="thm:thm-colors" class="theorem"><strong>小贴士 3.3  </strong></span>R的颜色代码和常用绘图参数。上面板是按编号n排序，中面板是按照色调和饱和度排序，每个色块上标出了n值。调用时 col = colors[n]即可。下面板左边是几个常用的色彩函数，右边是绘图参数的线性（lty）和点状（pch）的取值。
+</div>
+<p></p>
+<p><img src="images/img10.jpg" width="100%" style="display: block; margin: auto;" /></p>
+<p>我们看看这657种颜色中第26个颜色叫什么名字：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colors</span>()[<span class="dv">26</span>]</code></pre></div>
+<pre><code>## [1] &quot;blue&quot;</code></pre>
+<p>正是蓝色。<code>col = colors()[26]</code> 这个参数设置跟<code>col = 'blue'</code> 是完全等同的。我们可以用颜色编号的方法，给上图的数据点染上不同的颜色。我们有39个数据点，那么我们依次染上第27到65个颜色（图<a href="secplot.html#fig:fig-colors2">3.9</a>）：</p>
+<div class="figure" style="text-align: center"><span id="fig:fig-colors2"></span>
+<img src="r4r_files/figure-html/fig-colors2-1.png" alt="plot()函数示例：多色数据点." width="75%" />
+<p class="caption">
+图 3.9: plot()函数示例：多色数据点.
+</p>
+</div>
+<p>从这一刻起，R 开始显得惊艳了。</p>
+<p>这里我们用<code>cex</code>参数（character expansion的缩写）来设定数据点的绘制尺寸，值越大，点画得就越大。</p>
+<p>从名字挑颜色不够直观，经常是想起了颜色却叫不出名字，看见了英文名字却不知道是什么颜色。没关系，我们再次请<code>demo()</code>小助理来帮忙：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">demo</span>(colors)</code></pre></div>
+<p>按照提示按回车键，就会看到颜色连同名称的展示。</p>
+<p><code>demo()</code>函数够酷。然而，并非所有函数都可以请<code>demo()</code>来帮忙的。运行：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">demo</span>()</code></pre></div>
+<p>会看到一个表格，列出了可供展示的函数。例如，我们看到其中有<code>persp</code>， 那么可以运行：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">demo</span>(persp)</code></pre></div>
+<p>将来我们学到函数和扩展包时，<code>demo()</code>小助理还会发挥更大的作用，到时候再说吧。</p>
+<p>刚才我们给数据点染上颜色后，发现选的这些颜色对比不是很明显。R提供了多种配色方案函数可以选用，比如彩虹函数<code>rainbow()</code>。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rainbow</span>(<span class="dt">n =</span> <span class="dv">39</span>)</code></pre></div>
+<pre><code>##  [1] &quot;#FF0000FF&quot; &quot;#FF2700FF&quot; &quot;#FF4E00FF&quot; &quot;#FF7600FF&quot;
+##  [5] &quot;#FF9D00FF&quot; &quot;#FFC400FF&quot; &quot;#FFEB00FF&quot; &quot;#EBFF00FF&quot;
+##  [9] &quot;#C4FF00FF&quot; &quot;#9DFF00FF&quot; &quot;#76FF00FF&quot; &quot;#4EFF00FF&quot;
+## [13] &quot;#27FF00FF&quot; &quot;#00FF00FF&quot; &quot;#00FF27FF&quot; &quot;#00FF4EFF&quot;
+## [17] &quot;#00FF76FF&quot; &quot;#00FF9DFF&quot; &quot;#00FFC4FF&quot; &quot;#00FFEBFF&quot;
+## [21] &quot;#00EBFFFF&quot; &quot;#00C4FFFF&quot; &quot;#009DFFFF&quot; &quot;#0076FFFF&quot;
+## [25] &quot;#004EFFFF&quot; &quot;#0027FFFF&quot; &quot;#0000FFFF&quot; &quot;#2700FFFF&quot;
+## [29] &quot;#4E00FFFF&quot; &quot;#7600FFFF&quot; &quot;#9D00FFFF&quot; &quot;#C400FFFF&quot;
+## [33] &quot;#EB00FFFF&quot; &quot;#FF00EBFF&quot; &quot;#FF00C4FF&quot; &quot;#FF009DFF&quot;
+## [37] &quot;#FF0076FF&quot; &quot;#FF004EFF&quot; &quot;#FF0027FF&quot;</code></pre>
+<p>每个字符串代表一个颜色。彩虹函数要求给参数n设定一个整数值，只有这样R才知道该把彩虹的色带平均分割成几种颜色。我们现在有39个点，那么就让<code>n = 39</code>，看看能画出怎样的彩虹（图<a href="secplot.html#fig:fig-colors3">3.10</a>）。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$Sep, <span class="dt">type =</span> <span class="st">&quot;p&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>,
+     <span class="dt">col =</span> <span class="kw">rainbow</span>(<span class="dt">n =</span> <span class="dv">39</span>), <span class="dt">cex =</span> <span class="dv">3</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-colors3"></span>
+<img src="r4r_files/figure-html/fig-colors3-1.png" alt="plot()函数示例：col参数彩虹数据点." width="75%" />
+<p class="caption">
+图 3.10: plot()函数示例：col参数彩虹数据点.
+</p>
+</div>
+<p>请用<code>example()</code>小助理来调出<code>rainbow()</code>函数的示例。可以看到，除了<code>rainbow()</code>外，还有几个类似的色彩函数，用法也类似。小贴士<a href="secplot.html#thm:thm-colors">3.3</a>展示了他们的色带范围。</p>
+<p>有了颜色参数，我们的作图本领更加强大，可以重新考虑一下 mydata2 这个数据框了。</p>
+<p>实际上，mydata2的每个数据点都包含了三个内容：“年份”，“月份”，“CO<sub>2</sub>浓度”。这是个三维数据。我们前面由于刚刚入门，受作图能力所限，只能把数据“降维打击”<a href="#fn17" class="footnoteRef" id="fnref17"><sup>17</sup></a>成了二维，只保留了“年份”和“浓度”两个维度（当然也可以只保留“月份”和“浓度”，或“年份”和“月份”，但后者实在无趣）来作图。既然每个点都可以指定一个特有的颜色，那么就可以用颜色来表示这些数据点的第三个维度。</p>
+<p>下面，我们将作一个散点图，图上每个点的横坐标是“月份”，纵坐标是“年份”，每个点的颜色表示“浓度”，在色带上，越偏向紫色就表示浓度越大（紫移），越偏向红色就表示浓度越小（红移）。</p>
+<p>我们先用 <code>unlist()</code>函数（见第<a href="secmid.html#secmid-1">8.1</a>节）把“浓度”这个数据框转换成一个向量，作为第一个维度：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myco2 &lt;-<span class="st"> </span><span class="kw">unlist</span>(mydata2[, <span class="dv">1</span>:<span class="dv">12</span>])
+myco2 &lt;-<span class="st"> </span><span class="kw">round</span>(myco2)</code></pre></div>
+<p>为了简化后面的操作，我们用 <code>round()</code> 函数对浓度数据进行了四舍五入。</p>
+<p>然后，用一个向量<code>myyear</code>来存储第二个维度“年份”：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myyear &lt;-<span class="st"> </span><span class="kw">rep</span>(mydata2$year, <span class="dv">12</span>)</code></pre></div>
+<p><code>rep()</code>是重复函数（repeat的缩写）。由于每年12个月，所以，每个年份重复12次。</p>
+<p>最后，用向量 <code>mymonth</code> 来存储第三个维度“月份”，每个月份重复的次数是数据里出现的年数，也就是行数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mymonth &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">each =</span> <span class="kw">nrow</span>(mydata2))</code></pre></div>
+<p>三个维度的数据准备完毕，下面准备一下每个数据点的颜色。我们用<code>rainbow()</code>函数根据浓度数值的大小给数据点确定一个颜色：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="kw">diff</span>(<span class="kw">range</span>(myco2)) <span class="co"># 彩虹分割的颜色数量</span>
+mycolor &lt;-<span class="st"> </span><span class="kw">rainbow</span>(n)[myco2 -<span class="st"> </span><span class="kw">min</span>(myco2) +<span class="st"> </span><span class="dv">1</span>]</code></pre></div>
+<p>一切准备就绪，可以作图了：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mymonth, <span class="dt">y =</span> myyear, 
+     <span class="dt">col =</span> mycolor, <span class="dt">cex =</span> <span class="dv">10</span>, <span class="dt">pch =</span> <span class="dv">15</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-colors4"></span>
+<img src="r4r_files/figure-html/fig-colors4-1.png" alt="plot()函数示例：三维图." width="75%" />
+<p class="caption">
+图 3.11: plot()函数示例：三维图.
+</p>
+</div>
+<p>得到的图<a href="secplot.html#fig:fig-colors4">3.11</a>里，沿着横向看就是CO<sub>2</sub>浓度的逐月变化，沿纵向看就是年际变化。我们的图升维了。</p>
+<p>事实上，R 里有另外一个函数image()，可以一步做出类似的颜色图（图<a href="secplot.html#fig:fig-colors5">3.12</a>）。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">image</span>(<span class="kw">t</span>(<span class="kw">as.matrix</span>(mydata2[<span class="dv">1</span>:<span class="dv">12</span>])), <span class="dt">col =</span> <span class="kw">rainbow</span>(n))</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-colors5"></span>
+<img src="r4r_files/figure-html/fig-colors5-1.png" alt="image()函数示例." width="75%" />
+<p class="caption">
+图 3.12: image()函数示例.
+</p>
+</div>
+<p><code>image()</code>函数将在第<a href="secloop.html#secloop-4">5.4</a>节再度露面，届时我们再做进一步介绍。</p>
+<p><code>plot()</code>函数的参数很多，那么就允许数据有更多维度。例如，把数据来源作为第四个维度，那么我们可以用数据点的不同大小来表示（<code>cex</code>参数），亚洲的数据用大号数据点，欧洲用中号等等。我们可以随意对图进行维度改造了！</p>
+<p>要想对作图进行更精细的控制，可以使用<code>plot()</code>函数的其他参数、<code>par()</code>函数、<code>axis()</code>函数等。这个我们在后面会详细介绍，如果你迫不及待的话，请你自己找F1小助理问问吧。</p>
+
+<div class="example">
+<span id="exm:ex3-1" class="example"><strong>Example 3.1  </strong></span> 请绘制1959年到1997年二氧化碳全年平均浓度的逐年变化散点图，线形为“p”，数据点形状为实心三角形，数据点颜色为黄色。
+</div>
+<p></p>
+</div>
+<div id="secplot-2" class="section level2">
+<h2><span class="header-section-number">3.2</span> 丰富内容：直线、网格和图例</h2>
+<p>为了让图更容易被读懂，我们经常需要给图像添加直线、网格、图例等，这超出了<code>plot()</code>函数的职能范围，需要别的函数来实现。</p>
+<p>在现有的图上添加直线，可以用<code>abline()</code>函数（图<a href="secplot.html#fig:fig-abline">3.13</a>）：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$Sep)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">350</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">360</span>, <span class="dt">v =</span> <span class="dv">1980</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">320</span>, <span class="dt">to =</span> <span class="dv">340</span>, <span class="dt">by =</span> <span class="dv">5</span>), 
+       <span class="dt">v =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1970</span>, <span class="dt">to =</span> <span class="dv">1990</span>, <span class="dt">by =</span> <span class="dv">5</span>), 
+       <span class="dt">col =</span> <span class="st">&#39;grey&#39;</span>)</code></pre></div>
+<p><code>h</code>参数（horizontal）表示水平线，<code>v</code>参数（vertical）表示垂直线。<code>seq()</code>函数（sequence的缩写）用来生成指定的数列。网格线其实就是一组间隔相等的直线，用<code>seq()</code>函数生成一组h或v值即可。</p>
+<p><code>abline</code>的全称是 “截距<span class="math inline">\(a\)</span>和斜率<span class="math inline">\(b\)</span>的直线”。顾名思义，除了用h和v来画水平和垂直线外，还可以用参数<span class="math inline">\(a\)</span>和<span class="math inline">\(b\)</span>来画斜线。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">abline</span>(<span class="dt">a =</span> -<span class="dv">2240</span>, <span class="dt">b =</span> <span class="fl">1.3</span>)</code></pre></div>
+<p>往图中添加图例，一般使用<code>legend()</code>函数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">legend</span>(<span class="dt">x =</span> <span class="dv">1970</span>, <span class="dt">y =</span> <span class="dv">350</span>, <span class="dt">legend =</span> <span class="st">&#39;Sep&#39;</span>, <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre></div>
+<p>图例放置的位置有多种设置方法。上面的例子是用坐标位置(x, y)确定的。还可以用内置模板来指定，例如用<code>topleft</code>设置在左上角，<code>center</code>设置在中央等等：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="st">&#39;Sep&#39;</span>, <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre></div>
+<p>还可以用鼠标确定位置，指哪儿打哪儿：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">legend</span>(<span class="kw">locator</span>(<span class="dv">1</span>), <span class="dt">legend =</span> <span class="st">&#39;Sep&#39;</span>, <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre></div>
+<p>上面这个命令运行后，R会等待你用鼠标左键在图上点击一下，再按Esc键，R就知道点击位置的坐标了。</p>
+<p><code>legend()</code>函数的参数很丰富灵活，可以用来控制图例的点形、线状、颜色、边框等。请咨询F1小助理吧。</p>
+<p></p>
+<div class="figure" style="text-align: center"><span id="fig:fig-abline"></span>
+<img src="r4r_files/figure-html/fig-abline-1.png" alt="给图上增添直线、网格和图例，." width="80%" />
+<p class="caption">
+图 3.13: 给图上增添直线、网格和图例，.
+</p>
+</div>
+<p>除了可以增添直线、网格和图例，我们将在第<a href="secfit.html#secfit">4</a>章里介绍如何用<code>text()</code>函数增添文字、用<code>expression()</code>函数添加公式。我们还可以用<code>box()</code>函数添加边框，<code>rect()</code>函数添加矩形，<code>arrow()</code>函数添加箭头或误差线等。小助理那里什么资料都有，本书就不做详细介绍了。</p>
+
+<div class="example">
+<span id="exm:ex3-2" class="example"><strong>Example 3.2  </strong></span>在图中画满网格线，竖线间隔为1年，横线间隔为10ppm。
+</div>
+<p></p>
+</div>
+<div id="secplot-3" class="section level2">
+<h2><span class="header-section-number">3.3</span> 多图合一：三种布局</h2>
+<p>我们经常需要把多张图画在一起，有时候是为了做对比，有时候为了节省空间。多图合一常见的页面布局大体分三种情况。</p>
+<p>第一种情况，是在同一个坐标系里绘制多组(x,y)数据点。比如图<a href="secplot.html#fig:fig-layout1">3.14</a>，以月份为x，1959年和1997年各月二氧化碳浓度为y。</p>
+<p></p>
+<div class="figure" style="text-align: center"><span id="fig:fig-layout1"></span>
+<img src="r4r_files/figure-html/fig-layout1-1.png" alt="多图合一布局1." width="75%" />
+<p class="caption">
+图 3.14: 多图合一布局1.
+</p>
+</div>
+<p>该布局的特点是两条曲线共享同一个x-y坐标系。这种图的作法很简单，先按我们前面学过的<code>plot()</code>函数画出一组y1图像，</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">y =</span> mydata2[<span class="st">&#39;1959&#39;</span>, <span class="dv">1</span>:<span class="dv">12</span>], 
+     <span class="dt">xlab =</span> <span class="st">&#39;Month&#39;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(CO[<span class="dv">2</span>]),
+     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">310</span>, <span class="dv">370</span>), 
+     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>)</code></pre></div>
+<p>再用<code>points()</code>或者<code>lines()</code>函数添加y2的图线。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lines</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">y =</span> mydata2[<span class="st">&#39;1997&#39;</span>, <span class="dv">1</span>:<span class="dv">12</span>], <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)
+<span class="co">#或者</span>
+<span class="kw">points</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">y =</span> mydata2[<span class="st">&#39;1997&#39;</span>, <span class="dv">1</span>:<span class="dv">12</span>], <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, 
+       <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>)</code></pre></div>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-87" class="lemma"><strong>思考 3.1  </strong></span>上面两条代码的作用完全相同。那么这两个函数难道完全一样吗？请搜一下帮助信息，自己比较一下。
+</div>
+<p></p>
+<p>刚才画这张图里，两年的二氧化碳浓度的取值范围相差比较大，季节变化显示得不够明显，不如使用另一个新的纵坐标。这就是多图合一的第二种情况，即同样是多组xy，横坐标相同，但纵坐标不同，我们以副坐标轴的形式来展示。方法是各自独立绘图，并且在画两个图之间加一个<code>par(new=TRUE)</code>命令，让R知道后一张图是重叠在前一张图上：</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">y =</span> mydata2[<span class="st">&#39;1959&#39;</span>, <span class="dv">1</span>:<span class="dv">12</span>], 
+     <span class="dt">xlab =</span> <span class="st">&#39;Month&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;1959&#39;</span>,
+     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">par</span>(<span class="dt">new =</span> <span class="ot">TRUE</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">y =</span> mydata2[<span class="st">&#39;1997&#39;</span>, <span class="dv">1</span>:<span class="dv">12</span>], <span class="dt">ylab =</span> <span class="st">&#39;1997&#39;</span>, 
+     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-layout2a"></span>
+<img src="r4r_files/figure-html/fig-layout2a-1.png" alt="多图合一布局2：错误的重叠." width="75%" />
+<p class="caption">
+图 3.15: 多图合一布局2：错误的重叠.
+</p>
+</div>
+<p>这回我们没有指定y轴的作图范围，让R自动选。图画是画出来了，但怎么坐标轴的刻度和标签都重叠在一起了（图<a href="secplot.html#fig:fig-layout2a">3.15</a>）？</p>
+<p>对呀，是我们让R重叠的，R完全是按照我们的指令做的。做得不合意，是因为我们没有把我们的心意对R说清楚（请记住这句话，以后会用得着）。</p>
+<p>现在我们重新对R交代清楚我们想要的东西：把第二张图的y刻度和标签放在右侧，作为副坐标轴。作图分6步完成（图<a href="secplot.html#fig:fig-layout2b">3.16</a>）：</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 1. 告诉R在右侧为副坐标轴留出空间。</span>
+<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>))
+<span class="co"># 2. 画第一张图。</span>
+<span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">y =</span> mydata2[<span class="st">&#39;1959&#39;</span>, <span class="dv">1</span>:<span class="dv">12</span>], 
+     <span class="dt">xlab =</span> <span class="st">&#39;Month&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;1959&#39;</span>,
+     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="co"># 3. 告诉R，下一张图跟第一张图叠加。</span>
+<span class="kw">par</span>(<span class="dt">new =</span> <span class="ot">TRUE</span>)
+<span class="co"># 4. 画第二张图，但暂时不画坐标轴，也不标标签。</span>
+<span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">y =</span> mydata2[<span class="st">&#39;1997&#39;</span>, <span class="dv">1</span>:<span class="dv">12</span>], 
+     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">axes =</span> <span class="ot">FALSE</span>, 
+     <span class="dt">ylab =</span> <span class="st">&#39;&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;&#39;</span>)
+<span class="co"># 5. 在右侧画出副坐标轴。</span>
+<span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">4</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)
+<span class="co"># 6. 为副坐标轴添加名称。</span>
+<span class="kw">mtext</span>(<span class="dt">side =</span> <span class="dv">4</span>, <span class="dt">text =</span> <span class="st">&#39;1997&#39;</span>, <span class="dt">line =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-layout2b"></span>
+<img src="r4r_files/figure-html/fig-layout2b-1.png" alt="多图合一布局2: 正确的重叠." width="75%" />
+<p class="caption">
+图 3.16: 多图合一布局2: 正确的重叠.
+</p>
+</div>
+<p></p>
+<p>R是个听话的仆人，吩咐他做什么就做什么；没吩咐的，他按事先的约定（默认值）来做。</p>
+<p>上面的第一条和第三条的<code>par()</code>函数，用参数<code>mar</code>（margin的缩写）来指定图表下方、左方、上方、右方的空白有多大，用参数<code>new</code>来指定下一条作图命令跟上一条的作图区域相同。第四条<code>plot()</code>指令的<code>axes</code>参数设置为“假”，来禁止显示默认的坐标轴。第五条和第六条指令，先用坐标轴函数<code>axis()</code>在右侧画一条红色的坐标轴，然后用<code>mtext()</code>函数在右侧添加文字，作为新坐标轴的标签。“右侧”是<code>side</code>参数来确定的，它的取值可以是1、2、3、4，分别表示在图表区的下、左、上、右方向。<code>line</code>参数表示文字距离图表区的距离。有了<code>axis()</code>函数和<code>mtext()</code>函数，我们就可以对坐标轴为所欲为了。限于篇幅，我们不再做详细介绍，请咨询F1小助理。</p>
+<p>多图合一的第三种情况，是绘制多个各自独立的小图，把他们拼贴在一张大图上。这仍然可以用<code>par()</code>函数的参数来实现。比如，我们把上图拆成左右两个小图，只需在作图前用<code>par()</code>的<code>mfrow</code>参数（matrix of figures entered rwo-wise 的缩写）告诉R，“请把这两张图放在一个表格里，这个表格是1行2列”（图<a href="secplot.html#fig:fig-layout3">3.17</a>）：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">y =</span> mydata2[<span class="st">&#39;1959&#39;</span>, <span class="dv">1</span>:<span class="dv">12</span>],
+     <span class="dt">xlab =</span> <span class="st">&#39;Month&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;1959&#39;</span>,
+     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">y =</span> mydata2[<span class="st">&#39;1997&#39;</span>, <span class="dv">1</span>:<span class="dv">12</span>],
+     <span class="dt">xlab =</span> <span class="st">&#39;Month&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;1997&#39;</span>, 
+     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-layout3"></span>
+<img src="r4r_files/figure-html/fig-layout3-1.png" alt="多图合一布局3." width="100%" />
+<p class="caption">
+图 3.17: 多图合一布局3.
+</p>
+</div>
+<p><code>par()</code>函数的<code>mfrow</code>参数是将绘图区平均分割成几块来按顺序绘图。如果需要在大图里嵌小图，则需要用<code>par()</code>函数的<code>fig</code>参数和<code>new</code>参数；更复杂的拼贴，可以用<code>layout()</code>函数来实现，简直可以随心所欲。限于篇幅，这里按下不表，感兴趣的话，请找F1小助理看看函数的帮助和示例吧。</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-88" class="theorem"><strong>小贴士 3.4  </strong></span>作图指令汇总
+</div>
+<p></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">项目</th>
+<th align="left">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">作图函数</td>
+<td align="left"><code>plot()</code>， boxplot()</td>
+</tr>
+<tr class="even">
+<td align="left">点形状</td>
+<td align="left">pch = 1, pch = ‘z’</td>
+</tr>
+<tr class="odd">
+<td align="left">线形状</td>
+<td align="left">lty = 2</td>
+</tr>
+<tr class="even">
+<td align="left">颜色</td>
+<td align="left">col = ‘blue’，rainbow()，colors()</td>
+</tr>
+<tr class="odd">
+<td align="left">添加要素</td>
+<td align="left">lines()，points()，abline()，axis()，box()，</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">legend()，text(), mtext()，expression()</td>
+</tr>
+<tr class="odd">
+<td align="left">多图布局</td>
+<td align="left">par()，layout()</td>
+</tr>
+<tr class="even">
+<td align="left">保存图片</td>
+<td align="left">pdf()，jpg()，png()</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="secplot-4" class="section level2">
+<h2><span class="header-section-number">3.4</span> 保存图片：pdf，png，jpg</h2>
+<p>我们绘制的图片展示在 RStudio 右下窗的绘图区，并没有以独立文件的形式保存，一旦关掉 RStudio，图也就随之消失了，除非保存为指定的文件。</p>
+<p>把图片保存到电脑里的最简单方法，是在RStudio的绘图区点击 Export，选择保存的格式和路径就可以了。不过，我们更常用的方法，是用代码，可以保证下一次运行同一段代码而输出同样的图片。</p>
+<p>代码保存图片的流程是这样的：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="co">#打开一张宽度为8，高度为4的白纸:</span>
+<span class="kw">pdf</span>(<span class="st">&#39;c:/r4r/fig2_13.pdf&#39;</span>, <span class="dt">width =</span> <span class="dv">8</span>, <span class="dt">height =</span> <span class="dv">4</span>)
+ <span class="co"># 在白纸上画图:</span>
+<span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$Jan)
+<span class="co"># 画完了，把纸张收起来:</span>
+<span class="kw">dev.off</span>() </code></pre></div>
+<p><code>pdf()</code>函数将图片保存成pdf格式。常用的保存图片的指令，除<code>pdf()</code>外，还有<code>png()</code>、<code>jpg()</code>等。</p>
+
+<div class="example">
+<span id="exm:ex3-3" class="example"><strong>Example 3.3  </strong></span>做出本章小贴士<a href="secplot.html#thm:thm-type">3.2</a>那张9张小图拼成的图，并保存为pdf文件。
+</div>
+<p></p>
+</div>
+<div id="secplotpost" class="section level2">
+<h2><span class="header-section-number">3.5</span> 课外活动： R的毛坯房与精装修</h2>
+<p>你也许已经发现，我们使用的这些作图函数虽然强大灵活，但看起来有些简陋。其实这是很正常的事，因为简陋，才能灵活。好比一套毛坯房，你可以随心所欲地装修成你想要的样子。至于装修之后好看难看有用没用，就看你的水平了。</p>
+<p>如果你不喜欢毛坯房，R也给你提供了多套精装修的房子，那就是我们将在第<a href="secfunction.html#secfunction-3">9.3</a>节讲到的扩展包（package）。这里，先给大家简单介绍一下三个作图的扩展包，展示一下R的精装房。这里涉及的函数先不必深究，只管运行即可。</p>
+<p>首先，我们先安装这三套样板房。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&#39;ggplot2&#39;</span>, <span class="st">&#39;lattice&#39;</span>, <span class="st">&#39;plotrix&#39;</span>))</code></pre></div>
+<p>我们先来到ggplot2 <span class="citation">(Wickham <a href="#ref-R-ggplot2">2009</a>)</span>的展厅，请<code>example()</code>小助理带我们看看这个展厅的qplot()函数展台：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">example</span>(qplot)</code></pre></div>
+<p>下面再去lattice <span class="citation">(Sarkar <a href="#ref-R-lattice">2008</a>)</span>展厅，请<code>demo()</code>小助理带我们参观：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lattice)
+<span class="kw">demo</span>(lattice)</code></pre></div>
+<p>最后是plotrix <span class="citation">(Lemon <a href="#ref-R-plotrix">2006</a>)</span>展厅：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plotrix)
+<span class="kw">demo</span>(plotrix)</code></pre></div>
+<p>感觉怎么样？只要学会了R，这些图将来我们都能轻松作出来。</p>
+<p>你不信？现在我们就把之前做过的图用这几个扩展包重做一次。</p>
+<p>为了方便作图，我们先准备一下数据。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydatasub &lt;-<span class="st"> </span><span class="kw">t</span>(mydata2[<span class="kw">as.character</span>(
+  <span class="kw">seq</span>(<span class="dv">1960</span>, <span class="dt">by =</span> <span class="dv">5</span>, <span class="dt">length.out =</span> <span class="dv">8</span>)), <span class="dv">1</span>:<span class="dv">12</span>])
+x &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dv">8</span>)
+y &lt;-<span class="st"> </span><span class="kw">as.vector</span>(mydatasub)
+group &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">colnames</span>(mydatasub), <span class="dt">each =</span> <span class="dv">12</span>)</code></pre></div>
+<p>好了，我们先用一下lattice扩展包的<code>xyplot()</code>函数（图<a href="secplot.html#fig:fig-lattice">3.18</a>）：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lattice)
+<span class="kw">xyplot</span>(y ~<span class="st"> </span>x|group, <span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&#39;p&#39;</span>, <span class="st">&#39;l&#39;</span>), 
+       <span class="dt">xlab =</span> <span class="st">&#39;Month&#39;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(CO[<span class="dv">2</span>]))</code></pre></div>
+<div class="figure"><span id="fig:fig-lattice"></span>
+<img src="r4r_files/figure-html/fig-lattice-1.png" alt="lattice扩展包作图示例." width="672" />
+<p class="caption">
+图 3.18: lattice扩展包作图示例.
+</p>
+</div>
+<p>把选中年份的数据一下就画出来了。</p>
+<p>再试试ggplot2（图<a href="secplot.html#fig:fig-ggplot2">3.19</a>）：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">qplot</span>(x, y, <span class="dt">col =</span> group, <span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;point&quot;</span>, <span class="st">&quot;line&quot;</span>), 
+      <span class="dt">xlab =</span> <span class="st">&#39;Month&#39;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(CO[<span class="dv">2</span>]))</code></pre></div>
+<div class="figure"><span id="fig:fig-ggplot2"></span>
+<img src="r4r_files/figure-html/fig-ggplot2-1.png" alt="ggplot2扩展包作图示例." width="672" />
+<p class="caption">
+图 3.19: ggplot2扩展包作图示例.
+</p>
+</div>
+<p>第三个包plotrix，我们就不演示了，你自己试试吧。</p>
+<p>前边我们那些多图合一的方法，在用了扩展包之后，只需简单的指令，就可以做出漂亮的图来了。</p>
+<p>那么，R这些扩展包是怎么做出这么复杂的图的？我们有请助理团最后一位助理，神秘的<code>vignette()</code>函数隆重登场：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vignette</span>(<span class="st">&#39;ggplot2-specs&#39;</span>)</code></pre></div>
+<p>vignette这个词在中文里实在难以找到恰当的翻译<a href="#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a>。<code>vignette()</code>小助理掌管的档案跟其他助理都不同。他提供的有时是一些技术文档，有时是论文，有时是示例。我们可以用下面的指令，看看他掌管了哪些资料：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vignette</span>(<span class="dt">all =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>对于这些资料，现在不明白不要紧，等我们学到第<a href="secfunction.html#secfunction">9</a>章就清楚了。</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-97" class="theorem"><strong>小贴士 3.5  </strong></span>R的人气助理团
+</div>
+<p></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">名称</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">F1</td>
+<td align="left">展示函数的帮助信息</td>
+</tr>
+<tr class="even">
+<td align="left">F2</td>
+<td align="left">演示函数源代码</td>
+</tr>
+<tr class="odd">
+<td align="left">tab</td>
+<td align="left">提示和自动补全</td>
+</tr>
+<tr class="even">
+<td align="left"><code>example()</code></td>
+<td align="left">函数示例，圆括号里填函数名</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>demo()</code></td>
+<td align="left">演示，圆括号为空时查看所有可用演示</td>
+</tr>
+<tr class="even">
+<td align="left"><code>vignette()</code></td>
+<td align="left">技术文档，vignette(all = TRUE)展示所有可用文档</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-ggplot2">
+<p>Wickham, Hadley. 2009. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="http://ggplot2.org" class="uri">http://ggplot2.org</a>.</p>
+</div>
+<div id="ref-R-lattice">
+<p>Sarkar, Deepayan. 2008. <em>Lattice: Multivariate Data Visualization with R</em>. New York: Springer. <a href="http://lmdvr.r-forge.r-project.org" class="uri">http://lmdvr.r-forge.r-project.org</a>.</p>
+</div>
+<div id="ref-R-plotrix">
+<p>Lemon, J. 2006. “Plotrix: A Package in the Red Light District of R.” <em>R-News</em> 6 (4): 8–12.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="17">
+<li id="fn17"><p>见刘慈欣《三体3：死神永生》。<a href="secplot.html#fnref17">↩</a></p></li>
+<li id="fn18"><p>词典上的释义是“小插图，简介短文”。R社区将它勉强译作“小品文”，相当于没翻译，因为还得进一步解释什么是“小品文”。Vignette在奥地利的意思是“高速公路通行证”。<a href="secplot.html#fnref18">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="secdata.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="secfit.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

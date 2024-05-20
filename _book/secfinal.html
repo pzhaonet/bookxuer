@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="blogdown.html">
+<link rel="next" href="secback.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="secfinal" class="section level1">
+<h1><span class="header-section-number">第16章</span> 在工作中应用</h1>
+<pre><code>    如果说我看得比别人远一些，那是因为我站在巨人的肩膀上。</code></pre>
+<!---
+> If I have seen further it is by standing on the shoulders of giants.
+>
+--->
+<blockquote>
+<p>— Isaac Newton, February 1676</p>
+</blockquote>
+<div id="secfinal-2" class="section level2">
+<h2><span class="header-section-number">16.1</span> 自动完成业务报表</h2>
+<p>进入职场之后，有时需要定期完成一些业务汇报。比如，曾经有一份工作摆在我的面前，就是每个月制作一份Word格式的报告，内容是当月全国几十个观测站数据上传到服务器的情况。这份报告的格式是固定的，每次只需把里面的数据和图表更新即可。说来容易，可是每次都要有几十次的拷贝粘贴，非常容易出错，并且耗时耗力。</p>
+<p>只恨当年未遇R。</p>
+<p>在前几章，我们已经学会了用循环来解决重复工作，学会了对文件进行批量操作，并且学会了用R Markdown来制作Word文档。我们只需把这些本领结合起来，就完全可以让R来完成那些格式固定、只需更新内嵌的数据和图表的业务报告了。</p>
+<p>这里，我们来举个例子。</p>
+<p>我们仍然使用前面用过的世界各大洲7年的电话数量数据。假定我们需要把每年的情况写一份报告，内容是当年的全球电话数量总和，电话数量最多的洲及其所占比例，并用柱状图来展示。我们看看如何用R自动生成7份格式相同、内容不同的报告。</p>
+<p>首先，我们用第<a href="secoffice.html#secoffice">7</a>章的方法，建立一个R Markdown文档，作为7份报告的模板。方法是，在RStudio的界面点击菜单 File – New File – R Markdown，在对话框选择Document，将默认输出格式勾选Word即可。我们的文档内容如下：</p>
+<pre><code>---
+title: &quot;学城报告：全球电话数量&quot;
+author: &quot;萨姆&quot;
+date: &quot;`r Sys.time()`&quot;
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r preprocess, echo=FALSE}
+wp &lt;- read.csv(&#39;c:/r4r/wp.csv&#39;)
+i &lt;- 1
+year &lt;- wp[i, 1]
+wpi &lt;- unlist(wp[i, 2:8])
+conti &lt;- c(&quot;北美&quot;, &quot;欧&quot;, &quot;亚&quot;, &quot;南美&quot;, &quot;大洋&quot;, &quot;非&quot;, &quot;中美&quot;)
+```
+
+## 数据
+
+在`r year`年，全球电话总数为`r sum(wpi)`。拥有电话数量最多的是`r conti[which.max(wpi)] `洲，电话数量为`r max(wpi)`，占全球总数的`r paste(round(max(wpi)/sum(wpi), 4) * 100, &quot;%&quot;, sep =&quot;&quot;)`。
+
+## 作图
+
+下图是`r year`年全球各洲电话数量的柱状图。
+
+```{r, echo=FALSE}
+barplot(wpi, names.arg = conti)
+```</code></pre>
+<p>我们来解释一下。这个模板文件可以分为三部分。第一部分是文件头，是新建这个文件时自动生成的，我们只是改了标题和作者等信息。第二部分是数据预处理（r preprocess），将数据读入，并把即将在文档中调用的数据（年份，电话数量，洲名等）准备好。这部分代码的参数echo设置为FALSE，意思是代码不在文档中显示。第三部分是文档的正文，凡是需要根据年份来更新的数据，包括全球电话总数、电话最多的洲名等，都用R Markdown调用R代码的方式来计算。</p>
+<p>现在，我们按ctrl+s键，将这个模板文档保存为<code>c:/r4r/rdoc.Rmd</code>。再点击工具栏的Knit按钮，测试一下能否成功生成Word文档。</p>
+<p>如果测试成功，我们就可以批量生产了。注意观察这个模板文件里，<code>i &lt;- 1</code>，后面的数据就从wp数据框的第 i行选取，那么不同的文档我们只需更改<code>i &lt;- 1</code>这一行即可。所以，我们 新建一个.r代码文件，敲入下面的代码：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rdoc &lt;-<span class="st"> </span><span class="kw">readLines</span>(<span class="st">&#39;c:/r4r/rdoc.Rmd&#39;</span>, <span class="dt">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)
+for (k in <span class="dv">1</span>:<span class="dv">7</span>) {
+  newrmd &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;c:/r4r/&#39;</span>, k, <span class="st">&#39;.Rmd&#39;</span>, <span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)
+  rdoc[<span class="dv">13</span>] &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&#39;i &lt;-&#39;</span>, k)
+  <span class="kw">writeLines</span>(rdoc, newrmd, <span class="dt">useBytes =</span> <span class="ot">TRUE</span>)
+  rmarkdown::<span class="kw">render</span>(newrmd, <span class="dt">encoding =</span> <span class="st">&#39;UTF-8&#39;</span>)
+}</code></pre></div>
+<p>第一行是用读入文本文件的方法读入我们刚刚创建的rdoc.Rmd模板文档。从第二行起，开始循环，依次取不同的k值，将rdoc的第13行即i赋值为1的代码，改为赋值为k，然后将改变之后的文档新存为newrmd，最后用rmarkdown的<code>render()</code>函数将newrmd转换为同名的Word文档。</p>
+<p>现在，我们来见证一下奇迹的诞生。运行上面的代码，一两秒钟后请来<code>c:/r4r</code>文件夹看看，7个Word报告是不是已经乖乖地等在那里了？</p>
+<p>有了这种方法，我们就可以轻松地从无聊的重复劳动中解脱出来，把时间花在更有意义的事情上。那我们就用省出来的时间在R中玩玩扫雷吧！</p>
+
+<div class="example">
+<span id="exm:ex16-3" class="example"><strong>Example 16.1  </strong></span>仿照批量制作Word报告的方法，将各大洲电话数量情况批量制作成幻灯片，每年一个文件，格式可以是ppt、html或pdf均可。
+</div>
+<p></p>
+</div>
+<div id="secfinal-1" class="section level2">
+<h2><span class="header-section-number">16.2</span> 可重复研究报告</h2>
+<p>如果你是刚刚来到某个科研小组的新人，大概已经遭遇或将会遭遇以下情节：</p>
+<ul>
+<li><p>从导师那里得到师兄留下来的参考文献库。可是，你用的文献管理软件跟师兄的不同，光转格式就花了我大半天时间。</p></li>
+<li><p>师兄已经毕业了，留下的数据处理方法保存在一些专门的商业软件才能打开的文件里。如今，这些软件都升级多次，但导师却对初来乍到的你千叮咛万嘱咐：千万要用旧版软件，不然，师兄的文件就没法正确打开了。</p></li>
+<li><p>终于想方设法装上了旧版软件，打开师兄的文件一看，是个跟Excel类似的数据表，里边各列数据之间的计算错综复杂，花了两三天时间也没理出个头绪。</p></li>
+<li><p>那就看看师兄的学位论文里的公式吧，说不定有线索。论文是个Word文档，打开一看，不仅里面的公式都成了乱码，而且对应的数据也不知在哪里找得到。</p></li>
+</ul>
+<p>这时，你大概会暗自嘀咕：这巨人的肩膀咋就这么难爬上去呢？是不是我在科研能力上有问题？</p>
+<p>这不是你一个人的问题。虽然科研成果都写在发表的论文里，但很多情况下，实验数据、数据的处理方法、处理的结果这三个层面的内容在传播过程中是分离的。比如，我们在数据处理软件里计算和作图，然后把计算结果和图片拷贝粘贴到论文中发表。如果别人想重复我们发表的工作，就先得花大量时间弄清楚论文中每个公式的含义、公式适用的条件、各种前提假设等等，再回到数据处理软件中实现，这个过程给科研工作的交流带了障碍。</p>
+<p>最近几年，学术界发生了几件涉及学术道德的事件，例如日本的小保方晴子事件，我国的韩春雨论文事件，他们的实验难以被同行重复，因此备受质疑，有人为此自杀，有人引咎辞职，无论圈里圈外的人都被惊动了。科研成果被他人使用，人类的科学才会承前启后发展。如果重复别人的方法存在诸多障碍，那么巨人的肩膀就无从谈起。</p>
+<p>为了消除这种障碍，“可重复研究报告”这个概念出现了，并且在R语言里实现得相当顺利。R的knitr 、rmarkdown <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2016</a>)</span>等扩展包，可以将数据处理方法和详细说明、论文结果、结论很方便的有机融合在一篇R文档里，而bookdown 、bookdownplus <span class="citation">(Zhao <a href="#ref-R-bookdownplus">2017</a><a href="#ref-R-bookdownplus">b</a>)</span>、blogdown <span class="citation">(Xie <a href="#ref-R-blogdown">2017</a>)</span>、mindr <span class="citation">(Zhao <a href="#ref-R-mindr">2017</a><a href="#ref-R-mindr">c</a>)</span>、xlsx <span class="citation">(Dragulescu <a href="#ref-R-xlsx">2014</a>)</span>、ReporteRs <span class="citation">(Gohel <a href="#ref-R-ReporteRs">2017</a>)</span>等扩展包，可以将研究成果轻松输出为美观易用的期刊论文、技术档案、学术论文、书籍、网页、办公文档、思维导图等格式。只要有这样一份报告，同研究组的成员就很容易接手前人的工作；只要换上自己的数据，就会得到自己的新结果，从而来证实前人方法的可重复性。</p>
+<div class="figure" style="text-align: center"><span id="fig:img-research"></span>
+<img src="images/img-research.png" alt="R的科研一条龙整体解决方案." width="100%" />
+<p class="caption">
+图 16.1: R的科研一条龙整体解决方案.
+</p>
+</div>
+<p>这样，R语言就给我们提供了“科研一条龙”的打包解决方案。在这个方案里，除了原始数据外，其他的所有资料，包括数据处理方法、公式、参考文献等，全部是以纯文本的形式保存的，不对任何软件产生依赖。即使学生毕业、教授退休，即使软件升级，哪怕将来R语言不存在了，哪怕RStudio公司倒闭了，但我们的一切资料都可以用最简单的记事本软件打开阅读，为科研工作的前后相继提供了最大的便利。</p>
+<p>R语言，把巨人的肩膀改造成了容易攀登的阶梯。</p>
+</div>
+<div id="secfinalpost" class="section level2">
+<h2><span class="header-section-number">16.3</span> 课外活动：学以致用</h2>
+<p>学以致用效果好，以赛代练效率高。</p>
+<p>对你自己在学习或工作里用到的数据进行分析，用R markdown 写一份可重复性研究报告。</p>
+<p>然后，用 rmarkdown 或 ReporteRs 扩展包，将上述研究报告以幻灯片的形式展示。</p>
+
+<p></p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-rmarkdown">
+<p>Allaire, JJ, Joe Cheng, Yihui Xie, Jonathan McPherson, Winston Chang, Jeff Allen, Hadley Wickham, Aron Atkins, and Rob Hyndman. 2016. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+</div>
+<div id="ref-R-bookdownplus">
+<p>Zhao, Peng. 2017b. <em>Bookdownplus: Generate Varied Types of Books and Documents with R ’Bookdown’ Package</em>. <a href="https://CRAN.R-project.org/package=bookdownplus" class="uri">https://CRAN.R-project.org/package=bookdownplus</a>.</p>
+</div>
+<div id="ref-R-blogdown">
+<p>Xie, Yihui. 2017. <em>Blogdown: Create Blogs and Websites with R Markdown</em>. <a href="https://github.com/rstudio/blogdown" class="uri">https://github.com/rstudio/blogdown</a>.</p>
+</div>
+<div id="ref-R-mindr">
+<p>Zhao, Peng. 2017c. <em>Mindr: Convert Files Between Markdown or Rmarkdown Files and Mindmaps</em>. <a href="https://CRAN.R-project.org/package=mindr" class="uri">https://CRAN.R-project.org/package=mindr</a>.</p>
+</div>
+<div id="ref-R-xlsx">
+<p>Dragulescu, Adrian A. 2014. <em>Xlsx: Read, Write, Format Excel 2007 and Excel 97/2000/Xp/2003 Files</em>. <a href="https://CRAN.R-project.org/package=xlsx" class="uri">https://CRAN.R-project.org/package=xlsx</a>.</p>
+</div>
+<div id="ref-R-ReporteRs">
+<p>Gohel, David. 2017. <em>ReporteRs: Microsoft Word and Powerpoint Documents Generation</em>. <a href="https://CRAN.R-project.org/package=ReporteRs" class="uri">https://CRAN.R-project.org/package=ReporteRs</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="blogdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="secback.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

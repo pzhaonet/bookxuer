@@ -1,0 +1,10 @@
+操作, 提示
+设定文件路径,路径里不要空格，不要中文，用斜线分隔，
+""，`file.choose()`
+读取数据,read.table()，read.csv()
+保存文件,write.csv()
+选取单元格,"`x[2, 3]`，x[2, ]，x[, 3]，x$Sep，x['1995', 'Sep']"
+快速掌握数据,plot()，summary()
+行列名称,rownames()，colnames()，names()，
+行列计算,rowMeans()，colMeans()，
+,rowSum()，colSum()， apply()

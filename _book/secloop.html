@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="secfit.html">
+<link rel="next" href="secif.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="secloop" class="section level1">
+<h1><span class="header-section-number">第5章</span> 循环</h1>
+<pre><code>    男人至少要擅长一项运动,一种乐器,一种编程，和拿手的几个小炒。
+    </code></pre>
+<blockquote>
+<p>— 《小鸟学AHK》</p>
+</blockquote>
+<pre><code>    男女都一样。
+    </code></pre>
+<blockquote>
+<p>— 大鹏赶紧补充</p>
+</blockquote>
+<p>在我们的生活被阿尔法狗完全接管之前，机器比较适合做重复性的工作。比如你有1000组数据要做线性拟合，比如你有1000张照片文件要加上个拍摄日期，这种操作费时费力并且毫无乐趣，就应该交给机器来解决，这是高效人士的必备技能。本篇就来说说来进行重复工作的基本结构：循环。</p>
+<div id="secloop-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> 假如没有循环</h2>
+<p>循环就是兜圈子。先从一个简单例子开始。在练习<a href="secplot.html#exm:ex3-3">3.3</a>中，我们做出了一张3行3列的组合图。那时我们还没有学到循环函数，那时的世界过的是这样的苦日子：</p>
+<!---
+
+```r
+mydata2 <- as.data.frame(matrix(co2, 12, dimnames = list(month.abb, unique(floor(time(co2))))))  
+mydata2$month <- 1:12
+plot(mydata2[, 1], 
+     xlab = 'Month', ylab = 'CO2',
+     ylim = c(310, 330), 
+     type = "l", col = rainbow(39)[1])
+lines(mydata2[,2], col = rainbow(39)[2])
+lines(mydata2[,3], col = rainbow(39)[3])
+lines(mydata2[,4], col = rainbow(39)[4])
+lines(mydata2[,5], col = rainbow(39)[5])
+lines(mydata2[,6], col = rainbow(39)[6])
+lines(mydata2[,7], col = rainbow(39)[7]) # 如此写下去，一直写到第39列。
+```
+-->
+<p></p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata2 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(
+  co2, <span class="dv">12</span>, <span class="dt">dimnames =</span> <span class="kw">list</span>(month.abb, 
+                           <span class="kw">unique</span>(<span class="kw">floor</span>(<span class="kw">time</span>(co2)))))))  
+mydata2$year &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">rownames</span>(mydata2))
+x &lt;-<span class="st"> </span>mydata2$year
+y &lt;-<span class="st"> </span>mydata2$Sep
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">cex =</span> <span class="fl">1.2</span>, <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="fl">0.5</span>, <span class="dv">1</span>))
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;p&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;p&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, 
+       <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, 
+       <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, 
+       <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;c&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;c&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, 
+       <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;o&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;o&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>,
+       <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;h&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;h&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, 
+       <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;s&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;s&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, 
+       <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;S&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;S&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, 
+       <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>)
+<span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, 
+       <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)</code></pre></div>
+<p>虽然是以拷贝粘贴的方式，但也够烦的，不仅无趣，而且容易出错，还浪费纸张，占了本书整整一页纸。都什么时代了，还在用驴拉磨。</p>
+<p>经过仔细观察，我们发现，其实每张小图都差不多，除了数据点的类型和图例发生变化外，基本是在重复。这种情况，就可以考虑用循环了。</p>
+</div>
+<div id="secloop-2" class="section level2">
+<h2><span class="header-section-number">5.2</span> 循环是个救世主</h2>
+<p>当循环降临到这个世界上，我们的好日子就来了，上面那段臃肿的代码可以瘦身写成这样：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="kw">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&#39;l&#39;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;s&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;n&quot;</span>)) {
+  <span class="kw">plot</span>(<span class="dt">x =</span> mydata2$year, <span class="dt">y =</span> mydata2$Sep, <span class="dt">type =</span> i)
+  <span class="kw">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="dt">legend =</span> i, <span class="dt">cex =</span> <span class="fl">0.8</span>, 
+         <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">text.col =</span> <span class="st">&#39;blue&#39;</span>)
+}</code></pre></div>
+<p>这三句跟上面的十几行语句效果完全等同。<code>i</code>在<code>c(&quot;p&quot;, 'l', &quot;b&quot;, &quot;c&quot;, &quot;o&quot;, &quot;h&quot;, &quot;s&quot;, &quot;S&quot;, &quot;n&quot;)</code>这些字符中按顺序取值走一遭；每走一个值，就执行一次后面方括号里的所有操作。这里出现的<code>for()</code>就是循环语句。</p>
+<p>循环就是周而复始，每次的操作都类似，除了<code>for()</code>函数里的<code>i</code>值会发生变化，就像诗里写的：</p>
+<pre><code>    究竟
+    这一头有几个人能够等你
+    下一个轮回翩然来归
+    至少我已经不能够
+    我的白发，纵有叁千丈怎跟你比长
+    下次你路过，人间已无我</code></pre>
+<blockquote>
+<p>— 余光中《欢呼哈雷》</p>
+</blockquote>
+<p>哈雷彗星的运行就是循环，76年一个循环周期。他兜一个圈子回来，我（<code>i</code>）的值已经变了……</p>
+<p>虽然写循环语句的时候要多费点脑子，但代码看上去简洁很多，最重要的是修改起来容易，比如我们写完代码后悔了，想把所有的线都改成点，那么循环语句里改一次就行了，不用逐条修改，而且不容易遗漏出错。循环次数越多，写循环语句就越划算。高效人士的又一大福音啊！</p>
+<p><code>i</code>走的那个圈，可以是字符，也可以是别的，比如数字：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="dv">20</span>) <span class="kw">print</span>(i)</code></pre></div>
+<p>由于每走一圈只需执行一条语句，所以花括号就省略了。</p>
+<p>到目前为止，R 中所有的括号都闪亮登场了一遍，小贴士<a href="secloop.html#thm:thm-bracket">5.1</a>总结了三种括号在R里扮演的角色。</p>
+
+<div class="theorem">
+<p><span id="thm:thm-bracket" class="theorem"><strong>小贴士 5.1  </strong></span>R语言里的三种括号</p>
+<ul>
+<li><p>圆括号 ()。用作函数和数学表达式，如 mean(x), (1 + 2) * 3。</p></li>
+<li><p>方括号 []。用作下标，也就是：(1) 调用向量中的某个元素，如x[3], pm[2,6]，以及(2)公式expression()里的下标。</p></li>
+<li>花括号 {}。用作组合，把一组指令组合在一起，如for () {}。</li>
+</ul>
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ex5-1" class="example"><strong>Example 5.1  </strong></span>用<code>print()</code> 指令打印 1 到 100 之间的奇数。
+</div>
+<p></p>
+<p>R 中常用的循环语句，除了<code>for()</code>之外，还有<code>while()</code>和 <code>repeat()</code>，从逻辑上来说相互之间可以换用，我们这里就不做介绍了。</p>
+</div>
+<div id="secloop-3" class="section level2">
+<h2><span class="header-section-number">5.3</span> 人口增长模型</h2>
+<p>下面我们用循环语句来做一个指数增长模型，再体会一下循环的意义。</p>
+<p>指数增长模型，也叫马尔萨斯增长模型，一个函数的增长率与其函数值成比例。举个例子吧<a href="#fn19" class="footnoteRef" id="fnref19"><sup>19</sup></a>，我们用 N1 表示 2008 年世界总人口 66.8 亿，r 表示人口自然增长率。为简化起见，假定 r 是个常数 0.011，那么在下一年的总人口就是 N2 = N1 + r * N1。我们想看看今后一百年的人口总数。</p>
+<p>第一种方法可以是逐年计算，把各年的人口分别存储到不同的变量中：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N1 &lt;-<span class="st"> </span><span class="fl">66.8</span>
+r &lt;-<span class="st"> </span><span class="fl">0.011</span>
+N2 &lt;-<span class="st"> </span>N1 +<span class="st"> </span>r *<span class="st"> </span>N1
+N3 &lt;-<span class="st"> </span>N2 +<span class="st"> </span>r *<span class="st"> </span>N2  
+<span class="co"># ...... 如此写99行，就可以写到 N100。</span>
+N100 &lt;-<span class="st"> </span>N99 +<span class="st"> </span>r *<span class="st"> </span>N99</code></pre></div>
+<p>第二种方法，逐年计算，用一个向量来存储各年人口总数。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">100</span>)
+N[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="fl">66.8</span>
+N[<span class="dv">2</span>] &lt;-<span class="st"> </span>N[<span class="dv">1</span>] +<span class="st"> </span>r *<span class="st"> </span>N[<span class="dv">1</span>]
+N[<span class="dv">3</span>] &lt;-<span class="st"> </span>N[<span class="dv">2</span>] +<span class="st"> </span>r *<span class="st"> </span>N[<span class="dv">2</span>]  
+<span class="co"># ...... 如此写99行，一直写到 N[100]。</span>
+N[<span class="dv">100</span>] &lt;-<span class="st"> </span>N[<span class="dv">99</span>] +<span class="st"> </span>r *<span class="st"> </span>N[<span class="dv">99</span>]  </code></pre></div>
+<p>第三种方法， 用循环语句计算，用一个向量来存储各年人口数。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">100</span>)
+N[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="fl">66.8</span>
+for (t in <span class="dv">1</span>:<span class="dv">99</span>) N[t +<span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span>N[t] +<span class="st"> </span>r *<span class="st"> </span>N[t] </code></pre></div>
+<p>对比这三种方法，循环的好处一目了然。</p>
+<p>由于数据储存在一个向量里，我们很容易把人口增长曲线画出来。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">2008</span>, <span class="dt">length.out =</span> <span class="dv">100</span>)
+<span class="kw">plot</span>(Y, N)</code></pre></div>
+<p>根据这个模型的预测，哪一年世界人口超过100亿？当然，可以用肉眼在数据里看。这里，我们画一条y = 100的横线，然后运行鼠标定位函数<code>locator()</code>，接着在横线与指数曲线的交点点一下鼠标，按一下Esc键就可以了:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">100</span>)
+<span class="kw">locator</span>(<span class="dv">1</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-141"></span>
+<img src="r4r_files/figure-html/unnamed-chunk-141-1.png" alt="人口增长模型" width="75%" />
+<p class="caption">
+图 5.1: 人口增长模型
+</p>
+</div>
+
+<div class="example">
+<span id="exm:ex5-2" class="example"><strong>Example 5.2  </strong></span>生成一个矩阵 m （请F1小助理调出matrix()函数的帮助信息），使得 m[i,j] = x[i] * y[j]， 其中 x &lt;- c(2, 3, 5)， y &lt;- c(1, 2, 3, 4)。
+</div>
+<p></p>
+</div>
+<div id="secloop-4" class="section level2">
+<h2><span class="header-section-number">5.4</span> 制作动画</h2>
+<p>动画的原理，其实就是把多幅静态的图片连续播放。根据这个原理，我们在循环中使用<code>plot()</code>画图，相邻两图之间有少许变化，连起来就是一幅动画,例如：</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="dv">360</span>) {
+    <span class="kw">plot</span>(<span class="dv">1</span>, <span class="dt">ann =</span> F, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">axes =</span> F)
+    <span class="kw">text</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="st">&quot;Ninja, go!&quot;</span>, <span class="dt">srt =</span> i, <span class="dt">col =</span>
+        <span class="kw">rainbow</span>(<span class="dv">360</span>)[i], <span class="dt">cex =</span> <span class="dv">7</span> *<span class="st"> </span>i/<span class="dv">360</span>)
+}</code></pre></div>
+<p>下面，我们用类似的方法，来玩一个科学游戏：康威生命游戏。</p>
+<p>游戏的设定是这样的：每个玩家有一个国际象棋棋盘，除了边缘外，每个方格被8个方格包围。每个方格里可以居住一个细胞，假定每个细胞周边养活细胞的资源是有限的。</p>
+<p>游戏开始时，由玩家选任意多个方格，每个方格放进去一个活细胞。在下一个时刻，细胞的生死由相邻8个方格中的活细胞数量决定：</p>
+<ul>
+<li><p>当相邻的活细胞多于3时，那么由于僧多粥少，中央的这个细胞就会饿死；</p></li>
+<li><p>当相邻的活细胞少于2时，中央这个细胞会因太孤单而死；</p></li>
+<li><p>只有在相邻活细胞数量刚好是2或3时，中央的细胞才会活下去；这种情况下，即使中央原本没有细胞，也会诞生一个新细胞。</p></li>
+</ul>
+<p>所以，这个游戏有趣之处在于，游戏开始时该如何放置细胞，放多少个，才能让尽可能多的细胞存活尽可能长的时间？</p>
+<p>我们用R代码来实现这个游戏<a href="#fn20" class="footnoteRef" id="fnref20"><sup>20</sup></a>。用到的绘图函数是<code>image()</code>，在第<a href="secplot.html#secplot-2">3.2</a>节已经牛刀小试了一把，现在我们请F1和<code>example()</code>两位助理来帮个忙深入了解：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">example</span>(image)</code></pre></div>
+<p>可见，image()绘制的是颜色网格图。</p>
+<p>跟上面的例子类似，我们这回用<code>image()</code> 函数做出静态图片，用循环指令来连续播放。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;simecol&#39;</span>)
+<span class="kw">require</span>(simecol)
+<span class="co"># 40 * 40的棋盘:</span>
+m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">40</span>, <span class="dv">40</span>)
+<span class="co"># 玩家放置细胞的初始条件。0 表示该位置没有细胞，1 表示有细胞：</span>
+m[<span class="dv">5</span>:<span class="dv">35</span>,<span class="dv">19</span>:<span class="dv">21</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+<span class="co"># 白色表示没有细胞，绿色有细胞：</span>
+<span class="kw">image</span>(m, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>), <span class="dt">axes=</span><span class="ot">FALSE</span>)
+for (i in <span class="dv">1</span>:<span class="dv">200</span>) {
+  nn &lt;-<span class="st"> </span><span class="kw">eightneighbours</span>(m)
+  m.old &lt;-<span class="st"> </span>m
+  <span class="co"># 当周围有三个细胞时该位置产生细胞：</span>
+  m[m.old ==<span class="st"> </span><span class="dv">0</span> &amp;<span class="st"> </span>nn ==<span class="st"> </span><span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+  <span class="co"># 当周围细胞少于 2 个（太孤单）或大于 3 个（太拥挤）时，</span>
+  <span class="co"># 该位置细胞死亡。</span>
+  m[m.old ==<span class="st"> </span><span class="dv">1</span> &amp;<span class="st"> </span>(nn &lt;<span class="st"> </span><span class="dv">2</span> |<span class="st"> </span>nn &gt;<span class="st"> </span><span class="dv">3</span>)] &lt;-<span class="st"> </span><span class="dv">0</span>
+  <span class="kw">image</span>(m, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>), <span class="dt">axes=</span><span class="ot">FALSE</span>)
+  <span class="kw">Sys.sleep</span>(<span class="fl">0.1</span>)
+}</code></pre></div>
+<p>这里，我们使用了simecol扩展包<span class="citation">(Petzoldt and Rinke <a href="#ref-R-simecol">2007</a>)</span>，是为了使用其中的 <code>eightneighbours()</code>函数。关于扩展包详见第<a href="secfunction.html#secfunction">9</a>章。这个函数有什么作用呢？就像旧版windows里的扫雷游戏，每个方格的数字表示周围8个方格里地雷的数量之和，而这个函数就用来计算矩阵的每个元素相邻周围8个元素之和。</p>
+<p>游戏很好玩，如何把动画录制下来保存呢？只要在作图前后增加打开和关闭图片的函数就可以了，比如存成png格式的图片：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">png</span>(<span class="kw">paste</span>(<span class="st">&quot;c:/R/data/conway_&quot;</span>, 
+          <span class="kw">formatC</span>(i, <span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">flag =</span> <span class="st">&quot;0&quot;</span>), <span class="st">&quot;.png&quot;</span>, 
+          <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>), 
+    <span class="dt">width =</span> <span class="dv">300</span>, <span class="dt">height =</span> <span class="dv">300</span>)
+<span class="kw">image</span>(m, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>)
+<span class="kw">dev.off</span>()</code></pre></div>
+<p>进一步用其他软件（如ffmpeg<a href="#fn21" class="footnoteRef" id="fnref21"><sup>21</sup></a>）把这些图片连接之后保存在一个文件里，就可以得到一个动画文件。</p>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-146" class="lemma"><strong>思考 5.1  </strong></span>所谓失之毫厘，谬以千里。如何用康威生命游戏来模拟蝴蝶效应？当初始条件只改变了一点点，结果会有多大的不同？
+</div>
+<p></p>
+<p>R还可以制作3D立体动画。比如，我们可以使用rgl扩展包<span class="citation">(Adler, Murdoch, and others <a href="#ref-R-rgl">2017</a>)</span>，绘制一个能旋转的带数据点的三维坐标系。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;rgl&#39;</span>)
+<span class="kw">require</span>(rgl)
+<span class="kw">example</span>(movie3d)</code></pre></div>
+</div>
+<div id="secloop-5" class="section level2">
+<h2><span class="header-section-number">5.5</span> 超越循环</h2>
+<!---
+> 我喜欢的数数方法来自太平洋的一个部落，这个数数方法的因子有四个水平：一，二，三，很多。因此，我就说“R用户有很多”吧。
+>
+> My preference goes with the numbering scheme attributed to a tribe on some island in the Pacific which consists of a 'factor' with four levels: 'one', 'two', 'three', and 'lots'. Hence, I'd go with 'lots of R users'.
+>
+> --- Dirk Eddelbuettel, April 2004
+
+-->
+<p>循环曾经是我们的救世主，但是当我们觉醒之后，却将会试图超越他，因为我们拥有了两种更强大的力量：向量计算和因子计算。</p>
+<p>R语言的精华思想之一，是用向量计算来替代循环，提高效率。向量计算的例子早在第<a href="secstart.html#secstart">1</a>章就出现过了。如果你还记得，我们曾经给x向量里每个元素加了100：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">61</span>, <span class="dv">45</span>, <span class="dv">55</span>, <span class="dv">46</span>, <span class="dv">56</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">57</span>, <span class="dv">56</span>, <span class="dv">56</span>, <span class="dv">57</span>, <span class="dv">71</span>)
+x +<span class="st"> </span><span class="dv">100</span></code></pre></div>
+<p>其中隐藏的逻辑等同于对x的所有元素循环操作一遍:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="dv">12</span>) <span class="kw">print</span>(x[i] +<span class="st"> </span><span class="dv">100</span>)</code></pre></div>
+<p>又如第<a href="secdata.html#secdata">2</a>章遇到过的<code>rowMeans()</code>，<code>rowSums()</code>，<code>diff()</code>等函数，都可以在形式上转换成循环计算。</p>
+
+<div class="example">
+<span id="exm:ex5-3" class="example"><strong>Example 5.3  </strong></span>第<a href="secdata.html#secdata">2</a>章里，我们计算mydata2的各列平均值用的是向量计算函数： colMeans(mydata2[, 2:13])。请改写成循环语句，每次求一列的平均值，循环12次。体会循环与向量计算的联系和区别。
+</div>
+<p></p>
+<p>再如，第<a href="secplot.html#secplot">3</a>课作出的图<a href="secplot.html#fig:fig-lattice">3.18</a>和图<a href="secplot.html#fig:fig-ggplot2">3.19</a>，每幅图里边都有多条曲线，如果不使用扩展包ggplot2和lattice，那么就得像本章开头的例子那样逐个画出来，或者用循环语句。而使用了这两个扩展包后，一条语句就画出来了。这得益于作图之前对数据分了组，每组分别作图。而用来分组分类的变量，就是因子（factor）。因子的存在，使得很多计算变得简单轻松了。</p>
+<p>这里，我们继续用R自带的数据WorldPhone，来简单介绍一下因子。</p>
+<p>这个数据原来的格式中不含有因子，我们调整一下格式，生成mydata3，内容跟原来没有差别，只是变成了列数为3的数据框，三列依次是电话数量、年份、洲名：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wp &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(WorldPhones) <span class="co"># 转化为数据框类型</span>
+wp$year &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">rownames</span>(wp)) <span class="co"># 将行名称转化为数值类型</span>
+mydata3 &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="co"># 生成一个新数据框</span>
+  <span class="dt">nphone =</span> <span class="kw">unlist</span>(wp[, <span class="dv">1</span>:<span class="dv">7</span>]), <span class="dt">year =</span> <span class="kw">rep</span>(wp$year, <span class="dv">7</span>),
+  <span class="dt">conti =</span> <span class="kw">rep</span>(<span class="kw">names</span>(wp)[<span class="dv">1</span>:<span class="dv">7</span>], <span class="dt">each =</span> <span class="kw">nrow</span>(wp)))</code></pre></div>
+<p>mydata3$nphone有 49个数值，可以按年份分成 7 组，也可以按洲名分成7组，这个分组信息就是因子：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(mydata3)</code></pre></div>
+<pre><code>##      nphone           year           conti  
+##  Min.   :   89   Min.   :1951   Africa  :7  
+##  1st Qu.: 1769   1st Qu.:1956   Asia    :7  
+##  Median : 3000   Median :1958   Europe  :7  
+##  Mean   :16435   Mean   :1957   Mid.Amer:7  
+##  3rd Qu.:29990   3rd Qu.:1960   N.Amer  :7  
+##  Max.   :79831   Max.   :1961   Oceania :7  
+##                                 S.Amer  :7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(mydata3)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    49 obs. of  3 variables:
+##  $ nphone: num  45939 60423 64721 68484 71799 ...
+##  $ year  : num  1951 1956 1957 1958 1959 ...
+##  $ conti : Factor w/ 7 levels &quot;Africa&quot;,&quot;Asia&quot;,..: 5 5 5 5 5 5 5 3 3 3 ...</code></pre>
+<p><code>str()</code>函数用来查看数据的结构，返回的结果告诉我们，mydata3前两列是数字型，第三列是因子型。由于我们打算把年份这一列也作为对nphone这一列的分组信息，那么就需要用as.factor()函数把year这一列转换成因子型：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata3$year &lt;-<span class="st"> </span><span class="kw">as.factor</span>(mydata3$year)
+<span class="kw">str</span>(mydata3)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    49 obs. of  3 variables:
+##  $ nphone: num  45939 60423 64721 68484 71799 ...
+##  $ year  : Factor w/ 7 levels &quot;1951&quot;,&quot;1956&quot;,..: 1 2 3 4 5 6 7 1 2 3 ...
+##  $ conti : Factor w/ 7 levels &quot;Africa&quot;,&quot;Asia&quot;,..: 5 5 5 5 5 5 5 3 3 3 ...</code></pre>
+<p>好了，现在，mydata3$year 也是个因子了。因子的取值叫做“水平” (level)。看看因子有几个水平，水平分别是什么：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nlevels</span>(mydata3$year)</code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(mydata3$year)</code></pre></div>
+<pre><code>## [1] &quot;1951&quot; &quot;1956&quot; &quot;1957&quot; &quot;1958&quot; &quot;1959&quot; &quot;1960&quot; &quot;1961&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nlevels</span>(mydata3$conti)</code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(mydata3$conti)</code></pre></div>
+<pre><code>## [1] &quot;Africa&quot;   &quot;Asia&quot;     &quot;Europe&quot;   &quot;Mid.Amer&quot; &quot;N.Amer&quot;  
+## [6] &quot;Oceania&quot;  &quot;S.Amer&quot;</code></pre>
+
+<div class="example">
+<span id="exm:ex5-4" class="example"><strong>Example 5.4  </strong></span>以电话数量为y，年份为因子，做出箱型图boxplot()。如果以洲为因子呢？
+</div>
+<p></p>
+<p>因子有什么用呢？既然因子就是分类变量，那么用处当然就是用来对数据分类了。请看下面的例子：</p>
+<p>如果我们要计算mydata3每年这几大洲的电话总和，可以利用循环函数，对每个年份因子依次计算。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="kw">levels</span>(mydata3$year)) {
+  <span class="kw">print</span>(<span class="kw">sum</span>(mydata3$nphone[mydata3$year ==<span class="st"> </span>i]))
+}</code></pre></div>
+<pre><code>## [1] 74494
+## [1] 102199
+## [1] 110001
+## [1] 118399
+## [1] 124801
+## [1] 133709
+## [1] 141700</code></pre>
+<p>虽然能算出结果，但逐个计算的效率很低。幸好，我们有<code>tapply()</code>函数（table apply 的缩写）：</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(mydata3$nphone, mydata3$year, sum)</code></pre></div>
+<pre><code>##   1951   1956   1957   1958   1959   1960   1961 
+##  74494 102199 110001 118399 124801 133709 141700</code></pre>
+<p>这样，就很方便地得到了整齐的表格。</p>
+<p><code>tapply()</code>是<code>apply()</code>家族的函数之一。这个家族成员长得很像，脾气秉性却各有不同。我们再挑两个来举例。</p>
+<p>前面用过的二氧化碳数据，如果想得到每一列的几个常见统计量，以前我们是这样操作的：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;c:/r4r/co2.csv&quot;</span>)
+smr1 &lt;-<span class="st"> </span><span class="kw">summary</span>(mydata2)
+smr1</code></pre></div>
+<p>虽然可以把统计量保存在表格里，看起来也算美观，但想取出来里边的数据却比较麻烦，因为全是字符，不是数字。比如我们想计算这几十年的所有1月份数据里最大值（smr1[6, 2]）与最小值（smr1[1, 2]）的差，也就是极差，那么下面的计算是不行的：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">smr1[<span class="dv">6</span>, <span class="dv">2</span>] -<span class="st"> </span>smr1[<span class="dv">1</span>, <span class="dv">2</span>]</code></pre></div>
+<pre><code>## Error in smr1[6, 2] - smr1[1, 2]: 
+##  non-numeric argument to binary operator</code></pre>
+<p>我们将来在第<a href="secchar.html#secchar">10</a>章会学到，字符型变量是不能做数学运算的。那么，如果想调用<code>summary()</code>得到的数据做后续计算该怎么办？用<code>lapply()</code>或<code>sapply()</code>函数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">smr2 &lt;-<span class="st"> </span><span class="kw">lapply</span>(mydata2, summary)
+smr2[[<span class="dv">2</span>]][<span class="dv">6</span>] -<span class="st"> </span>smr2[[<span class="dv">2</span>]][<span class="dv">1</span>]
+
+smr3 &lt;-<span class="st"> </span><span class="kw">sapply</span>(mydata2, summary)
+smr3[<span class="dv">6</span>, <span class="dv">2</span>] -<span class="st"> </span>smr3[<span class="dv">1</span>, <span class="dv">2</span>]</code></pre></div>
+<p><code>lapply()</code>返回的值是个列表（list），我们将来会择吉日在第<a href="secmid.html#secmid-1">8.1</a>节介绍；而<code>sapply()</code>返回的是个我们熟悉的数据框。这样，就可以进行后续计算了。</p>
+<p>除了<code>apply()</code>, <code>tapply()</code>, <code>lapply()</code>, <code>sapply()</code>, 这个家族还包括<code>rapply()</code>, <code>vapply()</code>，<code>mapply()</code>等。他们让很多原本需要循环才能完成的计算都变成了轻松爽快的向量计算。这里我们略过不表，感兴趣的话就找F1和<code>example()</code>两位助理吧。</p>
+<p>很多函数对因子青睐有加，遇见因子就会做特殊考虑。比如第<a href="secplot.html#secplotpost">3.5</a>节提到的ggplot2和lattice扩展包。再如，<code>plot()</code>函数如果遇到了因子，就会呈现第五种化身（图<a href="secloop.html#fig:fig-plot5">5.2</a>）：</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mydata3$year, <span class="dt">y =</span> mydata3$nphone)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-plot5"></span>
+<img src="r4r_files/figure-html/fig-plot5-1.png" alt="当plot()遇见因子." width="75%" />
+<p class="caption">
+图 5.2: 当plot()遇见因子.
+</p>
+</div>
+<p>由于x是用来分组的因子，<code>plot()</code>认为我们是要查看每组数据的分布情况，就自动化身为箱型图。等同于</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(mydata3$nphone ~<span class="st"> </span>mydata3$year)</code></pre></div>
+<p>利用向量计算来代替循环，虽然运算效率高，但对新手来说，脑子需要多绕两个弯。如果不习惯，那么，继续使用循环也没有什么不妥。还记得我们的入门第二秘诀吗？</p>
+<pre><code>    能用就行！</code></pre>
+
+<div class="example">
+<span id="exm:ex5-5" class="example"><strong>Example 5.5  </strong></span>用tapply()和示例数据，分别计算各年几大洲的电话数量的最大值、最小值、中值。
+</div>
+<p></p>
+</div>
+<div id="seclooppost" class="section level2">
+<h2><span class="header-section-number">5.6</span> 课外活动：信息提示</h2>
+<p>有些循环比较耗时。比如，在对大量数据作成百上千张复杂的图形时，可能每张图都要耗时几秒钟，那么完成所有工作就需要几十分钟。在等待的过程中，让R适当地给个进度提示，会比较有助于估算剩余的时间。</p>
+<p>如果想提示进度，最简单的是在代码里加入<code>print()</code>函数，正如我们在人口曲线中所用的代码一样。我们也可以让操作系统弹出对话框来提示。下面这个例子，我们用<code>winDialog()</code>函数，在每计算完1个年份的人口数量时，就将循环暂停，弹出个对话框，直到你关闭之后才计算下一个年份。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">100</span>)
+N[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="fl">66.8</span>
+r &lt;-<span class="st"> </span><span class="fl">0.011</span>
+for(t in <span class="dv">1</span>:<span class="dv">3</span>)
+{
+  N[t<span class="dv">+1</span>] &lt;-<span class="st"> </span>N[t] +<span class="st"> </span>r *<span class="st"> </span>N[t]
+  <span class="kw">winDialog</span>(<span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&quot;ok&quot;</span>), 
+            <span class="dt">message =</span> <span class="kw">paste</span>(<span class="st">&#39;population in&#39;</span>,t +<span class="st"> </span><span class="dv">2007</span>, 
+                            <span class="st">&#39;will be&#39;</span>, N[t<span class="dv">+1</span>])) <span class="co">#信息提示框</span>
+}</code></pre></div>
+<p>当然，我们也可以把<code>winDialog()</code>放在一段代码的结尾，运行之后就可以放手去做别的事情，直到听到信息提示音，就知道R把工作做完了（我们将在第<a href="secfile.html#secfile-2">13.2</a>节演示这样一个例子）。</p>
+<p><code>winDialog()</code>连同我们前边见过的<code>file.choose()</code>函数一样，都属于R与用户交互对话的函数。这样的函数常见的还有<code>winDialogString()</code>，用来让用户在弹出的窗口输入文字并返回R：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="kw">winDialogString</span>(
+  <span class="dt">message =</span> <span class="st">&quot;which year&#39;s population would you like to see&quot;</span>, 
+  <span class="dt">default =</span> <span class="st">&#39;2050&#39;</span>)
+<span class="kw">winDialog</span>(<span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&quot;ok&quot;</span>), <span class="dt">message =</span> <span class="kw">paste</span>(
+  <span class="st">&#39;population in&#39;</span>, n, <span class="st">&#39;will be&#39;</span>, N[<span class="kw">as.numeric</span>(n) -<span class="st"> </span><span class="dv">2007</span>]))</code></pre></div>
+<p>上面这个例子里，第一行用来让用户输入个年份，第二行把该年的预测人口数以对话框的形式弹出来。当然，这两行可以合成1句：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">winDialog</span>(<span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&quot;ok&quot;</span>), <span class="dt">message =</span> <span class="kw">paste</span>(
+  <span class="st">&#39;population in&#39;</span>, <span class="kw">winDialogString</span>(
+    <span class="dt">message =</span> <span class="st">&quot;which year&#39;s population would you like to see&quot;</span>,
+    <span class="dt">default =</span> <span class="st">&#39;2050&#39;</span>), <span class="st">&#39;will be&#39;</span>, N[<span class="kw">as.numeric</span>(n) -<span class="st"> </span><span class="dv">2007</span>]))</code></pre></div>
+<p>采用这样的方法，就实现了用户和R的交互对话。</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-simecol">
+<p>Petzoldt, Thomas, and Karsten Rinke. 2007. “Simecol: An Object-Oriented Framework for Ecological Modeling in R.” <em>Journal of Statistical Software</em> 22 (9): 1–31. <a href="http://www.jstatsoft.org/v22/i09" class="uri">http://www.jstatsoft.org/v22/i09</a>.</p>
+</div>
+<div id="ref-R-rgl">
+<p>Adler, Daniel, Duncan Murdoch, and others. 2017. <em>Rgl: 3D Visualization Using Opengl</em>. <a href="https://CRAN.R-project.org/package=rgl" class="uri">https://CRAN.R-project.org/package=rgl</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="19">
+<li id="fn19"><p>本例来自Björn Reineking 教授 Introduction to R 课程讲义。<a href="secloop.html#fnref19">↩</a></p></li>
+<li id="fn20"><p>本例来自Björn Reineking 教授 Introduction to R 课程讲义。<a href="secloop.html#fnref20">↩</a></p></li>
+<li id="fn21"><p>ffmpeg：<a href="https://ffmpeg.org/" class="uri">https://ffmpeg.org/</a><a href="secloop.html#fnref21">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="secfit.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="secif.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

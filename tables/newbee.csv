@@ -1,0 +1,6 @@
+免安装体验,"Ideone，RWeb"
+安装,CRAN，Rstudio
+数学基本运算符,"+，-，*，/，^，%%，%/%"
+常用 数学函数,round()， trunc()，sqrt()，abs()，exp()，log()，log10()，sin()，asin()
+常用统计函数,sum()，mean()，max()，min()，range()，median()，sd()，var()
+作图,plot()

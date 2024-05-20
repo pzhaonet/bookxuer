@@ -1,0 +1,100 @@
+--- 
+title: "学R---零基础学习 R 语言"
+author: "赵鹏, 李怡"
+site: bookdown::bookdown_site
+date: "`r Sys.Date()`"
+documentclass: ctexbook
+bibliography: [bib/packages.bib, bib/zhaor.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: no
+lot: no
+lof: no
+geometry: [b5paper, paperwidth=17cm, paperheight=24cm, tmargin=3cm,bmargin=2.4cm,lmargin=3cm,rmargin=2cm]
+description: "This is a book for R rookies."
+---
+
+```{r set-options, echo=FALSE, cache=FALSE}
+options(width = 55)
+#options(width = 61)
+# knitr::opts_chunk$set(tidy.opts=list(width.cutoff=61))
+# options(htmltools.dir.version = FALSE, formatR.indent = 2, width = 61, digits = 4)
+
+# knitr::opts_chunk$set(tidy.opts=list(width.cutoff=61),tidy=TRUE) # does not work
+
+# create an index for tips
+# def_list = list()
+# knitr::knit_hooks$set(engine = function(before, options) {
+#   if (before && options$engine == 'theorem') {
+#     # collect definition terms from options$name
+#     def_list[[options$label]] <<- options$name
+#   }
+#   NULL
+# })
+
+```
+
+<!---
+
+# 读者留言选登 {#secletters .unnumbered}
+
+
+biblio-style: apalike, plain. unsrt
+
+title: "[R菜鸟入门][R FOR ROOKIES] [史上最容易上手的R语言编程学习资料][12小时学会R]R语言通俗演义"
+author: "赵鹏 李怡"
+site: bookdown::bookdown_site
+date: "`r Sys.Date()`"
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: ieeetr
+link-citations: yes
+description: "This is a book for R rookies."
+
+        刚刚开始学习，这帖子真是太好了，太贴心了，真的人人都能R啊。
+
+> --- Didi, 2014-11-05
+
+
+        写得很流畅，读起来一气呵成，不像有的书，中间参杂了其他的东西，容易断思路。赞一个
+
+> --- 卡卡, 2013-04-04
+
+        学了R有一段时间了，学学放放，总是不得要领，然后还在纠结是不是再捡起 matlab，说实话，matlab 在统计方面还真没有 R 做的好，至于 SPSS 、 SAS 根本就不在我的考虑范围之内。前两天我翻我的收藏夹，发现了这么一个宝贝：R 菜鸟入门篇，是 dapeng 写的一个R的系统的学习教程，言简意赅，生动形象，非常适合 R 语言入门和丢下 R 很久的人再回来看。这个系列的教程还受到了谢益辉同学的推荐，很不错！
+
+>
+> --- 小武子^[http://www.jianshu.com/p/44cc00bf7d12], 2013-03-15
+>
+
+> 很好狠好 通俗易懂 文字流畅 应该拉你当统计之都的写手
+> 
+> --- ypchen, 2013-03-30
+
+>        dapeng的博文很生动哈，也比较由浅入深，每篇文章，我估计如果dapeng来讲课的话，恰好可以讲一节课，而且非常的有实操性。。。多谢dapeng 。
+
+> --- causu, 2013-04-08
+
+\index{summary()}
+
+        顺便说一下，如果从来没有用过R，最好去大鹏的blog 扫荡一下，他的讲解顺序非常有利于新人，通俗而不低俗，简短而又直击要害，第一篇讲安装，第二篇讲计算，第三篇讲读文件，第四篇讲数据，几分种就能读完一篇，我是被他提到的三四个函数震撼到了，分别是 `file.choose`，`read.csv`， `summary`，`plot`，然后就开始用R来折腾数据。以前读的书，都是长篇累赘的介绍软件功能，从扎马步到六脉神剑，全部介绍一遍，试图让读书的人全部看完，把所有的练习都做完以后再开工开始用他，看着就头疼，根本没在乎读者的感受，大鹏的博客把读文件这个事提前，而且是把最简单，最易用的方式拿出来，其他的方式各人自己想用了再想办法吧，数据那一篇博客里，无需多言，summary和 plot两个函数就那么一放，没用过R的人，谁不两眼放光啊？也许这个就是应试教育和素质教育的差异吧。
+
+> --- Oil Tang^[http://oiltang.com/2014/01/06/25-recipes-for-getting-started-with-r/], 2014-01-06
+
+        一口气读完，通俗易懂，实例与小结对我这样的菜鸟快速上手很有帮助。
+
+> --- yufree, 2013-03-29
+
+        有种读小说的感觉，挺好的。
+
+> --- wangpeng692, 2013-03-29
+
+        用了一天的时间进行了学习，感觉真的很好，推荐作为入门读物！不过不要把R作为学习的目标，而应该把R当成工具，而学习使用工具的最佳方法还是实践、思考和提问！祝所有的菜鸟都可以飞向高空！
+
+> --- smurf, 2013-03-31
+
+
+        你的R系列博文写得真好，我才发觉以前我学不进去，是因为那些书讲得太不地道了，一上来就从头到尾，事无巨细的讲，直接没兴趣读下去，而你的博文，直接来个csv，file.choose，然后plot，summary，对于我这种种上计算机课老师只为了让考过一级、二级，而数学早忘光光的人，是无比期盼的，我才搞明白，R真是为不编程的人准备的利器。
+
+> --- acheng99, 2013-12-16
+
+-->

@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="secmid.html">
+<link rel="next" href="secchar.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="secfunction" class="section level1">
+<h1><span class="header-section-number">第9章</span> 函数</h1>
+<pre><code>    罗杰：对我来说，99%的事情都能由R完成。但是让人郁闷的是，当我需要订个披萨饼时，我还是得抓起电话。
+    道格：美国很多披萨饼连锁店提供网上预订服务啊。R有互联网模块，所以，披萨预订函数的出现只是个早晚问题。</code></pre>
+<!---
+>
+> Roger D. Peng: For me, R does about 99% of the things I need to do, but sadly, when I need to order a pizza, I still have to pick up the telephone.
+>
+> Douglas Bates: There are several chains of pizzerias in the U.S. that provide for Internet-based ordering. So, with the Internet modules in R, it's only a matter of time before you will have a pizza-ordering function available.
+>
+--->
+<blockquote>
+<p>— June 2004</p>
+</blockquote>
+<p>终于轮到介绍 R 的精髓了，那就是包包。“包治百病”，R里面有成千上万个漂亮包包，可以帮我们解决所有问题。——女同胞请先收敛一下两眼放出的光芒。R的包是扩展包<a href="#fn25" class="footnoteRef" id="fnref25"><sup>25</sup></a>，package。</p>
+<p>欲知扩展包，必先知函数，function。</p>
+<div id="secfunction-1" class="section level2">
+<h2><span class="header-section-number">9.1</span> 内置函数：全自动厨师机</h2>
+<p>到现在为止，我们已经遇到过很多函数了。一个函数就像一台全自动厨师机。我们输入一些原材料，然后按个按钮让它运转，叮！它就输出来一盘好菜。</p>
+<p>比如，假定世界上有一台专门做番茄炒蛋的自动厨师机，那么我们用R语言来写使用说明书，就是这样的：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>番茄炒蛋机(番茄 =<span class="st"> </span><span class="dv">3</span>个，鸡蛋 =<span class="st"> </span><span class="dv">2</span>个，盐 =<span class="st"> </span><span class="dv">2</span>勺, 油 =<span class="st"> </span><span class="dv">2</span>勺)</code></pre></div>
+<p>运行一下，一份美味的番茄炒蛋就放在名叫x的这个盘子里，送到了我们的眼前。圆括号里是我们指定的配方；如果我们没有指定，那么R就按他自己认为的默认配方来做。</p>
+<p>对比一下前面我们学过的函数就会发现，他们确实都是这样的厨师机：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">3</span>)
+x2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;c:/r4r/co2.csv&quot;</span>)</code></pre></div>
+<p>R其实就是由不同功能的自动厨师机拼成的一个大厨房，有的厨师机独立工作，但大部分厨师机是相互协作的，一台厨师机输出的半成品或成品，会接着输入到另一台厨师机继续加工，直到把我们点的菜做好。比如我们运行了一个叫做“可乐鸡翅”的函数，输入的是水、香精、鸡翅等，那么R就会先召唤“可乐饮料机”函数做出可乐，再和鸡翅等原材料一起做可乐鸡翅。这就是函数之间的调用。</p>
+<p>我们以前用过的，都是 R 基础安装包里一些预先设置好的函数。比如：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">sd</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">5</span>)  <span class="co"># sd 是函数名, x 是自变量。</span>
+y</code></pre></div>
+<pre><code>## [1] 1.581139</code></pre>
+<p><code>sd()</code>这台厨师机，输入的原料是个数值型向量，输出的菜是标准差。当我们点了<code>sd()</code>这道菜后，R 在厨房里到底忙活个啥呢？输入函数名并回车，或者光标移到函数名上按F2快捷键，就能看到烹饪方法了：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sd</code></pre></div>
+<pre><code>## function (x, na.rm = FALSE) 
+## sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
+##     na.rm = na.rm))
+## &lt;bytecode: 0x000000000da55a00&gt;
+## &lt;environment: namespace:stats&gt;</code></pre>
+<p>从这个烹饪方法的第二行可以看到，计算方法是先对输入的原材料x进行初步加工（检查和转换格式），再用<code>var()</code>函数求方差，最后开平方。</p>
+<p>甚至像 <code>x &lt;- 1:5</code> 这一句，其实背后运行的也是个函数，等同于：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">assign</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">1</span>:<span class="dv">5</span>)</code></pre></div>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-201" class="lemma"><strong>思考 9.1  </strong></span>R语言里，有没有哪些功能不是由函数实现的？
+</div>
+<p></p>
+</div>
+<div id="secfunction-2" class="section level2">
+<h2><span class="header-section-number">9.2</span> 自定义函数：自制厨师机</h2>
+<p>由内置函数组成的这个厨房，虽然功能强，但是毕竟有限，只能做那么千百道菜，不一定称心如意。你想吃的菜，厨房做不了怎么办？</p>
+<p>这一点R贴心地考虑到了。你可以自己制作一台厨师机，做你独特的个性菜。</p>
+<p>比如说，当年有一回全班考得都很惨，老师心软了，说为了提高及格率，把卷面分数开方乘十作为新分数吧。为了以后经常用来提高及格率，我们可以专门定义这样一个函数。继续以厨师机打比方的话，这道菜的菜名是“及格神器”，输入材料是“卷面分数”，输出的菜是“新分数”，那么我们可以这样制作这台厨师机：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">及格神器 &lt;-<span class="st"> </span>function(卷面分数) {
+  新分数 &lt;-<span class="st"> </span>卷面分数开方乘十
+  <span class="kw">return</span>(新分数)
+}</code></pre></div>
+<p>那么，调用这台厨师机做一份及格神器菜的方法就是：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">及格神器(卷面分数=<span class="st"> </span><span class="dv">40</span>)</code></pre></div>
+<p>翻译成R语言，就是这样的：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newscore &lt;-<span class="st"> </span>function(x) {
+  y &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x) *<span class="st"> </span><span class="dv">10</span>
+  <span class="kw">return</span>(y)
+}</code></pre></div>
+<p>以后当考了40分的时候，可以这样调用你的新函数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">newscore</span>(<span class="dt">x =</span> <span class="dv">40</span>)</code></pre></div>
+<pre><code>## [1] 63.24555</code></pre>
+<pre><code>    想一次可以用很久喔！有人说，学电脑的人，动脑筋就是为了偷懒。</code></pre>
+<blockquote>
+<p>—《大家来学VIM》</p>
+</blockquote>
+<p>上面这个例子中，自变量 x 只是用来在函数内部传递信息用的，不会影响函数之外的对象。看看这个例子：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">36</span>
+y &lt;-<span class="st"> </span><span class="dv">81</span>
+<span class="kw">newscore</span>(<span class="dt">x =</span> y)  <span class="co"># 函数内部的 x 把 81 的值接过来，而不是36。</span></code></pre></div>
+<pre><code>## [1] 90</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x <span class="co"># 函数外部的x仍然是36。</span></code></pre></div>
+<pre><code>## [1] 36</code></pre>
+<p>很多厨师机需要输入多种原材料，也就是说，函数可以有多个自变量，例如：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">news &lt;-<span class="st"> </span>function(x, n) {
+  <span class="kw">sqrt</span>(x) *<span class="st"> </span><span class="dv">10</span> +<span class="st"> </span>n
+}
+<span class="kw">news</span>(<span class="dt">x =</span> <span class="dv">36</span>, <span class="dt">n =</span> <span class="dv">10</span>)</code></pre></div>
+<pre><code>## [1] 70</code></pre>
+<p>为了省事儿，可以按照函数要求的顺序来列出自变量的取值，省略自变量的名称。下面这条命令跟上一条完全等同：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">news</span>(<span class="dv">36</span>, <span class="dv">10</span>)  </code></pre></div>
+<p>但是，如果打乱了顺序，就必须指定谁是谁。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">news</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">x =</span> <span class="dv">36</span>)</code></pre></div>
+<p>每次调用自定义函数 newscore() 的时候，必须提供所有自变量的取值，否则就会报错：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">newscore</span>()</code></pre></div>
+<pre><code>## Error in newscore(): argument &quot;x&quot; is missing, with no default</code></pre>
+<p>为避免这个问题，我们可以给x个默认值，这样以后调用时，如果没有说x是多少的话，就按默认值计算：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newscore &lt;-<span class="st"> </span>function(<span class="dt">x =</span> <span class="dv">36</span>) <span class="co"># 将x默认值设为36。</span>
+{
+  <span class="kw">sqrt</span>(x) *<span class="st"> </span><span class="dv">10</span>
+}
+<span class="kw">newscore</span>()</code></pre></div>
+<pre><code>## [1] 60</code></pre>
+<p>给函数定义时，我们用了花括号<code>{}</code>，小贴士<a href="secloop.html#thm:thm-bracket">5.1</a>说过，这意味着可以把一组操作都放进去，哪怕这一组操作有千万行，以后只用一行就可以调用一遍了！比如第<a href="secloop.html#secloop-3">5.3</a>节提到过的人口指数增长，可以定义一个函数，名叫<code>exponentialGrowth()</code>：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">exponentialGrowth &lt;-<span class="st"> </span>function(N0, <span class="dt">r =</span> <span class="fl">0.01</span>, <span class="dt">tmax =</span> <span class="dv">10</span>) 
+  <span class="co"># 三个自变量：初始值，增长率（默认为0.01），时间（默认为10）。</span>
+{
+  N &lt;-<span class="st"> </span>N0
+  for (t in <span class="dv">1</span> :<span class="st"> </span>(tmax -<span class="st"> </span><span class="dv">1</span>)) {
+    N[t +<span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span>N[t] +<span class="st"> </span>r *<span class="st"> </span>N[t]
+  }
+  <span class="kw">return</span>(N) 
+}</code></pre></div>
+<p>函数<code>return()</code>是返回值，意思是告诉R，烹饪过程里其他的东西比如t都可以扔进垃圾箱了，只把N作为成品端出来当菜就行了。</p>
+<p>以后再用到这个模型，比如计算初始值为80，增长率为每年2%，时间为100年，则用一条语句就行了：</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">exponentialGrowth</span>(<span class="dv">80</span>, <span class="fl">0.02</span>, <span class="dv">100</span>))</code></pre></div>
+
+<div class="example">
+<span id="exm:ex9-1" class="example"><strong>Example 9.1  </strong></span>自定义一个名为 kaifang 的函数，用来开平方。
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ex9-2" class="example"><strong>Example 9.2  </strong></span> 自定义一个名为 cv 的函数，用来计算变异系数，即标准差除以平均值的商。
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ex9-3" class="example"><strong>Example 9.3  </strong></span> 将第<a href="secif.html#secifpost">6.3</a>节中计算复活节的方法写成一个自定义函数computus(year, method, calendar)，允许用户指定年份、计算方法（高斯法或Meeus法）、日历（公历或儒略历），返回值为给定条件的复活节日期。
+</div>
+<p></p>
+<p>如果你有多个自定义函数，经常需要在不同场合调用的话，为了方便，可以把这些函数写在一个文件里，例如叫做<code>c:/r4r/myf.r</code>，每次在R中使用<code>source()</code>函数运行这个文件就行了：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&#39;c:/r4r/myf.r&#39;</span>)</code></pre></div>
+<p><code>source()</code>函数的作用就是运行指定文件里的所有代码。</p>
+<p>图<a href="secstart.html#fig:img-thesis">1.4</a>就是用自定义函数作出的。只不过，那个厨师机不是我自己造的，而是我把别人制作的厨师机稍作了些改动，为己所用。</p>
+<p>那么，别人是怎么把他自己的厨师机分享给我的呢？</p>
+</div>
+<div id="secfunction-3" class="section level2">
+<h2><span class="header-section-number">9.3</span> 扩展包：美食王国</h2>
+<p>上面我们自定义了几个函数，订制了几台私人专属厨师机。世界上很多角落都有想把 36 分变成 60 分的苦命同学，为了让他们也能方便地调用上文我们自定义的<code>newscore()</code>等函数，我们可以把它们打包上传到服务器上，这样别人下载了就可以直接用。我们打的这个包，就是扩展包。R包常用的服务器是CRAN和GitHub。当然你也可以用自己的服务器，只要别人能找得到下载地址就可以了。</p>
+<p>一个扩展包，就是一套别人事先搭建的厨房。这样的厨房规模有大有小。小的厨房，可能只有一台厨师机（一个自定义函数）；大的厨房，能有成百上千台厨师机。有时候，厨房（扩展包）还自带了一些食材（数据）让你试着品尝，比如我们前边使用的co2数据就是。</p>
+<p>扩展包是 R 的生命力所在。找到一个合适的扩展包，能起到事半功倍的效果。甚至可以说，会用扩展包，比本书前半部分介绍的所有内容都重要！很多人用R就是奔着扩展包来的。</p>
+<p>我们来举个例子。</p>
+<p>北京的天安门广场，常年根据预测的日出日落时刻来确定升降国旗仪式的时刻。日出日落时刻的计算涉及复杂的天文学知识、三角函数知识、立体几何知识、天文学知识等，最要命的是还得有足够的耐心。我一直望而却步，直到有一天，我需要把某个气象站半年的气温数据（每半小时一条）分为白天和黑夜两组，那么就要判断当地每天的日出和日落时刻，不得不设法揭开这个神秘面纱了。花了大概一天的工夫，硬着头皮算出了个数，却跟实际对不上号。</p>
+<p>后来，我惊喜地发现了maptools <span class="citation">(Bivand and Lewin-Koh <a href="#ref-R-maptools">2017</a>)</span>这个扩展包。安装这个包之后，用其中的<code>sunriset()</code> 函数一条指令轻松搞定。我们用它计算一下2017年国庆节天安门广场的日出日落时间，也就是升降国旗时刻。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;maptools&quot;</span>) <span class="co"># 第一次使用某个扩展包时要先安装。</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(maptools)  <span class="co"># 调用包，让R把其中的函数读进R的脑子里。</span>
+position &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">116.39</span>, <span class="fl">39.91</span>)  <span class="co"># 天安门广场的经纬度。</span>
+mydate &lt;-<span class="st"> &quot;2017-10-01&quot;</span>  <span class="co"># 要计算的日期。</span>
+<span class="co"># 日出时刻：</span>
+<span class="kw">sunriset</span>(<span class="kw">matrix</span>(position, <span class="dt">nrow =</span> <span class="dv">1</span>), 
+         <span class="kw">as.POSIXct</span>(mydate, <span class="dt">tz =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>), 
+         <span class="dt">direction =</span> <span class="kw">c</span>(<span class="st">&quot;sunrise&quot;</span>), <span class="dt">POSIXct.out =</span> <span class="ot">TRUE</span>)$time</code></pre></div>
+<pre><code>## [1] &quot;2017-10-01 06:10:25 CST&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 日落时刻:</span>
+<span class="kw">sunriset</span>(<span class="kw">matrix</span>(position, <span class="dt">nrow =</span> <span class="dv">1</span>), 
+         <span class="kw">as.POSIXct</span>(mydate, <span class="dt">tz =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>), 
+         <span class="dt">direction =</span> <span class="kw">c</span>(<span class="st">&quot;sunset&quot;</span>), <span class="dt">POSIXct.out =</span> <span class="ot">TRUE</span>)$time</code></pre></div>
+<pre><code>## [1] &quot;2017-10-01 17:57:14 CST&quot;</code></pre>
+<p>跟官方公布的日出日落时刻比一比，看看是不是相同。</p>
+<p>一个完整的扩展包包括了帮助信息，所以我们的F1小助理仍然管用。自己试试把光标移到<code>sunriset</code>按F1。</p>
+<p>若要了解整个扩展包中所有的函数，可以用搜索引擎搜索 ‘cran maptools’，也可以在本地计算机 R 的安装路径下面 library 文件夹中找到。</p>
+<p>虽然计算出了结果，但结果的展示方式我并不喜欢。这道菜我想再撒点胡椒粉，改成自己喜欢的口味。于是我更进一步，在扩展包已有函数的基础上自定义一个函数，计算任意一段时期的升降旗时刻：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 函数名为flag，默认是计算2017年情人节开始一周内升降国旗时刻。</span>
+flag &lt;-<span class="st"> </span>function(<span class="dt">date.start =</span> <span class="st">&quot;2017-02-14&quot;</span>, <span class="dt">date.length =</span> <span class="dv">7</span>) 
+{
+  mydate &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">as.POSIXct</span>(date.start, <span class="dt">tz=</span><span class="st">&quot;Asia/Shanghai&quot;</span>), 
+                <span class="dt">by =</span> <span class="dv">3600</span> *<span class="st"> </span><span class="dv">24</span>, <span class="dt">length.out =</span> date.length)
+  <span class="kw">data.frame</span>(
+    <span class="dt">sunrise =</span> <span class="kw">sunriset</span>(
+      <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">116.39</span>, <span class="fl">39.91</span>), <span class="dt">nrow =</span> <span class="dv">1</span>), 
+      <span class="kw">as.POSIXct</span>(mydate, <span class="dt">tz=</span><span class="st">&quot;Asia/Shanghai&quot;</span>),
+      <span class="dt">direction=</span><span class="kw">c</span>(<span class="st">&quot;sunrise&quot;</span>), <span class="dt">POSIXct.out =</span> <span class="ot">TRUE</span>)$time,
+    <span class="dt">sunset =</span> <span class="kw">sunriset</span>(
+      <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">116.39</span>, <span class="fl">39.91</span>), <span class="dt">nrow =</span> <span class="dv">1</span>), 
+      <span class="kw">as.POSIXct</span>(mydate, <span class="dt">tz=</span><span class="st">&quot;Asia/Shanghai&quot;</span>), 
+      <span class="dt">direction=</span><span class="kw">c</span>(<span class="st">&quot;sunset&quot;</span>), <span class="dt">POSIXct.out =</span> <span class="ot">TRUE</span>)$time)
+}
+
+<span class="kw">flag</span>(<span class="st">&quot;2017-10-01&quot;</span>) <span class="co"># 好了，以后调用这个函数就能很方便计算。</span></code></pre></div>
+<pre><code>##               sunrise              sunset
+## 1 2017-10-01 06:10:25 2017-10-01 17:57:14
+## 2 2017-10-02 06:11:24 2017-10-02 17:55:37
+## 3 2017-10-03 06:12:23 2017-10-03 17:54:01
+## 4 2017-10-04 06:13:22 2017-10-04 17:52:24
+## 5 2017-10-05 06:14:21 2017-10-05 17:50:48
+## 6 2017-10-06 06:15:21 2017-10-06 17:49:13
+## 7 2017-10-07 06:16:21 2017-10-07 17:47:38</code></pre>
+
+<div class="example">
+<span id="exm:ex9-4" class="example"><strong>Example 9.4  </strong></span>利用GPS工具或在线地图查出你所在地点的经纬度，然后利用 maptools 扩展包，计算你所在地点 2017 – 2116 年 100 年的日出日落时刻。
+</div>
+<p></p>
+<p>再举个例子。CRAN 服务器上有几个专门为初学者写的扩展包，‘beginr’ <span class="citation">(Zhao <a href="#ref-R-beginr">2017</a><a href="#ref-R-beginr">a</a>)</span> 就是其中一个。这个包可以帮助初学者解决一些常见问题。而且，包里的函数结构都比较简单，初学者可以用F2调出函数的源代码修改练手。我们在这里做一详细介绍。</p>
+<p>beginr的安装和加载的方法与其他包是类似的:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;beginr&quot;</span>)</code></pre></div>
+<p>下面，我们分类简要介绍一下其中的函数.</p>
+<p><strong>备忘函数</strong></p>
+<p>初学者用 <code>plot()</code> 作图时, 常常会忘记不同形状数据点(<code>pch</code>)对应的编号, 实线虚线(<code>lty</code>)的编号, 散点图类型(<code>type</code>)的代码, 以及最难选择的颜色代码。虽然可以上网搜，或者查看本书的小贴士<a href="secplot.html#thm:thm-type">3.2</a>和<a href="secplot.html#thm:thm-colors">3.3</a>，但仍然不够快捷。现在, beginr 里提供了 <code>plotpch()</code>, <code>plotlty()</code>, <code>plottype()</code>, <code>plotcolors()</code>等函数, 想不起来的时候运行一下就行了。其实,这几个函数就是上面两个小贴士的来历。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">beginr::<span class="kw">plotpch</span>()
+beginr::<span class="kw">plotlty</span>()
+beginr::<span class="kw">plottype</span>()
+beginr::<span class="kw">plotcolors</span>()</code></pre></div>
+<p>“<code>包名称::函数</code>”这种格式可以在不加载扩展包(<code>library()</code>或<code>require()</code>)的情况下直接运行函数。上面这几个函数，有的不含自变量，有的采用的是自变量的默认值。</p>
+<p><strong>快速作图函数</strong></p>
+<p>线性拟合是数据处理的常见操作, 每次又是作图又是添加拟合方程,步骤繁琐。现在, 用beginr 里的一个 <code>plotlm()</code>函数就可以完成，畅快淋漓（图<a href="secfunction.html#fig:fig-plotlm">9.1</a>）。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+y &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span> +<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>)
+beginr::<span class="kw">plotlm</span>(x, y, <span class="dt">refline =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-plotlm"></span>
+<img src="r4r_files/figure-html/fig-plotlm-1.png" alt="beginr::plotlm()函数示例." width="75%" />
+<p class="caption">
+图 9.1: beginr::plotlm()函数示例.
+</p>
+</div>
+<pre><code>## [[1]]
+##              Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) 0.5500650  0.6258808 0.8788654 4.050975e-01
+## x           0.9339774  0.1008698 9.2592346 1.503256e-05
+## 
+## [[2]]
+## [1] 0.9146516</code></pre>
+<p>我们经常需要了解一组数据的分布, 看看是不是属于正态分布. beginr 里的 <code>plothist()</code> 函数不仅一步就做出直方图, 而且标出中值、 中位数、 四分位数、 标准偏差、 样本数, 以及用来判断是否正态分布的 skewness 值（图<a href="secfunction.html#fig:fig-plothist">9.2</a>）.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10000</span>)
+beginr::<span class="kw">plothist</span>(x)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-plothist"></span>
+<img src="r4r_files/figure-html/fig-plothist-1.png" alt="beginr::plothist()函数示例." width="75%" />
+<p class="caption">
+图 9.2: beginr::plothist()函数示例.
+</p>
+</div>
+<p>系统自带的成对儿散点图函数<code>pairs()</code>人见人爱, 只是功能再强大一点就好了。beginr 里的 <code>plotpairs()</code> 和 <code>plotpairs2()</code> 就是对其进行的扩展，也是图<a href="secstart.html#fig:img-thesis">1.4</a>的来历。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span>:<span class="dv">10</span>, 
+                 <span class="dt">b =</span> <span class="dv">1</span>:<span class="dv">10</span> +<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>), 
+                 <span class="dt">c =</span> <span class="dv">1</span>:<span class="dv">10</span> +<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>))
+beginr::<span class="kw">plotpairs</span>(df)
+beginr::<span class="kw">plotpairs2</span>(df)</code></pre></div>
+<p>我们经常需要将一组自变量 (x) 和多组因变量 (y<sub>1</sub>, y<sub>2</sub>, …, y<sub>n</sub>) 在同一个坐标系作散点图图, 或者一组因变量 (y) 对多组自变量 (x<sub>1</sub>, x<sub>2</sub>, …, x<sub>n</sub>)作图, 并且画上各自的误差线。 beginr 里一条 <code>dfplot()</code> 或 <code>dfplot2()</code> 函数就能完成。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> *<span class="st"> </span>pi, <span class="dt">length.out =</span> <span class="dv">100</span>) 
+y &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">sin</span>(x), <span class="kw">cos</span>(x))
+<span class="co"># 假定yerror是y的误差范围</span>
+yerror &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">abs</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">sd =</span> <span class="fl">0.3</span>)), 
+                     <span class="kw">abs</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">sd =</span> <span class="fl">0.1</span>)))
+beginr::<span class="kw">dfplot</span>(x, y, <span class="dt">yerror =</span> yerror)
+beginr::<span class="kw">dfplot2</span>(y, x, <span class="dt">xerror =</span> yerror, <span class="dt">xlab =</span> <span class="st">&#39;&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;&#39;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-dfplot"></span>
+<img src="r4r_files/figure-html/fig-dfplot-1.png" alt="beginr::dfplot()和beginr::dfplot2()函数示例." width="672" />
+<p class="caption">
+图 9.3: beginr::dfplot()和beginr::dfplot2()函数示例.
+</p>
+</div>
+<p>图<a href="secfunction.html#fig:fig-dfplot">9.3</a>不同曲线的颜色默认状态下是函数自动选择的，或许不够美观，但对于初步查看数据来说已经足够了。当然也可以用指定的颜色作图。请查看该函数的帮助信息。</p>
+<p>如果只是想简单地给散点图添加误差线，一般会用R基础包自带的<code>arrow()</code>函数逐步添加，而beginr里的 <code>errorbar()</code> 函数把多个步骤打了个包，一次性完成（图<a href="secfunction.html#fig:fig-errorbar">9.4</a>）.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> *<span class="st"> </span>pi, <span class="dt">length.out =</span> <span class="dv">100</span>)
+y &lt;-<span class="st"> </span><span class="kw">sin</span>(x)
+<span class="kw">plot</span>(x, y, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)
+beginr::<span class="kw">errorbar</span>(x, y, <span class="dt">yupper =</span> <span class="fl">0.1</span>, <span class="dt">ylower =</span> <span class="fl">0.1</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-errorbar"></span>
+<img src="r4r_files/figure-html/fig-errorbar-1.png" alt="beginr::errorbar()函数示例." width="75%" />
+<p class="caption">
+图 9.4: beginr::errorbar()函数示例.
+</p>
+</div>
+<p><strong>数据框操作</strong></p>
+<p>beginr 提供了一些对数据框计算的函数, 例如计算多列数据里任意两列之间的相关性和线性拟合结果, 可以用 <code>lmdf()</code> 函数，可以方便地得到拟合直线的斜率、截距及其标准误差以及<span class="math inline">\(R^2\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span>:<span class="dv">10</span>, 
+                 <span class="dt">b =</span> <span class="dv">1</span>:<span class="dv">10</span> +<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>), 
+                 <span class="dt">c =</span> <span class="dv">1</span>:<span class="dv">10</span> +<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>))
+beginr::<span class="kw">lmdf</span>(df)</code></pre></div>
+<pre><code>##   x y r.squared adj.r.squared   intercept     slope
+## 1 a b 0.9684649     0.9645230  0.05392682 1.0633571
+## 2 a c 0.8496167     0.8308188  0.94818582 0.8050753
+## 3 b a 0.9684649     0.9645230  0.12432870 0.9107616
+## 4 b c 0.8638982     0.8468855  0.94157582 0.7513098
+## 5 c a 0.8496167     0.8308188 -0.17353688 1.0553257
+## 6 c b 0.8638982     0.8468855 -0.27935054 1.1498561
+##   Std.Error.intercept Std.Error.slope t.intercept   t.slope
+## 1           0.4209397      0.06784057   0.1281106 15.674354
+## 2           0.7430365      0.11975117   1.2760959  6.722902
+## 3           0.3874815      0.05810521   0.3208636 15.674354
+## 4           0.7030896      0.10543256   1.3391974  7.125975
+## 5           0.9312734      0.15697474  -0.1863436  6.722902
+## 6           0.9572968      0.16136123  -0.2918118  7.125975
+##   Pr.intercept     Pr.slope
+## 1    0.9012234 2.738982e-07
+## 2    0.2377210 1.491470e-04
+## 3    0.7565353 2.738982e-07
+## 4    0.2173066 9.941349e-05
+## 5    0.8568138 1.491470e-04
+## 6    0.7778544 9.941349e-05</code></pre>
+<p><strong>文件读写函数</strong></p>
+<p>如果需要同时对多个数据文件进行处理, 逐个读入 R 里太麻烦. beginr 提供了个 <code>readdir()</code> 函数, 可以一次性把指定文件夹里所有数据读入, 保存在一个列表 (list) 里.</p>
+<p>R 自带的 write 系列文件保存函数, 一不小心就把原有同名文件给覆盖了. beginr 提供了个安全的函数 <code>writefile()</code>, 避免一失足成千古恨.</p>
+<p><code>list2ascii()</code> 函数可以把一个列表原样保存成文本文件.</p>
+<p>很多人引用了别人的工作却往往不列出参考文献. 不仅初学者常常如此, 很多学术论文里有些插图一眼就能看出是 R 的某个扩展包作出来的, 但参考文献里却没有列出来, 这往小了说是不尊重别人的工作,往大了说是缺乏学术道德. 对开源社区的生态圈是不利的. beginr 为初学者提供了 <code>bib()</code> 函数, 可以为指定的 R 扩展包生成文献引用信息。这个函数既可以打印出结果, 也可以直接保存为 ‘.bib’文件方便为 ’bookdown’ <span class="citation">(Xie <a href="#ref-R-bookdown">2016</a>)</span> 或 ‘blogdown’ <span class="citation">(Xie <a href="#ref-R-blogdown">2017</a>)</span> 调用，还可以方便地导入到其他文件管理软件里（如Endnote）.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">beginr::<span class="kw">bib</span>(<span class="dt">pkg =</span> <span class="kw">c</span>(<span class="st">&quot;mindr&quot;</span>, <span class="st">&quot;bookdownplus&quot;</span>, <span class="st">&quot;pinyin&quot;</span>))</code></pre></div>
+<pre><code>## @Manual{R-bookdownplus,
+##   title = {bookdownplus: Generate Varied Types of Books and Documents with R &#39;bookdown&#39;
+## Package},
+##   author = {Peng Zhao},
+##   year = {2017},
+##   note = {R package version 1.3.0},
+##   url = {https://CRAN.R-project.org/package=bookdownplus},
+## }
+## @Manual{R-mindr,
+##   title = {mindr: Convert Files Between Markdown or Rmarkdown Files and Mindmaps},
+##   author = {Peng Zhao},
+##   year = {2017},
+##   note = {R package version 1.1.0},
+##   url = {https://CRAN.R-project.org/package=mindr},
+## }
+## @Manual{R-pinyin,
+##   title = {pinyin: Convert Chinese Characters into Pinyin},
+##   author = {Peng Zhao},
+##   year = {2017},
+##   note = {R package version 1.1.0},
+##   url = {https://CRAN.R-project.org/package=pinyin},
+## }</code></pre>
+<p>事实上，<code>bib()</code>函数是受 knitr  包里的<code>write_bib()</code>函数启发而写成的。请比较一下两者的区别。</p>
+<p>此外，beginr还有个<code>rpkg()</code>函数，可以帮助初学者开发自己的R扩展包，其用法将在下一节介绍。未来， beginr 包里还会增添新成员。</p>
+<p>其实在本书前几课，早就有扩展包露出尖尖角了。在第<a href="secoffice.html#secoffice">7</a>章，我们使用的R markdown <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2016</a>)</span>就是个扩展包。当时生成的Word文档和幻灯片还比较简陋，现在有了更多的扩展包，我们就有了更多的选择。例如，xlsx <span class="citation">(Dragulescu <a href="#ref-R-xlsx">2014</a>)</span>和ReporteRs <span class="citation">(Gohel <a href="#ref-R-ReporteRs">2017</a>)</span>扩展包在R与Excel、Word和Powerpoint之间搭起了友好的桥梁，可以将他们结合起来，高效地生成漂亮的办公产品。</p>
+<p>现在出个抢答题：按章节先后顺序，你猜，本书里最先用到的是什么扩展包？</p>
+<p>赶紧往前翻！</p>
+<p>找到了吗？</p>
+<p>我们在第<a href="secplot.html#secplot">3</a>章介绍了ggplot2 <span class="citation">(Wickham <a href="#ref-R-ggplot2">2009</a>)</span>和lattice <span class="citation">(Sarkar <a href="#ref-R-lattice">2008</a>)</span>，他们是诸多绘图厨房里配备的最为华美的餐厅。</p>
+<p>但是，很可惜，本书最先用到的不是他们。</p>
+<p>本书文字里最先用到、并且最经常用到的扩展包，其实是一个叫做fortunes <span class="citation">(Zeileis et al. <a href="#ref-R-fortunes">2016</a>)</span>的扩展包。这是个神奇包包。我们来安装调用运行一下，下面是见证奇迹的时刻：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;fortunes&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(fortunes)
+<span class="kw">fortune</span>(<span class="st">&#39;Actually, I see it as part of my job&#39;</span>)</code></pre></div>
+<pre><code>## 
+## Actually, I see it as part of my job to inflict R on people
+## who are perfectly happy to have never heard of it. Happiness
+## doesn&#39;t equal proficient and efficient. In some cases the
+## proficiency of a person serves a greater good than their
+## momentary happiness.
+##    -- Patrick Burns
+##       R-help (April 2005)</code></pre>
+<p>这就是本书第<a href="secstart.html#secstart">1</a>章开篇引用的那句话。别的章节出现的语录，很多来自这个扩展包，里面搜集的是R语言社区一些“自吹自擂”和“自省自黑”的语录，原文是英文，本书引用时被我翻译成了中文。老实说，第一次听说这个包的时候，我被雷到了，真不知道开发者是怎么想的，这个包平时没一点用处。直到写这本书的时候，发现里边的语录插在本书里倒是恰到好处。请呼唤小助理<code>vignette('fortunes')</code>来看看这个包的内容。</p>
+<p>实际上，在本书用到的众多扩展包背后，隐藏着一个终极大boss，从本书的第一个字就开始用了：本书的写作环境和排版工具，不是Word，也不是<span class="math inline">\(\LaTeX\)</span><a href="#fn26" class="footnoteRef" id="fnref26"><sup>26</sup></a>，而是bookdown  扩展包。书中漂亮的格式、准确方便的交叉引用、清晰的脚注和参考文献，全部是它完成的。</p>
+<p>R语言走到今天，是一个聚沙成塔、集腋成裘的过程，其中的“沙”和“腋”，正是众多热心人花心血写成并奉献出来的扩展包。每个人献出一滴水，终于创造出如今的汪洋大海任你畅游。所以，使用别人慷慨贡献出来的扩展包，别忘了对开发者致谢。就像本书列出的参考文献那样，引用信息可以用citation()函数，例如：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">citation</span>(<span class="st">&quot;bookdown&quot;</span>)</code></pre></div>
+<pre><code>## 
+## To cite the &#39;bookdown&#39; package in publications use:
+## 
+##   Yihui Xie (2017). bookdown: Authoring Books and
+##   Technical Documents with R Markdown. R package
+##   version 0.5.
+## 
+##   Yihui Xie (2016). bookdown: Authoring Books and
+##   Technical Documents with R Markdown. Chapman and
+##   Hall/CRC. ISBN 978-1138700109
+## 
+## To see these entries in BibTeX format, use
+## &#39;print(&lt;citation&gt;, bibtex=TRUE)&#39;, &#39;toBibtex(.)&#39;, or
+## set &#39;options(citation.bibtex.max=999)&#39;.</code></pre>
+<p>R的扩展包每年都在增加。现在到底有多少个扩展包呢？用这条命令：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="kw">unique</span>(<span class="kw">rownames</span>(<span class="kw">available.packages</span>())))</code></pre></div>
+<p>这是四个函数的嵌套，等同于：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">available.packages</span>() <span class="co"># 获取所有扩展包的信息</span>
+b &lt;-<span class="st"> </span><span class="kw">rownames</span>(a) <span class="co"># 挑出扩展包的名称</span>
+c &lt;-<span class="st"> </span><span class="kw">unique</span>(b) <span class="co"># 去掉重复的名称</span>
+d &lt;-<span class="st"> </span><span class="kw">length</span>(c) <span class="co"># 数数有几个</span></code></pre></div>
+<p>beginr 扩展包里有个 <code>plotpkg()</code>函数，可以绘制指定扩展包被下载的情况。例如，我们看一下 ‘rmarkdown’ 扩展包的下载趋势：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">beginr::<span class="kw">plotpkg</span>(<span class="st">&#39;rmarkdown&#39;</span>, <span class="dt">from =</span> <span class="st">&#39;2014-01-01&#39;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fig-plotpkg"></span>
+<img src="r4r_files/figure-html/fig-plotpkg-1.png" alt="rmarkdown 扩展包日下载量趋势图." width="75%" />
+<p class="caption">
+图 9.5: rmarkdown 扩展包日下载量趋势图.
+</p>
+</div>
+<p>这上万个厨房，被那些好心的作者们免费放在网上，让我们随心所欲安装回家;加上R的基础内置厨房，让R成为了一个超级美食王国。来尽情享受这饕餮盛宴吧！</p>
+
+<div class="example">
+<p><span id="exm:ex9-5" class="example"><strong>Example 9.5  </strong></span>办公扩展包</p>
+请使用xlsx和ReporteRs扩展包，制作一个Excel、Word和Powerpoint文档。
+</div>
+<p></p>
+
+<div class="example">
+<p><span id="exm:ex9-7" class="example"><strong>Example 9.6  </strong></span>制作动画</p>
+我们在学习循环的时候制作过动画。实际上，扩展包就有专门制作动画的。请自己找一个扩展包，制作一段动画。列出该扩展包的参考文献。
+</div>
+<p></p>
+
+<div class="example">
+<p><span id="exm:ex9-8" class="example"><strong>Example 9.7  </strong></span>绘制风玫瑰图</p>
+风玫瑰图（windrose）是气象学常用的图形，显示的是一段时期内各个风向所占的比例。请找一个能够绘制风玫瑰图的扩展包，绘制一张风玫瑰图，并列出该包的参考文献。
+</div>
+<p></p>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-228" class="lemma"><strong>思考 9.2  </strong></span>这么多有趣有用的扩展包，你想用来做哪些事情？
+</div>
+<p></p>
+<p>然而，“福兮祸之所伏”，在这包含了一万个扩展包的宝藏里，普通人很容易被贪欲吞噬而迷失自我，忘了自己的初衷。如何在这个大宝藏里找到适合自己的，以及自己想要的那一份？</p>
+<p>继续请出法宝帮忙吧，网上搜，论坛问。CRAN的网页上有个“任务视图”<a href="#fn27" class="footnoteRef" id="fnref27"><sup>27</sup></a>，针对这些包进行了粗略分类，例如空间数据分析、时间序列分析、生态和环境数据分析等。按你的目的去找就是了。</p>
+<p>看着那些琳琅满目的扩展包，有种逛苹果商场看应用商店的感觉。有了这些五花八门三教九流的扩展包，我们就：</p>
+<pre><code>    可上九天揽月，可下五洋捉鳖，谈笑凯歌还。
+    世上无难事，R包助通关。</code></pre>
+<blockquote>
+<p>— 改自毛泽东《水调歌头·重上井冈山》</p>
+</blockquote>
+<!--
+据说，导演陈凯歌跟第四任妻子陈红结婚后，陈凯歌再也没有过绯闻。记者采访陈红，问拴住大导演的心的秘诀是什么？陈红答道：做百变女人。
+
+扩展包让R成了魅力十足的百变女人/男人，教人如何不爱她/他？
+-->
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-229" class="theorem"><strong>小贴士 9.1  </strong></span>关于扩展包的常用函数
+</div>
+<p></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">作用</th>
+<th align="left">函数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">自定义函数</td>
+<td align="left">function()</td>
+</tr>
+<tr class="even">
+<td align="left">查看可用扩展包</td>
+<td align="left">available.packages()</td>
+</tr>
+<tr class="odd">
+<td align="left">安装扩展包</td>
+<td align="left">install.packages()</td>
+</tr>
+<tr class="even">
+<td align="left">调用扩展包</td>
+<td align="left">require(), library()</td>
+</tr>
+<tr class="odd">
+<td align="left">引用扩展包</td>
+<td align="left">citation()</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="secfunction-4" class="section level2">
+<h2><span class="header-section-number">9.4</span> 包的开发：开疆拓土</h2>
+<p>开发 R 扩展包，听起来像是个浩大的工程，但是实际上并不难。学到这里，你完全可以开发自己的扩展包，在美食王国里开辟一片自己的天地。</p>
+<p>扩展包的开发，最好的参考资料之一是 RStudio 公司首席科学家 Hadley Wickham 写的 R packages<a href="#fn28" class="footnoteRef" id="fnref28"><sup>28</sup></a>一书，英文版可以在网上免费获取，有中文译本。这里，我们用最简短的篇幅，带你一起创建一个可用的扩展包，实际动手的时间前后不会超过十分钟。</p>
+<p><strong>第一步：准备</strong></p>
+<p>R包开发需要一系列辅助工具。除了下载安装 Rtools<a href="#fn29" class="footnoteRef" id="fnref29"><sup>29</sup></a>外，运行 R 安装几个扩展包：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;roxygen2&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;beginr&quot;</span>))</code></pre></div>
+<p><strong>第二步：创建新包</strong></p>
+<p>如果你已经安装了上一节介绍的扩展包’beginr’，那么只需运行下面的代码，就可以在工作目录得到一个名为<code>rpkg/</code>的文件夹。这就是我们的新包。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">beginr::<span class="kw">rpkg</span>()</code></pre></div>
+<p>下面，我们只需修改其中的两个文件就可以了。</p>
+<p>第一个文件是 DESCRIPTION 文件。双击<code>rpkg/</code>的文件夹里的<code>rpkg.Rproj</code>，就会用RStudio打开该项目，然后点击右下面板 Files 标签下的 DESCRIPTION 文件。这个文件里是包的描述信息，包括包名，版本，标题，作者，维护者，描述等信息。把其中每一条冒号后面的信息改成我们自己的信息，不必要的行可以删除，例如可以改为：</p>
+<pre><code>Package: mypkg
+Type: Package
+Title: Calculate New Score
+Version: 0.0.0
+Author: Peng Zhao
+Maintainer: Peng Zhao &lt;pzhao@pzhao.net&gt;
+Description: Get a better score.
+License: GPL
+Encoding: UTF-8
+LazyData: true</code></pre>
+<p>按 ctrl+s 保存这个文件。第一个文件 DESCRIPTION 就修改完毕了。</p>
+<p>第二个文件是右下面板 Files 标签下的 R/foo.R 文件。这是存放我们自定义函数的地方。打开这个文件，把其中的内容全部删掉，换成自己的函数，例如前面提到的及格函数 newscore。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newscore &lt;-<span class="st"> </span>function(x) {
+  y &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x) *<span class="st"> </span><span class="dv">10</span>
+  <span class="kw">return</span>(y)
+}</code></pre></div>
+<p>然后，将光标移到函数名称的位置，按快捷键 ctrl+shift+alt+r，函数前面就自动添加了几行信息。我们需要将信息填写完整：</p>
+<ul>
+<li>首行是函数的标题，一般用来简要描述函数的作用。这里我们将 ‘Title’ 改成 ‘Calculate new score’；</li>
+<li><code>#' @param x</code>一行用来介绍自变量。我们在后面添加文字 <code>old score</code>；</li>
+<li><code>#' @return</code> 一行用来介绍函数的返回值。在后面添加文字 <code>new score</code>；</li>
+<li><code>#' @examples</code>一行用来举例子。在后面添加文字 <code>newscore(49)</code>。</li>
+</ul>
+<p>最后得到的文件内容是这样的：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Calculate new score</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; @param x old score</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; @return new score</span>
+<span class="co">#&#39; @export</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; @examples newscore(49)</span>
+newscore &lt;-<span class="st"> </span>function(x) {
+  y &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x) *<span class="st"> </span><span class="dv">10</span>
+  <span class="kw">return</span>(y)
+}</code></pre></div>
+<p>我们上面填写的信息当然是不够详细的，但是不要紧，作为一个测试包已经够用了。</p>
+<p>好了，一个新包已经写完了。</p>
+<p><strong>第三步：编译和本地安装</strong></p>
+<p>按ctrl+shift+b，或者点击RStudio右上模板<code>Build</code>标签下的<code>Build &amp; Reload</code>按钮，包就自动编译、安装和加载好了！祝贺！</p>
+<p>现在，我们可以像使用别人的包一样使用自己的包了。例如，运行一下刚才自定义的 <code>newscore()</code>函数:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mypkg)
+<span class="kw">newscore</span>(<span class="dv">36</span>)</code></pre></div>
+<pre><code>## [1] 60</code></pre>
+<p>还记得小助理<code>example()</code>吗？</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">example</span>(newscore)</code></pre></div>
+<pre><code>## 
+## newscr&gt; newscore(49)
+## [1] 70</code></pre>
+<p>把光标移到函数名 <code>newscore</code> 上，按F1键，帮助信息就在右下面板的Help标签下出现了：</p>
+<blockquote>
+<p><strong>Calculate new score</strong></p>
+<p><strong>Description</strong></p>
+<p>Calculate new score</p>
+<p><strong>Usage</strong></p>
+<p>newscore(x)</p>
+<p><strong>Arguments</strong></p>
+<p>x old score</p>
+<p><strong>Value</strong></p>
+<p>new score</p>
+<p><strong>Examples</strong></p>
+<p>newscore(49)</p>
+</blockquote>
+<p>将这个帮助信息跟我们在 foo.R 里填写的说明信息对比，就会明白帮助信息里每处的说明是怎么来的了。你可以在 foo.R 里如法炮制，添加更多的自定义函数，重复上面的编译过程。</p>
+<p>我们新建的这个扩展包，就是我们在 R 扩展包美食王国里开拓的属于我们自己的疆土。</p>
+<p>简单来说，<strong>运行<code>beginr::rpkg()</code></strong> – <strong>修改 DESCRIPTION 和 R/foo.R</strong> – <strong>编译成包</strong>，这就是我们提出的 “R 包开发极简三步曲”。</p>
+<p>当然，也可以在 RStudio 里通过点击菜单栏来创建新包，但我们仍然建议从 beginr 出发来创建新包，更为简易，也更容易理解开发 R 包的工作流程。</p>
+
+<div class="example">
+<span id="exm:ex9-9" class="example"><strong>Example 9.8  </strong></span>将练习<a href="secfunction.html#exm:ex9-1">9.1</a>、练习<a href="secfunction.html#exm:ex9-2">9.2</a>、练习<a href="secfunction.html#exm:ex9-3">9.3</a>里的三个自定义函数写成一个名为’firstpkg’的扩展包。
+</div>
+<p></p>
+<p>欲穷千里目，更上一层楼。用极简三部曲写出的 R 包，已经足够自用。在这个高度，看到的风景已经够美。你可以在这个水平的观景台休整休整，再考虑是否继续往上攀登。孔子登东山而小鲁，登泰山而小天下。如果想看到更高处的风景，那么就继续下一步。</p>
+<p><strong>第四步：发布和分享</strong></p>
+<p>只有把扩展包发布和分享出去，包才会得以充分利用，得到更多用户的建议和改进，才真正有了生命力。正如史书分正史和野史，R 包可以根据发布和分享方式分为“正包”和“野包”。</p>
+<p>正包，就是通过R官方认可并且发布在CRAN网站上的，等于领到了认证和许可，可以用 <code>install.package()</code> 直接安装，我们前面已经接触了很多；而野包就是自己私下写的，随便放在自己喜欢的地方小范围使用的。很多包转正之前都是野包，经过反复测试和升级后才转的正，而有的野包会永远野下去；很多包转正之后仍然保留野包作为开发版，将野包升级到一定程度后再次转正。这是个自由的世界。</p>
+<p>这里，我们主要介绍野包的发布和分享方法，而对于转正的方法仅作简略介绍。</p>
+<p>野包的发布方法首推 <strong>GitHub 法</strong>。熟悉GitHub的话，建议用这种方法。既然熟悉，我们这里就不赘述GitHub的用法了。简单来说：</p>
+<ul>
+<li><p>你要做的，就是在github.com上申请个账号，电脑里安装个客户端，在客户端新建个项目并起个名字例如叫 mymickey ，把你新的R包文件夹同步上去，就可以通知用户们来使用你的 mymickey 包了。</p></li>
+<li><p>用户要做的，就是在R里运行</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;你的账号/你的项目名称&quot;</span>)</code></pre></div>
+<p>就把你的包装到他们的R里了。</p>
+<p>举例来说，beginr 这个扩展包的开发版就是这样在GitHub发布的，从GitHub安装的方法是：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;pzhaonet/beginr&quot;</span>)</code></pre></div>
+<p>如果你不喜欢 GitHub 的用法，那么可以用<strong>离线法</strong>发布：让用户把包的压缩文件先下载到他们电脑上，再用R包的离线安装方式。包的压缩文件其实在编译时已经自动生成了。去看看你电脑上的 R 包文件夹，跟它并列存放的，有个与包同名的<code>.tar.gz</code>压缩文件。这就是离线安装包。下面：</p>
+<ul>
+<li><p>你要做的，就是随便以任何方式，不管是email、qq、网盘，还是优盘、手机、移动硬盘，只要让用户能得到你这个压缩文件就行了。</p></li>
+<li><p>用户要做的，就是拿到文件后在他们的电脑上安装，方法是在 RStudio 菜单栏点<code>Tools</code> – <code>Install Packages</code> – <code>Install from Package Archive File</code>，选上你的包，就行了。</p></li>
+</ul>
+<p>上面讲的是野包的发布分享方法。如果想提交到 CRAN 转正，其实也不难，这里给出主要步骤：</p>
+<ol style="list-style-type: decimal">
+<li><p>自查。包发布之前，先自查有没有错误。只需用RStudio打开待发布的R包的<code>.Rproj</code>文件，然后点击右上方面板的 Build – Check 按钮，就可以看到自查结果。确保其中没有任何错误和警告，否则就要修改。</p></li>
+<li><p>提交。把包的压缩文件<code>.tar.gz</code>在 CRAN 的提交网页<a href="#fn30" class="footnoteRef" id="fnref30"><sup>30</sup></a>上传即可。成功上传后会收到 email 通知，需要点击里面的链接进行确认。确认后进入 CRAN 的自动检查状态。如果包的毛病太多的话，系统会自动发拒信，并给出拒绝理由。按理由去修改，重修提交即可。</p></li>
+<li><p>修订。如果通过了 CRAN 自动检查，就进入人工检查阶段。运气好的话，几乎在提交当天就会收到管理员的邮件，指出包的不足和修改意见。只需按意见修改，并且在 DESCRIPTION 文件里把版本修改成新的号码，重新编译再次上传就可以了。对于新手来说，这个过程可能会反复几个回合，有时候得到的修改意见可能比较苛刻，需要一些耐心。管理员不计酬劳义务做这项工作，请对他们保持足够的礼貌和尊重。</p></li>
+</ol>
+<p>从上面介绍的步骤可以看出，R 包的开发就像往学术期刊投稿一样繁琐耗时。那么，让我们回过头来谈一个问题：<strong>我们为什么要开发 R 包？</strong></p>
+<p>这个问题见仁见智，我说说从自己开发 R 包的体会。</p>
+<p><strong>首先是方便自用。</strong></p>
+<p>使用 R 语言这几年里，我逐渐积累的自定义函数越来越多，我把他们通通存到一个 ‘myfunction.R’ 文件里。现在，这个文件已经有 3000 多行，将近 100 个自定义函数，越多越记不住，用时查找越来越困难。有个相对简单的方法，就是每次用时都运行<code>source('myfunction.R')</code>，稍微方便一些，虽然会导致 RStudio 右上面板 Environment 标签下特别冗长，而且经常忘记这些函数的用法，需要查看函数源代码，但总好过每次把函数重写或重拷贝一遍。没写成包之前，这几年都是这么过来的。</p>
+<p>如今，我把这些函数写成了一个野包，取名’mf’，并分享到了 GitHub<a href="#fn31" class="footnoteRef" id="fnref31"><sup>31</sup></a>上。这个包纯属自用，帮助信息写得不够齐全和详细，但自己懂就行了，用起来的爽快程度，当然比<code>source()</code>强多了，不仅Environment区清爽了，更关键的是，忘了的话就用 tab 和 F1 大法，几年积攒的不快一扫而空。就算换个工作单位，换台电脑，花几秒钟安装后照旧调用，处处无家处处家。</p>
+<p><strong>其次是改善代码。</strong></p>
+<p>写代码对我来说一直是件封闭的事情：自己写，自己用，一旦出错，只有自己知道。计算方法没有经过同行评议，出错的风险很大。但是我又不愿意厚着脸皮强迫别人帮我改代码。两全的办法，就是开源，写成包，放在 GitHub 上，接受志愿者挑错，有则改之无则加勉。只有这样，才能把代码错误越来越少，改得越来越好，最终还是自己用起来更放心。我有几个包在发布之后，很快得到了别人的修改意见，这才知道哪里可以改进。与此同时，代码也可以方便别人使用，利人利己，何乐不为？</p>
+<p><strong>最后是审视自我。</strong></p>
+<p>我的第一个 R 包<a href="https://github.com/pzhaonet/postr">postr</a>是用 R markdown 做海报，兴致勃勃地放到 GitHub 第一天，就有人留言汇报问题。我知道，这只是个开始，以后会有更多的问题，里面会有赞美，可能也会有谩骂。写出个R包真的不算啥，等待在前面的一个又一个的坑才是让人真正头疼的事情。</p>
+<p>这个阶段就要接收考验了。你会重新审视自己：我这么干到底是图个啥？我自用已经够了，却要花大量的时间帮一些跟我八杆子都打不到的人解决他们五花八门层出不穷的问题，我闲得么？花的这工夫和精力，到底是能发表成学术论文呢，还是能变现呢，还是能替我洗碗带孩子呢，还是能帮我赚游戏装备？</p>
+<p>开源软件是面镜子，从中可以看见开发者的影子；开发R扩展包，可以从中看见自己。唐太宗说过：</p>
+<pre><code>    以铜为鉴，可以正衣冠；
+    以人为鉴，可以知得失；
+    以史为鉴，可以知兴替：
+    以 R 包为鉴，可以知本我、自我和超我。</code></pre>
+</div>
+<div id="secfunctionpost" class="section level2">
+<h2><span class="header-section-number">9.5</span> 课外活动：餐后甜点</h2>
+<p>上大学的时候，在食堂吃完午饭，我们会玩几分钟扫雷游戏，时间短，乐趣多，健脑益智，而且随时可以停下来。</p>
+<p>扫雷是旧版Windows自带的经典小游戏，可惜Window 7之后，扫雷就不再是默认安装了。不要紧，我们可以在R中玩扫雷，因为有这样的扩展包在。</p>
+<p>请用搜索引擎找到有扫雷游戏的扩展包，安装，并且试玩。这个扩展包里，包含了第<a href="secstart.html#secstart">1</a>章对R表白时绘制那颗中国心的秘密。你能找到这个秘密吗？</p>
+<p>看看你的扫雷记录吧。比比看，谁能登上扫雷英雄榜！</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-maptools">
+<p>Bivand, Roger, and Nicholas Lewin-Koh. 2017. <em>Maptools: Tools for Reading and Handling Spatial Objects</em>. <a href="https://CRAN.R-project.org/package=maptools" class="uri">https://CRAN.R-project.org/package=maptools</a>.</p>
+</div>
+<div id="ref-R-beginr">
+<p>Zhao, Peng. 2017a. <em>Beginr: Functions for R Beginners</em>. <a href="https://CRAN.R-project.org/package=beginr" class="uri">https://CRAN.R-project.org/package=beginr</a>.</p>
+</div>
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
+</div>
+<div id="ref-R-blogdown">
+<p>Xie, Yihui. 2017. <em>Blogdown: Create Blogs and Websites with R Markdown</em>. <a href="https://github.com/rstudio/blogdown" class="uri">https://github.com/rstudio/blogdown</a>.</p>
+</div>
+<div id="ref-R-rmarkdown">
+<p>Allaire, JJ, Joe Cheng, Yihui Xie, Jonathan McPherson, Winston Chang, Jeff Allen, Hadley Wickham, Aron Atkins, and Rob Hyndman. 2016. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+</div>
+<div id="ref-R-xlsx">
+<p>Dragulescu, Adrian A. 2014. <em>Xlsx: Read, Write, Format Excel 2007 and Excel 97/2000/Xp/2003 Files</em>. <a href="https://CRAN.R-project.org/package=xlsx" class="uri">https://CRAN.R-project.org/package=xlsx</a>.</p>
+</div>
+<div id="ref-R-ReporteRs">
+<p>Gohel, David. 2017. <em>ReporteRs: Microsoft Word and Powerpoint Documents Generation</em>. <a href="https://CRAN.R-project.org/package=ReporteRs" class="uri">https://CRAN.R-project.org/package=ReporteRs</a>.</p>
+</div>
+<div id="ref-R-ggplot2">
+<p>Wickham, Hadley. 2009. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="http://ggplot2.org" class="uri">http://ggplot2.org</a>.</p>
+</div>
+<div id="ref-R-lattice">
+<p>Sarkar, Deepayan. 2008. <em>Lattice: Multivariate Data Visualization with R</em>. New York: Springer. <a href="http://lmdvr.r-forge.r-project.org" class="uri">http://lmdvr.r-forge.r-project.org</a>.</p>
+</div>
+<div id="ref-R-fortunes">
+<p>Zeileis, Achim, the R community. Contributions (fortunes and/or code) by Torsten Hothorn, Peter Dalgaard, Uwe Ligges, Kevin Wright, Martin Maechler, Kjetil Brinchmann Halvorsen, et al. 2016. <em>Fortunes: R Fortunes</em>. <a href="https://CRAN.R-project.org/package=fortunes" class="uri">https://CRAN.R-project.org/package=fortunes</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="25">
+<li id="fn25"><p>严格来讲应该称为“程序包”，往下再细分为“基础包”和“扩展包”。但由于基础包是默认安装加载的，常常不必介绍，所以我们经常讲的R包就是扩展包。<a href="secfunction.html#fnref25">↩</a></p></li>
+<li id="fn26"><p>bookdown幕后仍然调用了<span class="math inline">\(\LaTeX\)</span>，但在使用上大为简化，极大地优化了用户体验。<a href="secfunction.html#fnref26">↩</a></p></li>
+<li id="fn27"><p>CRAN任务视图：<a href="https://cran.r-project.org/web/views/" class="uri">https://cran.r-project.org/web/views/</a><a href="secfunction.html#fnref27">↩</a></p></li>
+<li id="fn28"><p>R包开发：<a href="http://r-pkgs.had.co.nz/" class="uri">http://r-pkgs.had.co.nz/</a><a href="secfunction.html#fnref28">↩</a></p></li>
+<li id="fn29"><p>Rtools：<a href="http://cran.r-project.org/bin/windows/Rtools/" class="uri">http://cran.r-project.org/bin/windows/Rtools/</a><a href="secfunction.html#fnref29">↩</a></p></li>
+<li id="fn30"><p>R包提交：<a href="https://cran.r-project.org/submit.html" class="uri">https://cran.r-project.org/submit.html</a><a href="secfunction.html#fnref30">↩</a></p></li>
+<li id="fn31"><p>mf包：<a href="https://github.com/pzhaonet/mf" class="uri">https://github.com/pzhaonet/mf</a><a href="secfunction.html#fnref31">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="secmid.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="secchar.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

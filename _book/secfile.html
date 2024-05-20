@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>学R—零基础学 R 语言</title>
+  <meta name="description" content="This is a book for R rookies.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="学R—零基础学 R 语言" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book for R rookies." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="学R—零基础学 R 语言" />
+  
+  <meta name="twitter:description" content="This is a book for R rookies." />
+  
+
+<meta name="author" content="赵鹏, 李怡">
+
+
+<meta name="date" content="2017-09-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="sectime.html">
+<link rel="next" href="bookdown.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R菜鸟入门 （赵鹏 李怡 著）</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>读者留言选登</a></li>
+<li class="chapter" data-level="" data-path="secpre1.html"><a href="secpre1.html"><i class="fa fa-check"></i>序言一（朱彤）</a></li>
+<li class="chapter" data-level="" data-path="secpre2.html"><a href="secpre2.html"><i class="fa fa-check"></i>序言二（谢益辉）</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html"><i class="fa fa-check"></i>前言：思 R 不学则殆</a><ul>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory1"><i class="fa fa-check"></i>R的学习困境</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory3"><i class="fa fa-check"></i>本书如何使用</a></li>
+<li class="chapter" data-level="" data-path="secstory.html"><a href="secstory.html#secstory4"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="secstart.html"><a href="secstart.html"><i class="fa fa-check"></i><b>1</b> 初见</a><ul>
+<li class="chapter" data-level="1.1" data-path="secstart.html"><a href="secstart.html#secstart-2"><i class="fa fa-check"></i><b>1.1</b> 结缘：下载安装</a></li>
+<li class="chapter" data-level="1.2" data-path="secstart.html"><a href="secstart.html#secstart-3"><i class="fa fa-check"></i><b>1.2</b> 第一次畅谈：计算</a></li>
+<li class="chapter" data-level="1.3" data-path="secstart.html"><a href="secstart.html#secstart-4"><i class="fa fa-check"></i><b>1.3</b> 第一张留影：作图</a></li>
+<li class="chapter" data-level="1.4" data-path="secstart.html"><a href="secstart.html#secstartpost"><i class="fa fa-check"></i><b>1.4</b> 课外活动：表白</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="secdata.html"><a href="secdata.html"><i class="fa fa-check"></i><b>2</b> 数据</a><ul>
+<li class="chapter" data-level="2.1" data-path="secdata.html"><a href="secdata.html#secdata-1"><i class="fa fa-check"></i><b>2.1</b> 输入：读取文件</a></li>
+<li class="chapter" data-level="2.2" data-path="secdata.html"><a href="secdata.html#secdata-2"><i class="fa fa-check"></i><b>2.2</b> 计算：数据处理和作图</a></li>
+<li class="chapter" data-level="2.3" data-path="secdata.html"><a href="secdata.html#secdata-3"><i class="fa fa-check"></i><b>2.3</b> 输出：保存文件</a></li>
+<li class="chapter" data-level="2.4" data-path="secdata.html"><a href="secdata.html#secdatapost"><i class="fa fa-check"></i><b>2.4</b> 课外活动：有R伴我走天涯</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="secplot.html"><a href="secplot.html"><i class="fa fa-check"></i><b>3</b> 作图</a><ul>
+<li class="chapter" data-level="3.1" data-path="secplot.html"><a href="secplot.html#secplot-1"><i class="fa fa-check"></i><b>3.1</b> 控制图像：线型，点状，颜色</a></li>
+<li class="chapter" data-level="3.2" data-path="secplot.html"><a href="secplot.html#secplot-2"><i class="fa fa-check"></i><b>3.2</b> 丰富内容：直线、网格和图例</a></li>
+<li class="chapter" data-level="3.3" data-path="secplot.html"><a href="secplot.html#secplot-3"><i class="fa fa-check"></i><b>3.3</b> 多图合一：三种布局</a></li>
+<li class="chapter" data-level="3.4" data-path="secplot.html"><a href="secplot.html#secplot-4"><i class="fa fa-check"></i><b>3.4</b> 保存图片：pdf，png，jpg</a></li>
+<li class="chapter" data-level="3.5" data-path="secplot.html"><a href="secplot.html#secplotpost"><i class="fa fa-check"></i><b>3.5</b> 课外活动： R的毛坯房与精装修</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="secfit.html"><a href="secfit.html"><i class="fa fa-check"></i><b>4</b> 拟合</a><ul>
+<li class="chapter" data-level="4.1" data-path="secfit.html"><a href="secfit.html#secfit-1"><i class="fa fa-check"></i><b>4.1</b> 线性拟合：散点图的趋势线</a></li>
+<li class="chapter" data-level="4.2" data-path="secfit.html"><a href="secfit.html#secfit-2"><i class="fa fa-check"></i><b>4.2</b> 在绘图区添加数学表达式</a></li>
+<li class="chapter" data-level="4.3" data-path="secfit.html"><a href="secfit.html#secfit-3"><i class="fa fa-check"></i><b>4.3</b> 非线性拟合：一个指数递减模型</a></li>
+<li class="chapter" data-level="4.4" data-path="secfit.html"><a href="secfit.html#secfitpost"><i class="fa fa-check"></i><b>4.4</b> 课外活动：助理团与自助餐</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="secloop.html"><a href="secloop.html"><i class="fa fa-check"></i><b>5</b> 循环</a><ul>
+<li class="chapter" data-level="5.1" data-path="secloop.html"><a href="secloop.html#secloop-1"><i class="fa fa-check"></i><b>5.1</b> 假如没有循环</a></li>
+<li class="chapter" data-level="5.2" data-path="secloop.html"><a href="secloop.html#secloop-2"><i class="fa fa-check"></i><b>5.2</b> 循环是个救世主</a></li>
+<li class="chapter" data-level="5.3" data-path="secloop.html"><a href="secloop.html#secloop-3"><i class="fa fa-check"></i><b>5.3</b> 人口增长模型</a></li>
+<li class="chapter" data-level="5.4" data-path="secloop.html"><a href="secloop.html#secloop-4"><i class="fa fa-check"></i><b>5.4</b> 制作动画</a></li>
+<li class="chapter" data-level="5.5" data-path="secloop.html"><a href="secloop.html#secloop-5"><i class="fa fa-check"></i><b>5.5</b> 超越循环</a></li>
+<li class="chapter" data-level="5.6" data-path="secloop.html"><a href="secloop.html#seclooppost"><i class="fa fa-check"></i><b>5.6</b> 课外活动：信息提示</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="secif.html"><a href="secif.html"><i class="fa fa-check"></i><b>6</b> 分支</a><ul>
+<li class="chapter" data-level="6.1" data-path="secif.html"><a href="secif.html#secif-1"><i class="fa fa-check"></i><b>6.1</b> 判断：逻辑运算</a></li>
+<li class="chapter" data-level="6.2" data-path="secif.html"><a href="secif.html#secif-2"><i class="fa fa-check"></i><b>6.2</b> 选择：如果，那么，否则</a></li>
+<li class="chapter" data-level="6.3" data-path="secif.html"><a href="secif.html#secifpost"><i class="fa fa-check"></i><b>6.3</b> 课外活动：复活节</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="secoffice.html"><a href="secoffice.html"><i class="fa fa-check"></i><b>7</b> 办公</a><ul>
+<li class="chapter" data-level="7.1" data-path="secoffice.html"><a href="secoffice.html#secoffice-1"><i class="fa fa-check"></i><b>7.1</b> 从Excel到R代码</a></li>
+<li class="chapter" data-level="7.2" data-path="secoffice.html"><a href="secoffice.html#secoffice-2"><i class="fa fa-check"></i><b>7.2</b> 从Word到R文档</a></li>
+<li class="chapter" data-level="7.3" data-path="secoffice.html"><a href="secoffice.html#secoffice-3"><i class="fa fa-check"></i><b>7.3</b> 从Powerpoint到R幻灯片</a></li>
+<li class="chapter" data-level="7.4" data-path="secoffice.html"><a href="secoffice.html#secofficepost"><i class="fa fa-check"></i><b>7.4</b> 课外活动：丰富多彩的幻灯片</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="secmid.html"><a href="secmid.html"><i class="fa fa-check"></i><b>8</b> 习题</a><ul>
+<li class="chapter" data-level="8.1" data-path="secmid.html"><a href="secmid.html#secmid-1"><i class="fa fa-check"></i><b>8.1</b> 向量、矩阵、数据框和列表</a></li>
+<li class="chapter" data-level="8.2" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.2</b> A卷：照猫画虎题</a></li>
+<li class="chapter" data-level="8.3" data-path="secmid.html"><a href="secmid.html#secmid-2"><i class="fa fa-check"></i><b>8.3</b> B卷：自由发挥题</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="secfunction.html"><a href="secfunction.html"><i class="fa fa-check"></i><b>9</b> 函数</a><ul>
+<li class="chapter" data-level="9.1" data-path="secfunction.html"><a href="secfunction.html#secfunction-1"><i class="fa fa-check"></i><b>9.1</b> 内置函数：全自动厨师机</a></li>
+<li class="chapter" data-level="9.2" data-path="secfunction.html"><a href="secfunction.html#secfunction-2"><i class="fa fa-check"></i><b>9.2</b> 自定义函数：自制厨师机</a></li>
+<li class="chapter" data-level="9.3" data-path="secfunction.html"><a href="secfunction.html#secfunction-3"><i class="fa fa-check"></i><b>9.3</b> 扩展包：美食王国</a></li>
+<li class="chapter" data-level="9.4" data-path="secfunction.html"><a href="secfunction.html#secfunction-4"><i class="fa fa-check"></i><b>9.4</b> 包的开发：开疆拓土</a></li>
+<li class="chapter" data-level="9.5" data-path="secfunction.html"><a href="secfunction.html#secfunctionpost"><i class="fa fa-check"></i><b>9.5</b> 课外活动：餐后甜点</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="secchar.html"><a href="secchar.html"><i class="fa fa-check"></i><b>10</b> 字符</a><ul>
+<li class="chapter" data-level="10.1" data-path="secchar.html"><a href="secchar.html#secchar-1"><i class="fa fa-check"></i><b>10.1</b> 狐狸从懒狗身上跳过</a></li>
+<li class="chapter" data-level="10.2" data-path="secchar.html"><a href="secchar.html#secchar-2"><i class="fa fa-check"></i><b>10.2</b> 千字文的重复字</a></li>
+<li class="chapter" data-level="10.3" data-path="secchar.html"><a href="secchar.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> 整理读书笔记</a></li>
+<li class="chapter" data-level="10.4" data-path="secchar.html"><a href="secchar.html#seccharpost"><i class="fa fa-check"></i><b>10.4</b> 课外活动：张无忌的困惑</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="secmap.html"><a href="secmap.html"><i class="fa fa-check"></i><b>11</b> 地图</a><ul>
+<li class="chapter" data-level="11.1" data-path="secmap.html"><a href="secmap.html#secmap-1"><i class="fa fa-check"></i><b>11.1</b> 绘制点阵地图</a></li>
+<li class="chapter" data-level="11.2" data-path="secmap.html"><a href="secmap.html#secmap-2"><i class="fa fa-check"></i><b>11.2</b> 绘制矢量地图</a></li>
+<li class="chapter" data-level="11.3" data-path="secmap.html"><a href="secmap.html#secmap-3"><i class="fa fa-check"></i><b>11.3</b> 绘制交互地图</a></li>
+<li class="chapter" data-level="11.4" data-path="secmap.html"><a href="secmap.html#secmappost"><i class="fa fa-check"></i><b>11.4</b> 课外活动：绘制动画地图</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sectime.html"><a href="sectime.html"><i class="fa fa-check"></i><b>12</b> 时间</a><ul>
+<li class="chapter" data-level="12.1" data-path="sectime.html"><a href="sectime.html#sectime-1"><i class="fa fa-check"></i><b>12.1</b> 时刻数据的获取</a></li>
+<li class="chapter" data-level="12.2" data-path="sectime.html"><a href="sectime.html#sectime-2"><i class="fa fa-check"></i><b>12.2</b> 时刻数据的格式</a></li>
+<li class="chapter" data-level="12.3" data-path="sectime.html"><a href="sectime.html#sectime-3"><i class="fa fa-check"></i><b>12.3</b> 时刻数据的计算</a></li>
+<li class="chapter" data-level="12.4" data-path="sectime.html"><a href="sectime.html#sectimepost"><i class="fa fa-check"></i><b>12.4</b> 课外活动：夏令时</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="secfile.html"><a href="secfile.html"><i class="fa fa-check"></i><b>13</b> 批量处理文件</a><ul>
+<li class="chapter" data-level="13.1" data-path="secfile.html"><a href="secfile.html#secfile-1"><i class="fa fa-check"></i><b>13.1</b> 批量整理照片文件</a></li>
+<li class="chapter" data-level="13.2" data-path="secfile.html"><a href="secfile.html#secfile-2"><i class="fa fa-check"></i><b>13.2</b> 从网页批量下载和整理图片</a></li>
+<li class="chapter" data-level="13.3" data-path="secfile.html"><a href="secfile.html#secfile-3"><i class="fa fa-check"></i><b>13.3</b> 从大量文件里提取汇总信息</a></li>
+<li class="chapter" data-level="13.4" data-path="secfile.html"><a href="secfile.html#secfilepost"><i class="fa fa-check"></i><b>13.4</b> 课外活动：打通任督二脉</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> 论文书稿写作</a><ul>
+<li class="chapter" data-level="14.1" data-path="bookdown.html"><a href="bookdown.html#quick-start"><i class="fa fa-check"></i><b>14.1</b> 魅力不可挡</a></li>
+<li class="chapter" data-level="14.2" data-path="bookdown.html"><a href="bookdown.html#preparation"><i class="fa fa-check"></i><b>14.2</b> 准备工作</a></li>
+<li class="chapter" data-level="14.3" data-path="bookdown.html"><a href="bookdown.html#magic"><i class="fa fa-check"></i><b>14.3</b> 见证奇迹的时刻</a></li>
+<li class="chapter" data-level="14.4" data-path="bookdown.html"><a href="bookdown.html#article"><i class="fa fa-check"></i><b>14.4</b> 撰写学术论文</a></li>
+<li class="chapter" data-level="14.5" data-path="bookdown.html"><a href="bookdown.html#thesis"><i class="fa fa-check"></i><b>14.5</b> 撰写学位论文</a></li>
+<li class="chapter" data-level="14.6" data-path="bookdown.html"><a href="bookdown.html#mindmap"><i class="fa fa-check"></i><b>14.6</b> 生成思维导图</a></li>
+<li class="chapter" data-level="14.7" data-path="bookdown.html"><a href="bookdown.html#diary"><i class="fa fa-check"></i><b>14.7</b> 撰写散文和日记</a></li>
+<li class="chapter" data-level="14.8" data-path="bookdown.html"><a href="bookdown.html#write-chords"><i class="fa fa-check"></i><b>14.8</b> 记录吉他谱</a></li>
+<li class="chapter" data-level="14.9" data-path="bookdown.html"><a href="bookdown.html#secbookdownpost"><i class="fa fa-check"></i><b>14.9</b> 课外活动：创建新模板</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>15</b> 搭建小型网站</a><ul>
+<li class="chapter" data-level="15.1" data-path="blogdown.html"><a href="blogdown.html#blogdown-intro"><i class="fa fa-check"></i><b>15.1</b> 准备工作</a></li>
+<li class="chapter" data-level="15.2" data-path="blogdown.html"><a href="blogdown.html#blogdown-blog"><i class="fa fa-check"></i><b>15.2</b> 搭建个人博客</a></li>
+<li class="chapter" data-level="15.3" data-path="blogdown.html"><a href="blogdown.html#blogdown-academic"><i class="fa fa-check"></i><b>15.3</b> 搭建科研网站</a></li>
+<li class="chapter" data-level="15.4" data-path="blogdown.html"><a href="blogdown.html#secblogdownpost"><i class="fa fa-check"></i><b>15.4</b> 课外活动：搭建自己的网站</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="secfinal.html"><a href="secfinal.html"><i class="fa fa-check"></i><b>16</b> 在工作中应用</a><ul>
+<li class="chapter" data-level="16.1" data-path="secfinal.html"><a href="secfinal.html#secfinal-2"><i class="fa fa-check"></i><b>16.1</b> 自动完成业务报表</a></li>
+<li class="chapter" data-level="16.2" data-path="secfinal.html"><a href="secfinal.html#secfinal-1"><i class="fa fa-check"></i><b>16.2</b> 可重复研究报告</a></li>
+<li class="chapter" data-level="16.3" data-path="secfinal.html"><a href="secfinal.html#secfinalpost"><i class="fa fa-check"></i><b>16.3</b> 课外活动：学以致用</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="secback.html"><a href="secback.html"><i class="fa fa-check"></i>后记：学 R 时习之</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>A</b> Markdown 和 bookdown 语法速查</a></li>
+<li class="chapter" data-level="B" data-path="secqa.html"><a href="secqa.html"><i class="fa fa-check"></i><b>B</b> 答疑</a><ul>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqa-mis"><i class="fa fa-check"></i>菜鸟常犯错误和常见问题</a></li>
+<li class="chapter" data-level="" data-path="secqa.html"><a href="secqa.html#secqaa"><i class="fa fa-check"></i>习题参考答案</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/bookdown/" target="blank">消灭word暴政，世界属于bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">学R—零基础学 R 语言</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="secfile" class="section level1">
+<h1><span class="header-section-number">第13章</span> 批量处理文件</h1>
+<pre><code>    这就是 R。没有做不到，只有想不到。</code></pre>
+<!---
+>
+> This is R. There is no if. Only how.
+>
+--->
+<blockquote>
+<p>— Simon Blomberg, April 2005</p>
+</blockquote>
+<p>相信你和我一样，电脑里保存了大量的文件吧。比如数据，有时候需要从多个文件里提取有用的信息，手动查找和摘选十分耗时耗力；比如照片，动辄成百上千张，虽然有些软件可以自动整理，但毕竟难以随心所欲。</p>
+<p>我们前边学了编程的结构和字符串处理，如果把这些结合起来，再学几个文件操作函数，就可以高效地对电脑文件为所欲为了。</p>
+<div id="secfile-1" class="section level2">
+<h2><span class="header-section-number">13.1</span> 批量整理照片文件</h2>
+<p>事实上，我们从第<a href="secdata.html#secdata">2</a>章起就已经悄悄开始接触文件操作函数了。当时我们用<code>dir.create()</code>创建了个文件夹，还用<code>file.choose()</code>来选取文件。后者有几个双胞胎姐妹：<code>choose.files()</code>函数可以用来选取多个文件，而<code>choose.dir()</code>可以用来选取文件夹。请复习一下这几个函数，热热身。</p>
+<p></p>
+<p>下面，我们运行下面的代码，会从我们服务器下载一个压缩文件，并解压缩到指定文件夹。打开这个文件夹，你会看到3个图片文件。我们假定这是我们手机里拍的照片，我们的目标是修改这3个文件的名称为拍摄的时刻。一旦能实现这个目标，那么对成千上万个文件重新命名都将不费吹灰之力。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="dt">url =</span> <span class="st">&quot;http://dapengde.com/r4rookies/figren.zip&quot;</span>, 
+              <span class="dt">destfile =</span> <span class="st">&quot;c:/r4r/figren.zip&quot;</span>)
+<span class="kw">unzip</span>(<span class="dt">zipfile =</span> <span class="st">&quot;c:/r4r/figren.zip&quot;</span>, <span class="dt">exdir =</span> <span class="st">&quot;c:/r4r&quot;</span>)</code></pre></div>
+<p>首先，我们使用<code>dir()</code>函数，可以获取文件夹里的文件列表。如果将参数指定为完整文件名，那么得到的是文件的完整路径。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fotodir &lt;-<span class="st"> &#39;c:/r4r/figren&#39;</span>
+fotofilefull &lt;-<span class="st"> </span><span class="kw">dir</span>(fotodir, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
+fotofile &lt;-<span class="st"> </span><span class="kw">dir</span>(fotodir)</code></pre></div>
+<p>然后，使用<code>file.info()</code>函数，可以获取文件的完整信息：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fotoinfo &lt;-<span class="st"> </span><span class="kw">file.info</span>(fotofilefull)
+fotoinfo</code></pre></div>
+<pre><code>##                            size isdir mode
+## c:/r4r/figren/IMG_689.jpg  1716 FALSE  666
+## c:/r4r/figren/IMG_690.jpg 56321 FALSE  666
+## c:/r4r/figren/IMG_691.jpg   307 FALSE  666
+##                                         mtime
+## c:/r4r/figren/IMG_689.jpg 2017-06-29 22:02:44
+## c:/r4r/figren/IMG_690.jpg 2017-06-29 22:02:44
+## c:/r4r/figren/IMG_691.jpg 2017-06-29 22:02:44
+##                                         ctime
+## c:/r4r/figren/IMG_689.jpg 2017-06-29 22:02:44
+## c:/r4r/figren/IMG_690.jpg 2017-06-29 22:02:44
+## c:/r4r/figren/IMG_691.jpg 2017-06-29 22:02:44
+##                                         atime exe
+## c:/r4r/figren/IMG_689.jpg 2017-06-29 22:02:44  no
+## c:/r4r/figren/IMG_690.jpg 2017-06-29 22:02:44  no
+## c:/r4r/figren/IMG_691.jpg 2017-06-29 22:02:44  no</code></pre>
+<p>其中的<code>mtime</code>列，是我们需要的文件创建时刻，小时分秒之间使用冒号分隔。由于操作系统不允许文件名中含有冒号，我们利用前面学过的时刻格式处理函数，稍微调整一下格式，设定新的文件名：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fototime &lt;-<span class="st"> </span><span class="kw">format</span>(fotoinfo$mtime, <span class="st">&#39;%Y-%m-%d-%H%M%S&#39;</span>)
+newname &lt;-<span class="st"> </span><span class="kw">paste</span>(
+  fotodir, <span class="st">&#39;/&#39;</span>, fototime, <span class="st">&#39;_&#39;</span>, fotofile, <span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)</code></pre></div>
+<p>最后，我们用文件重命名函数<code>file.rename()</code>函数，就可以对文件批量重命名了：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">file.rename</span>(fotofilefull, newname)</code></pre></div>
+<p>如果有成千上万张照片需要这样整理，R是极佳的选择。</p>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-315" class="lemma"><strong>思考 13.1  </strong></span>除了照片文件，平时还有什么其他文件需要类似的方法整理吗？
+</div>
+<p></p>
+<p>我们还可以将照片按年份或月份归类整理到文件夹里。该怎么操作呢？下面就会讲到。</p>
+
+<div class="example">
+<span id="exm:ex14-1" class="example"><strong>Example 13.1  </strong></span>将你自己的一批照片的文件名里插入日期信息，并按默认排序在文件名里增加从1开始的编号。
+</div>
+<p></p>
+</div>
+<div id="secfile-2" class="section level2">
+<h2><span class="header-section-number">13.2</span> 从网页批量下载和整理图片</h2>
+<p>我所在单位有个网站，有个页面展示着研究组野外观测照片缩略图，并按站点分了类<a href="#fn36" class="footnoteRef" id="fnref36"><sup>36</sup></a>。新来到这里时，我想把本组的工作了解一番，在看图的时候，需要逐个点开才能看大图上的细节，将来需要某张图时，找起来很不方便，我就萌生了把图片全部下载到本地并按站点分类保存的想法。但是这几百张图，一一点开下载也太累了。如何批量下载网页上的图片呢？</p>
+<p>方案有很多，列举如下：</p>
+<ul>
+<li><p>可以通过浏览器的’保存网页全部内容’来实现，本地生成一个文件夹，包含了网页上的图片。这个我试了，但只保存下来了缩略图，没有大图。</p></li>
+<li><p>可以安装迅雷、快车之类的软件，但是我不想装。有些软件臃肿庞大也就算了，关键是不知道他们在背后悄悄做了些什么。另外，他们无法解决图片分类保存的问题。</p></li>
+<li><p>傲游、360等浏览器有批量下载功能，或者firefox+BatchDownload 插件也行，但我不想装，并且他们也无法解决图片分类的问题。</p></li>
+<li><p>chrome浏览器有个fatkun插件，专门用来批量下载图片，能下载大图，是我最满意的方案了，但也并非完美。下载的图片文件名要么是原始文件名，要么只能简单编号。这样一来，所有观测站点的图片都混在了一起，这仍然不是我想要的。我希望下载到本地的图片能自动按观测站分类保存。</p></li>
+</ul>
+<p>其实，查看一下网页的源代码（chrome浏览器里按快捷键ctrl+u），发现每张图片所属站点的信息，包含在了图片的链接里。比如Neustift观测站某图的链接是:</p>
+<pre><code>http://...gallery/neustift/img_8260_59_58_....jpg</code></pre>
+<p>这个链接里是含有站名信息的（neustift）。这就好办了，可以自己动手用R代码实现。</p>
+<p>首先，我们把网页的源代码读进R，跟学习字符函数时读取千字文文件的方法一样：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">urlink &lt;-<span class="st"> &#39;http://www.biomet.co.at/pictures/&#39;</span>
+aa &lt;-<span class="st"> </span><span class="kw">readLines</span>(urlink, <span class="dt">encoding=</span><span class="st">&#39;UTF-8&#39;</span>) <span class="co"># 读取网页</span></code></pre></div>
+<p>然后，我们找到有图片链接的行，也就是含有下面字符串的行：</p>
+<pre><code>src=&quot;http://www.biomet.co.at/wp/wp-content/gallery</code></pre>
+<p>获取这些行的方法是我们学过的<code>grep()</code>函数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linkformat &lt;-<span class="st"> </span>
+<span class="st">  &#39;src=&quot;http://www.biomet.co.at/wp/wp-content/gallery&#39;</span>
+bb &lt;-<span class="st"> </span>aa[<span class="kw">grep</span>(linkformat, aa)]</code></pre></div>
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-318" class="lemma"><strong>思考 13.2  </strong></span>有没有别的更方便的办法，来获取一个网页上的超级链接呢？
+</div>
+<p></p>
+<p>接着，我们用循环函数，对得到的每一行进行处理，把图片的链接提取出来，并且去掉重复的图片链接：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="kw">length</span>(bb)) 
+  bb[i] &lt;-<span class="st"> </span><span class="kw">substring</span>(
+    bb[i], 
+    <span class="kw">regexpr</span>(<span class="st">&quot;http&quot;</span>, bb[i])[<span class="dv">1</span>], 
+    <span class="kw">regexpr</span>(<span class="st">&quot;.jpg</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, bb[i])[<span class="dv">1</span>]+<span class="dv">3</span>) <span class="co"># 获取链接</span>
+bb &lt;-<span class="st"> </span><span class="kw">unique</span>(bb)
+<span class="kw">length</span>(bb)
+<span class="kw">writeLines</span>(bb, <span class="st">&#39;c:/r4r/links.txt&#39;</span>)</code></pre></div>
+<p></p>
+<p>每个链接里，从第47个字符开始就是观测站名了。为了简便，我们截取站名的前4个字母，并以此为名称，用<code>dir.create()</code>函数新建一批文件夹：</p>
+<p></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stname &lt;-<span class="st"> </span><span class="kw">substring</span>(bb, <span class="dv">47</span>, <span class="dv">50</span>)
+stname &lt;-<span class="st"> </span>stname[-<span class="kw">which</span>(stname ==<span class="st"> &#39;&#39;</span>)]
+for (i in <span class="kw">unique</span>(stname)) 
+  <span class="kw">dir.create</span>(<span class="kw">paste</span>(<span class="st">&#39;c:/r4r/&#39;</span>, i, <span class="dt">sep =</span> <span class="st">&#39;&#39;</span>))</code></pre></div>
+<p>快看看新的空文件夹是不是已经在那里了？</p>
+<p>一切准备妥当了。下面，我们就用<code>download.file()</code>将图片下载保存到对应的文件夹里。由于文件多，可以预料，整个过程可能会比较耗时，所以我们用第<a href="secloop.html#seclooppost">5.6</a>节的方法，在循环中添加了一个<code>print()</code>函数来提醒我们下载进度，并在循环结束后用<code>winDialog()</code>函数来弹出一个任务完成的提示框。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="kw">length</span>(bb)) {
+  <span class="kw">download.file</span>(
+    <span class="dt">url =</span> bb[i], 
+    <span class="dt">destfile =</span> <span class="kw">paste</span>(
+      <span class="st">&#39;c:/r4r/&#39;</span>, stname[i],<span class="st">&#39;/&#39;</span>, stname[i], i, <span class="st">&#39;.jpg&#39;</span>, 
+      <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>), 
+    <span class="dt">method =</span> <span class="st">&#39;curl&#39;</span>, <span class="dt">quiet =</span> <span class="ot">TRUE</span>) 
+  <span class="kw">print</span>(<span class="kw">paste</span>(i, <span class="st">&#39;of&#39;</span>, <span class="kw">length</span>(bb), <span class="st">&#39;downloaded.&#39;</span>))
+}
+<span class="kw">winDialog</span>(<span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&quot;ok&quot;</span>), <span class="dt">message =</span> <span class="st">&#39;下载完毕！&#39;</span>)</code></pre></div>
+</div>
+<div id="secfile-3" class="section level2">
+<h2><span class="header-section-number">13.3</span> 从大量文件里提取汇总信息</h2>
+<p>有时候，我们需要从大量的数据文件中，提取感兴趣的条目并汇总到一起进行分析。这里我们举个例子。</p>
+<p>我国有数千个气象观测站。每隔一段时间，各气象站就把当地的气象要素观测数据上传到国家一级的服务器，在信息中心汇总成一个文件，每个观测站的数据占一行，这个汇总的文件就有几千行。如果要从中获取某个观测站气象要素的时间序列，就需要从每个这样的文件里找到来自该观测站的那一行，附加上时刻信息，合并为该观测站的一个数据文件进行后续分析。</p>
+<p>这样的文件可以从我们的服务器下载。为了方便，我们把原来的几千行删减为几十行，并且仅给出6个文件供示范。</p>
+<p>我们先把这样文件的一个压缩包下载到本地电脑，并解压缩为文件夹。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="dt">url =</span> <span class="st">&quot;http://dapengde.com/r4rookies/obs.zip&quot;</span>, 
+              <span class="dt">destfile =</span> <span class="st">&quot;c:/r4r/obs.zip&quot;</span>)
+<span class="kw">unzip</span>(<span class="dt">zipfile =</span> <span class="st">&quot;c:/r4r/obs.zip&quot;</span>, <span class="dt">exdir =</span> <span class="st">&quot;c:/r4r&quot;</span>)</code></pre></div>
+<p>请用记事本打开任意一个文件。可以看出，每个文件的前两行是文件头。从第三行起是个数据表，第一列是观测站的编号，从第二列起是各种观测要素。时刻信息既包含在文件头里，也包含在文件头里。现在，假定我们要从这6个文件里提取编号为54527观测站的数据。</p>
+<p>像前面的例子那样，我们先获取文件列表，把文件名作为时刻信息存储。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stn &lt;-<span class="st"> </span><span class="dv">54527</span>
+obsdir &lt;-<span class="st"> &#39;c:/r4r/obs&#39;</span>
+obsfilefull &lt;-<span class="st"> </span><span class="kw">dir</span>(obsdir, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
+obstime &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">dir</span>(obsdir))</code></pre></div>
+<p>然后，我们先准备好一个名为output的空变量，用来存放输出结果。我们使用循环语句，逐个读取每个文件，从中找到目标行，并将其作为新行追加到output后面，让这个新行的行名称为时刻信息。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output &lt;-<span class="st"> </span><span class="ot">NULL</span>
+for (k in <span class="dv">1</span>:<span class="kw">length</span>(obsfilefull))
+{
+  input &lt;-<span class="st"> </span><span class="kw">read.table</span>(obsfilefull[k], <span class="dt">header =</span> <span class="ot">FALSE</span>, 
+                      <span class="dt">skip =</span> <span class="dv">2</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
+  output_new &lt;-<span class="st"> </span>input[<span class="kw">which</span>(input[, <span class="dv">1</span>] ==<span class="st"> </span>stn),]
+   if (<span class="kw">nrow</span>(output_new) !=<span class="st"> </span><span class="dv">0</span>) 
+     <span class="kw">rownames</span>(output_new) &lt;-<span class="st"> </span>obstime[k]
+  output &lt;-<span class="st"> </span><span class="kw">rbind</span>(output, output_new)
+}
+output$time &lt;-<span class="st"> </span><span class="kw">rownames</span>(output)</code></pre></div>
+<p>得到的output数据框，就是目标观测站的时间序列。</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-325" class="theorem"><strong>小贴士 13.1  </strong></span>常用文件操作函数
+</div>
+<p></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">名称</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>file.show()</code>，<code>file.info()</code></td>
+<td align="left">查看文件内容或信息</td>
+</tr>
+<tr class="even">
+<td align="left"><code>file.exists()</code></td>
+<td align="left">检查文件是否存在</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>file.create()</code>，<code>dir.create()</code></td>
+<td align="left">新建文件或目录</td>
+</tr>
+<tr class="even">
+<td align="left"><code>file.copy()</code></td>
+<td align="left">文件复制</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>file.remove()</code></td>
+<td align="left">文件删除（注意！直接删除！不进入回收站！）</td>
+</tr>
+<tr class="even">
+<td align="left"><code>file.rename()</code></td>
+<td align="left">文件重命名</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>download.file()</code></td>
+<td align="left">下载文件</td>
+</tr>
+<tr class="even">
+<td align="left"><code>unzip()</code></td>
+<td align="left">解压缩文件</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>dir()</code></td>
+<td align="left">查看目录下文件清单</td>
+</tr>
+<tr class="even">
+<td align="left"><code>file.choose()</code>, <code>choose.files()</code></td>
+<td align="left">选取文件或目录</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>choose.dir()</code></td>
+<td align="left">选取文件夹</td>
+</tr>
+</tbody>
+</table>
+
+<div class="example">
+<span id="exm:ex14-2" class="example"><strong>Example 13.2  </strong></span>从上述气象观测站的数据中，筛选出所有编号以50开头的观测站，并提取这些观测站的第4列气象要素，连同时刻信息一起合并在一个文件里。时刻信息从文件头获取。
+</div>
+<p></p>
+
+<div class="example">
+<span id="exm:ex14-3" class="example"><strong>Example 13.3  </strong></span>将练习<a href="secfile.html#exm:ex14-2">13.2</a>得到的数据，对每个观测站该项气象要素做时间序列图，并做出每个观测站该气象要素的箱式图（boxplot）。
+</div>
+<p></p>
+</div>
+<div id="secfilepost" class="section level2">
+<h2><span class="header-section-number">13.4</span> 课外活动：打通任督二脉</h2>
+<p>如果你熟悉WIndows操作系统，那么应该知道cmd，也就是命令行。同时按下键盘的windows键和r字母键，在弹出的小窗口里输入cmd，回车，出现的那个简陋的黑色小窗口就是cmd。在开始菜单里搜索cmd也能搜到。别看它又黑又丑，它的强大会让你惊叹。如果R和cmd强强联手，你的电脑就被打通了任督二脉，离练成绝世神功已经不远了。下面我们举几个例子。</p>
+<p>让我们先打开任脉。请在cmd小黑窗里输入：</p>
+<pre><code>notepad
+</code></pre>
+<p>并回车，记事本就被打开了。这就是用cmd打开记事本的指令。</p>
+<p>如果不使用cmd小黑窗，在R里也可以进行等同的操作，只需使用shell()函数：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shell</span>(<span class="st">&#39;notepad&#39;</span>)</code></pre></div>
+<p>shell()就是R用来呼唤cmd的方式。R可以呼唤电脑里已经安装的软件，例如网页浏览器：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shell</span>(<span class="st">&#39;start iexplore http://xuer.pzhao.net&#39;</span>)</code></pre></div>
+<p>或者打开qq：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shell</span>(<span class="st">&#39;cmd /c &quot;D:/Program Files/Tencent/QQProtect.exe&quot;&#39;</span>)</code></pre></div>
+<p>当然，你得把上面这条代码里QQProtect.exe的完整路径改成你自己电脑上的路径才行。</p>
+<p>如果一段R代码在办公室处理大量数据尚未完成，而我又着急下班，那么我可以事先在R代码的最后加上一条打开qq的指令，就可以回家了。当我在手机上看到办公室电脑的qq上线了，就意味着R已经把数据处理完了。如果配合AutoHotKey这样的软件，我甚至可以让办公室的qq自动发一条“搞定！”的信息给自己的手机<a href="#fn37" class="footnoteRef" id="fnref37"><sup>37</sup></a>。</p>
+<p>cmd支持的命令非常丰富，可以完成很多原本复杂的工作。R调用cmd，如虎添翼。如果感兴趣，可以去学一下批处理脚本，把cmd要执行的多条命令写在.bat文件里，让R来调用，那必将是一片繁华。</p>
+<p>现在，R呼唤cmd的任脉已经打通了，下面我们打通督脉——让cmd呼唤R。</p>
+<p>假定你有一批打算要自动运行的R代码，保存在文件<code>c:/r4r/timer.r</code>，并且假定你的R安装路径是<code>D:/Program Files/R/bin/R.exe</code>，那么，请在cmd小黑窗里运行：</p>
+<pre><code>&quot;D:/Program Files/R/bin/R.exe&quot; CMD BATCH --vanilla --slave 
+  &quot;c:/r4r/timer.r&quot;</code></pre>
+<p>这条命令的含义是由cmd呼唤R来运行<code>timer.r</code>里的代码。一声召唤后，<code>timer.r</code>里的代码全部自动运行，该画的图自动画，该写出的数据自动写，根本不用打开RStudio。</p>
+<p>这有什么用呢？说说我是怎么用的吧。</p>
+<p>有段时间，我参加了连续一个多月的野外科研观测，需要把这一个月的天气状况记录在案，每个小时是阴是晴，是雨是雪。天气状况其实在很多天气网站上都有，但是只能实时浏览，网页每天更新，并且不能下载最新一个月的历史记录。这种事当然可以安排个人每天手动把信息摘抄整理下来，但是我有R在手啊！于是，我写了一段R代码，可以获取天气网站当天显示的天气现象并保存到一个文件里，并做出需要的图表。然后，我又写了一句cmd代码保存在脚本文件.bat里，用来呼唤上述R代码文件。最后，在windows的“计划任务”里设置每天运行一次.bat文件。好了，一切每天都自动完成了。</p>
+<p>我们在本章学了用R整理照片、下载图片和处理大量数据文件；在下一章，我们还将学会批量制作Word文档和PPT幻灯片。如果这些任务需要定期大量重复操作，那么，cmd+R+计划任务的组合，将节省大量的人工劳动。</p>
+<p>这只是我作为一个菜鸟的想法。反正，任督二脉已经打通。在这个神奇世界里，发挥你的想象力，想怎么折腾就怎么折腾咯！能不能成为绝顶高手，就看你自己咯！</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="36">
+<li id="fn36"><p>因斯布鲁克大学生态气象研究组：<a href="http://www.biomet.co.at/pictures/" class="uri">http://www.biomet.co.at/pictures/</a><a href="secfile.html#fnref36">↩</a></p></li>
+<li id="fn37"><p>事实上，R有专门的扩展包，可以自动发送电子邮件，比调用qq更爽快。<a href="secfile.html#fnref37">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sectime.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bookdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r4r.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
